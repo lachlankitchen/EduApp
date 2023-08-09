@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-
 import 'dart/degree/degree.dart';
-import 'dart/degree/degree_storage.dart';
 import 'dart/form/degrees_list_screen.dart';
 
 void main() {
