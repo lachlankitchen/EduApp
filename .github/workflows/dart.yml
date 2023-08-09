@@ -1,3 +1,8 @@
+# This workflow uses actions that are not certified by GitHub.
+# They are provided by a third-party and are governed by
+# separate terms of service, privacy policy, and support
+# documentation.
+
 name: Flutter CI
 
 on:
@@ -17,17 +22,10 @@ jobs:
 
       - name: Set up Flutter
         uses: subosito/flutter-action@v2
-        with:
-          flutter-version: 3.0.6 # Replace with the Flutter version you want to use
-
-      - name: Check Flutter Doctor
-        run: flutter doctor
 
       - name: Get dependencies
         run: flutter pub get
 
       - name: Run tests
         run: flutter test
-
-      
 
