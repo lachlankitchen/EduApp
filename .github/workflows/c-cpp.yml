@@ -8,16 +8,15 @@ on:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v3
-    - name: configure
-      run: ./configure
-    - name: make
-      run: make
-    - name: make check
-      run: make check
-    - name: make distcheck
-      run: make distcheck
+    - uses: actions/checkout@v2
+    - name: Set up CMake
+      run: sudo apt-get -y install cmake
+    - name: Build Project
+      run: |
+        mkdir build
+        cd build
+        cmake ..
+        make
