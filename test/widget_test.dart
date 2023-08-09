@@ -9,22 +9,18 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 import 'package:edu_app/main.dart';
+import 'package:edu_app/dart/form/degrees_list_screen.dart';
+
 
 void main() {
-  testWidgets('Counter increments smoke test', (WidgetTester tester) async {
-    // Build our app and trigger a frame.
-    await tester.pumpWidget(const EduApp());
+  testWidgets('Renders MyApp and opens DegreesListScreen', (WidgetTester tester) async {
+    await tester.pumpWidget(const MaterialApp(
+      home: MyHomePage(title: 'Degree Pathway App'),
+    ));
 
-    // Verify that our counter starts at 0.
-    expect(find.text('0'), findsOneWidget);
-    expect(find.text('1'), findsNothing);
-
-    // Tap the '+' icon and trigger a frame.
     await tester.tap(find.byIcon(Icons.add));
-    await tester.pump();
+    await tester.pumpAndSettle();
 
-    // Verify that our counter has incremented.
-    expect(find.text('0'), findsNothing);
-    expect(find.text('1'), findsOneWidget);
+    expect(find.byType(DegreesListScreen), findsOneWidget);
   });
 }
