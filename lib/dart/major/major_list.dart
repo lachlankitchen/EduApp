@@ -33,7 +33,7 @@ class MajorListScreen extends StatelessWidget {
   }
   
   void navigateToPapersListScreen(BuildContext context) {
-  const String papersJson = ''' 
+    const String papersJson = '''
     [
       {
         "papercode": "CS 101",
@@ -48,13 +48,25 @@ class MajorListScreen extends StatelessWidget {
         "restrictions": [],
         "schedule": "Lecture 1: Monday 9:00 AM"
       },
-      // Add more paper objects here
+      {
+        "papercode": "CS 102",
+        "subject_code": "COMPSCI",
+        "year": "2023",
+        "title": "Introduction to Computer Science",
+        "points": 15,
+        "efts": 0.125,
+        "teaching_periods": ["Semester 1"],
+        "description": "An introduction to...",
+        "prerequisites": [],
+        "restrictions": [],
+        "schedule": "Lecture 1: Monday 9:00 AM"
+      }
     ]
     ''';
 
     List<dynamic> parsedPapersJson = json.decode(papersJson);
     List<Paper> papers = parsedPapersJson.map((paperJson) => Paper.fromJson(paperJson)).toList();
-
+    
     Navigator.push(
       context,
       MaterialPageRoute(
