@@ -27,11 +27,27 @@ class _MyHomePageState extends State<MyHomePage> {
 
   void _openDegreesListScreen(BuildContext context) {
     // Sample degree data
-    List<Degree> degrees = [
-      Degree("Bachelor's", "Computer Science", 2022),    
-      Degree("Bachelor's", "Finance", 2022)
-      // Add more degrees here
-    ];
+    final degreesJson = {
+      "degrees": [
+        "Bachelor of Applied Science (BAppSc)",
+        "Bachelor of Arts (BA)",
+        "Bachelor of Arts and Commerce (BACom)",
+        "Bachelor of Arts and Science (BASc)",
+        "Bachelor of Biomedical Sciences (BBiomedSc)",
+        "Bachelor of Commerce (BCom)",
+        "Bachelor of Commerce and Science (BComSc)",
+        "Bachelor of Entrepreneurship (BEntr)",
+        "Bachelor of Health Sciences (BHealSc)",
+        "Bachelor of Music (MusB)",
+        "Bachelor of Performing Arts (BPA)",
+        "Bachelor of Science (BSc)",
+        "Bachelor of Theology (BTheol)",
+        "Bachelor of Laws (LLB) (first year only)"
+      ]
+    };
+
+    List<String>? degreesList = (degreesJson['degrees'] as List<dynamic>).cast<String>();
+    List<Degree> degrees = Degree.fromJsonList(degreesList ?? []);
 
     Navigator.push(
       context,
