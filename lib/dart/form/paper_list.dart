@@ -16,7 +16,7 @@ class PapersListScreen extends StatelessWidget {
         itemCount: papers.length,
         itemBuilder: (context, index) {
           return ListTile(
-            title: Text('${papers[index].title}'),
+            title: Text(papers[index].title),
             subtitle: Text('Code: ${papers[index].papercode} | Semester: ${papers[index].teachingPeriods.join(", ")}'),
             onTap: () {
               // Handle onTap event, e.g., navigate to a details screen
