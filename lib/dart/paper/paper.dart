@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 class Paper {
   final String papercode;
   final String subjectCode;
@@ -40,4 +42,44 @@ class Paper {
       schedule: json['schedule'],
     );
   }
+
+  @override
+  String toString() {
+    return '''
+      Paper Code: $papercode
+      Subject Code: $subjectCode
+      Year: $year
+      Title: $title
+      Points: $points
+      EFTS: $efts
+      Teaching Periods: ${teachingPeriods.join(', ')}
+      Description: $description
+      Prerequisites: ${prerequisites.join(', ')}
+      Restrictions: ${restrictions.join(', ')}
+      Schedule: $schedule
+    ''';
+  }
+}
+
+void main() {
+  const String paperJson = ''' 
+    {
+      "papercode": "CS 101",
+      "subject_code": "COMPSCI",
+      "year": "2023",
+      "title": "Introduction to Computer Science",
+      "points": 15,
+      "efts": 0.125,
+      "teaching_periods": ["Semester 1"],
+      "description": "An introduction to...",
+      "prerequisites": [],
+      "restrictions": [],
+      "schedule": "Lecture 1: Monday 9:00 AM"
+    }
+  ''';
+
+  Map<String, dynamic> parsedPaperJson = json.decode(paperJson);
+  Paper paper = Paper.fromJson(parsedPaperJson);
+
+  print(paper.toString());
 }
