@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import '../degree/degree.dart'; 
+import 'degree.dart'; 
 import '../major/major.dart';
 import '../major/major_list.dart'; 
 

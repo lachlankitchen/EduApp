@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
 import '../degree/degree.dart';
-import '../form/degree_list.dart';
-import '../form/paper_list.dart';
+import '../degree/degree_list.dart';
 import '../paper/paper.dart';
+import '../paper/paper_list.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required this.title});
@@ -79,7 +79,7 @@ class _MyHomePageState extends State<MyHomePage> {
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (context) => PapersListScreen(papers: papers),
+        builder: (context) => PaperListScreen(papers: papers),
       ),
     );
   }
