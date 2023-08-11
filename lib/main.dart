@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'dart/home/home.dart';
-//import 'dart/degree/degree_storage.dart';                       //commented out bc apparently these files dont exist. 
-//import 'package:shared_preferences/shared_preferences.dart';    //will leave here for now in case we need them later ig
 
 void main() {
   runApp(const EduApp());
