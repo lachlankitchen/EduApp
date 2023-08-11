@@ -10,30 +10,6 @@ class DegreesListScreen extends StatelessWidget {
 
   const DegreesListScreen({required this.degrees});
 
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Undergraduate Degrees'),
-      ),
-      body: ListView.builder(
-        itemCount: degrees.length,
-        itemBuilder: (context, index) {
-          return ListTile(
-            
-            title: ElevatedButton(
-              onPressed: () {
-                navigateToMajorsListScreen(context);
-              },
-              child: Text(degrees[index].toString()),
-            ),
-          );
-        },
-      ),
-    );
-  }
-
-
   void navigateToMajorsListScreen(BuildContext context) {
 
     const String majorsJson = '''
@@ -94,6 +70,29 @@ class DegreesListScreen extends StatelessWidget {
       context,
       MaterialPageRoute(
         builder: (context) => MajorListScreen(majors: majors),
+      ),
+    );
+  }
+  
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Undergraduate Degrees'),
+      ),
+      body: ListView.builder(
+        itemCount: degrees.length,
+        itemBuilder: (context, index) {
+          return ListTile(
+            
+            title: ElevatedButton(
+              onPressed: () {
+                navigateToMajorsListScreen(context);
+              },
+              child: Text(degrees[index].toString()),
+            ),
+          );
+        },
       ),
     );
   }
