@@ -11,7 +11,7 @@ class DegreesPointsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: navBar(),
+      bottomNavigationBar: const NavBar(),
       appBar: AppBar(
         title: const Text('Points'),
       ),

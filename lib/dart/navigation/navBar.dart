@@ -9,8 +9,8 @@ import '../points/degree_points_screen.dart';
 
 import '../navigation/navigationProvider.dart';
 
-class navBar extends StatelessWidget {
-  const navBar({Key? key}) : super(key: key);
+class NavBar extends StatelessWidget {
+  const NavBar({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -39,7 +39,7 @@ class navBar extends StatelessWidget {
     
 
     return BottomNavigationBar(
-      currentIndex: context.watch<navigationProvider>().currentIndex,
+      currentIndex: context.watch<NavigationProvider>().currentIndex,
       onTap: (index) {
         switch (index) {
           case 0:
@@ -63,7 +63,7 @@ class navBar extends StatelessWidget {
             );
             break;
         }
-        context.read<navigationProvider>().currentIndex = index;
+        context.read<NavigationProvider>().currentIndex = index;
       },
       items: const [
         BottomNavigationBarItem(
