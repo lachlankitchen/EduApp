@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../degree/degree.dart';
+import '../navigation/navBar.dart';
 
 class DegreesListScreen extends StatelessWidget {
   final List<Degree> degrees;
@@ -9,6 +10,7 @@ class DegreesListScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      bottomNavigationBar: navBar(),
       appBar: AppBar(
         title: const Text('Degrees List'),
       ),

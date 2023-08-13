@@ -1,10 +1,18 @@
 import 'package:flutter/material.dart';
 import 'dart/home/home.dart';
+
+import 'dart/navigation/navigationProvider.dart';
+import 'package:provider/provider.dart';
 //import 'dart/degree/degree_storage.dart';                       //commented out bc apparently these files dont exist. 
 //import 'package:shared_preferences/shared_preferences.dart';    //will leave here for now in case we need them later ig
 
 void main() {
-  runApp(const EduApp());
+    runApp(
+      ChangeNotifierProvider(
+        create: (context) => navigationProvider(),
+        child: const EduApp(),
+    ),
+  );
 }
 
 class EduApp extends StatelessWidget {

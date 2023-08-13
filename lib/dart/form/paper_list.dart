@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import '../paper/paper.dart'; // Import your Paper class here
 
+import '../navigation/navBar.dart';
+
 class PapersListScreen extends StatelessWidget {
   final List<Paper> papers;
 
@@ -9,6 +11,7 @@ class PapersListScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      bottomNavigationBar: navBar(),
       appBar: AppBar(
         title: const Text('Papers List'),
       ),
