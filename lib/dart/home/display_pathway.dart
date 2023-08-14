@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import '../degree/degree.dart';
 import '../major/major.dart';
 import '../paper/paper.dart';
-
 class DisplayPathway extends StatelessWidget {
   final Degree? degree;
   final List<Major>? majors;
@@ -20,21 +19,39 @@ class DisplayPathway extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              degree != null ? '${degree!.title}' : 'No degree selected',
+              '${degree?.title ?? "No degree selected"}',
               style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),
             SizedBox(height: 10),
-            if (degree != null)
+            if (majors != null && majors!.isNotEmpty)
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  if (majors != null && majors!.isNotEmpty)
-                    Text('Majors: ${majors![0].name}'),
-                  if (papers != null && papers!.isNotEmpty)
-                    Text('Papers: ${papers![0].title}'),
-                  // Add more details about the selected degree if needed
+                  Text('Majors:'),
+                  ListView.builder(
+                    shrinkWrap: true,
+                    itemCount: majors!.length,
+                    itemBuilder: (context, index) {
+                      return Text('${majors![index].name}');
+                    },
+                  ),
                 ],
-              )
+              ),
+            if (papers != null && papers!.isNotEmpty)
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text('Papers:'),
+                  ListView.builder(
+                    shrinkWrap: true,
+                    itemCount: papers!.length,
+                    itemBuilder: (context, index) {
+                      return Text('${papers![index].subjectCode} - ${papers![index].title}');
+                    },
+                  ),
+                ],
+              ),
+            // Add more details about the selected degree if needed
           ],
         ),
       ),
