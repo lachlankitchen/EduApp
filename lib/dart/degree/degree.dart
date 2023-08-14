@@ -14,18 +14,6 @@ class Degree {
     return jsonList.map((title) => Degree(title)).toList();
   }
 
-  void addMajor(Major major) {
-    if (majors.length < 2) {
-      majors.add(major);
-    }
-  }
-
-  void removeMajor(int index) {
-    if (index >= 0 && index < majors.length) {
-      majors[index] = null;
-    }
-  }
-
   @override
   String toString() {
     return title;

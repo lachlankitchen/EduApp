@@ -57,7 +57,7 @@ class _MyHomePageState extends State<MyHomePage> {
           degrees: degrees,
           onSelectDegree: (selectedDegree) {
             setState(() {
-              selectedDegrees[index] = selectedDegree;
+              addDegree(selectedDegree);
             });
             Navigator.pop(context); // Close the degrees list screen
           },
