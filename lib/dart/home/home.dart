@@ -92,11 +92,11 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          bool hasSelectedDegree = Provider.of<PathwayState>(context, listen: false)
-              .selectedDegrees
-              .any((degree) => degree != null);
-
-          if (!hasSelectedDegree) {
+          final state = Provider.of<PathwayState>(context, listen: false);
+          
+          int selectedDegreeCount = state.selectedDegrees.where((degree) => degree != null).length;
+          
+          if (selectedDegreeCount < 3) {
             _openDegreesListScreen(context);
           }
         },
