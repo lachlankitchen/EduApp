@@ -5,13 +5,13 @@ import '../major/major.dart';
 import '../paper/paper.dart';
 
 class PathwayState extends ChangeNotifier {
-  List<Degree?> selectedDegrees = List.filled(3, null);
+  List<Degree?> selectedDegrees = [];
   Degree? chosenDegree;
   List<Major> chosenMajors = [];
   List<Paper> chosenPapers = [];
 
-  void addDegree(Degree degree, int index) {
-    selectedDegrees[index] = degree;
+  void addDegree(Degree degree) {
+    selectedDegrees.add(degree);
     notifyListeners();
   }
 
@@ -33,9 +33,8 @@ class PathwayState extends ChangeNotifier {
     notifyListeners();
   }
 
-
-  void addPaper(Paper paper) {
-    chosenPapers.add(paper);
+  void addPapers(List<Paper> papers) {
+    chosenPapers.addAll(papers);
     notifyListeners();
   }
 

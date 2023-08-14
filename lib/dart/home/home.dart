@@ -26,7 +26,7 @@ class _MyHomePageState extends State<MyHomePage> {
   // Create a list to store selected degrees (up to 3)
   List<Degree?> selectedDegrees = List.filled(3, null);
 
-  void _openDegreesListScreen(BuildContext context, int index) {
+  void _openDegreesListScreen(BuildContext context) {
     // Sample degree data
     final degreesJson = {
       "degrees": [
@@ -50,27 +50,35 @@ class _MyHomePageState extends State<MyHomePage> {
     List<String>? degreesList = (degreesJson['degrees'] as List<dynamic>).cast<String>();
     List<Degree> degrees = Degree.fromJsonList(degreesList ?? []);
 
-    Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (context) => DegreeListScreen(
-          degrees: degrees,
-          onSelectDegree: (selectedDegree) {
-            setState(() {
-              addDegree(selectedDegree);
-            });
-            Navigator.pop(context); // Close the degrees list screen
-          },
+    // Get the current count of non-null selected degrees
+    int selectedDegreeCount = Provider.of<PathwayState>(context, listen: false)
+        .selectedDegrees
+        .where((degree) => degree != null)
+        .length;
+
+    if (selectedDegreeCount < 3) {
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => DegreeListScreen(
+            degrees: degrees,
+            onSelectDegree: (selectedDegree) {
+              setState(() {
+                Provider.of<PathwayState>(context, listen: false).addDegree(selectedDegree);
+              });
+              Navigator.pop(context); // Close the degrees list screen
+            },
+          ),
         ),
-      ),
-    );
+      );
+    }
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+        backgroundColor: Theme.of(context).colorScheme.primary,
         title: const Text("Degree Pathway App"),
       ),
       body: Consumer<PathwayState>(
@@ -82,19 +90,17 @@ class _MyHomePageState extends State<MyHomePage> {
           );
         },
       ),
-      floatingActionButton: Column(
-        mainAxisAlignment: MainAxisAlignment.end,
-        children: [
-          for (int i = 0; i < 3; i++)
-            if (selectedDegrees[i] == null)
-              FloatingActionButton(
-                onPressed: () {
-                  _openDegreesListScreen(context, i); // Open degrees list for a specific index
-                },
-                child: const Icon(Icons.add),
-              ),
-          // ... other FloatingActionButton widgets ...
-        ],
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          bool hasSelectedDegree = Provider.of<PathwayState>(context, listen: false)
+              .selectedDegrees
+              .any((degree) => degree != null);
+
+          if (!hasSelectedDegree) {
+            _openDegreesListScreen(context);
+          }
+        },
+        child: const Icon(Icons.add),
       ),
     );
   }

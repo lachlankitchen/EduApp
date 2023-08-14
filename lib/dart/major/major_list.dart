@@ -60,10 +60,10 @@ class MajorListScreen extends StatelessWidget {
         "schedule": "Lecture 1: Monday 9:00 AM"
       },
       {
-        "papercode": "CS 102",
+        "papercode": "CS 162",
         "subject_code": "COMPSCI",
         "year": "2023",
-        "title": "Introduction to Computer Science",
+        "title": "Computer Programming",
         "points": 15,
         "efts": 0.125,
         "teaching_periods": ["Semester 1"],
