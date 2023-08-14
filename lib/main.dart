@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'dart/home/home.dart';
+import 'package:provider/provider.dart';
+import 'dart/home/home.dart'; // Import your Home screen
+import 'dart/state/pathway_state.dart'; // Import the state management class
 
 void main() {
   runApp(const EduApp());
@@ -8,17 +10,20 @@ void main() {
 class EduApp extends StatelessWidget {
   const EduApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Degree Pathway App',
-      theme: ThemeData(
-        colorScheme:
-            ColorScheme.fromSeed(seedColor: const Color.fromARGB(255, 7, 143, 255)),
-        useMaterial3: true,
+    return ChangeNotifierProvider(
+      create: (context) => PathwayState(),
+      child: MaterialApp(
+        title: 'Degree Pathway App',
+        theme: ThemeData(
+          colorScheme: ColorScheme.fromSeed(
+            seedColor: const Color.fromARGB(255, 7, 143, 255),
+          ),
+          useMaterial3: true,
+        ),
+        home: const MyHomePage(),
       ),
-      home: const MyHomePage(title: 'Degree Pathway App'),
     );
   }
 }

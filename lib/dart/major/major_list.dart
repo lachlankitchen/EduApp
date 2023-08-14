@@ -1,9 +1,11 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import '../major/major.dart';
 import '../paper/paper.dart';
-import '../paper/paper_list.dart'; // Import the SecondListScreen class
+import '../paper/paper_list.dart';
+import '../state/pathway_state.dart'; // Import the SecondListScreen class
 
 class MajorListScreen extends StatelessWidget {
   final List<Major> majors;
@@ -16,23 +18,32 @@ class MajorListScreen extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Majors'),
       ),
-      body: ListView.builder(
-        itemCount: majors.length,
-        itemBuilder: (context, index) {
-          return ListTile(
-            title: ElevatedButton(
-              onPressed: () {
-                navigateToPapersListScreen(context);              
-              },
-              child: Text(majors[index].toString()),
-            ),
+       body: Consumer<PathwayState>(
+        builder: (context, state, child) {
+          return ListView.builder(
+            itemCount: majors.length,
+            itemBuilder: (context, index) {
+              return ListTile(
+                title: Hero(
+                  tag: 'major-${majors[index].name}',
+                  child: ElevatedButton(
+                    onPressed: () {
+                      navigateToPapersListScreen(context, context.read<PathwayState>(), majors[index]);
+                    },
+                    child: Text(majors[index].name),
+                  ),
+                ),
+              );
+            },
           );
         },
       ),
     );
   }
   
-  void navigateToPapersListScreen(BuildContext context) {
+  void navigateToPapersListScreen(BuildContext context, PathwayState state, Major selectedMajor) {
+    state.updateMajor(selectedMajor);
+
     const String papersJson = '''
     [
       {

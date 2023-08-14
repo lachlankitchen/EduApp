@@ -15,12 +15,12 @@ import 'package:edu_app/dart/degree/degree_list.dart';
 void main() {
   testWidgets('Renders MyApp and opens DegreesListScreen', (WidgetTester tester) async {
     await tester.pumpWidget(const MaterialApp(
-      home: MyHomePage(title: 'Degree Pathway App'),
+      home: MyHomePage(),
     ));
 
     await tester.tap(find.byIcon(Icons.add));
     await tester.pumpAndSettle();
 
-    expect(find.byType(DegreesListScreen), findsOneWidget);
+    expect(find.byType(DegreeListScreen), findsOneWidget);
   });
 }
