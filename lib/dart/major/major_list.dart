@@ -23,20 +23,35 @@ class MajorListScreen extends StatelessWidget {
           return ListView.builder(
             itemCount: majors.length,
             itemBuilder: (context, index) {
-              return ListTile(
-                title: Hero(
-                  tag: 'major-${majors[index].name}',
-                  child: ElevatedButton(
-                    onPressed: () {
-                      navigateToPapersListScreen(context, context.read<PathwayState>(), majors[index]);
-                    },
-                    child: Text(majors[index].name),
+                return ListTile(
+                  title: Row(
+                    children: [
+                      Checkbox(
+                        value: majors[index].isSelected,
+                        onChanged: (value) {
+                          // Toggle the checkbox and update the state
+                          majors[index].isSelected = value!;
+                          state.notifyListeners();
+                          navigateToPapersListScreen(context, context.read<PathwayState>(), majors[index]);
+                        },
+                      ),
+                      Expanded(
+                        child: Text(majors[index].name),
+                      ),
+                    ],
                   ),
-                ),
-              );
+                );
             },
           );
         },
+      ),
+      floatingActionButton: ElevatedButton(
+        onPressed: () {
+          // Save selected papers to the pathway state
+          List<Major> selectedMajors = majors.where((major) => major.isSelected).toList();
+          Provider.of<PathwayState>(context, listen: false).addMajors(selectedMajors);
+        },
+        child: Text('Save'),
       ),
     );
   }
