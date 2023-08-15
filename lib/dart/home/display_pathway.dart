@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import '../state/pathway.dart'; // Import the Pathway class
-
+import 'package:provider/provider.dart';
+import '../state/pathway.dart';
+import '../state/pathway_state.dart'; // Import the Pathway class
 class DisplayPathway extends StatelessWidget {
   final List<Pathway> pathway;
 
@@ -26,16 +27,28 @@ class DisplayPathway extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  pathway[index].degree.title, // Display degree title
-                  style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      pathway[index].degree.title, // Display degree title
+                      style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                    ),
+                    ElevatedButton(
+                      onPressed: () {
+                        Provider.of<PathwayState>(context, listen: false).deleteState(pathway[index]);
+                      },
+                      child: const Icon(Icons.remove),
+                    ),
+                  ],
                 ),
+                const SizedBox(height: 10),
                 if (pathway[index].majors.isNotEmpty)
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       const Text(
-                        '\nMajor(s):',
+                        'Major(s):',
                         style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                       ), // Display major heading
                       for (var major in pathway[index].majors)
@@ -47,7 +60,7 @@ class DisplayPathway extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       const Text(
-                        '\nPapers(s):',
+                        'Papers(s):',
                         style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                       ), // Display major heading
                       for (var paper in pathway[index].papers)

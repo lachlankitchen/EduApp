@@ -32,8 +32,17 @@ class PathwayState extends ChangeNotifier {
       degree: selectedDegree,
       majors: selectedMajors,
       papers: selectedPapers,
+      isSelected: false,
     );
     savedPathways.add(pathway);
+    selectedDegree = Degree(''); // Reset the state
+    selectedMajors = [];
+    selectedPapers = [];
+    notifyListeners();
+  }
+
+  void deleteState(Pathway pathway) {
+    savedPathways.remove(pathway);
     selectedDegree = Degree(''); // Reset the state
     selectedMajors = [];
     selectedPapers = [];
