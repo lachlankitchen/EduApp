@@ -7,7 +7,7 @@ import '../paper/paper.dart';
 import '../points/degree_points_screen.dart';
 import '../home/home.dart';
 
-import '../navigation/navigationProvider.dart';
+import 'navigation_provider.dart';
 
 class NavBar extends StatelessWidget {
   const NavBar({Key? key}) : super(key: key);
@@ -47,7 +47,7 @@ class NavBar extends StatelessWidget {
            Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => MyHomePage(),
+                builder: (context) => const MyHomePage(),
               ),
             ); 
             break; 

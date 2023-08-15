@@ -11,7 +11,7 @@ class DegreeListScreen extends StatelessWidget {
   final List<Degree> degrees;
   final Function(Degree) onSelectDegree; // Callback to notify parent when a degree is selected
 
-  DegreeListScreen({required this.degrees, required this.onSelectDegree});
+  const DegreeListScreen({required this.degrees, required this.onSelectDegree});
 
   void navigateToMajorsListScreen(BuildContext context, PathwayState state, Degree selectedDegree) {
     // Pass the selected degree to the state
@@ -83,7 +83,7 @@ class DegreeListScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Select a Degree'),
+        title: const Text('Select a Degree'),
       ),
       body: ListView.builder(
         itemCount: degrees.length,

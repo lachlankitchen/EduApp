@@ -7,7 +7,7 @@ import '../state/pathway_state.dart'; // Import the SecondListScreen class
 class PaperListScreen extends StatelessWidget {
   final List<Paper> papers;
 
-  const PaperListScreen({required this.papers});
+  const PaperListScreen({Key? key, required this.papers}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -50,7 +50,7 @@ class PaperListScreen extends StatelessWidget {
             Provider.of<PathwayState>(context, listen: false).addPapers(selectedPapers);
             Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const MyHomePage()));
           },
-          child: Text('Save'),
+          child: const Text('Save'),
         ),
       ),
     );

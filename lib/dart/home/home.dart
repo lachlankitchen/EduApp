@@ -6,7 +6,7 @@ import '../degree/degree_list.dart';
 import '../state/pathway_state.dart';
 import 'display_pathway.dart';
 
-import '../navigation/navBar.dart';
+import '../navigation/nav_bar.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key});
@@ -50,7 +50,7 @@ class _MyHomePageState extends State<MyHomePage> {
     };
 
     List<String>? degreesList = (degreesJson['degrees'] as List<dynamic>).cast<String>();
-    List<Degree> degrees = Degree.fromJsonList(degreesList ?? []);
+    List<Degree> degrees = Degree.fromJsonList(degreesList);
 
     // Get the current count of non-null selected degrees
     int selectedDegreeCount = Provider.of<PathwayState>(context, listen: false)

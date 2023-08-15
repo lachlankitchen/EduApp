@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import '../paper/paper.dart'; // Import your Paper class here
 
-import '../navigation/navBar.dart';
+import '../navigation/nav_bar.dart';
 
 class PapersListScreen extends StatelessWidget {
   final List<Paper> papers;
 
-  const PapersListScreen({required this.papers});
+  const PapersListScreen({Key? key, required this.papers}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

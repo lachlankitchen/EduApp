@@ -7,7 +7,7 @@ class DisplayPathway extends StatelessWidget {
   final List<Major>? majors;
   final List<Paper>? papers;
 
-  const DisplayPathway({required this.degree, required this.majors, required this.papers});
+  const DisplayPathway({Key? key, required this.degree, required this.majors, required this.papers}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -20,14 +20,14 @@ class DisplayPathway extends StatelessWidget {
           children: [
             Text(
               '${degree?.title ?? "No degree selected"}',
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+              style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
             if (majors != null && majors!.isNotEmpty)
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text('Majors:'),
+                  const Text('Majors:'),
                   ListView.builder(
                     shrinkWrap: true,
                     itemCount: majors!.length,
@@ -41,7 +41,7 @@ class DisplayPathway extends StatelessWidget {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text('Papers:'),
+                  const Text('Papers:'),
                   ListView.builder(
                     shrinkWrap: true,
                     itemCount: papers!.length,
