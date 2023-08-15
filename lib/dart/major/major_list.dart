@@ -49,6 +49,7 @@ class MajorListScreen extends StatelessWidget {
         onPressed: () {
           // Save selected papers to the pathway state
           List<Major> selectedMajors = majors.where((major) => major.isSelected).toList();
+          print(selectedMajors.length);
           Provider.of<PathwayState>(context, listen: false).addMajors(selectedMajors);
         },
         child: Text('Save'),
@@ -56,9 +57,8 @@ class MajorListScreen extends StatelessWidget {
     );
   }
   
-  void navigateToPapersListScreen(BuildContext context, PathwayState state, List<Major> selectedMajor) {
-    state.addMajors(selectedMajor);
-
+  void navigateToPapersListScreen(BuildContext context, PathwayState state, List<Major> selectedMajors) {
+    state.addMajors(selectedMajors);
     const String papersJson = '''
     [
       {
@@ -96,7 +96,7 @@ class MajorListScreen extends StatelessWidget {
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (context) => PaperListScreen(papers: papers),
+        builder: (context) => PapersListScreen(papers),
       ),
     );
   }
