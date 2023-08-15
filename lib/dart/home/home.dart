@@ -96,6 +96,7 @@ class _MyHomePageState extends State<MyHomePage> {
               _openDegreesListScreen(context); // Open degrees list
             },
             child: const Icon(Icons.add),
+            heroTag: 'degrees',
           ),
           const SizedBox(height: 10),
           FloatingActionButton(
@@ -103,6 +104,7 @@ class _MyHomePageState extends State<MyHomePage> {
               _openPapersListScreen(context); // Open papers list
             },
             child: const Icon(Icons.list),
+            heroTag: 'papers',
           ),
         ],
       ),
