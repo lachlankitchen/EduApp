@@ -15,7 +15,7 @@ class DegreeListScreen extends StatelessWidget {
 
   void navigateToMajorsListScreen(BuildContext context, PathwayState state, Degree selectedDegree) {
     // Pass the selected degree to the state
-    state.updateDegree(selectedDegree);
+    state.addDegree(selectedDegree);
 
     const String majorsJson = '''
     [
