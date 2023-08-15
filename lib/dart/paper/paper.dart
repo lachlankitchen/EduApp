@@ -12,8 +12,9 @@ class Paper {
   final List<String> prerequisites;
   final List<String> restrictions;
   final String schedule;
+  int grade; // Add this property to track selection
 
-  bool isSelected = false; // Add this property to track selection
+  bool isSelected = false;
 
   Paper({
     required this.papercode,
@@ -27,7 +28,8 @@ class Paper {
     required this.prerequisites,
     required this.restrictions,
     required this.schedule,
-    required this.isSelected
+    required this.isSelected,
+    required this.grade,
   });
 
   factory Paper.fromJson(Map<String, dynamic> json) {
@@ -43,6 +45,7 @@ class Paper {
       prerequisites: List<String>.from(json['prerequisites']),
       restrictions: List<String>.from(json['restrictions']),
       schedule: json['schedule'],
+      grade: 0,
       isSelected: false
     );
   }

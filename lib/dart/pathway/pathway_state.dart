@@ -11,6 +11,7 @@ class PathwayState extends ChangeNotifier {
   Degree selectedDegree = Degree(''); // Default value to prevent null errors
   List<Major> selectedMajors = [];
   List<Paper> selectedPapers = [];
+  double gpa = -1;
 
   void addDegree(Degree degree) {
     selectedDegree = degree;
@@ -27,11 +28,17 @@ class PathwayState extends ChangeNotifier {
     notifyListeners();
   }
 
+  void addGPA(double GPA) {
+    gpa = GPA;
+    notifyListeners();
+  }
+
   void saveState() {
     Pathway pathway = Pathway(
       degree: selectedDegree,
       majors: selectedMajors,
       papers: selectedPapers,
+      gpa: gpa,
       isSelected: false,
     );
     savedPathways.add(pathway);
@@ -48,6 +55,4 @@ class PathwayState extends ChangeNotifier {
     selectedPapers = [];
     notifyListeners();
   }
-
-  // Other methods for removing papers, updating majors, etc.
 }
