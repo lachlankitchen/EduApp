@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../degree/degree.dart';
+import 'degree.dart';
 import '../major/major.dart';
 import '../major/major_list.dart';
 import '../state/pathway_state.dart';

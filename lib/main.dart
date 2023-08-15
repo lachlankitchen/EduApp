@@ -5,6 +5,9 @@ import 'dart/navigation/navigationProvider.dart';
 import 'package:provider/provider.dart';
 //import 'dart/degree/degree_storage.dart';                       //commented out bc apparently these files dont exist. 
 //import 'package:shared_preferences/shared_preferences.dart';    //will leave here for now in case we need them later ig
+import 'package:provider/provider.dart';
+import 'dart/home/home.dart'; // Import your Home screen
+import 'dart/state/pathway_state.dart'; // Import the state management class
 
 void main() {
     runApp(
@@ -18,17 +21,20 @@ void main() {
 class EduApp extends StatelessWidget {
   const EduApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Degree Pathway App',
-      theme: ThemeData(
-        colorScheme:
-            ColorScheme.fromSeed(seedColor: const Color.fromARGB(255, 7, 143, 255)),
-        useMaterial3: true,
+    return ChangeNotifierProvider(
+      create: (context) => PathwayState(),
+      child: MaterialApp(
+        title: 'MAIN Degree Pathway App',
+        theme: ThemeData(
+          colorScheme: ColorScheme.fromSeed(
+            seedColor: const Color.fromARGB(255, 7, 143, 255),
+          ),
+          useMaterial3: true,
+        ),
+        home: const MyHomePage(),
       ),
-      home: const MyHomePage(title: 'Degree Pathway App'),
     );
   }
 }

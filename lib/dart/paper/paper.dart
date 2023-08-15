@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 class Paper {
   final String papercode;
   final String subjectCode;
@@ -11,6 +13,8 @@ class Paper {
   final List<String> restrictions;
   final String schedule;
 
+  bool isSelected = false; // Add this property to track selection
+
   Paper({
     required this.papercode,
     required this.subjectCode,
@@ -23,6 +27,7 @@ class Paper {
     required this.prerequisites,
     required this.restrictions,
     required this.schedule,
+    required this.isSelected
   });
 
   factory Paper.fromJson(Map<String, dynamic> json) {
@@ -38,6 +43,39 @@ class Paper {
       prerequisites: List<String>.from(json['prerequisites']),
       restrictions: List<String>.from(json['restrictions']),
       schedule: json['schedule'],
+      isSelected: false
     );
   }
+
+  @override
+  String toString() {
+    return '''
+      Paper Code: $papercode
+      Subject Code: $subjectCode
+      Teaching Periods: ${teachingPeriods.join(', ')}
+    ''';
+  }
+}
+
+void main() {
+  const String paperJson = ''' 
+    {
+      "papercode": "CS 101",
+      "subject_code": "COMPSCI",
+      "year": "2023",
+      "title": "Introduction to Computer Science",
+      "points": 15,
+      "efts": 0.125,
+      "teaching_periods": ["Semester 1"],
+      "description": "An introduction to...",
+      "prerequisites": [],
+      "restrictions": [],
+      "schedule": "Lecture 1: Monday 9:00 AM"
+    }
+  ''';
+
+  Map<String, dynamic> parsedPaperJson = json.decode(paperJson);
+  Paper paper = Paper.fromJson(parsedPaperJson);
+
+  print(paper.toString());
 }

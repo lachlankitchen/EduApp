@@ -19,8 +19,8 @@ class DegreesPointsScreen extends StatelessWidget {
         itemCount: degrees.length,
         itemBuilder: (context, index) {
           return ListTile(
-            title: Text('${degrees[index].title} in ${degrees[index].field}'),
-            subtitle: Text('Year: ${degrees[index].year}'),
+   //         title: Text('${degrees[index].title} in ${degrees[index].field}'),
+   //         subtitle: Text('Year: ${degrees[index].year}'),
           );
         },
       ),
