@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../degree/degree.dart';
-import '../form/degree_list.dart';
-import '../form/paper_list.dart';
-import '../paper/paper.dart';
+import '../degree/degree_list.dart';
+import '../pathway/pathway_state.dart';
+import 'display_pathway.dart';
 
 class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
+  const MyHomePage({super.key});
 
   // This widget is the home page of your application. It is stateful, meaning
   // that it has a State object (defined below) that contains fields that affect
@@ -17,13 +18,13 @@ class MyHomePage extends StatefulWidget {
   // used by the build method of the State. Fields in a Widget subclass are
   // always marked "final".
 
-  final String title;
-
   @override
   State<MyHomePage> createState() => _MyHomePageState();
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  // Create a list to store selected degrees (up to 3)
+  List<Degree?> selectedDegrees = List.filled(3, null);
 
   void _openDegreesListScreen(BuildContext context) {
     // Sample degree data
@@ -52,72 +53,49 @@ class _MyHomePageState extends State<MyHomePage> {
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (context) => DegreesListScreen(degrees: degrees),
+        builder: (context) => DegreeListScreen(
+          degrees: degrees,
+          onSelectDegree: (selectedDegree) {
+            setState(() {
+              Provider.of<PathwayState>(context, listen: false).addDegree(selectedDegree);
+            });
+          },
+        ),
       ),
-    );
-  }
-
-  void _openPapersListScreen(BuildContext context) {
-    // Sample paper data
-    List<Paper> papers = [
-      Paper(
-        papercode: "PAPER123",
-        subjectCode: "SUB123",
-        year: "2023",
-        title: "Introduction to Dart Programming",
-        points: 5,
-        efts: 0.5,
-        teachingPeriods: ["Semester 1", "Semester 2"],
-        description: "An introduction to programming in Dart.",
-        prerequisites: ["None"],
-        restrictions: ["Open to all students"],
-        schedule: "Tuesdays and Thursdays, 10:00 AM - 12:00 PM",
-      ),
-      // Add more papers here
-    ];
-
-    Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (context) => PapersListScreen(papers: papers),
-      ),
-    );
+    ); 
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text(widget.title),
+        backgroundColor: Theme.of(context).colorScheme.primary,
+        title: const Text("Degree Pathway App"),
       ),
-      body: const Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              'You have pushed the button this many times:',
-            ),
-          ],
-        ),
+      body: Consumer<PathwayState>(
+        builder: (context, state, child) {
+          return DisplayPathway(
+            pathway: state.savedPathways, // Pass the chosen degree
+          );
+        },
       ),
-      floatingActionButton: Column(
-        mainAxisAlignment: MainAxisAlignment.end,
-        children: [
-          FloatingActionButton(
-            onPressed: () {
-              _openDegreesListScreen(context); // Open degrees list
-            },
-            child: const Icon(Icons.add),
-          ),
-          const SizedBox(height: 10),
-          FloatingActionButton(
-            onPressed: () {
-              _openPapersListScreen(context); // Open papers list
-            },
-            child: const Icon(Icons.list),
-          ),
-        ],
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          final state = Provider.of<PathwayState>(context, listen: false);
+          int pathwayCount = state.savedPathways.where((pathway) => pathway != null).length;
+
+          if (pathwayCount < 3) {
+            _openDegreesListScreen(context);
+          } else {
+            // Display a snackbar to inform the user
+            ScaffoldMessenger.of(context).showSnackBar(
+              const SnackBar(
+                content: Text('You cannot have more than three degrees.'),
+              ),
+            );
+          }
+        },
+        child: const Icon(Icons.add),
       ),
     );
   }

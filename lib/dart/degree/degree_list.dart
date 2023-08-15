@@ -1,16 +1,21 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import '../degree/degree.dart'; 
+import 'package:provider/provider.dart';
+import 'degree.dart';
 import '../major/major.dart';
-import '../major/major_list.dart'; 
+import '../major/major_list.dart';
+import '../pathway/pathway_state.dart';
 
-class DegreesListScreen extends StatelessWidget {
+class DegreeListScreen extends StatelessWidget {
   final List<Degree> degrees;
+  final Function(Degree) onSelectDegree; // Callback to notify parent when a degree is selected
 
-  const DegreesListScreen({required this.degrees});
+  DegreeListScreen({required this.degrees, required this.onSelectDegree});
 
-  void navigateToMajorsListScreen(BuildContext context) {
+  void navigateToMajorsListScreen(BuildContext context, PathwayState state, Degree selectedDegree) {
+    // Pass the selected degree to the state
+    state.addDegree(selectedDegree);
 
     const String majorsJson = '''
     [
@@ -73,23 +78,26 @@ class DegreesListScreen extends StatelessWidget {
       ),
     );
   }
-  
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Undergraduate Degrees'),
+        title: Text('Select a Degree'),
       ),
       body: ListView.builder(
         itemCount: degrees.length,
         itemBuilder: (context, index) {
           return ListTile(
-            
-            title: ElevatedButton(
-              onPressed: () {
-                navigateToMajorsListScreen(context);
-              },
-              child: Text(degrees[index].toString()),
+            title: Hero(
+              tag: 'degree-${degrees[index].title}',
+              child: ElevatedButton(
+                onPressed: () {
+                  onSelectDegree(degrees[index]);
+                  navigateToMajorsListScreen(context, context.read<PathwayState>(), degrees[index]);
+                },
+                child: Text(degrees[index].title),
+              ),
             ),
           );
         },

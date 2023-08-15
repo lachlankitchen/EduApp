@@ -1,9 +1,11 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import '../major/major.dart';
 import '../paper/paper.dart';
-import '../paper/paper_list.dart'; // Import the SecondListScreen class
+import '../paper/paper_list.dart';
+import '../pathway/pathway_state.dart'; // Import the SecondListScreen class
 
 class MajorListScreen extends StatelessWidget {
   final List<Major> majors;
@@ -16,23 +18,47 @@ class MajorListScreen extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Majors'),
       ),
-      body: ListView.builder(
-        itemCount: majors.length,
-        itemBuilder: (context, index) {
-          return ListTile(
-            title: ElevatedButton(
-              onPressed: () {
-                navigateToPapersListScreen(context);              
-              },
-              child: Text(majors[index].toString()),
-            ),
+       body: Consumer<PathwayState>(
+        builder: (context, state, child) {
+          return ListView.builder(
+            itemCount: majors.length,
+            itemBuilder: (context, index) {
+                return ListTile(
+                  title: Row(
+                    children: [
+                      Checkbox(
+                        value: majors[index].isSelected,
+                        onChanged: (value) {
+                          // Toggle the checkbox and update the state
+                          majors[index].isSelected = value!;
+                          state.notifyListeners();
+                          navigateToPapersListScreen(context, context.read<PathwayState>(), majors);
+                        },
+                      ),
+                      Expanded(
+                        child: Text(majors[index].name),
+                      ),
+                    ],
+                  ),
+                );
+            },
           );
         },
+      ),
+      floatingActionButton: ElevatedButton(
+        onPressed: () {
+          // Save selected papers to the pathway state
+          List<Major> selectedMajors = majors.where((major) => major.isSelected).toList();
+          print(selectedMajors.length);
+          Provider.of<PathwayState>(context, listen: false).addMajors(selectedMajors);
+        },
+        child: Text('Save'),
       ),
     );
   }
   
-  void navigateToPapersListScreen(BuildContext context) {
+  void navigateToPapersListScreen(BuildContext context, PathwayState state, List<Major> selectedMajors) {
+    state.addMajors(selectedMajors);
     const String papersJson = '''
     [
       {
@@ -49,10 +75,10 @@ class MajorListScreen extends StatelessWidget {
         "schedule": "Lecture 1: Monday 9:00 AM"
       },
       {
-        "papercode": "CS 102",
+        "papercode": "CS 162",
         "subject_code": "COMPSCI",
         "year": "2023",
-        "title": "Introduction to Computer Science",
+        "title": "Computer Programming",
         "points": 15,
         "efts": 0.125,
         "teaching_periods": ["Semester 1"],
@@ -70,7 +96,7 @@ class MajorListScreen extends StatelessWidget {
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (context) => PaperListScreen(papers: papers),
+        builder: (context) => PapersListScreen(papers),
       ),
     );
   }
