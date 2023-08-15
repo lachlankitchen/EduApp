@@ -1,40 +1,42 @@
-import 'package:flutter/material.dart';
+import 'package:edu_app/dart/state/pathway.dart';
+import 'package:flutter/foundation.dart';
 
 import '../degree/degree.dart';
 import '../major/major.dart';
 import '../paper/paper.dart';
 
 class PathwayState extends ChangeNotifier {
-  List<Degree?> selectedDegrees = [];
-  Degree? chosenDegree;
-  List<Major> chosenMajors = [];
-  List<Paper> chosenPapers = [];
+  List<Pathway> savedPathways = [];
+
+  Degree selectedDegree = Degree(''); // Default value to prevent null errors
+  List<Major> selectedMajors = [];
+  List<Paper> selectedPapers = [];
 
   void addDegree(Degree degree) {
-    selectedDegrees.add(degree);
+    selectedDegree = degree;
     notifyListeners();
   }
 
-  void updateDegree(Degree degree) {
-    chosenDegree = degree;
-    chosenMajors.clear(); // Reset major when degree changes
-    chosenPapers.clear(); // Reset papers when degree changes
-    notifyListeners();
-  }
-
-  void updateMajor(Major major) {
-    if (chosenMajors.isEmpty) {
-      chosenMajors.add(major);
-    } else {
-      chosenMajors[0] = major;
-    }
-
-    chosenPapers.clear(); // Reset papers when major changes
+  void addMajors(List<Major> majors) {
+    selectedMajors.addAll(majors);
     notifyListeners();
   }
 
   void addPapers(List<Paper> papers) {
-    chosenPapers.addAll(papers);
+    selectedPapers.addAll(papers);
+    notifyListeners();
+  }
+
+  void saveState() {
+    Pathway pathway = Pathway(
+      degree: selectedDegree,
+      majors: selectedMajors,
+      papers: selectedPapers,
+    );
+    savedPathways.add(pathway);
+    selectedDegree = Degree(''); // Reset the state
+    selectedMajors = [];
+    selectedPapers = [];
     notifyListeners();
   }
 
