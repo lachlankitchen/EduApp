@@ -32,7 +32,7 @@ class MajorListScreen extends StatelessWidget {
                           // Toggle the checkbox and update the state
                           majors[index].isSelected = value!;
                           state.notifyListeners();
-                          navigateToPapersListScreen(context, context.read<PathwayState>(), majors[index]);
+                          navigateToPapersListScreen(context, context.read<PathwayState>(), majors);
                         },
                       ),
                       Expanded(
@@ -56,8 +56,8 @@ class MajorListScreen extends StatelessWidget {
     );
   }
   
-  void navigateToPapersListScreen(BuildContext context, PathwayState state, Major selectedMajor) {
-    state.updateMajor(selectedMajor);
+  void navigateToPapersListScreen(BuildContext context, PathwayState state, List<Major> selectedMajor) {
+    state.addMajors(selectedMajor);
 
     const String papersJson = '''
     [

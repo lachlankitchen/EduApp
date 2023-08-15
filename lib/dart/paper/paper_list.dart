@@ -45,10 +45,18 @@ class PaperListScreen extends StatelessWidget {
         ),
         floatingActionButton: ElevatedButton(
           onPressed: () {
+            final state = Provider.of<PathwayState>(context, listen: false);
             // Save selected papers to the pathway state
             List<Paper> selectedPapers = papers.where((paper) => paper.isSelected).toList();
-            Provider.of<PathwayState>(context, listen: false).addPapers(selectedPapers);
-            Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const MyHomePage()));
+            state.addPapers(selectedPapers);
+
+            // Save the entire pathway state
+            state.saveState();
+
+            Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(builder: (context) => const MyHomePage()),
+            );
           },
           child: Text('Save'),
         ),
