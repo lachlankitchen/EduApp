@@ -51,27 +51,24 @@ class _MyHomePageState extends State<MyHomePage> {
     List<Degree> degrees = Degree.fromJsonList(degreesList ?? []);
 
     // Get the current count of non-null selected degrees
-    int selectedDegreeCount = Provider.of<PathwayState>(context, listen: false)
-        .selectedDegrees
+    int degreeCount = Provider.of<PathwayState>(context, listen: false)
+        .chosenDegrees
         .where((degree) => degree != null)
         .length;
 
-    if (selectedDegreeCount < 3) {
-      Navigator.push(
-        context,
-        MaterialPageRoute(
-          builder: (context) => DegreeListScreen(
-            degrees: degrees,
-            onSelectDegree: (selectedDegree) {
-              setState(() {
-                Provider.of<PathwayState>(context, listen: false).addDegree(selectedDegree);
-              });
-              Navigator.pop(context); // Close the degrees list screen
-            },
-          ),
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => DegreeListScreen(
+          degrees: degrees,
+          onSelectDegree: (selectedDegree) {
+            setState(() {
+              Provider.of<PathwayState>(context, listen: false).addDegree(selectedDegree);
+            });
+          },
         ),
-      );
-    }
+      ),
+    ); 
   }
 
   @override
@@ -84,7 +81,7 @@ class _MyHomePageState extends State<MyHomePage> {
       body: Consumer<PathwayState>(
         builder: (context, state, child) {
           return DisplayPathway(
-            degree: state.chosenDegree, // Pass the chosen degree
+            degrees: state.chosenDegrees, // Pass the chosen degree
             majors: state.chosenMajors,
             papers: state.chosenPapers,
           );
@@ -93,11 +90,16 @@ class _MyHomePageState extends State<MyHomePage> {
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           final state = Provider.of<PathwayState>(context, listen: false);
-          
-          int selectedDegreeCount = state.selectedDegrees.where((degree) => degree != null).length;
-          
+          int selectedDegreeCount = state.chosenDegrees.where((degree) => degree != null).length;
           if (selectedDegreeCount < 3) {
             _openDegreesListScreen(context);
+          } else {
+            // Display a snackbar to inform the user
+            ScaffoldMessenger.of(context).showSnackBar(
+              const SnackBar(
+                content: Text('You cannot have more than three degrees.'),
+              ),
+            );
           }
         },
         child: const Icon(Icons.add),
