@@ -50,12 +50,6 @@ class _MyHomePageState extends State<MyHomePage> {
     List<String>? degreesList = (degreesJson['degrees'] as List<dynamic>).cast<String>();
     List<Degree> degrees = Degree.fromJsonList(degreesList ?? []);
 
-    // Get the current count of non-null selected degrees
-    int degreeCount = Provider.of<PathwayState>(context, listen: false)
-        .chosenDegrees
-        .where((degree) => degree != null)
-        .length;
-
     Navigator.push(
       context,
       MaterialPageRoute(
@@ -81,17 +75,16 @@ class _MyHomePageState extends State<MyHomePage> {
       body: Consumer<PathwayState>(
         builder: (context, state, child) {
           return DisplayPathway(
-            degrees: state.chosenDegrees, // Pass the chosen degree
-            majors: state.chosenMajors,
-            papers: state.chosenPapers,
+            pathway: state.savedPathways, // Pass the chosen degree
           );
         },
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           final state = Provider.of<PathwayState>(context, listen: false);
-          int selectedDegreeCount = state.chosenDegrees.where((degree) => degree != null).length;
-          if (selectedDegreeCount < 3) {
+          int pathwayCount = state.savedPathways.where((pathway) => pathway != null).length;
+
+          if (pathwayCount < 3) {
             _openDegreesListScreen(context);
           } else {
             // Display a snackbar to inform the user
