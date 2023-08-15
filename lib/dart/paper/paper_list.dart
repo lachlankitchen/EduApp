@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../home/home.dart';
 import '../paper/paper.dart';
-import '../state/pathway_state.dart'; // Import the SecondListScreen class
+import '../pathway/pathway_state.dart'; // Import the SecondListScreen class
 
 class PaperListScreen extends StatelessWidget {
   final List<Paper> papers;

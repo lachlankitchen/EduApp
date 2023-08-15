@@ -5,7 +5,7 @@ import 'package:provider/provider.dart';
 import '../major/major.dart';
 import '../paper/paper.dart';
 import '../paper/paper_list.dart';
-import '../state/pathway_state.dart'; // Import the SecondListScreen class
+import '../pathway/pathway_state.dart'; // Import the SecondListScreen class
 
 class MajorListScreen extends StatelessWidget {
   final List<Major> majors;

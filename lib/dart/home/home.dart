@@ -3,7 +3,7 @@ import 'package:provider/provider.dart';
 
 import '../degree/degree.dart';
 import '../degree/degree_list.dart';
-import '../state/pathway_state.dart';
+import '../pathway/pathway_state.dart';
 import 'display_pathway.dart';
 
 class MyHomePage extends StatefulWidget {

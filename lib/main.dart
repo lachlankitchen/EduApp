@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'dart/home/home.dart'; // Import your Home screen
-import 'dart/state/pathway_state.dart'; // Import the state management class
+import 'dart/pathway/pathway_state.dart'; // Import the state management class
 
 void main() {
   runApp(const EduApp());

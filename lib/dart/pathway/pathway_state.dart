@@ -1,4 +1,4 @@
-import 'package:edu_app/dart/state/pathway.dart';
+import 'package:edu_app/dart/pathway/pathway.dart';
 import 'package:flutter/foundation.dart';
 
 import '../degree/degree.dart';
