@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../degree/degree.dart';
-import '../form/degree_list.dart';
 import '../form/paper_list.dart';
 import '../paper/paper.dart';
 import '../points/degree_points_screen.dart';
+import '../home/home.dart';
 
 import '../navigation/navigationProvider.dart';
 
@@ -15,8 +15,8 @@ class NavBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final List<Degree> degreeList = [
-      Degree("Bachelor's", "Computer Science", 2022),
-      Degree("Bachelor's", "Finance", 2022),
+      Degree("Bachelor's"),
+      Degree("Bachelor's"),
       // Add more degrees here
     ];
 
@@ -33,6 +33,7 @@ class NavBar extends StatelessWidget {
         prerequisites: ["None"],
         restrictions: ["Open to all students"],
         schedule: "Tuesdays and Thursdays, 10:00 AM - 12:00 PM",
+        isSelected: false,
       ),
       // Add more papers here
     ];
@@ -43,13 +44,13 @@ class NavBar extends StatelessWidget {
       onTap: (index) {
         switch (index) {
           case 0:
-            Navigator.push(
+           Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => DegreesListScreen(degrees: degreeList),
+                builder: (context) => MyHomePage(),
               ),
-            );
-            break;
+            ); 
+            break; 
           case 1:
             Navigator.push(
               context,
