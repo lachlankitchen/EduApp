@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import '../home/home.dart';
 import '../paper/paper.dart';
 import '../pathway/pathway_state.dart';
+import '../navigation/nav_bar.dart';
 
 
 class PapersListScreen extends StatelessWidget {
@@ -13,6 +14,7 @@ class PapersListScreen extends StatelessWidget {
   @override
 Widget build(BuildContext context) {
   return Scaffold(
+    bottomNavigationBar: const NavBar(),
     appBar: AppBar(
       title: const Text('Papers List'),
     ),

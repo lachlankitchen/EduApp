@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:pie_chart/pie_chart.dart'; // Import the pie chart package
 import '../degree/degree.dart';
 import '../navigation/nav_bar.dart';
 
-//currently a placeholder. will soon display the pie chart for degree points
 class DegreesPointsScreen extends StatelessWidget {
   final List<Degree> degrees;
 
@@ -10,19 +10,39 @@ class DegreesPointsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // Data for pie chart. Replace this with your actual data.
+    final dataMap = <String, double>{
+      "Comp Sci": 90,
+      "Finance": 54,
+      "Music": 36,
+      "Psych": 18,
+    };
+
     return Scaffold(
       bottomNavigationBar: const NavBar(),
       appBar: AppBar(
         title: const Text('Points'),
       ),
-      body: ListView.builder(
-        itemCount: degrees.length,
-        itemBuilder: (context, index) {
-          return const ListTile(
-   //         title: Text('${degrees[index].title} in ${degrees[index].field}'),
-   //         subtitle: Text('Year: ${degrees[index].year}'),
-          );
-        },
+      body: Column(
+        children: [
+          Container(
+            padding: const EdgeInsets.all(16),
+            child: PieChart(
+              dataMap: dataMap,
+              chartType: ChartType.ring,
+              chartRadius: MediaQuery.of(context).size.width / 2.5,
+              ringStrokeWidth: 32,
+              chartValuesOptions: const ChartValuesOptions(
+                showChartValuesOutside: true,
+                showChartValuesInPercentage: false,
+              ),
+              legendOptions: const LegendOptions(
+                legendPosition: LegendPosition.bottom,
+                showLegendsInRow: true,
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }
