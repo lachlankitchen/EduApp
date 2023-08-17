@@ -3,7 +3,7 @@ import 'package:provider/provider.dart';
 
 import '../degree/degree.dart';
 import '../degree/degree_list.dart';
-import '../state/pathway_state.dart';
+import '../pathway/pathway_state.dart';
 import 'display_pathway.dart';
 
 import '../navigation/nav_bar.dart';
@@ -52,28 +52,19 @@ class _MyHomePageState extends State<MyHomePage> {
     List<String>? degreesList = (degreesJson['degrees'] as List<dynamic>).cast<String>();
     List<Degree> degrees = Degree.fromJsonList(degreesList);
 
-    // Get the current count of non-null selected degrees
-    int selectedDegreeCount = Provider.of<PathwayState>(context, listen: false)
-        .selectedDegrees
-        .where((degree) => degree != null)
-        .length;
-
-    if (selectedDegreeCount < 3) {
-      Navigator.push(
-        context,
-        MaterialPageRoute(
-          builder: (context) => DegreeListScreen(
-            degrees: degrees,
-            onSelectDegree: (selectedDegree) {
-              setState(() {
-                Provider.of<PathwayState>(context, listen: false).addDegree(selectedDegree);
-              });
-              Navigator.pop(context); // Close the degrees list screen
-            },
-          ),
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => DegreeListScreen(
+          degrees: degrees,
+          onSelectDegree: (selectedDegree) {
+            setState(() {
+              Provider.of<PathwayState>(context, listen: false).addDegree(selectedDegree);
+            });
+          },
         ),
-      );
-    }
+      ),
+    ); 
   }
 
   @override
@@ -87,20 +78,24 @@ class _MyHomePageState extends State<MyHomePage> {
       body: Consumer<PathwayState>(
         builder: (context, state, child) {
           return DisplayPathway(
-            degree: state.chosenDegree, // Pass the chosen degree
-            majors: state.chosenMajors,
-            papers: state.chosenPapers,
+            pathway: state.savedPathways, // Pass the chosen degree
           );
         },
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           final state = Provider.of<PathwayState>(context, listen: false);
-          
-          int selectedDegreeCount = state.selectedDegrees.where((degree) => degree != null).length;
-          
-          if (selectedDegreeCount < 3) {
+          int pathwayCount = state.savedPathways.where((pathway) => pathway != null).length;
+
+          if (pathwayCount < 3) {
             _openDegreesListScreen(context);
+          } else {
+            // Display a snackbar to inform the user
+            ScaffoldMessenger.of(context).showSnackBar(
+              const SnackBar(
+                content: Text('You cannot have more than three degrees.'),
+              ),
+            );
           }
         },
         child: const Icon(Icons.add),

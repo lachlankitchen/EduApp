@@ -1,0 +1,29 @@
+name: CMake Build
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    name: Build Project
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v2
+
+    - name: Set up CMake
+      uses: actions/setup-cmake@v2
+      with:
+        cmake-version: '3.18'  # Set the desired CMake version
+
+    - name: Build Project
+      run: |
+        mkdir build
+        cd build
+        cmake ..
+        cmake --build .
+
+    # Add more steps for testing, deployment, etc. if needed

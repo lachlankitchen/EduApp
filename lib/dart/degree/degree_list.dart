@@ -5,7 +5,7 @@ import 'package:provider/provider.dart';
 import 'degree.dart';
 import '../major/major.dart';
 import '../major/major_list.dart';
-import '../state/pathway_state.dart';
+import '../pathway/pathway_state.dart';
 
 class DegreeListScreen extends StatelessWidget {
   final List<Degree> degrees;
@@ -15,7 +15,7 @@ class DegreeListScreen extends StatelessWidget {
 
   void navigateToMajorsListScreen(BuildContext context, PathwayState state, Degree selectedDegree) {
     // Pass the selected degree to the state
-    state.updateDegree(selectedDegree);
+    state.addDegree(selectedDegree);
 
     const String majorsJson = '''
     [

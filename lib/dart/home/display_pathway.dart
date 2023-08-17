@@ -1,60 +1,92 @@
 import 'package:flutter/material.dart';
-import '../degree/degree.dart';
-import '../major/major.dart';
-import '../paper/paper.dart';
-class DisplayPathway extends StatelessWidget {
-  final Degree? degree;
-  final List<Major>? majors;
-  final List<Paper>? papers;
+import 'package:provider/provider.dart';
+import '../pathway/pathway.dart';
+import '../pathway/pathway_state.dart'; // Import the Pathway class
 
-  const DisplayPathway({Key? key, required this.degree, required this.majors, required this.papers}) : super(key: key);
+class DisplayPathway extends StatelessWidget {
+  final List<Pathway> pathway;
+
+  const DisplayPathway({
+    required this.pathway,
+  });
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      margin: const EdgeInsets.all(10.0),
-      child: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              '${degree?.title ?? "No degree selected"}',
-              style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+    if (pathway.isEmpty) {
+      return const Center(
+        child: Text('No pathway data available.'),
+      );
+    }
+
+    return ListView.builder(
+      itemCount: pathway.length,
+      itemBuilder: (context, index) {
+        return Card(
+          margin: const EdgeInsets.all(10.0),
+          child: Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      pathway[index].degree.title, // Display degree title
+                      style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                    ),
+                    ElevatedButton(
+                      onPressed: () {
+                        Provider.of<PathwayState>(context, listen: false).deleteState(pathway[index]);
+                      },
+                      child: const Icon(Icons.remove),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 10),
+                if (pathway[index].majors.isNotEmpty)
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const Text(
+                        'Major(s):',
+                        style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                      ), // Display major heading
+                      for (var major in pathway[index].majors)
+                        Text('  ${major.name}, '), // Display major name
+                    ],
+                  ),
+                const SizedBox(height: 10),
+                if (pathway[index].papers.isNotEmpty)
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const Text(
+                        'Papers(s):',
+                        style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                      ), // Display major heading
+                      for (var paper in pathway[index].papers)
+                        Text('  ${paper.subjectCode} - ${paper.title}, '), // Display paper details
+
+                      if (pathway[index].papers.any((paper) => paper.grade != 0)) 
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            const SizedBox(height: 10),
+                            const Text(
+                              'Grade Point Average:',
+                              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                            ), // Display paper details
+                            Text('  ${pathway[index].gpa}'), // Display paper details
+                          ],
+                        ),
+                    ],
+                  ),
+              ],
             ),
-            const SizedBox(height: 10),
-            if (majors != null && majors!.isNotEmpty)
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const Text('Majors:'),
-                  ListView.builder(
-                    shrinkWrap: true,
-                    itemCount: majors!.length,
-                    itemBuilder: (context, index) {
-                      return Text('${majors![index].name}');
-                    },
-                  ),
-                ],
-              ),
-            if (papers != null && papers!.isNotEmpty)
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const Text('Papers:'),
-                  ListView.builder(
-                    shrinkWrap: true,
-                    itemCount: papers!.length,
-                    itemBuilder: (context, index) {
-                      return Text('${papers![index].subjectCode} - ${papers![index].title}');
-                    },
-                  ),
-                ],
-              ),
-            // Add more details about the selected degree if needed
-          ],
-        ),
-      ),
+          ),
+        );
+      },
     );
   }
 }

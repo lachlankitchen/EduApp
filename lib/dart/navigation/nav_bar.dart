@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../degree/degree.dart';
-import '../form/paper_list.dart';
+import '../paper/paper_list.dart';
 import '../paper/paper.dart';
 import '../points/degree_points_screen.dart';
 import '../home/home.dart';
@@ -34,6 +34,7 @@ class NavBar extends StatelessWidget {
         restrictions: ["Open to all students"],
         schedule: "Tuesdays and Thursdays, 10:00 AM - 12:00 PM",
         isSelected: false,
+        grade: 0,
       ),
       // Add more papers here
     ];

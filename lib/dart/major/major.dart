@@ -5,10 +5,13 @@ class Major {
   final List<Requirement> requirements;
   final int totalPoints;
 
+  bool isSelected = false; // Add this property to track selection
+
   Major({
     required this.name,
     required this.requirements,
     required this.totalPoints,
+    required this.isSelected
   });
 
   factory Major.fromJson(Map<String, dynamic> json) {
@@ -19,6 +22,7 @@ class Major {
       name: json['name'],
       requirements: requirements,
       totalPoints: json['totalPoints'],
+      isSelected: false
     );
   }
 

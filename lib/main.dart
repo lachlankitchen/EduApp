@@ -3,9 +3,8 @@ import 'dart/home/home.dart';
 
 import 'dart/navigation/navigation_provider.dart';
 import 'package:provider/provider.dart';
-//import 'dart/degree/degree_storage.dart';                       //commented out bc apparently these files dont exist. 
-//import 'package:shared_preferences/shared_preferences.dart';    //will leave here for now in case we need them later ig
-import 'dart/state/pathway_state.dart'; // Import the state management class
+import 'dart/home/home.dart'; // Import your Home screen
+import 'dart/pathway/pathway_state.dart'; // Import the state management class
 
 void main() {
     runApp(
