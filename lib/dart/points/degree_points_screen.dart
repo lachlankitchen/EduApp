@@ -16,6 +16,7 @@ class DegreesPointsScreen extends StatelessWidget {
       "Finance": 54,
       "Music": 36,
       "Psych": 18,
+      "Remaining Points": 162,
     };
 
     return Scaffold(
