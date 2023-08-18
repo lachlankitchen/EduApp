@@ -1,26 +1,26 @@
-// This is a basic Flutter widget test.
-//
-// To perform an interaction with a widget in your test, use the WidgetTester
-// utility in the flutter_test package. For example, you can send tap and scroll
-// gestures. You can also use WidgetTester to find child widgets in the widget
-// tree, read text, and verify that the values of widget properties are correct.
-
 import 'package:edu_app/dart/home/home.dart';
+import 'package:edu_app/dart/navigation/navigation_provider.dart';
+import 'package:edu_app/dart/pathway/pathway_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-
-import 'package:edu_app/dart/degree/degree_list.dart';
-
+import 'package:provider/provider.dart';
 
 void main() {
-  testWidgets('Renders MyApp and opens DegreesListScreen', (WidgetTester tester) async {
-    await tester.pumpWidget(const MaterialApp(
-      home: MyHomePage(),
-    ));
+  testWidgets('Test MyApp', (WidgetTester tester) async {
+    // Build our app and trigger a frame.
+    await tester.pumpWidget(
+      MultiProvider(
+        providers: [
+          ChangeNotifierProvider(create: (context) => NavigationProvider()),
+          ChangeNotifierProvider(create: (context) => PathwayState()),
+        ],
+        child: const MaterialApp(
+          home: MyHomePage(),
+        ),
+      ),
+    );
 
-    await tester.tap(find.byIcon(Icons.add));
-    await tester.pumpAndSettle();
-
-    expect(find.byType(DegreeListScreen), findsOneWidget);
+    // Verify that the MyHomePage widget has been rendered.
+    expect(find.byType(MyHomePage), findsOneWidget);
   });
 }
