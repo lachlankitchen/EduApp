@@ -52,7 +52,7 @@ class MajorListScreen extends StatelessWidget {
           print(selectedMajors.length);
           Provider.of<PathwayState>(context, listen: false).addMajors(selectedMajors);
         },
-        child: Text('Save'),
+        child: const Text('Save'),
       ),
     );
   }
