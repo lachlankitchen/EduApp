@@ -96,10 +96,6 @@ void main() {
   ''';
 
   Map<String, dynamic> parsedJson = jsonDecode(jsonString);
-  print(parsedJson['requirements']);
   List<dynamic> requirementsJson = parsedJson['requirements'];
-  print(requirementsJson);
   List<Requirement> requirements = requirementsJson.map((req) => Requirement.fromJson(req)).toList();
-
-  print(requirements);
 }

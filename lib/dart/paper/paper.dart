@@ -79,6 +79,4 @@ void main() {
 
   Map<String, dynamic> parsedPaperJson = json.decode(paperJson);
   Paper paper = Paper.fromJson(parsedPaperJson);
-
-  print(paper.toString());
 }
