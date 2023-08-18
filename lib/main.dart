@@ -3,7 +3,6 @@ import 'dart/home/home.dart';
 
 import 'dart/navigation/navigation_provider.dart';
 import 'package:provider/provider.dart';
-import 'dart/home/home.dart'; // Import your Home screen
 import 'dart/pathway/pathway_state.dart'; // Import the state management class
 
 void main() {

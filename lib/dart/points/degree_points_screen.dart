@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:pie_chart/pie_chart.dart'; // Import the pie chart package
+import 'package:provider/provider.dart';
 import '../degree/degree.dart';
 import '../navigation/nav_bar.dart';
+import '../pathway/pathway_state.dart';
 
 class DegreesPointsScreen extends StatelessWidget {
   final List<Degree> degrees;
@@ -10,14 +12,30 @@ class DegreesPointsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Data for pie chart. Replace this with your actual data.
-    final dataMap = <String, double>{
-      "Comp Sci": 90,
-      "Finance": 54,
-      "Music": 36,
-      "Psych": 18,
-      "Remaining Points": 162,
-    };
+    final state = Provider.of<PathwayState>(context, listen: false);
+
+
+    // Calculate the total points from all majors
+    final dataMap = <String, double>{};
+    double totalPoints = 0;
+    for (var pathway in state.savedPathways) {
+    var degree = pathway.degree;
+      for (var major in pathway.majors) {
+        for(var papers in pathway.papers) {
+          totalPoints += papers.points;
+        }
+        dataMap[major.name] = totalPoints;
+      }
+    }
+
+    // Create the data map for the pie chart
+ /*   final dataMap = <String, double>{};
+    for (var degree in degrees) {
+      for (var major in degree.majors) {
+        dataMap[major.name] = major.totalPoints;
+      }
+    } */
+    dataMap["Remaining Points"] = (360 - totalPoints);
 
     return Scaffold(
       bottomNavigationBar: const NavBar(),
