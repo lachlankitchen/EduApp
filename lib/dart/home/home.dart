@@ -69,7 +69,7 @@ class _MyHomePageState extends State<MyHomePage> {
             backgroundColor: const Color(0xFF10428c),            
             title: const Text("Plan Your Degree"),
             leading: Image.asset(
-              'images/otago-crest@2x.png', // Add your logo here
+              'assets/images/otago-crest@2x.png', // Add your logo here
               height: 40, // Adjust the height as needed
               fit: BoxFit.contain,
             ),
