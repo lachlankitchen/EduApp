@@ -19,12 +19,20 @@ class PathwayState extends ChangeNotifier {
   }
 
   void addMajors(List<Major> majors) {
-    selectedMajors.addAll(majors);
+    for (var major in majors) {
+      if (!selectedMajors.contains(major)) {
+        selectedMajors.add(major);
+      }
+    }
     notifyListeners();
   }
 
   void addPapers(List<Paper> papers) {
-    selectedPapers.addAll(papers);
+    for (var paper in papers) {
+      if (!selectedPapers.contains(paper)) {
+        selectedPapers.add(paper);
+      }
+    }
     notifyListeners();
   }
 
