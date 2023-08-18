@@ -10,7 +10,7 @@ import '../pathway/pathway_state.dart'; // Import the SecondListScreen class
 class MajorListScreen extends StatelessWidget {
   final List<Major> majors;
 
-  const MajorListScreen({required this.majors});
+  const MajorListScreen({Key? key, required this.majors}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -96,7 +96,7 @@ class MajorListScreen extends StatelessWidget {
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (context) => PapersListScreen(papers),
+        builder: (context) => PapersListScreen(papers: papers),
       ),
     );
   }

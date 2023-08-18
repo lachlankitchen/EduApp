@@ -6,6 +6,8 @@ import '../degree/degree_list.dart';
 import '../pathway/pathway_state.dart';
 import 'display_pathway.dart';
 
+import '../navigation/nav_bar.dart';
+
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key});
 
@@ -48,7 +50,7 @@ class _MyHomePageState extends State<MyHomePage> {
     };
 
     List<String>? degreesList = (degreesJson['degrees'] as List<dynamic>).cast<String>();
-    List<Degree> degrees = Degree.fromJsonList(degreesList ?? []);
+    List<Degree> degrees = Degree.fromJsonList(degreesList);
 
     Navigator.push(
       context,
@@ -68,9 +70,10 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      bottomNavigationBar: const NavBar(),
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.primary,
-        title: const Text("Degree Pathway App"),
+        title: const Text("HOME Degree Pathway App"),
       ),
       body: Consumer<PathwayState>(
         builder: (context, state, child) {
