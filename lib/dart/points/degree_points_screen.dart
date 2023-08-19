@@ -22,9 +22,11 @@ class DegreesPointsScreen extends StatelessWidget {
       bottomNavigationBar: const NavBar(),
       appBar: AppBar(
         title: const Text('Points'),
+        backgroundColor: const Color(0xFF10428C),
       ),
       body: Column(
         children: [
+          const SizedBox(height: 24.0), // Add padding at the top
           Container(
             padding: const EdgeInsets.all(16),
             child: PieChart(

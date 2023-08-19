@@ -39,6 +39,9 @@ class DisplayPathway extends StatelessWidget {
                       onPressed: () {
                         Provider.of<PathwayState>(context, listen: false).deleteState(pathway[index]);
                       },
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: const Color(0xFFf9c000), // Set background color here
+                      ),
                       child: const Icon(Icons.remove),
                     ),
                   ],

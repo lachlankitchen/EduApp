@@ -2,16 +2,62 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'degree.dart';
 import '../major/major.dart';
 import '../major/major_list.dart';
+import 'degree.dart';
 import '../pathway/pathway_state.dart';
 
 class DegreeListScreen extends StatelessWidget {
   final List<Degree> degrees;
-  final Function(Degree) onSelectDegree; // Callback to notify parent when a degree is selected
+  final Function(Degree) onSelectDegree;
 
-  const DegreeListScreen({Key? key, required this.degrees, required this.onSelectDegree}) : super(key: key);
+  const DegreeListScreen({Key? key, required this.degrees, required this.onSelectDegree})
+      : super(key: key);
+
+ @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Select a Degree'),
+        backgroundColor: const Color(0xFF10428C),
+      ),
+      body: ListView.builder(
+        itemCount: degrees.length + 1, // Add 1 for SizedBox
+        itemBuilder: (context, index) {
+          if (index == 0) {
+            return const SizedBox(height: 18.0); // Add padding at the top
+          }
+          
+          final degreeIndex = index - 1; // Subtract 1 to adjust for SizedBox
+          return Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 10.0),
+            child: ListTile(
+              title: Hero(
+                tag: 'degree-${degrees[degreeIndex].title}',
+                child: ElevatedButton(
+                  onPressed: () {
+                    onSelectDegree(degrees[degreeIndex]);
+                    navigateToMajorsListScreen(context, context.read<PathwayState>(), degrees[degreeIndex]);
+                  },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: const Color(0xFFf9c000),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(8.0),
+                    ),
+                    padding: const EdgeInsets.all(14.0),
+                  ),
+                  child: Text(
+                    degrees[degreeIndex].title,
+                    style: const TextStyle(fontSize: 16.0),
+                  ),
+                ),
+              ),
+            ),
+          );
+        },
+      ),
+    );
+  }
 
   void navigateToMajorsListScreen(BuildContext context, PathwayState state, Degree selectedDegree) {
     // Pass the selected degree to the state
@@ -75,32 +121,6 @@ class DegreeListScreen extends StatelessWidget {
       context,
       MaterialPageRoute(
         builder: (context) => MajorListScreen(majors: majors),
-      ),
-    );
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Select a Degree'),
-      ),
-      body: ListView.builder(
-        itemCount: degrees.length,
-        itemBuilder: (context, index) {
-          return ListTile(
-            title: Hero(
-              tag: 'degree-${degrees[index].title}',
-              child: ElevatedButton(
-                onPressed: () {
-                  onSelectDegree(degrees[index]);
-                  navigateToMajorsListScreen(context, context.read<PathwayState>(), degrees[index]);
-                },
-                child: Text(degrees[index].title),
-              ),
-            ),
-          );
-        },
       ),
     );
   }

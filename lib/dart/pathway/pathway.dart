@@ -16,4 +16,9 @@ class Pathway {
     required this.gpa,
     required this.isSelected
   });
+
+  @override
+  String toString() {
+    return 'Pathway: $degree, $majors, $papers, $gpa, $isSelected';
+  }
 }
