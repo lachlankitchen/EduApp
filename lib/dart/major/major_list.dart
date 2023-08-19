@@ -16,7 +16,7 @@ class MajorListScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Majors'),
+        title: const Text('Select Your Majors'),
         backgroundColor: const Color(0xFF10428C),
       ),
        body: Consumer<PathwayState>(
