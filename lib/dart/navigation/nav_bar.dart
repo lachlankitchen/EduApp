@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../degree/degree.dart';
+import '../grade/grade.dart';
 import '../paper/paper_list.dart';
 import '../paper/paper.dart';
 import '../points/degree_points_screen.dart';
@@ -41,7 +42,7 @@ class NavBar extends StatelessWidget {
     
 
     return BottomNavigationBar(
-      selectedItemColor: Color(0xFF10428C), // Set background color here
+      selectedItemColor: const Color(0xFF10428C), // Set background color here
 
       currentIndex: context.watch<NavigationProvider>().currentIndex,
       onTap: (index) {
@@ -57,7 +58,7 @@ class NavBar extends StatelessWidget {
           case 1:
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => PapersListScreen(papers: papers)),
+              MaterialPageRoute(builder: (context) => GradesScreen()),
             );
             break;
           case 2:
@@ -72,11 +73,11 @@ class NavBar extends StatelessWidget {
       items: const [
         BottomNavigationBarItem(
           icon: Icon(Icons.list),
-          label: 'Degrees',
+          label: 'My Pathway',
         ),
         BottomNavigationBarItem(
           icon: Icon(Icons.book),
-          label: 'Papers',
+          label: 'Grades',
         ),
         BottomNavigationBarItem(
           icon: Icon(Icons.pie_chart),
