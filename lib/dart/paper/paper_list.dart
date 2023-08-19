@@ -24,7 +24,7 @@ class PapersListScreen extends StatelessWidget {
             itemCount: papers.length + 1, // Add 1 for SizedBox
             itemBuilder: (context, index) {
               if (index == 0) {
-                return SizedBox(height: 16.0); // Add padding at the top
+                return const SizedBox(height: 16.0); // Add padding at the top
               }
               final paperIndex = index - 1; // Adjust index for SizedBox
               return ListTile(

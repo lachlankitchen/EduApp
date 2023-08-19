@@ -3,7 +3,6 @@ import 'package:provider/provider.dart';
 
 import '../degree/degree.dart';
 import '../grade/grade.dart';
-import '../paper/paper_list.dart';
 import '../paper/paper.dart';
 import '../points/degree_points_screen.dart';
 import '../home/home.dart';
@@ -58,7 +57,7 @@ class NavBar extends StatelessWidget {
           case 1:
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => GradesScreen()),
+              MaterialPageRoute(builder: (context) => const GradesScreen()),
             );
             break;
           case 2:
