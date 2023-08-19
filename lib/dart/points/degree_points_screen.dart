@@ -3,6 +3,7 @@ import 'package:pie_chart/pie_chart.dart'; // Import the pie chart package
 import 'package:provider/provider.dart';
 import '../degree/degree.dart';
 import '../navigation/nav_bar.dart';
+import '../pathway/pathway.dart';
 import '../pathway/pathway_state.dart';
 
 class DegreesPointsScreen extends StatelessWidget {
@@ -16,14 +17,14 @@ class DegreesPointsScreen extends StatelessWidget {
     // Calculate the total points from all majors
     final dataMap = <String, double>{};
     double totalPoints = 0;
-    for (var pathway in state.savedPathways) {
-      for (var major in pathway.majors) {
-        for(var papers in pathway.papers) {
-          totalPoints += papers.points;
-        }
-        dataMap[major.name] = totalPoints;
+    Pathway pathway = state.savedPathways[0];
+    for (var major in pathway.majors) {
+      for(var papers in pathway.papers) {
+        totalPoints += papers.points;
       }
+      dataMap[major.name] = totalPoints;
     }
+    
 
     // Create the data map for the pie chart
  /*   final dataMap = <String, double>{};
