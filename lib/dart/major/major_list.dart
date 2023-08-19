@@ -17,6 +17,7 @@ class MajorListScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Majors'),
+        backgroundColor: const Color(0xFF10428C),
       ),
        body: Consumer<PathwayState>(
         builder: (context, state, child) {
@@ -35,6 +36,14 @@ class MajorListScreen extends StatelessWidget {
                           List<Major> selectedMajors = majors.where((major) => major.isSelected).toList();
                           navigateToPapersListScreen(context, context.read<PathwayState>(), selectedMajors);
                         },
+                          fillColor: MaterialStateProperty.resolveWith<Color>(
+                            (Set<MaterialState> states) {
+                              if (states.contains(MaterialState.selected)) {
+                                return const Color(0xFFF9C000); // Set checkbox background color here
+                              }
+                              return Colors.grey[600]!; // Default background color
+                            },
+                          ), 
                       ),
                       Expanded(
                         child: Text(majors[index].name),
@@ -50,11 +59,13 @@ class MajorListScreen extends StatelessWidget {
         onPressed: () {
           // Save selected papers to the pathway state
           List<Major> selectedMajors = majors.where((major) => major.isSelected).toList();
-          print(selectedMajors.length);
           Provider.of<PathwayState>(context, listen: false).addMajors(selectedMajors);
         },
-        child: Text('Save'),
-      ),
+        style: ElevatedButton.styleFrom(
+          backgroundColor: const Color(0xFFf9c000), // Set background color here
+        ),
+        child: const Text('Save'),
+      )
     );
   }
   

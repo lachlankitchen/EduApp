@@ -84,6 +84,7 @@ class DegreeListScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Select a Degree'),
+        backgroundColor: const Color(0xFF10428C),
       ),
       body: ListView.builder(
         itemCount: degrees.length,
@@ -97,6 +98,9 @@ class DegreeListScreen extends StatelessWidget {
                   navigateToMajorsListScreen(context, context.read<PathwayState>(), degrees[index]);
                 },
                 child: Text(degrees[index].title),
+                  style: ElevatedButton.styleFrom(
+                  backgroundColor: const Color(0xFFf9c000), // Set background color here
+                ),
               ),
             ),
           );

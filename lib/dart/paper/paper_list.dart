@@ -16,7 +16,8 @@ Widget build(BuildContext context) {
   return Scaffold(
     bottomNavigationBar: const NavBar(),
     appBar: AppBar(
-      title: const Text('Papers List'),
+      title: const Text('Select Your Papers'),
+      backgroundColor: const Color(0XFF10428C),
     ),
     body: StatefulBuilder(
       builder: (context, setState) {
@@ -59,6 +60,14 @@ Widget build(BuildContext context) {
                         papers[index].isSelected = value ?? false;
                       });
                     },
+                    fillColor: MaterialStateProperty.resolveWith<Color>(
+                            (Set<MaterialState> states) {
+                              if (states.contains(MaterialState.selected)) {
+                                return const Color(0xFFF9C000); // Set checkbox background color here
+                              }
+                              return Colors.grey[600]!; // Default background color
+                            },
+                          ), 
                   ),
                 ],
               ),
@@ -91,6 +100,9 @@ Widget build(BuildContext context) {
           MaterialPageRoute(builder: (context) => const MyHomePage()),
         );
       },
+      style: ElevatedButton.styleFrom(
+        backgroundColor: const Color(0xFFf9c000), // Set background color here
+      ),
       child: const Text('Save'),
     ),
   );

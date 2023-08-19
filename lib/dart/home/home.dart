@@ -11,14 +11,25 @@ import '../navigation/nav_bar.dart';
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key});
 
+  // This widget is the home page of your application. It is stateful, meaning
+  // that it has a State object (defined below) that contains fields that affect
+  // how it looks.
+
+  // This class is the configuration for the state. It holds the values (in this
+  // case the title) provided by the parent (in this case the App widget) and
+  // used by the build method of the State. Fields in a Widget subclass are
+  // always marked "final".
+
   @override
   State<MyHomePage> createState() => _MyHomePageState();
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  // Create a list to store selected degrees (up to 3)
   List<Degree?> selectedDegrees = List.filled(3, null);
 
   void _openDegreesListScreen(BuildContext context) {
+    // Sample degree data
     final degreesJson = {
       "degrees": [
         "Bachelor of Applied Science (BAppSc)",
@@ -53,43 +64,26 @@ class _MyHomePageState extends State<MyHomePage> {
           },
         ),
       ),
-    );
+    ); 
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        children: [
-          Container(
-            height: 6, // Adjust the height as needed
-            color: const Color(0xFFf9c000),
-          ),
-          AppBar(
-            backgroundColor: const Color(0xFF10428c),            
-            title: const Text("Plan Your Degree"),
-            leading: Image.asset(
-              'assets/images/otago-crest@2x.png', // Add your logo here
-              height: 40, // Adjust the height as needed
-              fit: BoxFit.contain,
-            ),
-            toolbarHeight: 60, // Adjust the toolbar height as needed
-          ),
-          Expanded(
-            child: SingleChildScrollView(
-              child: Consumer<PathwayState>(
-                builder: (context, state, child) {
-                  return DisplayPathway(
-                    pathway: state.savedPathways, // Pass the chosen degree
-                  );
-                },
-              ),
-            ),
-          ),
-        ],
-      ),
       bottomNavigationBar: const NavBar(),
+      appBar: AppBar(
+        backgroundColor: const Color(0xFF10428C), // Set background color here
+        title: const Text("Plan Your Degree"),
+      ),
+      body: Consumer<PathwayState>(
+        builder: (context, state, child) {
+          return DisplayPathway(
+            pathway: state.savedPathways, // Pass the chosen degree
+          );
+        },
+      ),
       floatingActionButton: FloatingActionButton(
+        backgroundColor: const Color(0xFFf9c000), // Set background color here
         onPressed: () {
           final state = Provider.of<PathwayState>(context, listen: false);
           int pathwayCount = state.savedPathways.where((pathway) => pathway != null).length;
@@ -109,5 +103,4 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
     );
   }
-
 }

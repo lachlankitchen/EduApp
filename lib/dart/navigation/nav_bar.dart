@@ -41,6 +41,8 @@ class NavBar extends StatelessWidget {
     
 
     return BottomNavigationBar(
+      selectedItemColor: Color(0xFF10428C), // Set background color here
+
       currentIndex: context.watch<NavigationProvider>().currentIndex,
       onTap: (index) {
         switch (index) {
