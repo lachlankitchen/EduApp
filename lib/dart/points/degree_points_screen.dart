@@ -44,20 +44,22 @@ class DegreesPointsScreen extends StatelessWidget {
       ),
       body: Column(
         children: [
-          Container(
-            padding: const EdgeInsets.all(16),
-            child: PieChart(
-              dataMap: dataMap,
-              chartType: ChartType.ring,
-              chartRadius: MediaQuery.of(context).size.width / 2.5,
-              ringStrokeWidth: 32,
-              chartValuesOptions: const ChartValuesOptions(
-                showChartValuesOutside: true,
-                showChartValuesInPercentage: false,
-              ),
-              legendOptions: const LegendOptions(
-                legendPosition: LegendPosition.bottom,
-                showLegendsInRow: true,
+          Expanded( // Wrap the PieChart with an Expanded widget
+            child: Container(
+              padding: const EdgeInsets.all(16),
+              child: PieChart(
+                dataMap: dataMap,
+                chartType: ChartType.ring,
+                chartRadius: MediaQuery.of(context).size.width / 2.5,
+                ringStrokeWidth: 32,
+                chartValuesOptions: const ChartValuesOptions(
+                  showChartValuesOutside: true,
+                  showChartValuesInPercentage: false,
+                ),
+                legendOptions: const LegendOptions(
+                  legendPosition: LegendPosition.bottom,
+                  showLegendsInRow: true,
+                ),
               ),
             ),
           ),
