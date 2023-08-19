@@ -26,6 +26,7 @@ class DegreesPointsScreen extends StatelessWidget {
       ),
       body: Column(
         children: [
+          const SizedBox(height: 24.0), // Add padding at the top
           Container(
             padding: const EdgeInsets.all(16),
             child: PieChart(

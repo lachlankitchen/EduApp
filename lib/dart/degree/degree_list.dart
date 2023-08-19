@@ -22,28 +22,33 @@ class DegreeListScreen extends StatelessWidget {
         backgroundColor: const Color(0xFF10428C),
       ),
       body: ListView.builder(
-        itemCount: degrees.length,
+        itemCount: degrees.length + 1, // Add 1 for SizedBox
         itemBuilder: (context, index) {
+          if (index == 0) {
+            return const SizedBox(height: 18.0); // Add padding at the top
+          }
+          
+          final degreeIndex = index - 1; // Subtract 1 to adjust for SizedBox
           return Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 10.0), // Adjust vertical padding
+            padding: const EdgeInsets.symmetric(horizontal: 10.0),
             child: ListTile(
               title: Hero(
-                tag: 'degree-${degrees[index].title}',
+                tag: 'degree-${degrees[degreeIndex].title}',
                 child: ElevatedButton(
                   onPressed: () {
-                    onSelectDegree(degrees[index]);
-                    navigateToMajorsListScreen(context, context.read<PathwayState>(), degrees[index]);
+                    onSelectDegree(degrees[degreeIndex]);
+                    navigateToMajorsListScreen(context, context.read<PathwayState>(), degrees[degreeIndex]);
                   },
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: const Color(0xFFf9c000), // Set background color here
+                    backgroundColor: const Color(0xFFf9c000),
                     shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(8.0), // Add rounded corners
+                      borderRadius: BorderRadius.circular(8.0),
                     ),
-                    padding: const EdgeInsets.all(14.0), // Adjust padding
+                    padding: const EdgeInsets.all(14.0),
                   ),
                   child: Text(
-                    degrees[index].title,
-                    style: const TextStyle(fontSize: 16.0), // Increase font size
+                    degrees[degreeIndex].title,
+                    style: const TextStyle(fontSize: 16.0),
                   ),
                 ),
               ),
