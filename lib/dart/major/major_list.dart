@@ -25,7 +25,7 @@ class MajorListScreen extends StatelessWidget {
             itemCount: majors.length + 1, // Add 1 for SizedBox
             itemBuilder: (context, index) {
               if (index == 0) {
-                return SizedBox(height: 16.0); // Add padding at the top
+                return const SizedBox(height: 16.0); // Add padding at the top
               }
               final majorIndex = index - 1; // Adjust index for SizedBox
               return ListTile(
@@ -36,7 +36,6 @@ class MajorListScreen extends StatelessWidget {
                       onChanged: (value) {
                         // Toggle the checkbox and update the state
                         majors[majorIndex].isSelected = !majors[majorIndex].isSelected;
-                        state.notifyListeners();
                         List<Major> selectedMajors = majors.where((major) => major.isSelected).toList();
                         navigateToPapersListScreen(context, context.read<PathwayState>(), selectedMajors);
                       },
