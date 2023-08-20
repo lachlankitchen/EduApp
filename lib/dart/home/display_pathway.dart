@@ -6,7 +6,7 @@ import '../pathway/pathway_state.dart'; // Import the Pathway class
 class DisplayPathway extends StatelessWidget {
   final List<Pathway> pathway;
 
-  const DisplayPathway({
+  const DisplayPathway({super.key, 
     required this.pathway,
   });
 
