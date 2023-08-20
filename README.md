@@ -21,7 +21,10 @@ EduApp is a powerful and intuitive mobile app designed to help students plan the
 Before you begin, ensure you have met the following requirements:
 
 - [Flutter SDK](https://flutter.dev/docs/get-started/install) installed on your machine.
+  - Note: Complete 'Update your path' step to allow your system to run Flutter commands (i.e., ```flutter run```) globally
 - A compatible code editor, such as [Visual Studio Code](https://code.visualstudio.com/) or [Android Studio](https://developer.android.com/studio), is recommended.
+
+
 
 ## Installation
 
