@@ -11,28 +11,27 @@ class DegreesPointsScreen extends StatelessWidget {
 
   const DegreesPointsScreen({Key? key, required this.degrees}) : super(key: key);
 
-  @override
-  Widget build(BuildContext context) {
-    final state = Provider.of<PathwayState>(context, listen: false);
-    // Calculate the total points from all majors
-    final dataMap = <String, double>{};
-    double totalPoints = 0;
+@override
+Widget build(BuildContext context) {
+  final state = Provider.of<PathwayState>(context, listen: false);
+  // Calculate the total points from all majors
+  final dataMap = <String, double>{};
+  
+  double totalPoints = 0;
+  if (state.savedPathways.isNotEmpty) {
     Pathway pathway = state.savedPathways[0];
+
     for (var major in pathway.majors) {
-      for(var papers in pathway.papers) {
-        totalPoints += papers.points;
+      totalPoints = 0;
+      for (var paper in pathway.papers) {
+        totalPoints += paper.points;
       }
       dataMap[major.name] = totalPoints;
     }
-    
 
-    // Create the data map for the pie chart
- /*   final dataMap = <String, double>{};
-    for (var degree in degrees) {
-      for (var major in degree.majors) {
-        dataMap[major.name] = major.totalPoints;
-      }
-    } */
+  }    
+    
+    // Calculate the remaining points
     dataMap["Remaining Points"] = (360 - totalPoints);
     
     return Scaffold(
