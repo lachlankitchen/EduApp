@@ -26,9 +26,9 @@ jobs:
       - name: Get dependencies
         run: flutter pub get
 
-      - name: Run tests
-        run: flutter test
-      
+      - name: Run tests with coverage
+        run: flutter test --coverage
+
       - name: Generate coverage report
         run: |
           pip install pytest
