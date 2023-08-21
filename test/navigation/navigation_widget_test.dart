@@ -10,8 +10,6 @@ import 'package:edu_app/dart/home/home.dart'; // Import the MyHomePage class
 
 void main() {
   testWidgets('Test NavBar Widget', (WidgetTester tester) async {
-    final navigationProvider = NavigationProvider(); // Create a mock NavigationProvider
-
     // Build our app and trigger a frame.
     await tester.pumpWidget(
       MultiProvider(
