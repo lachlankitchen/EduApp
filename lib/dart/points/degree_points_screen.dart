@@ -28,8 +28,6 @@ class DegreesPointsScreen extends StatelessWidget {
         }
         dataMap[major.name] = totalPoints;
       }
-
-    }    
       
     // Calculate the remaining points
     dataMap["Remaining Points"] = (360 - totalPoints);
