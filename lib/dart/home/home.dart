@@ -4,7 +4,7 @@ import 'package:provider/provider.dart';
 import '../degree/degree.dart';
 import '../degree/degree_list.dart';
 import '../pathway/pathway_state.dart';
-import 'display_pathway.dart';
+import '../pathway/display_pathway.dart';
 
 import '../navigation/nav_bar.dart';
 
