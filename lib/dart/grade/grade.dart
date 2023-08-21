@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../navigation/nav_bar.dart';
@@ -10,7 +9,7 @@ class GradesScreen extends StatelessWidget {
     return Scaffold(
       bottomNavigationBar: const NavBar(),
       appBar: AppBar(
-        title: const Text('Calclute Your Grades'),
+        title: const Text('Calculate Your Grades'),
         backgroundColor: const Color(0xFF10428C)),      
       body: const Center(
         child: Text(

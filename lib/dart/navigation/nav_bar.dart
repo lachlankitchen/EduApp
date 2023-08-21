@@ -14,32 +14,6 @@ class NavBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final List<Degree> degreeList = [
-      Degree("Bachelor's"),
-      Degree("Bachelor's"),
-      // Add more degrees here
-    ];
-
-        List<Paper> papers = [
-      Paper(
-        papercode: "PAPER123",
-        subjectCode: "SUB123",
-        year: "2023",
-        title: "Introduction to Dart Programming",
-        points: 5,
-        efts: 0.5,
-        teachingPeriods: ["Semester 1", "Semester 2"],
-        description: "An introduction to programming in Dart.",
-        prerequisites: ["None"],
-        restrictions: ["Open to all students"],
-        schedule: "Tuesdays and Thursdays, 10:00 AM - 12:00 PM",
-        isSelected: false,
-        grade: 0,
-      ),
-      // Add more papers here
-    ];
-    
-
     return BottomNavigationBar(
       selectedItemColor: const Color(0xFF10428C), // Set background color here
 
@@ -63,7 +37,7 @@ class NavBar extends StatelessWidget {
           case 2:
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => DegreesPointsScreen(degrees: degreeList)),
+              MaterialPageRoute(builder: (context) => const DegreesPointsScreen()),
             );
             break;
         }

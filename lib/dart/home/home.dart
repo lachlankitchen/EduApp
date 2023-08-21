@@ -86,7 +86,7 @@ class _MyHomePageState extends State<MyHomePage> {
         backgroundColor: const Color(0xFFf9c000), // Set background color here
         onPressed: () {
           final state = Provider.of<PathwayState>(context, listen: false);
-          int pathwayCount = state.savedPathways.where((pathway) => pathway != null).length;
+          int pathwayCount = state.savedPathways.length;
 
           if (pathwayCount < 3) {
             _openDegreesListScreen(context);
