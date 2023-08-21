@@ -14,8 +14,6 @@ void main() {
       Major(name: 'Psychology', requirements: [], totalPoints: 0, isSelected: false),
     ];
 
-    final PathwayState mockPathwayState = PathwayState(); // You can customize the mock state as needed
-
     // Build our app and trigger a frame.
     await tester.pumpWidget(
       MultiProvider(
