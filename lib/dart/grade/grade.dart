@@ -10,7 +10,7 @@ class GradesScreen extends StatelessWidget {
     return Scaffold(
       bottomNavigationBar: const NavBar(),
       appBar: AppBar(
-        title: const Text('Calclute Your Grades'),
+        title: const Text('Calculate Your Grades'),
         backgroundColor: const Color(0xFF10428C)),      
       body: const Center(
         child: Text(
