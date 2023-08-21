@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../pathway/pathway.dart';
-import '../pathway/pathway_state.dart'; // Import the Pathway class
+import 'pathway.dart';
+import 'pathway_state.dart'; // Import the Pathway class
 
 class DisplayPathway extends StatelessWidget {
   final List<Pathway> pathway;
