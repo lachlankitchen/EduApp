@@ -11,7 +11,7 @@ class DegreeListScreen extends StatelessWidget {
   final List<Degree> degrees;
   final Function(Degree) onSelectDegree;
 
-  const DegreeListScreen({Key? key, required this.degrees, required this.onSelectDegree})
+  const DegreeListScreen({Key? key, required this.degrees, required this.onSelectDegree, Degree? selectedDegree})
       : super(key: key);
 
  @override
