@@ -36,7 +36,6 @@ class MajorListScreen extends StatelessWidget {
                       onChanged: (value) {
                         // Toggle the checkbox and update the state
                         majors[majorIndex].isSelected = !majors[majorIndex].isSelected;
-                        state.notifyListeners();
                         List<Major> selectedMajors = majors.where((major) => major.isSelected).toList();
                         navigateToPapersListScreen(context, context.read<PathwayState>(), selectedMajors);
                       },

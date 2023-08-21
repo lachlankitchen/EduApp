@@ -36,8 +36,8 @@ class PathwayState extends ChangeNotifier {
     notifyListeners();
   }
 
-  void addGPA(double GPA) {
-    gpa = GPA;
+  void addGPA(double gradePointAverage) {
+    gpa = gradePointAverage;
     notifyListeners();
   }
 
