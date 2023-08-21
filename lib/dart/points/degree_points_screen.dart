@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:pie_chart/pie_chart.dart'; // Import the pie chart package
 import 'package:provider/provider.dart';
 import '../navigation/nav_bar.dart';
-import '../pathway/pathway.dart';
 import '../pathway/pathway_state.dart';
 
 class DegreesPointsScreen extends StatelessWidget {
@@ -12,6 +11,8 @@ class DegreesPointsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final state = Provider.of<PathwayState>(context, listen: false);
+
+
     // Calculate the total points from all majors
     final dataMap = <String, double>{};
     
@@ -40,21 +41,22 @@ class DegreesPointsScreen extends StatelessWidget {
       ),
       body: Column(
         children: [
-          const SizedBox(height: 24.0), // Add padding at the top
-          Container(
-            padding: const EdgeInsets.all(16),
-            child: PieChart(
-              dataMap: dataMap,
-              chartType: ChartType.ring,
-              chartRadius: MediaQuery.of(context).size.width / 2.5,
-              ringStrokeWidth: 32,
-              chartValuesOptions: const ChartValuesOptions(
-                showChartValuesOutside: true,
-                showChartValuesInPercentage: false,
-              ),
-              legendOptions: const LegendOptions(
-                legendPosition: LegendPosition.bottom,
-                showLegendsInRow: true,
+          Expanded( // Wrap the PieChart with an Expanded widget
+            child: Container(
+              padding: const EdgeInsets.all(16),
+              child: PieChart(
+                dataMap: dataMap,
+                chartType: ChartType.ring,
+                chartRadius: MediaQuery.of(context).size.width / 2.5,
+                ringStrokeWidth: 32,
+                chartValuesOptions: const ChartValuesOptions(
+                  showChartValuesOutside: true,
+                  showChartValuesInPercentage: false,
+                ),
+                legendOptions: const LegendOptions(
+                  legendPosition: LegendPosition.bottom,
+                  showLegendsInRow: true,
+                ),
               ),
             ),
           ),
