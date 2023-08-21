@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:pie_chart/pie_chart.dart'; // Import the pie chart package
 import 'package:provider/provider.dart';
-import '../degree/degree.dart';
 import '../navigation/nav_bar.dart';
+import '../pathway/pathway.dart';
 import '../pathway/pathway_state.dart';
 
 class DegreesPointsScreen extends StatelessWidget {
-  final List<Degree> degrees;
 
-  const DegreesPointsScreen({Key? key, required this.degrees}) : super(key: key);
+  const DegreesPointsScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -17,33 +16,21 @@ class DegreesPointsScreen extends StatelessWidget {
 
     // Calculate the total points from all majors
     final dataMap = <String, double>{};
+    
     double totalPoints = 0;
-    for (var pathway in state.savedPathways) {
-    var degree = pathway.degree;
+    if (state.savedPathways.isNotEmpty) {
+      Pathway pathway = state.savedPathways[0];
+
       for (var major in pathway.majors) {
-        for(var papers in pathway.papers) {
-          totalPoints += papers.points;
+        totalPoints = 0;
+        for (var paper in pathway.papers) {
+          totalPoints += paper.points;
         }
         dataMap[major.name] = totalPoints;
       }
-    }
-
-    // Create the data map for the pie chart
- /*   final dataMap = <String, double>{};
-    for (var degree in degrees) {
-      for (var major in degree.majors) {
-        dataMap[major.name] = major.totalPoints;
-      }
-    } */
-    dataMap["Remaining Points"] = (360 - totalPoints);
-
-    // Create the data map for the pie chart
- /*   final dataMap = <String, double>{};
-    for (var degree in degrees) {
-      for (var major in degree.majors) {
-        dataMap[major.name] = major.totalPoints;
-      }
-    } */
+    }    
+      
+    // Calculate the remaining points
     dataMap["Remaining Points"] = (360 - totalPoints);
     
     return Scaffold(
