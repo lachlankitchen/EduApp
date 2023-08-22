@@ -10,10 +10,25 @@ class Paper {
   final List<String> prerequisites;
   final List<String> restrictions;
   final String schedule;
-  int grade; // Add this property to track selection
+  int grade;
 
   bool isSelected = false;
 
+  /// Constructs a [Paper].
+  ///
+  /// [papercode]: The unique code for the paper.
+  /// [subjectCode]: The subject code associated with the paper.
+  /// [year]: The year when the paper is offered.
+  /// [title]: The title of the paper.
+  /// [points]: The points/credits associated with the paper.
+  /// [efts]: The equivalent full-time student value of the paper.
+  /// [teachingPeriods]: List of teaching periods when the paper is offered.
+  /// [description]: Description of the paper.
+  /// [prerequisites]: List of prerequisites for the paper.
+  /// [restrictions]: List of restrictions for the paper.
+  /// [schedule]: Schedule details of the paper.
+  /// [isSelected]: Indicates if the paper is selected by the user.
+  /// [grade]: The user's grade for the paper.
   Paper({
     required this.papercode,
     required this.subjectCode,
@@ -30,6 +45,9 @@ class Paper {
     required this.grade,
   });
 
+  /// Constructs a [Paper] from JSON data.
+  ///
+  /// [json]: The JSON data representing the paper.
   factory Paper.fromJson(Map<String, dynamic> json) {
     return Paper(
       papercode: json['papercode'],
@@ -44,16 +62,7 @@ class Paper {
       restrictions: List<String>.from(json['restrictions']),
       schedule: json['schedule'],
       grade: 0,
-      isSelected: false
+      isSelected: false,
     );
-  }
-
-  @override
-  String toString() {
-    return '''
-      Paper Code: $papercode
-      Subject Code: $subjectCode
-      Teaching Periods: ${teachingPeriods.join(', ')}
-    ''';
   }
 }

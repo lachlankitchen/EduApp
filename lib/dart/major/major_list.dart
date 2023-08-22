@@ -7,9 +7,13 @@ import '../paper/paper.dart';
 import '../paper/paper_list.dart';
 import '../pathway/pathway_state.dart'; // Import the SecondListScreen class
 
+/// Represents a screen where users can select their majors.
 class MajorListScreen extends StatelessWidget {
   final List<Major> majors;
 
+  /// Constructs a [MajorListScreen].
+  ///
+  /// [majors]: The list of available majors to display.
   const MajorListScreen({Key? key, required this.majors}) : super(key: key);
 
   @override
@@ -19,7 +23,7 @@ class MajorListScreen extends StatelessWidget {
         title: const Text('Select Your Majors'),
         backgroundColor: const Color(0xFF10428C),
       ),
-       body: Consumer<PathwayState>(
+      body: Consumer<PathwayState>(
         builder: (context, state, child) {
           return ListView.builder(
             itemCount: majors.length + 1, // Add 1 for SizedBox
@@ -36,8 +40,10 @@ class MajorListScreen extends StatelessWidget {
                       onChanged: (value) {
                         // Toggle the checkbox and update the state
                         majors[majorIndex].isSelected = !majors[majorIndex].isSelected;
-                        List<Major> selectedMajors = majors.where((major) => major.isSelected).toList();
-                        navigateToPapersListScreen(context, context.read<PathwayState>(), selectedMajors);
+                        List<Major> selectedMajors =
+                            majors.where((major) => major.isSelected).toList();
+                        navigateToPapersListScreen(
+                            context, context.read<PathwayState>(), selectedMajors);
                       },
                       fillColor: MaterialStateProperty.resolveWith<Color>(
                         (Set<MaterialState> states) {
@@ -46,7 +52,7 @@ class MajorListScreen extends StatelessWidget {
                           }
                           return Colors.grey[600]!; // Default background color
                         },
-                      ), 
+                      ),
                     ),
                     Expanded(
                       child: Text(majors[majorIndex].name),
@@ -60,8 +66,12 @@ class MajorListScreen extends StatelessWidget {
       ),
     );
   }
-  
 
+  /// Navigates to the papers list screen.
+  ///
+  /// [context]: The build context for navigation.
+  /// [state]: The state containing pathway information.
+  /// [selectedMajors]: The list of selected majors.
   void navigateToPapersListScreen(BuildContext context, PathwayState state, List<Major> selectedMajors) {
     state.addMajors(selectedMajors);
     const String papersJson = '''

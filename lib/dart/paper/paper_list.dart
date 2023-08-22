@@ -5,9 +5,11 @@ import '../paper/paper.dart';
 import '../pathway/pathway_state.dart';
 import '../navigation/nav_bar.dart';
 
+/// A screen that allows users to select papers and enter grades for each paper.
 class PapersListScreen extends StatelessWidget {
   final List<Paper> papers;
 
+  /// Constructs a [PapersListScreen] widget with a list of [papers].
   const PapersListScreen({Key? key, required this.papers}) : super(key: key);
 
   @override
@@ -24,7 +26,7 @@ class PapersListScreen extends StatelessWidget {
             itemCount: papers.length + 1, // Add 1 for SizedBox
             itemBuilder: (context, index) {
               if (index == 0) {
-                return const SizedBox(height: 16.0); // Add padding at the top
+                return const SizedBox(height: 16.0);
               }
               final paperIndex = index - 1; // Adjust index for SizedBox
               return ListTile(
@@ -66,9 +68,9 @@ class PapersListScreen extends StatelessWidget {
                       fillColor: MaterialStateProperty.resolveWith<Color>(
                         (Set<MaterialState> states) {
                           if (states.contains(MaterialState.selected)) {
-                            return const Color(0xFFF9C000); // Set checkbox background color here
+                            return const Color(0xFFF9C000);
                           }
-                          return Colors.grey[600]!; // Default background color
+                          return Colors.grey[600]!;
                         },
                       ),
                     ),
@@ -104,7 +106,7 @@ class PapersListScreen extends StatelessWidget {
           );
         },
         style: ElevatedButton.styleFrom(
-          backgroundColor: const Color(0xFFf9c000), // Set background color here
+          backgroundColor: const Color(0xFFf9c000),
         ),
         child: const Text('Save'),
       ),
