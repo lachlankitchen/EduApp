@@ -7,14 +7,22 @@ import '../major/major_list.dart';
 import 'degree.dart';
 import '../pathway/pathway_state.dart';
 
+/// A screen that displays a list of degrees to choose from.
 class DegreeListScreen extends StatelessWidget {
   final List<Degree> degrees;
   final Function(Degree) onSelectDegree;
 
-  const DegreeListScreen({Key? key, required this.degrees, required this.onSelectDegree, Degree? selectedDegree})
-      : super(key: key);
+  /// Constructs a [DegreeListScreen].
+  ///
+  /// [degrees] is the list of available degrees to display.
+  /// [onSelectDegree] is a callback function when a degree is selected.
+  const DegreeListScreen({
+    Key? key,
+    required this.degrees,
+    required this.onSelectDegree,
+  }) : super(key: key);
 
- @override
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -27,7 +35,7 @@ class DegreeListScreen extends StatelessWidget {
           if (index == 0) {
             return const SizedBox(height: 18.0); // Add padding at the top
           }
-          
+
           final degreeIndex = index - 1; // Subtract 1 to adjust for SizedBox
           return Padding(
             padding: const EdgeInsets.symmetric(horizontal: 10.0),
@@ -37,7 +45,8 @@ class DegreeListScreen extends StatelessWidget {
                 child: ElevatedButton(
                   onPressed: () {
                     onSelectDegree(degrees[degreeIndex]);
-                    navigateToMajorsListScreen(context, context.read<PathwayState>(), degrees[degreeIndex]);
+                    navigateToMajorsListScreen(
+                        context, context.read<PathwayState>(), degrees[degreeIndex]);
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: const Color(0xFFf9c000),
@@ -59,6 +68,13 @@ class DegreeListScreen extends StatelessWidget {
     );
   }
 
+  /// Navigates to the major list screen.
+  ///
+  /// [context]: The build context to perform navigation.
+  /// [state]: The state containing pathway information.
+  /// [selectedDegree]: The selected degree to add to the pathway state.
+  ///
+  /// This function does not return a value.
   void navigateToMajorsListScreen(BuildContext context, PathwayState state, Degree selectedDegree) {
     // Pass the selected degree to the state
     state.addDegree(selectedDegree);

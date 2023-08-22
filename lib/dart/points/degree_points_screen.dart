@@ -5,7 +5,9 @@ import '../navigation/nav_bar.dart';
 import '../pathway/pathway.dart';
 import '../pathway/pathway_state.dart';
 
+/// A screen that displays the distribution of points across selected majors using a pie chart.
 class DegreesPointsScreen extends StatelessWidget {
+  /// Constructs a [DegreesPointsScreen] instance.
   const DegreesPointsScreen({super.key});
 
   @override

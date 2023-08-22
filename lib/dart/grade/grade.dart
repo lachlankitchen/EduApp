@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 
 import '../navigation/nav_bar.dart';
 
+/// A screen that allows users to calculate their grades.
 class GradesScreen extends StatelessWidget {
+  /// Constructs a [GradesScreen].
   const GradesScreen({super.key});
 
   @override
@@ -11,7 +13,8 @@ class GradesScreen extends StatelessWidget {
       bottomNavigationBar: const NavBar(),
       appBar: AppBar(
         title: const Text('Calculate Your Grades'),
-        backgroundColor: const Color(0xFF10428C)),      
+        backgroundColor: const Color(0xFF10428C),
+      ),
       body: const Center(
         child: Text(
           'TBC: in development',

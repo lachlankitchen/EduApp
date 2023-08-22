@@ -3,21 +3,33 @@ import 'package:provider/provider.dart';
 import 'pathway.dart';
 import 'pathway_state.dart'; // Import the Pathway class
 
+/// A widget that displays the details of saved pathways.
+///
+/// The [DisplayPathway] widget receives a list of [pathway] objects to display
+/// the saved pathways, along with their degrees, majors, and papers.
 class DisplayPathway extends StatelessWidget {
+  /// The list of saved pathways to be displayed.
   final List<Pathway> pathway;
 
-  const DisplayPathway({super.key, 
+  /// Creates a [DisplayPathway] widget.
+  ///
+  /// The [pathway] parameter is required and contains the list of saved pathways
+  /// that will be displayed on the screen.
+  const DisplayPathway({
+    super.key,
     required this.pathway,
   });
 
   @override
   Widget build(BuildContext context) {
+    // If no pathways are available, display a message indicating that.
     if (pathway.isEmpty) {
       return const Center(
         child: Text('No pathway data available.'),
       );
     }
 
+    // Build a list of saved pathways using a ListView builder.
     return ListView.builder(
       itemCount: pathway.length,
       itemBuilder: (context, index) {
@@ -37,16 +49,18 @@ class DisplayPathway extends StatelessWidget {
                     ),
                     ElevatedButton(
                       onPressed: () {
+                        // Delete the saved pathway when the button is pressed.
                         Provider.of<PathwayState>(context, listen: false).deleteState(pathway[index]);
                       },
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: const Color(0xFFf9c000), // Set background color here
+                        backgroundColor: const Color(0xFFf9c000),
                       ),
                       child: const Icon(Icons.remove),
                     ),
                   ],
                 ),
                 const SizedBox(height: 10),
+                // Display saved majors, if available.
                 if (pathway[index].majors.isNotEmpty)
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -54,12 +68,13 @@ class DisplayPathway extends StatelessWidget {
                       const Text(
                         'Major(s):',
                         style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-                      ), // Display major heading
+                      ),
                       for (var major in pathway[index].majors)
-                        Text('  ${major.name}, '), // Display major name
+                        Text('  ${major.name}, '),
                     ],
                   ),
                 const SizedBox(height: 10),
+                // Display saved papers, if available.
                 if (pathway[index].papers.isNotEmpty)
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -67,11 +82,11 @@ class DisplayPathway extends StatelessWidget {
                       const Text(
                         'Papers(s):',
                         style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-                      ), // Display major heading
+                      ),
                       for (var paper in pathway[index].papers)
-                        Text('  ${paper.subjectCode} - ${paper.title}, '), // Display paper details
-
-                      if (pathway[index].papers.any((paper) => paper.grade != 0)) 
+                        Text('  ${paper.subjectCode} - ${paper.title}, '),
+                      // Display GPA if there are papers with grades.
+                      if (pathway[index].papers.any((paper) => paper.grade != 0))
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
@@ -79,8 +94,8 @@ class DisplayPathway extends StatelessWidget {
                             const Text(
                               'Grade Point Average:',
                               style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-                            ), // Display paper details
-                            Text('  ${pathway[index].gpa}'), // Display paper details
+                            ),
+                            Text('  ${pathway[index].gpa}'),
                           ],
                         ),
                     ],
