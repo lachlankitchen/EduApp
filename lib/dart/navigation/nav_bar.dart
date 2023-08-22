@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../degree/degree.dart';
 import '../grade/grade.dart';
-import '../paper/paper.dart';
 import '../points/degree_points_screen.dart';
 import '../home/home.dart';
 

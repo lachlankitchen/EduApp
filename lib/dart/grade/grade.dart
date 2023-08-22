@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 import '../navigation/nav_bar.dart';
 
 class GradesScreen extends StatelessWidget {
-    const GradesScreen({Key? key}) : super(key: key);
+  const GradesScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

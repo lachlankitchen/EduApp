@@ -36,7 +36,6 @@ class MajorListScreen extends StatelessWidget {
                       onChanged: (value) {
                         // Toggle the checkbox and update the state
                         majors[majorIndex].isSelected = !majors[majorIndex].isSelected;
-                        state.notifyListeners();
                         List<Major> selectedMajors = majors.where((major) => major.isSelected).toList();
                         navigateToPapersListScreen(context, context.read<PathwayState>(), selectedMajors);
                       },
@@ -59,17 +58,6 @@ class MajorListScreen extends StatelessWidget {
           );
         },
       ),
-      floatingActionButton: ElevatedButton(
-        onPressed: () {
-          // Save selected papers to the pathway state
-          List<Major> selectedMajors = majors.where((major) => major.isSelected).toList();
-          Provider.of<PathwayState>(context, listen: false).addMajors(selectedMajors);
-        },
-        style: ElevatedButton.styleFrom(
-          backgroundColor: const Color(0xFFf9c000), // Set background color here
-        ),
-        child: const Text('Save'),
-      )
     );
   }
   

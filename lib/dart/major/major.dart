@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 class Major {
   final String name;
   final List<Requirement> requirements;
@@ -64,42 +62,4 @@ class Requirement {
     String pointsString = points != null ? "Points: $points\nNotes: $notes" : "";
     return "Requirement Level: $level\nPapers: $papers, \n$selectOneFromString\n$pointsString";
   }
-}
-
-
-
-
-
-void main() {
-  String jsonString = '''
-    {
-      "requirements": [
-        {
-          "level": 100,
-          "papers": ["ENGL 121", "ENGL 131"],
-          "selectOneFrom": ["ENGL 120", "ENGL 121", "ENGL 127", "ENGL 128", "ENGL 131", "LING 111"]
-        },
-        {
-          "level": 200,
-          "papers": ["Three 200-level ENGL papers", "DHUM 201 or EURO 202"]
-        },
-        {
-          "level": 300,
-          "papers": ["Four 300-level ENGL papers", "EURO 302"]
-        },
-        {
-          "points": 198,
-          "notes": "Must include 54 points at 200-level or above. Up to 90 points may be taken from outside Arts."
-        }
-      ]
-    }
-  ''';
-
-  Map<String, dynamic> parsedJson = jsonDecode(jsonString);
-  print(parsedJson['requirements']);
-  List<dynamic> requirementsJson = parsedJson['requirements'];
-  print(requirementsJson);
-  List<Requirement> requirements = requirementsJson.map((req) => Requirement.fromJson(req)).toList();
-
-  print(requirements);
 }

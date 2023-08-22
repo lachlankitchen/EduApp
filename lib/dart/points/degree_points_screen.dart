@@ -6,21 +6,18 @@ import '../pathway/pathway.dart';
 import '../pathway/pathway_state.dart';
 
 class DegreesPointsScreen extends StatelessWidget {
-
   const DegreesPointsScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     final state = Provider.of<PathwayState>(context, listen: false);
 
-
     // Calculate the total points from all majors
     final dataMap = <String, double>{};
-    
+  
     double totalPoints = 0;
     if (state.savedPathways.isNotEmpty) {
       Pathway pathway = state.savedPathways[0];
-
       for (var major in pathway.majors) {
         totalPoints = 0;
         for (var paper in pathway.papers) {
@@ -29,7 +26,7 @@ class DegreesPointsScreen extends StatelessWidget {
         dataMap[major.name] = totalPoints;
       }
     }    
-      
+
     // Calculate the remaining points
     dataMap["Remaining Points"] = (360 - totalPoints);
     
