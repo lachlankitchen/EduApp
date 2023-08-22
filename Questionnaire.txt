@@ -1,0 +1,37 @@
+
+Here are the questions we will use for our testing survey: 
+
+1. how could navigation be improved?
+    Simplify menu/app structure
+    Add clearer labling/instructions
+    No improvement needed
+    Other (please specify)
+
+2. How could selection be improved?
+    Add sort/filter options (by subject, alphabetical etc)
+    Add search functionality
+    No improvement needed
+    Other (please specify)
+
+3. How could the app be made easier to understand?
+    Add text instructions
+    Add on-screen guides (arrow keys guiding where to click etc)
+    No improvement needed
+    Other (please specify)
+
+How could we make the app look nicer?
+    More animated elements
+    Different colour palate
+    No improvement needed
+    Other (please specify)
+
+What other features would you like to see added? 
+    Ability to upload student transcript instead of manual course selection
+    Compare/Contrast different degrees 
+    No improvement needed
+    Other (please specify)
+
+
+Testers will be required to fill out a SurveyMonkey survey with these questions.
+SurveyMonkey estimates it should take 1 minute to complete this survey, which should result in a high completion rate.
+Link to survey: https://www.surveymonkey.com/r/VF7QYHF
