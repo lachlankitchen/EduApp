@@ -35,7 +35,7 @@ migrate_working_dir/
 /build/
 pubspec.lock
 .metadata
-
+/doc/
 # Symbolication related
 app.*.symbols
 
