@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:pie_chart/pie_chart.dart'; /* Import the pie chart package */
+import 'package:pie_chart/pie_chart.dart'; // Import the pie chart package
 import 'package:provider/provider.dart';
 import '../navigation/nav_bar.dart';
 import '../pathway/pathway.dart';
 import '../pathway/pathway_state.dart';
 
-/* A screen that displays the distribution of points across selected majors using a pie chart. */
+/// A screen that displays the distribution of points across selected majors using a pie chart.
 class DegreesPointsScreen extends StatelessWidget {
-  /* Constructs a DegreesPointsScreen instance. */
+  /// Constructs a [DegreesPointsScreen] instance.
   const DegreesPointsScreen({super.key});
 
   @override
