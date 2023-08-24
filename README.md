@@ -58,6 +58,15 @@ To run the app on your device or emulator, follow these steps:
    ```bash
    flutter run
    ```
+   a. In the terminal, press a number corresponding to the platforming that you wish to build the app for:
+   ```bash
+   Connected devices:
+    Windows (desktop) • windows • windows-x64    • Microsoft Windows [Version 10.0.19045.3324]
+    Edge (web)        • edge    • web-javascript • Microsoft Edge 115.0.1901.203
+    [1]: Windows (windows)
+    [2]: Edge (edge)
+    Please choose one (or "q" to quit): 1
+   ```
 
 This will build and launch the app on your chosen device or emulator.
 
