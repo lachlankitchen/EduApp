@@ -1,0 +1,62 @@
+{
+  "qualification": "Bachelor of Science",
+  "major": "Computer Science",
+  "levels": [
+    {
+      "level": "100-level",
+      "compulsory_papers": [
+        "COMP 101",
+        "COMP 161",
+        "COMP 162"
+      ],
+      "one_of_papers": [
+        "MATH 120",
+        "MATH 130",
+        "MATH 140",
+        "COMO 101",
+        "STAT 110",
+        "STAT 115",
+        "BSNS 112",
+        "FINC 102"
+      ]
+    },
+    {
+      "level": "200-level",
+      "compulsory_papers": [
+        "COSC 201",
+        "COSC 202",
+        "COSC 203",
+        "COSC 204"
+      ]
+    },
+    {
+      "level": "300-level",
+      "one_of_papers": [
+        "COSC 326",
+        "COSC 345"
+      ],
+      "compulsory_papers": [
+        "COSC ***",
+        "COSC ***",
+        "COSC ***"
+      ]
+    },
+    {
+      "level": "Extra Points",
+      "total_extra_points": [
+        144
+      ],
+      "points_at_or_above_200_level": [
+        36
+      ],
+      "outside_points": [
+        90
+      ],
+      "notes": [
+        "Students are exempt from COMP 161 if they have gained entry to COMP 162 by passing COMP 151 with a grade of at least B or via an Advanced Placement Test.",
+        "Students who have passed at least one of MATH 120, 130, 140, COMO 101, STAT 110, 115, BSNS 112, or FINC 102 as part of another subject’s requirements do not need to pass another one of these papers to fulfil the Computer Science requirements."
+      ]
+    }
+  ],
+  "total": 360
+}
