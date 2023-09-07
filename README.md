@@ -39,11 +39,28 @@ Before you begin, ensure you have met the following requirements:
    cd your-flutter-app
    ```
 
-3. Install the app's dependencies:
+3. Install the Flutter extension
+   In Visual Studio Code, go to the extension marketplace
+   Search for Flutter
+   Install the extension
+
+4. Install the app's dependencies:
 
    ```bash
    flutter pub get
    ```
+5. Install Visual Studio C++ build tools:
+   
+   Download + run the Visual Studio installer
+   Switch to the tab marked "Available"
+   Make sure the box for C++ development tools is ticked
+   Click "Modify" to install
+
+6. Install Microsoft C/C++ Extension Pack
+   
+   In Visual Studio Code, go to the extension marketplace
+   Search for C/C++ Extension Pack. The author of the correct one is Microsoft. 
+   Install this pack. 
 
 ## Running the App
 
