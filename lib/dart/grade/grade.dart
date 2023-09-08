@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../navigation/nav_bar.dart';
-
 class GradesScreen extends StatefulWidget {
   GradesScreen({Key? key}) : super(key: key);
 
@@ -19,10 +17,13 @@ class GradeEntry {
 
 class _GradesScreenState extends State<GradesScreen> {
   List<GradeEntry> gradeEntries = [];
-  TextEditingController nameController = TextEditingController();
+
+  TextEditingController nameController = TextEditingController(text: 'Assignment 1');
   TextEditingController scoreController = TextEditingController();
   TextEditingController weightController = TextEditingController();
+  TextEditingController targetGradeController = TextEditingController();
   double average = 0.0;
+  double targetGrade = 0.0;
 
   @override
   void initState() {
@@ -34,9 +35,11 @@ class _GradesScreenState extends State<GradesScreen> {
     String name = nameController.text;
     double score = double.tryParse(scoreController.text) ?? 0.0;
     double weight = double.tryParse(weightController.text) ?? 0.0;
-
+    
     setState(() {
       gradeEntries.add(GradeEntry(name, score, weight));
+      print(gradeEntries.toString());
+
       nameController.clear();
       scoreController.clear();
       weightController.clear();
@@ -61,7 +64,6 @@ class _GradesScreenState extends State<GradesScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: const NavBar(),
       appBar: AppBar(
         title: const Text('Grades'),
         backgroundColor: const Color(0xFF10428C),
@@ -70,36 +72,53 @@ class _GradesScreenState extends State<GradesScreen> {
         children: [
           Padding(
             padding: const EdgeInsets.all(8.0),
-            child: Row(
+            child: Column(
               children: [
-                Expanded(
-                  child: TextFormField(
-                    controller: nameController,
-                    decoration: InputDecoration(labelText: 'Title'),
-                  ),
-                ),
-                Expanded(
-                  child: TextFormField(
-                    controller: scoreController,
-                    decoration: InputDecoration(labelText: 'Score (0-100)'),
-                  ),
-                ),
-                Expanded(
-                  child: TextFormField(
-                    controller: weightController,
-                    decoration: InputDecoration(labelText: 'Weight (%)'),
-                  ),
-                ),
-                ElevatedButton(
-                  onPressed: _addGradeEntry,
-                  child: Text('Add'),
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: const Color(0xFFf9c000),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(8.0),
+                Row(
+                  children: [
+                    Expanded(
+                      flex: 1, // Takes 50% of the row
+                      child: Text(
+                        'Average: ${average.toStringAsFixed(1)}',
+                        style: const TextStyle(
+                          fontSize: 16.0, // Adjust the font size as needed
+                        ),
+                      ),
                     ),
-                    padding: const EdgeInsets.all(14.0),
-                  ),
+                    Expanded(
+                      flex: 1, // Takes 50% of the row
+                      child: TextFormField(
+                        controller: targetGradeController,
+                        decoration: const InputDecoration(labelText: 'Target Grade'),
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 20.0), // Add some space between the two elements
+                Row(
+                  children: [
+                    Expanded(
+                      child: TextFormField(
+                        controller: nameController,
+                        decoration: const InputDecoration(labelText: 'Title'),
+                      ),
+                    ),
+                    const SizedBox(width: 6.0), // Add some space between the two elements
+                    Expanded(
+                      child: TextFormField(
+                        controller: scoreController,
+                        decoration: const InputDecoration(labelText: 'Score (0-100)'),
+                      ),
+                    ),
+                    const SizedBox(width: 6.0), // Add some space between the two elements
+                    Expanded(
+                      child: TextFormField(
+                        controller: weightController,
+                        decoration: const InputDecoration(labelText: 'Weight (%)'),
+                      ),
+                    ),
+                    
+                  ],
                 ),
               ],
             ),
@@ -116,20 +135,18 @@ class _GradesScreenState extends State<GradesScreen> {
               },
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.only(top: 16.0), // Adjust the top padding as needed
-            child: Text(
-              'Average: ${average.toStringAsFixed(2)}',
-              style: const TextStyle(
-                fontSize: 24, // Increase the font size
-                fontWeight: FontWeight.bold, // Make it bold
-                color: Colors.blue, // Change the text color to blue (you can choose any color you like)
-              ),
-            ),
-          ),
-
-
         ],
+      ),
+      floatingActionButton: Align(
+        alignment: Alignment.bottomRight,
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: FloatingActionButton(
+            backgroundColor: const Color(0xFFf9c000),
+            onPressed: _addGradeEntry,
+            child: const Icon(Icons.add),
+          ),
+        ),
       ),
     );
   }
