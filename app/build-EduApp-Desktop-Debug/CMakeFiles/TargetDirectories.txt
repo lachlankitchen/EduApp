@@ -1,0 +1,8 @@
+/Users/alexhopgood/Documents/SCHOOL/y3/345/Proj/EduApp/app/build-EduApp-Desktop-Debug/CMakeFiles/EduApp.dir
+/Users/alexhopgood/Documents/SCHOOL/y3/345/Proj/EduApp/app/build-EduApp-Desktop-Debug/CMakeFiles/edit_cache.dir
+/Users/alexhopgood/Documents/SCHOOL/y3/345/Proj/EduApp/app/build-EduApp-Desktop-Debug/CMakeFiles/rebuild_cache.dir
+/Users/alexhopgood/Documents/SCHOOL/y3/345/Proj/EduApp/app/build-EduApp-Desktop-Debug/CMakeFiles/list_install_components.dir
+/Users/alexhopgood/Documents/SCHOOL/y3/345/Proj/EduApp/app/build-EduApp-Desktop-Debug/CMakeFiles/install.dir
+/Users/alexhopgood/Documents/SCHOOL/y3/345/Proj/EduApp/app/build-EduApp-Desktop-Debug/CMakeFiles/install/local.dir
+/Users/alexhopgood/Documents/SCHOOL/y3/345/Proj/EduApp/app/build-EduApp-Desktop-Debug/CMakeFiles/install/strip.dir
+/Users/alexhopgood/Documents/SCHOOL/y3/345/Proj/EduApp/app/build-EduApp-Desktop-Debug/CMakeFiles/EduApp_autogen.dir
