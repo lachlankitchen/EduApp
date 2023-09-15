@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
+import 'package:http/http.dart' as http;
 import '../degree/degree.dart';
 import '../degree/degree_list.dart';
 import '../pathway/pathway_state.dart';
 import '../pathway/display_pathway.dart';
-
 import '../navigation/nav_bar.dart';
-
+import 'dart:convert';
 /// The main screen of the application where users can plan their degrees.
 class MyHomePage extends StatefulWidget {
   /// Constructs a [MyHomePage].
@@ -21,29 +20,36 @@ class _MyHomePageState extends State<MyHomePage> {
   // Create a list to store selected degrees (up to 3)
   List<Degree?> selectedDegrees = List.filled(3, null);
 
-  /// Opens the degrees list screen.
-  void _openDegreesListScreen(BuildContext context) {
-    // Sample degree data
-    final degreesJson = {
-      "degrees": [
-        "Bachelor of Applied Science (BAppSc)",
-        "Bachelor of Arts (BA)",
-        "Bachelor of Arts and Commerce (BACom)",
-        "Bachelor of Arts and Science (BASc)",
-        "Bachelor of Biomedical Sciences (BBiomedSc)",
-        "Bachelor of Commerce (BCom)",
-        "Bachelor of Commerce and Science (BComSc)",
-        "Bachelor of Entrepreneurship (BEntr)",
-        "Bachelor of Health Sciences (BHealSc)",
-        "Bachelor of Music (MusB)",
-        "Bachelor of Performing Arts (BPA)",
-        "Bachelor of Science (BSc)",
-        "Bachelor of Theology (BTheol)",
-        "Bachelor of Laws (LLB) (first year only)"
-      ]
-    };
 
-    List<String>? degreesList = (degreesJson['degrees'] as List<dynamic>).cast<String>();
+
+
+  Future<List<String>> fetchDegrees() async {
+    final response = await http.get(Uri.parse('http://localhost:1234/degrees'));
+
+    if (response.statusCode == 200) {
+      // If the server did return an OK response, parse the JSON
+      Map<String, dynamic> data = jsonDecode(response.body);
+      List<String> degrees = List<String>.from(data['degrees']);
+      return degrees;
+    } else {
+      // If the server did not return a 200 OK response, throw an exception.
+      throw Exception('Failed to load degrees');
+    }
+  }
+
+  /// Opens the degrees list screen.
+  void _openDegreesListScreen(BuildContext context) async {
+    List<String> degreesList;
+
+    try {
+      degreesList = await fetchDegrees();
+      // Now you have the degrees from the server, use them to navigate to the next screen
+    } catch (error) {
+      // Handle error, perhaps show a dialog to the user
+      print('Error fetching degrees: $error');
+      return; // Early return to exit the function if fetching degrees fails
+    }
+
     List<Degree> degrees = Degree.fromJsonList(degreesList);
 
     Navigator.push(
@@ -58,8 +64,9 @@ class _MyHomePageState extends State<MyHomePage> {
           },
         ),
       ),
-    ); 
+    );
   }
+
 
   @override
   Widget build(BuildContext context) {
