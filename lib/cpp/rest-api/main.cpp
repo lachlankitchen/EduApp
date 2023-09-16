@@ -29,14 +29,10 @@ int main(void)
 
        std::cout << "Successfully served the JSON file.\n"; });
 
-  // Capture the second segment of the request path as "id" path param
   svr.Get("/majors/:degree", [&](const Request &req, Response &res)
           {
     auto degree = req.path_params.at("degree");
-    res.set_content(degree, "text/plain"); });
 
-  svr.Get("/majors", [](const Request &req, Response &res)
-          {
        std::filesystem::path json_file_path = "../../../data/major_requirements.json"; // Specify the correct path to your JSON file
        if (!std::filesystem::exists(json_file_path)) {
            res.status = 404;
@@ -58,7 +54,6 @@ int main(void)
   // svr.Get("/paper/{paperCode}", [](const Request &req, Response &res){
   //   // TODO: @CONNOR Implement this
   // });
-
 
   // svr.Get("/userPaperList", [](const Request &req, Response &res){
   //   // TODO: @CONNOR Implement this
