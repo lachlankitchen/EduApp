@@ -21,8 +21,6 @@ class _MyHomePageState extends State<MyHomePage> {
   List<Degree?> selectedDegrees = List.filled(3, null);
 
 
-
-
   Future<List<String>> fetchDegrees() async {
     final response = await http.get(Uri.parse('http://localhost:1234/degrees'));
 
