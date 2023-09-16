@@ -33,7 +33,7 @@ int main(void)
           {
     auto degree = req.path_params.at("degree");
 
-       std::filesystem::path json_file_path = "../../../data/major_requirements.json"; // Specify the correct path to your JSON file
+       std::filesystem::path json_file_path = "../../../data/degree_majors.json"; // Specify the correct path to your JSON file
        if (!std::filesystem::exists(json_file_path)) {
            res.status = 404;
            res.set_content("File not found", "text/plain");
