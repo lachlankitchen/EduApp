@@ -23,4 +23,4 @@ cd ../../../../
 flutter pub get &
 
 # Run "flutter run" in the background
-flutter run -d chrome &
+flutter run -d windows &
