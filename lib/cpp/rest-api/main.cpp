@@ -3,7 +3,7 @@
 #include <filesystem>
 #include <fstream>
 
-void cors(const Request& req, Response& res) {
+void cors(const httplib::Request& req, httplib::Response& res) {
     res.set_header("Access-Control-Allow-Origin", "*");
     res.set_header("Access-Control-Allow-Headers", "X-Requested-With, Content-Type");
 }
@@ -25,9 +25,10 @@ int main(void)
 
       std::ifstream json_file(json_file_path);
       std::string json_content((std::istreambuf_iterator<char>(json_file)),
-                              std::istreambuf_iterator<char>());
+                                std::istreambuf_iterator<char>());
 
-      cors(req, res);
+        cors(req, res);
+
 
       res.set_content(json_content, "application/json");
 
@@ -35,28 +36,16 @@ int main(void)
   });
 
   svr.Get("/major/{degrees}", [](const Request &req, Response &res){
-      cors(req, res);
-
-      res.set_content(json_content, "application/json");
-
-      std::cout << "Successfully served the JSON file.\n"; 
+    
   });
 
   svr.Get("/paper/{paperCode}", [](const Request &req, Response &res){
-      cors(req, res);
-
-      res.set_content(json_content, "application/json");
-
-      std::cout << "Successfully served the JSON file.\n"; 
+  
   });
 
 
   svr.Get("/userPaperList", [](const Request &req, Response &res){
-      cors(req, res);
-
-      res.set_content(json_content, "application/json");
-
-      std::cout << "Successfully served the JSON file.\n"; 
+  
   });
 
   // Extract values from HTTP headers and URL query params
