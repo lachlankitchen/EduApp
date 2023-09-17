@@ -19,11 +19,11 @@ cmake -G "MinGW Makefiles" ..
 echo "Generated build files with CMake."
 
 # Compile the project using the generated build files and Makefile
-make
+make &
 echo "Compiled the project."
 
 # Execute the resulting REST API application in the background
-./rest_api #&
+./rest_api &
 echo "Started the REST API application in the background."
 
 # Return to the root directory of the project
@@ -31,9 +31,9 @@ cd ../../../../
 echo "Returned to the root directory of the project."
 
 # Run "flutter pub get" in the background
-flutter pub get #&
+flutter pub get &
 echo "Running 'flutter pub get' in the background."
 
 # Run "flutter run" in the background
-flutter run -d windows #&
+flutter run -d windows &
 echo "Running 'flutter run' in the background."
