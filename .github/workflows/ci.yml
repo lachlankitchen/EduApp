@@ -31,7 +31,7 @@ jobs:
           sudo cp lib/*.a /usr/lib
 
       - name: Compile C++ code with coverage flags
-        run: g++ -std=c++11 --coverage -o degree_requirements_test degree_requirements.cpp degree_requirements_test.cpp -Ipath/to/gtest/include -Lpath/to/gtest/lib -lgtest -lgtest_main -pthread
+        run: g++ -std=c++11 --coverage -o degree_requirements_test test/cpp/degree_requirements_test.cpp lib/cpp/paper_checker.cpp -I/usr/include -L/usr/lib -lgtest -lgtest_main -pthread
 
       - name: Run C++ tests
         run: ./degree_requirements_test
