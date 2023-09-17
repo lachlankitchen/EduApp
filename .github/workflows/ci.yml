@@ -37,6 +37,9 @@ jobs:
       - name: Compile C++ code with coverage flags
         run: g++ -std=c++11 --coverage -o degree_requirements_test test/cpp/degree_requirements_test.cpp lib/cpp/paper_checker.cpp -I/usr/include -I/usr/include/nlohmann -L/usr/lib -lgtest -lgtest_main -pthread
 
+      - name: Install lcov
+        run: sudo apt-get install -y lcov
+
       - name: Run C++ tests
         run: ./degree_requirements_test
 
