@@ -1,7 +1,11 @@
 cmake_minimum_required(VERSION 3.9)
 project(RestAPI)
 
-set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_CXX_STANDARD 17)
+
+if(NOT CMAKE_BUILD_TYPE)
+    set(CMAKE_BUILD_TYPE "Release")
+endif()
 
 # Specify the path to ZLIB library and include directory
 set(ZLIB_LIBRARY "C:/zlib/zlib-1.3/zlib.a")

@@ -23,7 +23,7 @@ make &
 echo "Compiled the project."
 
 # Execute the resulting REST API application in the background
-./rest_api &
+./rest_api #&
 echo "Started the REST API application in the background."
 
 # Return to the root directory of the project
