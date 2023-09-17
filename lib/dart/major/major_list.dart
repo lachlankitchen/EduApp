@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:http/http.dart' as http;
 import '../major/major.dart';
 import '../paper/paper.dart';
 import '../paper/paper_list.dart';
@@ -72,47 +73,114 @@ class MajorListScreen extends StatelessWidget {
   /// [context]: The build context for navigation.
   /// [state]: The state containing pathway information.
   /// [selectedMajors]: The list of selected majors.
-  void navigateToPapersListScreen(BuildContext context, PathwayState state, List<Major> selectedMajors) {
+  Future<void> navigateToPapersListScreen(BuildContext context, PathwayState state, List<Major> selectedMajors) async {
     state.addMajors(selectedMajors);
-    const String papersJson = '''
-    [
-      {
-        "papercode": "CS 101",
-        "subject_code": "COMPSCI",
-        "year": "2023",
-        "title": "Introduction to Computer Science",
-        "points": 18,
-        "efts": 0.125,
-        "teaching_periods": ["Semester 1"],
-        "description": "An introduction to...",
-        "prerequisites": [],
-        "restrictions": [],
-        "schedule": "Lecture 1: Monday 9:00 AM"
-      },
-      {
-        "papercode": "CS 162",
-        "subject_code": "COMPSCI",
-        "year": "2023",
-        "title": "Computer Programming",
-        "points": 18,
-        "efts": 0.125,
-        "teaching_periods": ["Semester 1"],
-        "description": "An introduction to...",
-        "prerequisites": [],
-        "restrictions": [],
-        "schedule": "Lecture 1: Monday 9:00 AM"
-      }
-    ]
-    ''';
+    // const String papersJson = '''
+    // [
+    //   {
+    //     "papercode": "CS 101",
+    //     "subject_code": "COMPSCI",
+    //     "year": "2023",
+    //     "title": "Introduction to Computer Science",
+    //     "points": 18,
+    //     "efts": 0.125,
+    //     "teaching_periods": ["Semester 1"],
+    //     "description": "An introduction to...",
+    //     "prerequisites": [],
+    //     "restrictions": [],
+    //     "schedule": "Lecture 1: Monday 9:00 AM"
+    //   },
+    //   {
+    //     "papercode": "CS 162",
+    //     "subject_code": "COMPSCI",
+    //     "year": "2023",
+    //     "title": "Computer Programming",
+    //     "points": 18,
+    //     "efts": 0.125,
+    //     "teaching_periods": ["Semester 1"],
+    //     "description": "An introduction to...",
+    //     "prerequisites": [],
+    //     "restrictions": [],
+    //     "schedule": "Lecture 1: Monday 9:00 AM"
+    //   }
+    // ]
+    // ''';
 
-    List<dynamic> parsedPapersJson = json.decode(papersJson);
-    List<Paper> papers = parsedPapersJson.map((paperJson) => Paper.fromJson(paperJson)).toList();
-    
+    String jsonData;
+    try {
+      jsonData = await fetchPaperData(selectedMajors[0]);
+      // Now you have the degrees from the server, use them to navigate to the next screen
+    } catch (error) {
+      // Handle error, perhaps show a dialog to the user
+      print('Error fetching papers: $error');
+      return; // Early return to exit the function if fetching degrees fails
+    }
+
+    List<Paper> papers = getPaperData(jsonData);
+
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (context) => PapersListScreen(papers: papers),
+        builder: (context) => PapersListScreen(compulsoryPapers: papers, optionalPapers: papers, level: "100"),
       ),
     );
+  }
+
+  // Function to retrieve papers
+  List<Paper> getLevelPapers(Map<String, dynamic> parsedData, String levelKey, String paperKey) {
+    List<Paper> papers = [];
+    for (var level in parsedData['levels']) {
+      if (level['level'] == levelKey) {
+        var paperList = level[paperKey] as List<dynamic>?; // Use null-safe List
+        if (paperList != null) {
+          for (var paperData in paperList) {
+            for (var entry in paperData.entries) {
+              final paperCode = entry.key;
+              final attributes = entry.value as Map<String, dynamic>;
+              final teachingPeriods = (attributes['teaching_periods'] as List<dynamic>)
+                ?.map<String>((period) => period.toString())
+                ?.toList() ?? []; // Provide a default value if needed
+
+              papers.add(Paper.withName(
+                papercode: paperCode,
+                title: attributes['title'] ?? '', // Provide a default value if needed
+                teachingPeriods: teachingPeriods, // Provide a default value if needed
+              ));
+            }
+          }
+        }
+      }
+    }
+    return papers;
+  }
+
+  // Function to retrieve and display paper data for each level
+  List<Paper> getPaperData(String jsonData) {
+    Map<String, dynamic> parsedData = json.decode(jsonData);
+
+    List<dynamic> levels = parsedData['levels'];
+    for (var level in levels) {
+      print(level);
+      if(level["level"] == "100-level") {
+        // print('Level: ${level['level']}');
+        // print('Compulsory Papers: ${getLevelPapers(parsedData, level['level'], 'compulsory_papers')}');
+        // print('One of Papers: ${getLevelPapers(parsedData, level['level'], 'one_of_papers')}');
+        // print('');
+        return getLevelPapers(parsedData, level['level'], 'compulsory_papers');
+      }
+    }
+    return [];
+  }
+
+
+  Future<String> fetchPaperData(Major selectedMajor) async {
+    final response = await http.get(Uri.parse('http://localhost:1234/degree/majors/${selectedMajor.name}'));
+
+    if (response.statusCode == 200) {
+      return response.body;
+    } else {
+      // If the server did not return a 200 OK response, throw an exception.
+      throw Exception('Failed to load majors');
+    }
   }
 }

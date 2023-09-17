@@ -45,6 +45,25 @@ class Paper {
     required this.grade,
   });
 
+  /// Constructs a [Paper] instance with only the name.
+  ///
+  /// [name]: The name of the major.
+  Paper.withName({
+    required this.papercode,
+    required this.title,
+    required this.teachingPeriods
+  }) : 
+      subjectCode = "",
+      year = "",
+      points = 0,
+      efts = 0.0,
+      description = "",
+      prerequisites = const [],
+      restrictions = const [],
+      schedule = "",
+      grade = 0;
+
+
   /// Constructs a [Paper] from JSON data.
   ///
   /// [json]: The JSON data representing the paper.
