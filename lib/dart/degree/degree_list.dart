@@ -156,7 +156,7 @@ class DegreeListScreen extends StatelessWidget {
   }
   
   Future<String> fetchMajorData(Degree selectedDegree) async {
-    final response = await http.get(Uri.parse('http://localhost:1234/majors/${selectedDegree.title}'));
+    final response = await http.get(Uri.parse('http://localhost:1234/${selectedDegree.title}/majors'));
 
     if (response.statusCode == 200) {
       return response.body;

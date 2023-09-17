@@ -29,7 +29,7 @@ int main(void)
 
        std::cout << "Successfully served the JSON file.\n"; });
 
-  svr.Get("/majors/:degree", [&](const Request &req, Response &res)
+  svr.Get("/:degree/majors", [&](const Request &req, Response &res)
           {
     auto degree = req.path_params.at("degree");
 
@@ -50,6 +50,29 @@ int main(void)
        res.set_content(json_content, "application/json");
 
        std::cout << "Successfully served the JSON file.\n"; });
+
+  svr.Get("/degree/majors/:major", [&](const Request &req, Response &res)
+          {
+    auto degree = req.path_params.at("major");
+
+       std::filesystem::path json_file_path = "../../../data/major_requirements.json"; // Specify the correct path to your JSON file
+       if (!std::filesystem::exists(json_file_path)) {
+           res.status = 404;
+           res.set_content("File not found", "text/plain");
+           std::cout << "File not found at specified path.\n";
+           return;
+       }
+
+       std::ifstream json_file(json_file_path);
+       std::string json_content((std::istreambuf_iterator<char>(json_file)),
+                                std::istreambuf_iterator<char>());
+
+       res.set_header("Access-Control-Allow-Origin", "*");
+       res.set_header("Access-Control-Allow-Headers", "X-Requested-With, Content-Type");
+       res.set_content(json_content, "application/json");
+
+       std::cout << "Successfully served the JSON file.\n"; });
+
 
   // svr.Get("/paper/{paperCode}", [](const Request &req, Response &res){
   //   // TODO: @CONNOR Implement this
