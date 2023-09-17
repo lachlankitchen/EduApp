@@ -1,4 +1,4 @@
-v#include <nlohmann/json.hpp>
+#include <nlohmann/json.hpp>
  #include "paper_checker.h"
  #include <iostream>
  #include <unordered_set>
