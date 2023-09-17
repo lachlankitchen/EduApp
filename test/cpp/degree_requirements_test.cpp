@@ -1,4 +1,4 @@
-#include "lib/cpp/paper_checker.h" // Replace with the actual path to your C++ file
+#include "../../lib/cpp/paper_checker.h"
 #include <gtest/gtest.h>
 
 TEST(DegreeRequirementsTest, CheckRequirements) {

@@ -1,7 +1,9 @@
+#include <nlohmann/json.hpp>
 #include "paper_checker.h"
 #include <iostream>
 #include <unordered_set>
 
+using json = nlohmann::json;
 using namespace std;
 
 DegreeRequirements::DegreeRequirements(const string& jsonData) {
