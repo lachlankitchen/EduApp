@@ -108,7 +108,7 @@ class MajorListScreen extends StatelessWidget {
 
     String jsonData;
     try {
-      jsonData = await fetchPaperData(selectedMajors[0]);
+      jsonData = await fetchPaperData(selectedMajors[0]); // TODO: Make dynamic
       // Now you have the degrees from the server, use them to navigate to the next screen
     } catch (error) {
       // Handle error, perhaps show a dialog to the user
@@ -121,7 +121,7 @@ class MajorListScreen extends StatelessWidget {
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (context) => PapersListScreen(compulsoryPapers: papers, optionalPapers: papers, level: "100"),
+        builder: (context) => PapersListScreen(major: selectedMajors[0], compulsoryPapers: papers, optionalPapers: papers, level: "100"),
       ),
     );
   }
@@ -174,7 +174,7 @@ class MajorListScreen extends StatelessWidget {
 
 
   Future<String> fetchPaperData(Major selectedMajor) async {
-    final response = await http.get(Uri.parse('http://localhost:1234/degree/majors/${selectedMajor.name}'));
+    final response = await http.get(Uri.parse('http://localhost:1234/degree/majors/${selectedMajor.name}/'));
 
     if (response.statusCode == 200) {
       return response.body;
