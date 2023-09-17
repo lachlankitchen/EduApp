@@ -7,3 +7,5 @@ cpprestsdk  PS E:\Files\Code\345\Proj\EduApp\lib\cpp\rest-api>      cmake -DCMAK
 
 set CMAKE_PREFIX_PATH=C:/Users/Owner/vcpkg/packages/nlohmann-json_x86-windows/share/nlohmann_json
 (in cmd)
+
+zlib- built on my hard drive instead of using the vcpkg version
