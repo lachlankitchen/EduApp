@@ -1,12 +1,28 @@
 cmake_minimum_required(VERSION 3.9)
 project(RestAPI)
 
-set(CMAKE_CXX_STANDARD 20)  # Set to the desired C++ standard version (e.g., 11, 14, 17, 20)
+set(CMAKE_CXX_STANDARD 20)
 
-set (CMAKE_CXX_STANDARD_REQUIRED ON)
-
+# Specify the location of cpprestsdk (assuming you already have it installed)
+set(cpprestsdk_DIR "C:/Users/Owner/vcpkg/packages/cpprestsdk_x86-windows/share/cpprestsdk")
 find_package(cpprestsdk REQUIRED)
 
+# Use vcpkg to find nlohmann/json
+set(CMAKE_TOOLCHAIN_FILE "C:/Users/Owner/vcpkg/scripts/buildsystems/vcpkg.cmake")
+
+# Set the paths to ZLIB library and include directory
+set(ZLIB_LIBRARY "C:/Users/Owner/vcpkg/packages/zlib_x86-windows/lib/zlib.lib")
+set(ZLIB_INCLUDE_DIR "C:/Users/Owner/vcpkg/packages/zlib_x86-windows/include")
+
+# Include the ZLIB headers
+include_directories(${ZLIB_INCLUDE_DIR})
+
+# Define the target name as "rest_api" (with an underscore)
 add_executable(rest_api main.cpp)
 
-target_link_libraries(rest_api PRIVATE cpprestsdk::cpprest)
+# Link with the libraries
+target_link_libraries(rest_api PRIVATE cpprestsdk::cpprest ${ZLIB_LIBRARY})
+
+# Include the nlohmann/json headers (no need to specify target_link_libraries for nlohmann_json)
+target_include_directories(rest_api PRIVATE "C:/Users/Owner/vcpkg/packages/nlohmann-json_x86-windows/include")
+

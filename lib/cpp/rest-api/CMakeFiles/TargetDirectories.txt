@@ -1,0 +1,3 @@
+E:/Files/Code/345/Proj/EduApp/lib/cpp/rest-api/CMakeFiles/rest_api.dir
+E:/Files/Code/345/Proj/EduApp/lib/cpp/rest-api/CMakeFiles/ALL_BUILD.dir
+E:/Files/Code/345/Proj/EduApp/lib/cpp/rest-api/CMakeFiles/ZERO_CHECK.dir
