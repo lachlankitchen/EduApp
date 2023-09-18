@@ -99,25 +99,25 @@ class _GradesScreenState extends State<GradesScreen> {
                   children: [
                     Expanded(
                       child: TextFormField(
+                        key: const Key('TitleField'), // Add this line
                         controller: nameController,
                         decoration: const InputDecoration(labelText: 'Title'),
                       ),
                     ),
-                    const SizedBox(width: 6.0), // Add some space between the two elements
                     Expanded(
                       child: TextFormField(
+                        key: const Key('ScoreField'), // Add this line
                         controller: scoreController,
                         decoration: const InputDecoration(labelText: 'Score (0-100)'),
                       ),
                     ),
-                    const SizedBox(width: 6.0), // Add some space between the two elements
                     Expanded(
                       child: TextFormField(
+                        key: const Key('WeightField'), // Add this line
                         controller: weightController,
                         decoration: const InputDecoration(labelText: 'Weight (%)'),
                       ),
                     ),
-                    
                   ],
                 ),
               ],
