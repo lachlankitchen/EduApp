@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:html';
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -9,21 +10,22 @@ import '../major/major.dart';
 import '../paper/paper.dart';
 import '../pathway/pathway_state.dart';
 import '../navigation/nav_bar.dart';
+import 'fetch_paper.dart';
 
 /// A screen that allows users to select papers and enter grades for each paper.
 class PapersListScreen extends StatelessWidget {
   final Degree degree;
   final Major major;
   final List<Paper> compulsoryPapers;
-  final List<Paper> optionalPapers;
-  final String level;
+  final List<Paper> oneOfPapers;
+  final int level;
 
   const PapersListScreen({
     Key? key,
     required this.degree,
     required this.major,
     required this.compulsoryPapers,
-    required this.optionalPapers,
+    required this.oneOfPapers,
     required this.level,
   }) : super(key: key);
 
@@ -45,7 +47,7 @@ class PapersListScreen extends StatelessWidget {
                   return const SizedBox(height: 16.0);
                 } else if (index == 1) {
                   // Add title for Compulsory Papers
-                  return ListTile(
+                  return const ListTile(
                     title: Text(
                       'Compulsory Papers',
                       style: TextStyle(
@@ -63,13 +65,13 @@ class PapersListScreen extends StatelessWidget {
           ),
           Expanded(
             child: ListView.builder(
-              itemCount: optionalPapers.length + 2, // Add 2 for SizedBoxes and Title
+              itemCount: oneOfPapers.length + 2, // Add 2 for SizedBoxes and Title
               itemBuilder: (context, index) {
                 if (index == 0) {
                   return const SizedBox(height: 16.0);
                 } else if (index == 1) {
                   // Add title for Optional Papers
-                  return ListTile(
+                  return const ListTile(
                     title: Text(
                       'Optional Papers',
                       style: TextStyle(
@@ -80,7 +82,7 @@ class PapersListScreen extends StatelessWidget {
                   );
                 } else {
                   final optionalPaperIndex = index - 2;
-                  return buildPaperListItem(optionalPapers[optionalPaperIndex]);
+                  return buildPaperListItem(oneOfPapers[optionalPaperIndex]);
                 }
               },
             ),
@@ -91,7 +93,7 @@ class PapersListScreen extends StatelessWidget {
         onPressed: () async {
           final state = Provider.of<PathwayState>(context, listen: false);
           // Combine the two lists into a single list
-          List<Paper> allPapers = [...compulsoryPapers, ...optionalPapers];
+          List<Paper> allPapers = [...compulsoryPapers, ...oneOfPapers];
 
           // Filter the selected papers
           List<Paper> selectedPapers = allPapers.where((paper) => paper.isSelected).toList();
@@ -123,14 +125,12 @@ class PapersListScreen extends StatelessWidget {
           final jsonMap = json.decode(jsonData);
 
           Map<String, dynamic> jsonDataMap = jsonDecode(jsonData.toString());
-          print("HIT1");
+
           // Check if there are remaining compulsory papers
           bool hasRemainingPapers = jsonDataMap.containsKey("remaining_compulsory_papers");
 
           // Check if there are remaining points
           bool hasRemainingPoints = jsonDataMap.containsKey("remaining_points");
-
-          print("HIT3");
 
           if (hasRemainingPapers || hasRemainingPoints) {
             // Display the remaining requirements
@@ -151,8 +151,6 @@ class PapersListScreen extends StatelessWidget {
               message += "Remaining Points: $remainingPoints";
             }
 
-            print("HIT4");
-
             // Display the message to the user
             ScaffoldMessenger.of(context).showSnackBar(
               SnackBar(
@@ -163,12 +161,16 @@ class PapersListScreen extends StatelessWidget {
             // No remaining requirements, you can perform other actions here
             // For example, add papers to state and save state as you mentioned
             state.addPapers(selectedPapers);
-            state.saveState();
           }
 
-          Navigator.pushReplacement(
+          List<Paper> nextCompulsoryPapers = getPaperData(jsonData, 200, 'compulsory_papers');
+          List<Paper> nextOneOfPapers = getPaperData(jsonData, 200, 'one_of_papers');
+
+          Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => const MyHomePage()),
+            MaterialPageRoute(
+              builder: (context) => PapersListScreen(degree: degree, major: major, compulsoryPapers: nextCompulsoryPapers, oneOfPapers: nextOneOfPapers, level: 200),
+            ),
           );
         },
         style: ElevatedButton.styleFrom(
