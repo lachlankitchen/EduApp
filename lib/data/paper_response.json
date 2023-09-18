@@ -6,7 +6,8 @@
                 "teaching_periods": [
                     "S2",
                     "SS"
-                ]
+                ],
+                "points": 18
             }
         },
         { 
@@ -15,7 +16,8 @@
                 "teaching_periods": [
                     "S1",
                     "S2"
-                ]
+                ],
+                "points": 18
             }
         },
         { 
@@ -24,7 +26,8 @@
                 "teaching_periods": [
                     "S2",
                     "SS"            
-                ]
+                ],
+                "points": 18
             }
         }
     ],
