@@ -84,4 +84,32 @@ class Paper {
       isSelected: false,
     );
   }
+
+    Map<String, dynamic> toJson() {
+    return {
+      'papercode': papercode,
+      'subject_code': subjectCode,
+      'year': year,
+      'title': title,
+      'points': points,
+      'efts': efts,
+      'teaching_periods': teachingPeriods,
+      'description': description,
+      'prerequisites': prerequisites,
+      'restrictions': restrictions,
+      'schedule': schedule,
+      'grade': grade,
+      'isSelected': isSelected,
+    };
+  }
+}
+
+List<Map<String, dynamic>> papersListToJson(List<Paper> papers) {
+  List<Map<String, dynamic>> jsonList = [];
+
+  for (var paper in papers) {
+    jsonList.add(paper.toJson());
+  }
+
+  return jsonList;
 }

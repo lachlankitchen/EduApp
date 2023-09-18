@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:http/http.dart' as http;
+import '../degree/degree.dart';
 import '../home/home.dart';
 import '../major/major.dart';
 import '../paper/paper.dart';
@@ -11,6 +12,7 @@ import '../navigation/nav_bar.dart';
 
 /// A screen that allows users to select papers and enter grades for each paper.
 class PapersListScreen extends StatelessWidget {
+  final Degree degree;
   final Major major;
   final List<Paper> compulsoryPapers;
   final List<Paper> optionalPapers;
@@ -18,6 +20,7 @@ class PapersListScreen extends StatelessWidget {
 
   const PapersListScreen({
     Key? key,
+    required this.degree,
     required this.major,
     required this.compulsoryPapers,
     required this.optionalPapers,
@@ -103,11 +106,12 @@ class PapersListScreen extends StatelessWidget {
           }
 
           double wam = totalWeightedSum / totalWeight;
-          double gpa = (wam * 9) / 10;
+          double gpa = (wam * 9) / 100;
           state.addGPA(gpa);
           state.addPapers(selectedPapers);
           state.saveState();
-          // validatePatshway(major, selectedPapers);
+
+          remainingRequirements(degree, major, selectedPapers);
 
           // if (pathwayCount < 3) {
           //   _openDegreesListScreen(context);
@@ -185,17 +189,28 @@ class PapersListScreen extends StatelessWidget {
     );
   }
   
-  Future<String> fetchPaperData(Major major, List<Paper> papersList) async {
-    final url = Uri.parse('http://localhost:1234/degree/majors/${major.name}');
 
+
+
+  
+  Future<String> fetchPaperData(Degree degree, Major major, List<Paper> papersList) async {
+    final url = Uri.parse('http://localhost:1234/${degree.title}/${major.name}');
+   
+    // final response = await http.post(url);
+    List<Map<String, dynamic>> jsonPapers = papersListToJson(papersList); 
+    String papersJsonString = jsonEncode(jsonPapers);
+
+    // print(papersJsonString);
+    
     final response = await http.post(
       url,
-      body: jsonEncode(papersList), // Set the JSON string as the request body
-      headers: {
-        'Content-Type': 'application/json', // Set the Content-Type header
-      },
+      // @CONNOR Using the JSON string as the request body doen't work, I'm working on a fix
+      // body: papersJsonString, // Set the JSON string as the request body
+      // headers: {
+      //   'Content-Type': 'application/json', // Set the Content-Type header
+      // }
     );
-
+    
     if (response.statusCode == 200) {
       return response.body;
     } else {
@@ -204,15 +219,15 @@ class PapersListScreen extends StatelessWidget {
     }
   }
   
-  Future<String> parseData(Major major, List<Paper> selectedPapers) async {
+  Future<void> remainingRequirements(Degree degree, Major major, List<Paper> selectedPapers) async {
     String jsonData;
     try {
-      jsonData = await fetchPaperData(major, selectedPapers); // TODO: Make dynamic
-      return jsonData;
+      jsonData = await fetchPaperData(degree, major, selectedPapers); // TODO: Make dynamic
+      print(jsonData);
+
     } catch (error) {
       // Handle error, perhaps show a dialog to the user
-      print('Error fetching papers: $error');
-      return '';
+      print('Error fetching remaining requirements: $error');
     }
   }
 }

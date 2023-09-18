@@ -1,0 +1,32 @@
+{
+    "remaining_compulsory_papers": [
+        { 
+            "COMP 201": {
+                "title": "Algorithms and Data Structures",
+                "teaching_periods": [
+                    "S2",
+                    "SS"
+                ]
+            }
+        },
+        { 
+            "COMP 202": {
+                "title": "Software Development",
+                "teaching_periods": [
+                    "S1",
+                    "S2"
+                ]
+            }
+        },
+        { 
+            "COMP 326": {
+                "title": "Computational Problem Solving",
+                "teaching_periods": [
+                    "S2",
+                    "SS"            
+                ]
+            }
+        }
+    ],
+    "remaining_points": 45
+}

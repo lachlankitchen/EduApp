@@ -76,9 +76,9 @@ class DegreeListScreen extends StatelessWidget {
   /// [selectedDegree]: The selected degree to add to the pathway state.
   ///
   /// This function does not return a value.
-  Future<void> navigateToMajorsListScreen(BuildContext context, PathwayState state, Degree selectedDegree) async {
+  Future<void> navigateToMajorsListScreen(BuildContext context, PathwayState state, Degree degree) async {
     // Pass the selected degree to the state
-    state.addDegree(selectedDegree);
+    state.addDegree(degree);
 
     // const String majorsJson = '''
     // [
@@ -133,7 +133,7 @@ class DegreeListScreen extends StatelessWidget {
 
     String jsonData;
     try {
-      jsonData = await fetchMajorData(selectedDegree);
+      jsonData = await fetchMajorData(degree);
       // Now you have the degrees from the server, use them to navigate to the next screen
     } catch (error) {
       // Handle error, perhaps show a dialog to the user
@@ -150,13 +150,13 @@ class DegreeListScreen extends StatelessWidget {
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (context) => MajorListScreen(majors: majors),
+        builder: (context) => MajorListScreen(degree: degree, majors: majors),
       ),
     );
   }
   
-  Future<String> fetchMajorData(Degree selectedDegree) async {
-    final response = await http.get(Uri.parse('http://localhost:1234/${selectedDegree.title}/majors'));
+  Future<String> fetchMajorData(Degree degree) async {
+    final response = await http.get(Uri.parse('http://localhost:1234/${degree.title}/majors'));
 
     if (response.statusCode == 200) {
       return response.body;

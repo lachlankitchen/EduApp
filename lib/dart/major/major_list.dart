@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:http/http.dart' as http;
+import '../degree/degree.dart';
 import '../major/major.dart';
 import '../paper/paper.dart';
 import '../paper/paper_list.dart';
@@ -10,12 +11,13 @@ import '../pathway/pathway_state.dart'; // Import the SecondListScreen class
 
 /// Represents a screen where users can select their majors.
 class MajorListScreen extends StatelessWidget {
+  final Degree degree;
   final List<Major> majors;
 
   /// Constructs a [MajorListScreen].
   ///
   /// [majors]: The list of available majors to display.
-  const MajorListScreen({Key? key, required this.majors}) : super(key: key);
+  const MajorListScreen({Key? key, required this.degree, required this.majors}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -44,7 +46,7 @@ class MajorListScreen extends StatelessWidget {
                         List<Major> selectedMajors =
                             majors.where((major) => major.isSelected).toList();
                         navigateToPapersListScreen(
-                            context, context.read<PathwayState>(), selectedMajors);
+                            context, context.read<PathwayState>(), degree, selectedMajors);
                       },
                       fillColor: MaterialStateProperty.resolveWith<Color>(
                         (Set<MaterialState> states) {
@@ -73,8 +75,8 @@ class MajorListScreen extends StatelessWidget {
   /// [context]: The build context for navigation.
   /// [state]: The state containing pathway information.
   /// [selectedMajors]: The list of selected majors.
-  Future<void> navigateToPapersListScreen(BuildContext context, PathwayState state, List<Major> selectedMajors) async {
-    state.addMajors(selectedMajors);
+  Future<void> navigateToPapersListScreen(BuildContext context, PathwayState state, Degree degree, List<Major> majors) async {
+    state.addMajors(majors);
     // const String papersJson = '''
     // [
     //   {
@@ -108,7 +110,7 @@ class MajorListScreen extends StatelessWidget {
 
     String jsonData;
     try {
-      jsonData = await fetchPaperData(selectedMajors[0]); // TODO: Make dynamic
+      jsonData = await fetchPaperData(degree, majors[0]); // TODO: Make dynamic
       // Now you have the degrees from the server, use them to navigate to the next screen
     } catch (error) {
       // Handle error, perhaps show a dialog to the user
@@ -121,7 +123,7 @@ class MajorListScreen extends StatelessWidget {
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (context) => PapersListScreen(major: selectedMajors[0], compulsoryPapers: papers, optionalPapers: papers, level: "100"),
+        builder: (context) => PapersListScreen(degree: degree, major: majors[0], compulsoryPapers: papers, optionalPapers: papers, level: "100"),
       ),
     );
   }
@@ -160,7 +162,6 @@ class MajorListScreen extends StatelessWidget {
 
     List<dynamic> levels = parsedData['levels'];
     for (var level in levels) {
-      print(level);
       if(level["level"] == "100-level") {
         // print('Level: ${level['level']}');
         // print('Compulsory Papers: ${getLevelPapers(parsedData, level['level'], 'compulsory_papers')}');
@@ -173,13 +174,12 @@ class MajorListScreen extends StatelessWidget {
   }
 
 
-  Future<String> fetchPaperData(Major selectedMajor) async {
-    final response = await http.get(Uri.parse('http://localhost:1234/degree/majors/${selectedMajor.name}/'));
+  Future<String> fetchPaperData(Degree degree, Major major) async {
+    final response = await http.get(Uri.parse('http://localhost:1234/${degree.title}/${major.name}'));
 
     if (response.statusCode == 200) {
       return response.body;
     } else {
-      // If the server did not return a 200 OK response, throw an exception.
       throw Exception('Failed to load majors');
     }
   }
