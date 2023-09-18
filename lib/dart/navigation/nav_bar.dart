@@ -7,7 +7,6 @@ import '../home/home.dart';
 
 import 'navigation_provider.dart';
 
-/// Represents the bottom navigation bar for the app.
 class NavBar extends StatelessWidget {
   const NavBar({Key? key}) : super(key: key);
 
@@ -15,9 +14,11 @@ class NavBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return BottomNavigationBar(
       selectedItemColor: const Color(0xFF10428C),
-      // Get the current index from the NavigationProvider using context.watch
       currentIndex: context.watch<NavigationProvider>().currentIndex,
       onTap: (index) {
+        // Use the changeIndex method to update the currentIndex
+        context.read<NavigationProvider>().changeIndex(index);
+        print("HERE $index");
         // Navigate to different screens based on the selected index
         switch (index) {
           case 0:
@@ -41,8 +42,6 @@ class NavBar extends StatelessWidget {
             );
             break;
         }
-        // Update the current index in the NavigationProvider using context.read
-        context.read<NavigationProvider>().currentIndex = index;
       },
       items: const [
         BottomNavigationBarItem(
