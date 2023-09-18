@@ -115,10 +115,10 @@ void main() {
     await tester.tap(find.byType(Checkbox).at(0));
     await tester.pump();
 
-    // // Test navigation back to MyHomePage when the "Save" button is tapped
-    // await tester.tap(find.text('Save'));
-    // await tester.pumpAndSettle();
-    // // Verify that MyHomePage is pushed to the Navigator
-    // expect(find.byType(MyHomePage), findsOneWidget);
+    // Test navigation back to MyHomePage when the "Save" button is tapped
+    await tester.tap(find.text('Save'));
+    await tester.pumpAndSettle();
+    // Verify that MyHomePage is pushed to the Navigator
+    expect(find.byType(MyHomePage), findsOneWidget);
   });
 }
