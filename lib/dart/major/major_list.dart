@@ -5,6 +5,7 @@ import 'package:provider/provider.dart';
 import 'package:http/http.dart' as http;
 import '../degree/degree.dart';
 import '../major/major.dart';
+import '../paper/fetch_paper.dart';
 import '../paper/paper.dart';
 import '../paper/paper_list.dart';
 import '../pathway/pathway_state.dart'; // Import the SecondListScreen class
@@ -118,12 +119,13 @@ class MajorListScreen extends StatelessWidget {
       return; // Early return to exit the function if fetching degrees fails
     }
 
-    List<Paper> papers = getPaperData(jsonData);
+    List<Paper> compulsoryPapers = getPaperData(jsonData, 100, 'compulsory_papers');
+    List<Paper> oneOfPapers = getPaperData(jsonData, 100, 'one_of_papers');
 
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (context) => PapersListScreen(degree: degree, major: majors[0], compulsoryPapers: papers, optionalPapers: papers, level: "100"),
+        builder: (context) => PapersListScreen(degree: degree, major: majors[0], compulsoryPapers: compulsoryPapers, oneOfPapers: oneOfPapers, level: 100),
       ),
     );
   }
@@ -154,33 +156,5 @@ class MajorListScreen extends StatelessWidget {
       }
     }
     return papers;
-  }
-
-  // Function to retrieve and display paper data for each level
-  List<Paper> getPaperData(String jsonData) {
-    Map<String, dynamic> parsedData = json.decode(jsonData);
-
-    List<dynamic> levels = parsedData['levels'];
-    for (var level in levels) {
-      if(level["level"] == "100-level") {
-        // print('Level: ${level['level']}');
-        // print('Compulsory Papers: ${getLevelPapers(parsedData, level['level'], 'compulsory_papers')}');
-        // print('One of Papers: ${getLevelPapers(parsedData, level['level'], 'one_of_papers')}');
-        // print('');
-        return getLevelPapers(parsedData, level['level'], 'compulsory_papers');
-      }
-    }
-    return [];
-  }
-
-
-  Future<String> fetchPaperData(Degree degree, Major major) async {
-    final response = await http.get(Uri.parse('http://localhost:1234/${degree.title}/${major.name}'));
-
-    if (response.statusCode == 200) {
-      return response.body;
-    } else {
-      throw Exception('Failed to load majors');
-    }
   }
 }

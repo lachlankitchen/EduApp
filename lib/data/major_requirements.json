@@ -34,23 +34,56 @@
         }
       ],
       "one_of_papers": [
-        "MATH 120",
-        "MATH 130",
-        "MATH 140",
-        "COMO 101",
-        "STAT 110",
-        "STAT 115",
-        "BSNS 112",
-        "FINC 102"
+        { 
+          "MATH 120": {
+            "title": "Calculas n Shit",
+            "teaching_periods": [
+              "S2",
+              "SS"
+            ]
+          }
+        },
+        { 
+          "BSNS 112": {
+            "title": "Business n Shit",
+            "teaching_periods": [
+              "S1",
+              "S2"
+            ]
+          }
+        }
       ]
     },
     {
       "level": "200-level",
       "compulsory_papers": [
-        "COSC 201",
-        "COSC 202",
-        "COSC 203",
-        "COSC 204"
+        { 
+          "COMP 101": {
+            "title": "Foundations of Information Systems",
+            "teaching_periods": [
+              "S2",
+              "SS"
+            ]
+          }
+        },
+        { 
+          "COMP 161": {
+            "title": "Computer Programming",
+            "teaching_periods": [
+              "S1",
+              "S2"
+            ]
+          }
+        },
+        { 
+          "COMP 162": {
+            "title": "Foundations of Computer Science",
+            "teaching_periods": [
+              "S2",
+              "SS"            
+            ]
+          }
+        }
       ]
     },
     {
