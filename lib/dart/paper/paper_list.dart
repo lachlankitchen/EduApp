@@ -88,7 +88,7 @@ class PapersListScreen extends StatelessWidget {
         ],
       ),
       floatingActionButton: ElevatedButton(
-        onPressed: () {
+        onPressed: () async {
           final state = Provider.of<PathwayState>(context, listen: false);
           // Combine the two lists into a single list
           List<Paper> allPapers = [...compulsoryPapers, ...optionalPapers];
@@ -108,24 +108,63 @@ class PapersListScreen extends StatelessWidget {
           double wam = totalWeightedSum / totalWeight;
           double gpa = (wam * 9) / 100;
           state.addGPA(gpa);
-          state.addPapers(selectedPapers);
-          state.saveState();
-
-          remainingRequirements(degree, major, selectedPapers);
-
-          // if (pathwayCount < 3) {
-          //   _openDegreesListScreen(context);
-          // } else {
-          //   // Display a snackbar to inform the user
-          //   ScaffoldMessenger.of(context).showSnackBar(
-          //     const SnackBar(
-          //       content: Text('You cannot have more than three degrees.'),
-          //     ),
-          //   );
-          // }
 
 
+          String jsonData;
+          try {
+            jsonData = await fetchPaperData(degree, major, selectedPapers);
+            // Now you have the degrees from the server, use them to navigate to the next screen
+          } catch (error) {
+            // Handle error, perhaps show a dialog to the user
+            print('Error fetching majors: $error');
+            return; // Early return to exit the function if fetching degrees fails
+          }
 
+          final jsonMap = json.decode(jsonData);
+
+          Map<String, dynamic> jsonDataMap = jsonDecode(jsonData.toString());
+          print("HIT1");
+          // Check if there are remaining compulsory papers
+          bool hasRemainingPapers = jsonDataMap.containsKey("remaining_compulsory_papers");
+
+          // Check if there are remaining points
+          bool hasRemainingPoints = jsonDataMap.containsKey("remaining_points");
+
+          print("HIT3");
+
+          if (hasRemainingPapers || hasRemainingPoints) {
+            // Display the remaining requirements
+            String message = "Remaining Requirements:\n";
+
+            if (hasRemainingPapers) {
+              List<dynamic> remainingPapers = jsonDataMap["remaining_compulsory_papers"];
+              for (var paperEntry in remainingPapers) {
+                MapEntry<String, dynamic> paper = paperEntry.entries.first;
+                String paperCode = paper.key;
+                String paperTitle = paper.value["title"];
+                message += "$paperCode: $paperTitle\n";
+              }
+            }
+
+            if (hasRemainingPoints) {
+              int remainingPoints = jsonDataMap["remaining_points"];
+              message += "Remaining Points: $remainingPoints";
+            }
+
+            print("HIT4");
+
+            // Display the message to the user
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(
+                content: Text(message),
+              ),
+            );
+          } else {
+            // No remaining requirements, you can perform other actions here
+            // For example, add papers to state and save state as you mentioned
+            state.addPapers(selectedPapers);
+            state.saveState();
+          }
 
           Navigator.pushReplacement(
             context,
@@ -189,18 +228,11 @@ class PapersListScreen extends StatelessWidget {
     );
   }
   
-
-
-
-  
   Future<String> fetchPaperData(Degree degree, Major major, List<Paper> papersList) async {
     final url = Uri.parse('http://localhost:1234/${degree.title}/${major.name}');
    
-    // final response = await http.post(url);
     List<Map<String, dynamic>> jsonPapers = papersListToJson(papersList); 
     String papersJsonString = jsonEncode(jsonPapers);
-
-    // print(papersJsonString);
     
     final response = await http.post(
       url,
@@ -216,18 +248,6 @@ class PapersListScreen extends StatelessWidget {
     } else {
       // If the server did not return a 200 OK response, throw an exception.
       throw Exception('Failed to validate pathway');
-    }
-  }
-  
-  Future<void> remainingRequirements(Degree degree, Major major, List<Paper> selectedPapers) async {
-    String jsonData;
-    try {
-      jsonData = await fetchPaperData(degree, major, selectedPapers); // TODO: Make dynamic
-      print(jsonData);
-
-    } catch (error) {
-      // Handle error, perhaps show a dialog to the user
-      print('Error fetching remaining requirements: $error');
     }
   }
 }
