@@ -2,7 +2,7 @@ import requests
 from bs4 import BeautifulSoup
 import re
 degree_urls =[]
-with open('../Data/degree_urls.txt', 'r') as file:
+with open('../data/degree_urls.txt', 'r') as file:
     # Read each line of the file and add it to the list
     for line in file:
         degree_urls.append(line.strip())
