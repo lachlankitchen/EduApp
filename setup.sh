@@ -1,3 +1,9 @@
+brew install nlohmann-json
+
+brew install cpprestsdk
+
+brew install openssl
+
 # Change Directory to the "rest-api" source code directory
 cd lib/cpp/rest-api
 

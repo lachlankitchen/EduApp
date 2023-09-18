@@ -1,0 +1,120 @@
+{
+  "qualification": "Bachelor of Science",
+  "major": "Computer Science",
+  "levels": [
+    {
+      "level": "100-level",
+      "compulsory_papers": [
+        { 
+          "COMP 101": {
+            "title": "Foundations of Information Systems",
+            "teaching_periods": [
+              "S2",
+              "SS"
+            ]
+          }
+        },
+        { 
+          "COMP 161": {
+            "title": "Computer Programming",
+            "teaching_periods": [
+              "S1",
+              "S2"
+            ]
+          }
+        },
+        { 
+          "COMP 162": {
+            "title": "Foundations of Computer Science",
+            "teaching_periods": [
+              "S2",
+              "SS"            
+            ]
+          }
+        }
+      ],
+      "one_of_papers": [
+        { 
+          "MATH 120": {
+            "title": "Calculas n Shit",
+            "teaching_periods": [
+              "S2",
+              "SS"
+            ]
+          }
+        },
+        { 
+          "BSNS 112": {
+            "title": "Business n Shit",
+            "teaching_periods": [
+              "S1",
+              "S2"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "level": "200-level",
+      "compulsory_papers": [
+        { 
+          "COMP 101": {
+            "title": "Foundations of Information Systems",
+            "teaching_periods": [
+              "S2",
+              "SS"
+            ]
+          }
+        },
+        { 
+          "COMP 161": {
+            "title": "Computer Programming",
+            "teaching_periods": [
+              "S1",
+              "S2"
+            ]
+          }
+        },
+        { 
+          "COMP 162": {
+            "title": "Foundations of Computer Science",
+            "teaching_periods": [
+              "S2",
+              "SS"            
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "level": "300-level",
+      "one_of_papers": [
+        "COSC 326",
+        "COSC 345"
+      ],
+      "compulsory_papers": [
+        "COSC ***",
+        "COSC ***",
+        "COSC ***"
+      ]
+    },
+    {
+      "level": "Extra Points",
+      "total_extra_points": [
+        144
+      ],
+      "points_at_or_above_200_level": [
+        36
+      ],
+      "outside_points": [
+        90
+      ],
+      "notes": [
+        "Students are exempt from COMP 161 if they have gained entry to COMP 162 by passing COMP 151 with a grade of at least B or via an Advanced Placement Test.",
+        "Students who have passed at least one of MATH 120, 130, 140, COMO 101, STAT 110, 115, BSNS 112, or FINC 102 as part of another subject’s requirements do not need to pass another one of these papers to fulfil the Computer Science requirements."
+      ]
+    }
+  ],
+  "total": 360
+}
+

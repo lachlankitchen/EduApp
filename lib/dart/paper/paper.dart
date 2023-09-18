@@ -45,6 +45,25 @@ class Paper {
     required this.grade,
   });
 
+  /// Constructs a [Paper] instance with only the name.
+  ///
+  /// [name]: The name of the major.
+  Paper.withName({
+    required this.papercode,
+    required this.title,
+    required this.teachingPeriods
+  }) : 
+      subjectCode = "",
+      year = "",
+      points = 0,
+      efts = 0.0,
+      description = "",
+      prerequisites = const [],
+      restrictions = const [],
+      schedule = "",
+      grade = 0;
+
+
   /// Constructs a [Paper] from JSON data.
   ///
   /// [json]: The JSON data representing the paper.
@@ -65,4 +84,32 @@ class Paper {
       isSelected: false,
     );
   }
+
+    Map<String, dynamic> toJson() {
+    return {
+      'papercode': papercode,
+      'subject_code': subjectCode,
+      'year': year,
+      'title': title,
+      'points': points,
+      'efts': efts,
+      'teaching_periods': teachingPeriods,
+      'description': description,
+      'prerequisites': prerequisites,
+      'restrictions': restrictions,
+      'schedule': schedule,
+      'grade': grade,
+      'isSelected': isSelected,
+    };
+  }
+}
+
+List<Map<String, dynamic>> papersListToJson(List<Paper> papers) {
+  List<Map<String, dynamic>> jsonList = [];
+
+  for (var paper in papers) {
+    jsonList.add(paper.toJson());
+  }
+
+  return jsonList;
 }
