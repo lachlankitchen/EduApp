@@ -68,6 +68,9 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
+      - name: Print working directory
+        run: pwd
+
       - name: Run Python tests with coverage
         run: pytest --cov=./lib/python/ --cov-report=xml ./test/python/
         env:
