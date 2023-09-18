@@ -1,13 +1,15 @@
 # test/python/test_all.py
+import sys
+import os
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '../../lib/python')))
 
-from lib.python.allDegree import *  # replace with actual class or function names
-from lib.python.degreeURL import *  # replace with actual class or function names
-from lib.python.paperscraper import *  # replace with actual class or function names
-from lib.python.qualifications import *  # replace with actual class or function names
-from lib.python.schedule_scraper import *  # replace with actual class or function names
-from lib.python.test import *  # replace with actual class or function names
-from lib.python.testServer import *  # replace with actual class or function names
-
+from allDegree import *  # replace with actual class or function names
+from degreeURL import *  # replace with actual class or function names
+from paperscraper import *  # replace with actual class or function names
+from qualifications import *  # replace with actual class or function names
+from schedule_scraper import *  # replace with actual class or function names
+from test import *  # replace with actual class or function names
+from testServer import *  # replace with actual class or function names
 # Here create your test functions, one for each function or method you want to test
 def test_allDegree():
     assert True
