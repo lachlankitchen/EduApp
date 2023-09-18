@@ -4,6 +4,8 @@
 start_services() {
     # Start the REST API
     cd lib/cpp/rest-api/build
+    cmake ..
+    make
     ./rest_api &
     echo $! > ../../../../rest_api.pid
 
