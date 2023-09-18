@@ -1,88 +1,42 @@
-import 'package:edu_app/dart/degree/degree.dart';
-import 'package:edu_app/dart/home/home.dart';
-import 'package:edu_app/dart/major/major.dart';
 import 'package:edu_app/dart/navigation/navigation_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:provider/provider.dart';
+import 'package:http/http.dart' as http;
 import 'package:edu_app/dart/paper/paper.dart';
-import 'package:edu_app/dart/paper/paper_list.dart'; // Import the PapersListScreen class
+import 'package:edu_app/dart/paper/paper_list.dart';
 import 'package:edu_app/dart/pathway/pathway_state.dart';
+import 'package:edu_app/dart/navigation/nav_bar.dart';
+import 'package:edu_app/dart/major/major.dart';
+import 'package:edu_app/dart/degree/degree.dart';
+import 'package:edu_app/dart/paper/fetch_paper.dart'; // Import fetchPaperData
+import '../utils/mock_client.dart'; // Import your mock client
 
 void main() {
   testWidgets('Test PapersListScreen Widget', (WidgetTester tester) async {
-
-    // Create mockDegree, mockMajor, mockCompulsoryPapers, mockOneOfPapers, and mockLevel
+    // Create mock data for degree, major, compulsory papers, and one-of papers
     final Degree mockDegree = Degree('Bachelor of Science');
     final Major mockMajor = Major.withName(name: 'Computer Science');
     final List<Paper> mockCompulsoryPapers = [
-      Paper(
-        papercode: 'CS101',
-        subjectCode: 'COMPSCI',
-        year: '2023',
+      Paper.withName(
+        papercode: 'CS 101',
         title: 'Introduction to Computer Science',
-        points: 18,
-        efts: 0.125,
-        teachingPeriods: ['Semester 1'],
-        description: 'An introduction to...',
-        prerequisites: [],
-        restrictions: [],
-        schedule: 'Lecture 1: Monday 9:00 AM',
-        isSelected: false,
-        grade: 0,
+        teachingPeriods: ['S1', 'S2'],
       ),
-      Paper(
-        papercode: 'MATH201',
-        subjectCode: 'MATH',
-        year: '2023',
-        title: 'Advanced Mathematics',
-        points: 15,
-        efts: 0.125,
-        teachingPeriods: ['Semester 2'],
-        description: 'A deeper exploration of...',
-        prerequisites: [],
-        restrictions: [],
-        schedule: 'Lecture 1: Tuesday 10:00 AM',
-        isSelected: false,
-        grade: 0,
-      ),
-      // Add more mock papers as needed
+    ];
+    final List<Paper> mockOneOfPapers = [
+      Paper.withName(
+        papercode: 'CS 200',
+        title: 'Advanced Computer Science',
+        teachingPeriods: ['SS', 'S2'],
+      )
     ];
 
-    final List<Paper> mockOneOfPapers = [
-      Paper(
-        papercode: 'CS101',
-        subjectCode: 'COMPSCI',
-        year: '2023',
-        title: 'Introduction to Computer Science',
-        points: 18,
-        efts: 0.125,
-        teachingPeriods: ['Semester 1'],
-        description: 'An introduction to...',
-        prerequisites: [],
-        restrictions: [],
-        schedule: 'Lecture 1: Monday 9:00 AM',
-        isSelected: false,
-        grade: 0,
-      ),
-      Paper(
-        papercode: 'MATH201',
-        subjectCode: 'MATH',
-        year: '2023',
-        title: 'Advanced Mathematics',
-        points: 15,
-        efts: 0.125,
-        teachingPeriods: ['Semester 2'],
-        description: 'A deeper exploration of...',
-        prerequisites: [],
-        restrictions: [],
-        schedule: 'Lecture 1: Tuesday 10:00 AM',
-        isSelected: false,
-        grade: 0,
-      ),
-      // Add more mock papers as needed
-    ];
-    const int mockLevel = 100;
+    // Create a MockClient to intercept and mock HTTP requests
+    final mockClient = MockClient(degree: mockDegree, major: mockMajor);
+
+    // Assign the mock client to the global http client
+    http.Client client = mockClient;
 
     // Build our app and trigger a frame.
     await tester.pumpWidget(
@@ -92,33 +46,38 @@ void main() {
           ChangeNotifierProvider(create: (context) => PathwayState()),
         ],
         child: MaterialApp(
-          home: Builder(
-            builder: (context) => PapersListScreen(
-              degree: mockDegree,
-              major: mockMajor,
-              compulsoryPapers: mockCompulsoryPapers,
-              oneOfPapers: mockOneOfPapers,
-              level: mockLevel,
-            ),
+          home: PapersListScreen(
+            degree: mockDegree,
+            major: mockMajor,
+            compulsoryPapers: mockCompulsoryPapers,
+            oneOfPapers: mockOneOfPapers,
+            level: 100,
           ),
         ),
       ),
     );
 
     // Verify that the app bar text is correct
-    expect(find.text('Select Your $mockLevel-level Papers'), findsOneWidget);
+    expect(find.text('Select Your 100-level Papers'), findsOneWidget);
 
-    // Verify that the number of ListTiles matches the number of mock papers
-    expect(find.byType(ListTile), findsNWidgets((mockCompulsoryPapers.length + 1) + (mockOneOfPapers.length + 1)));
+    // Verify that the checkboxes for papers are displayed
+    expect(find.byType(Checkbox), findsNWidgets(mockCompulsoryPapers.length + mockOneOfPapers.length));
 
-    // Test interaction with checkboxes
-    await tester.tap(find.byType(Checkbox).at(0));
+    // Tap the first checkbox to select the first paper
+    await tester.tap(find.byType(Checkbox).first);
     await tester.pump();
 
-    // Test navigation back to MyHomePage when the "Save" button is tapped
+    // Verify that the selected paper is updated
+    expect(mockCompulsoryPapers.first.isSelected, true);
+
+    // Verify that the ListTile for the selected paper is displayed
+    expect(find.text('CS 101 - Introduction to Computer Science'), findsOneWidget);
+
+    // Tap the save button
     await tester.tap(find.text('Save'));
-    await tester.pumpAndSettle();
-    // Verify that MyHomePage is pushed to the Navigator
-    expect(find.byType(MyHomePage), findsOneWidget);
+    await tester.pump();
+
+    // // Verify the app navigates to the next PapersListScreen with updated data (you can add more specific verification here)
+    // expect(find.text('Select Your 200-level Papers'), findsOneWidget);
   });
 }

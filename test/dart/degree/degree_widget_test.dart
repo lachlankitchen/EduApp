@@ -6,6 +6,8 @@ import 'package:edu_app/dart/pathway/pathway_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:provider/provider.dart';
+import 'package:http/http.dart' as http; // Import http package
+import '../utils/mock_client.dart';
 
 void main() {
   testWidgets('Test DegreeListScreen Widget', (WidgetTester tester) async {
@@ -14,6 +16,12 @@ void main() {
       Degree('Bachelor of Arts'),
       Degree('Bachelor of Engineering'),    
     ];
+
+    // Create a MockClient to intercept and mock HTTP requests
+    final mockClient = MockClient(degree: mockDegrees[0]);
+
+    // Assign the mock client to the global http client
+    http.Client client = mockClient;
 
     Degree? selectedDegree;
 
@@ -43,12 +51,12 @@ void main() {
     // Verify that the correct number of ElevatedButtons are displayed
     expect(find.byType(ElevatedButton), findsNWidgets(mockDegrees.length));
 
-    // // Tap the first ElevatedButton
-    // await tester.tap(find.byType(ElevatedButton).first);
-    // await tester.pumpAndSettle();
+    // Tap the first ElevatedButton
+    await tester.tap(find.byType(ElevatedButton).first);
+    await tester.pumpAndSettle();
 
     // Verify that the selected degree is correct
-    // expect(selectedDegree, mockDegrees.first);
+    expect(selectedDegree, mockDegrees.first);
 
     // // Verify that the MajorListScreen is pushed to the navigator
     // expect(find.byType(MajorListScreen), findsOneWidget);

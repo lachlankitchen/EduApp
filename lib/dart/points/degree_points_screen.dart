@@ -18,10 +18,12 @@ class DegreesPointsScreen extends StatelessWidget {
     final dataMap = <String, double>{};
   
     double totalPoints = 0;
+    int majorCount = 0;
     if (state.savedPathways.isNotEmpty) {
       Pathway pathway = state.savedPathways[0];
       for (var major in pathway.majors) {
         totalPoints = 0;
+        majorCount++;
         for (var paper in pathway.papers) {
           totalPoints += paper.points;
         }
@@ -30,7 +32,7 @@ class DegreesPointsScreen extends StatelessWidget {
     }    
 
     // Calculate the remaining points
-    dataMap["Remaining Points"] = (360 - totalPoints);
+    dataMap["Remaining Points"] = ((360*majorCount) - totalPoints);
     
     return Scaffold(
       bottomNavigationBar: const NavBar(),

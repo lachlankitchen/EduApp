@@ -1,6 +1,8 @@
 import 'dart:convert';
 
+import 'package:edu_app/dart/degree/degree.dart';
 import 'package:edu_app/dart/home/home.dart';
+import 'package:edu_app/dart/major/major.dart';
 import 'package:edu_app/dart/navigation/navigation_provider.dart';
 import 'package:edu_app/dart/pathway/pathway_state.dart';
 import 'package:flutter/material.dart';
@@ -11,9 +13,11 @@ import '../utils/mock_client.dart';
 
 void main() {
   testWidgets('Test MyHomePage Widget', (WidgetTester tester) async {
-    // Create a MockClient to intercept and mock HTTP requests
-    final mockClient = MockClient();
+    final Degree mockDegree = Degree('Bachelor of Science');
 
+    // Create a MockClient with the mockDegree and null for majors
+    final mockClient = MockClient(degree: mockDegree);
+    
     // Assign the mock client to the global http client
     http.Client client = mockClient;
 

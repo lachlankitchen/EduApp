@@ -9,6 +9,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:provider/provider.dart';
 import 'package:pie_chart/pie_chart.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_test/flutter_test.dart';
+import 'package:provider/provider.dart';
+import 'package:pie_chart/pie_chart.dart';
 
 void main() {
   testWidgets('Test DegreesPointsScreen Widget', (WidgetTester tester) async {
@@ -20,8 +24,8 @@ void main() {
     ];
 
     final List<Major> mockMajors = [
-      Major(name: 'Major 1', requirements: mockRequirements, totalPoints: 270, isSelected: false),
-      Major(name: 'Major 2', requirements: mockRequirements, totalPoints: 270, isSelected: false),
+      Major(name: 'Major 1', requirements: mockRequirements, totalPoints: 360, isSelected: false),
+      Major(name: 'Major 2', requirements: mockRequirements, totalPoints: 360, isSelected: false),
     ];
 
     final List<Paper> mockPapers = [
@@ -30,7 +34,7 @@ void main() {
         subjectCode: 'SUBJECT1',
         year: '2023',
         title: 'Paper 1',
-        points: 60,
+        points: 18,
         efts: 0.5,
         teachingPeriods: ['TP1'],
         description: 'Description for Paper 1',
@@ -45,7 +49,7 @@ void main() {
         subjectCode: 'SUBJECT2',
         year: '2023',
         title: 'Paper 2',
-        points: 60,
+        points: 18,
         efts: 0.5,
         teachingPeriods: ['TP1'],
         description: 'Description for Paper 2',
@@ -60,7 +64,7 @@ void main() {
         subjectCode: 'SUBJECT3',
         year: '2023',
         title: 'Paper 3',
-        points: 60,
+        points: 18,
         efts: 0.5,
         teachingPeriods: ['TP1'],
         description: 'Description for Paper 3',
@@ -70,10 +74,9 @@ void main() {
         isSelected: false,
         grade: 0,
       ),
-      // Add more mock papers if needed
     ];
 
-    final Pathway mockPathway = Pathway(degree: mockDegree, majors: mockMajors, papers: mockPapers, gpa: 0, isSelected: false);
+    final Pathway mockPathway = Pathway(degree: mockDegree, majors: mockMajors, papers: mockPapers, gpa: 0, isSelected: true);
 
     await tester.pumpWidget(
       MultiProvider(
@@ -96,5 +99,16 @@ void main() {
 
     // Verify that the PieChart is displayed
     expect(find.byType(PieChart), findsOneWidget);
+
+    // Verify that the PieChart data contains the expected majors and their total points
+    final pieChartFinder = find.byType(PieChart);
+    final pieChartWidget = tester.widget<PieChart>(pieChartFinder);
+
+    // TODO: Validate points are calculated properly based on your mock data
+    // expect(pieChartWidget.dataMap, {
+    //   'Major 1': 216.0, // Updated value based on your mock data
+    //   'Major 2': 216.0, // Updated value based on your mock data
+    //   'Remaining Points': 72.0, // Updated value based on your mock data
+    // });
   });
 }
