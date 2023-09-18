@@ -55,8 +55,10 @@ int main(void)
 
   svr.Get("/:degree/:major", [&](const Request &req, Response &res)
             {
+    auto degree = req.path_params.at("degree"); // TODO: @CONNOR Utilise when quering by degree
     auto major = req.path_params.at("major"); // TODO: @CONNOR Utilise when quering by major
-
+    std::cout << "Degree parameter: " << degree << std::endl;
+    std::cout << "Major parameter: " << major << std::endl;
     std::filesystem::path json_file_path = std::filesystem::path("..") / ".." / ".." / "data" / "major_requirements.json";
 
     if (!std::filesystem::exists(json_file_path)) {
