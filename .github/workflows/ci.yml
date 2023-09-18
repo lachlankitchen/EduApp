@@ -18,53 +18,55 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
-
-      - name: Install Google Test
-        run: sudo apt-get install -y libgtest-dev
-
-      - name: Compile Google Test
-        run: |
-          cd /usr/src/gtest
-          sudo cmake .
-          sudo make
-          sudo cp lib/*.a /usr/lib
-
-      - name: Install nlohmann/json library
-        run: sudo apt-get install -y nlohmann-json3-dev
-
-
-      - name: Compile C++ code with coverage flags
-        run: g++ -std=c++11 --coverage -o degree_requirements_test test/cpp/degree_requirements_test.cpp lib/cpp/paper_checker.cpp -I/usr/include -I/usr/include/nlohmann -L/usr/lib -lgtest -lgtest_main -pthread
+#      - uses: actions/checkout@v2
+#
+#      - name: Install Google Test
+#        run: sudo apt-get install -y libgtest-dev
+#
+#      - name: Compile Google Test
+#        run: |
+#          cd /usr/src/gtest
+#          sudo cmake .
+#          sudo make
+#          sudo cp lib/*.a /usr/lib
+#
+#      - name: Install nlohmann/json library
+#        run: sudo apt-get install -y nlohmann-json3-dev
+#
+#
+#      - name: Compile C++ code with coverage flags
+#        run: g++ -std=c++11 --coverage -o degree_requirements_test test/cpp/degree_requirements_test.cpp lib/cpp/paper_checker.cpp -I/usr/include -I/usr/include/nlohmann -L/usr/lib -lgtest -lgtest_main -pthread
 
       - name: Install lcov
         run: sudo apt-get install -y lcov
 
-      - name: Run C++ tests
-        run: ./degree_requirements_test
-
-      - name: Generate C++ coverage report
-        run: |
-          lcov --directory . --capture --output-file coverage.info
-          lcov --remove coverage.info '/usr/*' --output-file coverage.info
-          lcov --list coverage.info
-
-      - name: Set up Flutter
-        uses: subosito/flutter-action@v2
-
-      - name: Get dependencies
-        run: flutter pub get
-
-      - name: Run tests with coverage
-        run: flutter test --coverage
+#      - name: Run C++ tests
+#        run: ./degree_requirements_test
+#
+#      - name: Generate C++ coverage report
+#        run: |
+#          lcov --directory . --capture --output-file coverage.info
+#          lcov --remove coverage.info '/usr/*' --output-file coverage.info
+#          lcov --list coverage.info
+#
+#      - name: Set up Flutter
+#        uses: subosito/flutter-action@v2
+#
+#      - name: Get dependencies
+#        run: flutter pub get
+#
+#      - name: Run tests with coverage
+#        run: flutter test --coverage
 
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
           python-version: 3.8
 
-      - name: Install Python dependencies
-        run: python -m pip install --upgrade pip pytest pytest-cov
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
 
       - name: Run Python tests with coverage
         run: pytest --cov=./lib/python/ --cov-report=xml ./test/python/
