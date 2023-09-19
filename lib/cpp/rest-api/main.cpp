@@ -33,7 +33,6 @@ int main(void)
   svr.Get("/:degree/majors", [&](const Request &req, Response &res)
           {
     auto degree = req.path_params.at("degree"); // TODO: @CONNOR Utilise when quering by degree
-    std::cout << "Degree parameter: " << degree << std::endl;// PRINT statement for degrees here. need to develope functionality for each degree.
     std::filesystem::path json_file_path = std::filesystem::path("..") / ".." / ".." / "data" / "degree_majors.json";
 
     if (!std::filesystem::exists(json_file_path)) {

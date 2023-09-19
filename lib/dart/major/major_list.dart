@@ -78,36 +78,6 @@ class MajorListScreen extends StatelessWidget {
   /// [selectedMajors]: The list of selected majors.
   Future<void> navigateToPapersListScreen(BuildContext context, PathwayState state, Degree degree, List<Major> majors) async {
     state.addMajors(majors);
-    // const String papersJson = '''
-    // [
-    //   {
-    //     "papercode": "CS 101",
-    //     "subject_code": "COMPSCI",
-    //     "year": "2023",
-    //     "title": "Introduction to Computer Science",
-    //     "points": 18,
-    //     "efts": 0.125,
-    //     "teaching_periods": ["Semester 1"],
-    //     "description": "An introduction to...",
-    //     "prerequisites": [],
-    //     "restrictions": [],
-    //     "schedule": "Lecture 1: Monday 9:00 AM"
-    //   },
-    //   {
-    //     "papercode": "CS 162",
-    //     "subject_code": "COMPSCI",
-    //     "year": "2023",
-    //     "title": "Computer Programming",
-    //     "points": 18,
-    //     "efts": 0.125,
-    //     "teaching_periods": ["Semester 1"],
-    //     "description": "An introduction to...",
-    //     "prerequisites": [],
-    //     "restrictions": [],
-    //     "schedule": "Lecture 1: Monday 9:00 AM"
-    //   }
-    // ]
-    // ''';
 
     String jsonData;
     try {
