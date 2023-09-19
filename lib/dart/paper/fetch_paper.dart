@@ -40,10 +40,6 @@ import '../major/major.dart';
     List<dynamic> levels = parsedData['levels'];
     for (var level in levels) {
       if(level["level"] == "$levelInt-level") {
-        // print('Level: ${level['level']}');
-        // print('Compulsory Papers: ${getLevelPapers(parsedData, level['level'], 'compulsory_papers')}');
-        // print('One of Papers: ${getLevelPapers(parsedData, level['level'], 'one_of_papers')}');
-        // print('');
         return getLevelPapers(parsedData, level['level'], paperKey);
       }
     }
