@@ -62,17 +62,12 @@ class PathwayState extends ChangeNotifier {
     int totalWeight = 0;
     
     for (int i = 0; i < selectedPapers.length; i++) {
-      print("${selectedPapers[i].papercode}: ${selectedPapers[i].grade}");
-      print("${selectedPapers[i].papercode}: ${selectedPapers[i].points}");
-
       totalWeightedSum += selectedPapers[i].grade * selectedPapers[i].points;
       totalWeight += selectedPapers[i].points;
     }
 
     double wam = totalWeightedSum / totalWeight;
     gpa = (wam * 9) / 100;
-
-    print('gpa: $gpa');
 
     notifyListeners();
   }
