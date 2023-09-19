@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../navigation/nav_bar.dart';
+
 class GradesScreen extends StatefulWidget {
   GradesScreen({Key? key}) : super(key: key);
 
@@ -64,6 +66,7 @@ class _GradesScreenState extends State<GradesScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      bottomNavigationBar: const NavBar(),
       appBar: AppBar(
         title: const Text('Grades'),
         backgroundColor: const Color(0xFF10428C),
