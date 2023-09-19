@@ -51,11 +51,11 @@ class Paper {
   Paper.withName({
     required this.papercode,
     required this.title,
-    required this.teachingPeriods
+    required this.teachingPeriods,
+    required this.points
   }) : 
       subjectCode = "",
       year = "",
-      points = 0,
       efts = 0.0,
       description = "",
       prerequisites = const [],

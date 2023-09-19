@@ -100,10 +100,6 @@ class PapersListScreen extends StatelessWidget {
 
               List<Paper> selectedPapers = allPapers.where((paper) => paper.isSelected).toList();
 
-              // Calculate GPA based on selected papers' grades
-              double gpa = calculateGPA(selectedPapers);
-
-              state.addGPA(gpa);
               state.addPapers(selectedPapers);
               state.saveState();
               Navigator.pushReplacement(
@@ -112,7 +108,7 @@ class PapersListScreen extends StatelessWidget {
               );
             },
             style: ElevatedButton.styleFrom(
-              primary: const Color(0xFFf9c000), // Button background color
+              backgroundColor: const Color(0xFFf9c000), // Button background color
               padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 24), // Adjust padding as needed
               textStyle: const TextStyle(fontSize: 16), // Text style
             ),
@@ -128,12 +124,9 @@ class PapersListScreen extends StatelessWidget {
 
               List<Paper> selectedPapers = allPapers.where((paper) => paper.isSelected).toList();
 
-              // Calculate GPA based on selected papers' grades
-              double gpa = calculateGPA(selectedPapers);
-
-              state.addGPA(gpa);
               state.addPapers(selectedPapers);
-              
+              state.calculateGPA();
+
               String jsonData;
               try {
                 jsonData = await fetchPaperData(degree, major); // TODO: Make dynamic
@@ -188,6 +181,7 @@ class PapersListScreen extends StatelessWidget {
                       if (grade != null && grade >= 0 && grade <= 100) {
                         // Update the grade of the paper here
                         paper.grade = grade;
+                        print(paper.grade);
                       }
                     },
                   ),
@@ -236,22 +230,6 @@ class PapersListScreen extends StatelessWidget {
       // If the server did not return a 200 OK response, throw an exception.
       throw Exception('Failed to validate pathway');
     }
-  }
-  
-  double calculateGPA(List<Paper> selectedPapers) {
-    // Calculate GPA based on selected papers' grades
-    double totalWeightedSum = 0;
-    int totalWeight = 0;
-
-    for (int i = 0; i < selectedPapers.length; i++) {
-      totalWeightedSum += selectedPapers[i].grade * selectedPapers[i].points;
-      totalWeight += selectedPapers[i].points;
-    }
-
-    double wam = totalWeightedSum / totalWeight;
-    double gpa = (wam * 9) / 100;
-
-    return gpa;
   }
 }
 

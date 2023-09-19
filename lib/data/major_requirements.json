@@ -11,7 +11,8 @@
             "teaching_periods": [
               "S2",
               "SS"
-            ]
+            ],
+            "points": 18
           }
         },
         { 
@@ -20,7 +21,8 @@
             "teaching_periods": [
               "S1",
               "S2"
-            ]
+            ],
+            "points": 18
           }
         },
         { 
@@ -29,7 +31,8 @@
             "teaching_periods": [
               "S2",
               "SS"            
-            ]
+            ],
+            "points": 18
           }
         }
       ],
@@ -40,7 +43,8 @@
             "teaching_periods": [
               "S2",
               "SS"
-            ]
+            ],
+            "points": 18
           }
         },
         { 
@@ -49,7 +53,8 @@
             "teaching_periods": [
               "S1",
               "S2"
-            ]
+            ],
+            "points": 18
           }
         }
       ]
@@ -63,7 +68,8 @@
             "teaching_periods": [
               "S2",
               "SS"
-            ]
+            ],
+            "points": 18
           }
         },
         { 
@@ -72,7 +78,8 @@
             "teaching_periods": [
               "S1",
               "S2"
-            ]
+            ],
+            "points": 18
           }
         },
         { 
@@ -81,7 +88,8 @@
             "teaching_periods": [
               "S2",
               "SS"            
-            ]
+            ],
+            "points": 18
           }
         }
       ]
@@ -89,13 +97,48 @@
     {
       "level": "300-level",
       "one_of_papers": [
-        "COSC 326",
-        "COSC 345"
+        { 
+          "COSC 326": {
+            "title": "Complex Problem Solving",
+            "teaching_periods": [
+              "S1",
+              "S2"
+            ],
+            "points": 18
+          }
+        },
+        { 
+          "COSC 345": {
+            "title": "Software Engineering",
+            "teaching_periods": [
+              "S1",
+              "S2"
+            ],
+            "points": 18
+          }
+        }
       ],
       "compulsory_papers": [
-        "COSC ***",
-        "COSC ***",
-        "COSC ***"
+        { 
+          "COSC 360": {
+            "title": "Game Development",
+            "teaching_periods": [
+              "SS"
+            ],
+            "points": 18
+          }
+        },
+        { 
+          "COSC 349": {
+            "title": "Cloud Computing Infrastructure",
+            "teaching_periods": [
+              "S1",
+              "S2"
+            ]
+            ,
+            "points": 18
+          }
+        }
       ]
     },
     {

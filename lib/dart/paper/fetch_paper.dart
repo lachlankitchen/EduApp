@@ -19,11 +19,13 @@ import '../major/major.dart';
               final teachingPeriods = (attributes['teaching_periods'] as List<dynamic>)
                 ?.map<String>((period) => period.toString())
                 ?.toList() ?? []; // Provide a default value if needed
+              final points = attributes['points'];
 
               papers.add(Paper.withName(
                 papercode: paperCode,
                 title: attributes['title'] ?? '', // Provide a default value if needed
                 teachingPeriods: teachingPeriods, // Provide a default value if needed
+                points: points
               ));
             }
           }
