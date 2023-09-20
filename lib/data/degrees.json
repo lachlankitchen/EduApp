@@ -1,8 +1,5 @@
 {
   "degrees": [
-    "Diploma in Arts (DipArts)",
-    "Diploma in Global Cultures (DipGlobalC)",
-    "Diploma in Language (DipLang)",
     "Bachelor of Arts (BA)",
     "Bachelor of Arts and Commerce (BACom)",
     "Bachelor of Arts and Science (BASc)",
@@ -10,9 +7,6 @@
     "Bachelor of Performing Arts (BPA)",
     "Bachelor of Social Work (BSW)",
     "Bachelor of Social Work with Honours (BSW(Hons))",
-    "Certificate in Entrepreneurship (CertEntr)",
-    "Diploma in Commerce (DipCom)",
-    "Diploma in Entrepreneurship (DipEntr)",
     "Bachelor of Commerce (BCom)",
     "Bachelor of Commerce and Science (BComSc)",
     "Bachelor of Entrepreneurship (BEntr)",
@@ -21,15 +15,12 @@
     "Bachelor of Oral Health (BOH)",
     "Bachelor of Dental Surgery with Honours (BDS(Hons))",
     "Bachelor of Dental Technology with Honours (BDentTech(Hons))",
-    "Certificate of Proficiency (COP)",
-    "Graduate Certificate in Teacher Development (GCertTchrDev)",
     "Bachelor of Teaching (BTchg)",
     "Bachelor of Biomedical Sciences (BBiomedSc)",
     "Bachelor of Health Sciences (BHealSc)",
     "Bachelor of Medical Laboratory Science (BMLSc)",
     "Bachelor of Pharmaceutical Science (BPharmSc)",
     "Bachelor of Radiation Therapy (BRT)",
-    "Health Sciences First Year (BSc)",
     "Bachelor of Medical Laboratory Science with Honours (BMLSc(Hons))",
     "Bachelor of Laws (LLB)",
     "Bachelor of Laws with Honours (LLB(Hons))",
@@ -42,7 +33,6 @@
     "Bachelor of Science (BSc)",
     "Bachelor of Surveying (BSurv)",
     "Bachelor of Surveying with Honours (BSurv(Hons))",
-    "Diploma in Theology (DipTheol)",
     "Bachelor of Theology (BTheol)",
     "Bachelor of Theology with Honours (BTheol(Hons))"
   ]

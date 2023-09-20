@@ -11,7 +11,7 @@ int main(void)
 
   svr.Get("/degrees", [](const Request &req, Response &res)
           {
-      std::filesystem::path json_file_path = std::filesystem::path("..") / ".." / ".." / "data" / "degrees.json";
+      std::filesystem::path json_file_path = std::filesystem::path("..") / ".." / ".." / "data" / "singleDegreesWithMajors.json";
       // Use std::filesystem::path to construct the path, which handles separators
       if (!std::filesystem::exists(json_file_path)) {
           res.status = 404;
@@ -28,7 +28,7 @@ int main(void)
       res.set_header("Access-Control-Allow-Headers", "X-Requested-With, Content-Type");
       res.set_content(json_content, "application/json");
 
-      std::cout << "Successfully served the JSON file.\n"; });
+      std::cout << "Successfully served the JSON file.\n"; });// get degrees.
 
   svr.Get("/:degree/majors", [&](const Request &req, Response &res)
           {
@@ -50,7 +50,7 @@ int main(void)
     res.set_header("Access-Control-Allow-Headers", "X-Requested-With, Content-Type");
     res.set_content(json_content, "application/json ");
 
-    std::cout << "Successfully served the JSON file.\n"; });
+    }); //get majors by degree.
 
   svr.Get("/:degree/:major", [&](const Request &req, Response &res)
             {
@@ -73,7 +73,7 @@ int main(void)
     res.set_header("Access-Control-Allow-Headers", "X-Requested-With, Content-Type");
     res.set_content(json_content, "application/json");
 
-    std::cout << "Successfully served the JSON file.\n"; });
+    std::cout << "Successfully served the JSON file.\n"; }); //get major requirements by degree and major.
 
   svr.Post("/:degree/:major", [&](const Request &req, Response &res)
             {
