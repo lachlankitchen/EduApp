@@ -1,13 +1,25 @@
 import 'package:edu_app/dart/grade/grade.dart';
+import 'package:edu_app/dart/navigation/navigation_provider.dart';
+import 'package:edu_app/dart/pathway/pathway_state.dart';
+import 'package:edu_app/dart/points/degree_points_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:provider/provider.dart';
 
 void main() {
   testWidgets('GradesScreen Widget Test', (WidgetTester tester) async {
     // Build our widget and trigger a frame.
-    await tester.pumpWidget(MaterialApp(
-      home: GradesScreen(),
-    ));
+    await tester.pumpWidget(
+      MultiProvider(
+        providers: [
+          ChangeNotifierProvider(create: (context) => NavigationProvider()),
+          ChangeNotifierProvider(create: (context) => PathwayState()),
+        ],
+        child: MaterialApp(
+          home: GradesScreen(),        
+        ),
+      ),
+    );
 
     // Verify that the initial average is displayed correctly.
     expect(find.text('Average: 0.0'), findsOneWidget);

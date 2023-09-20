@@ -181,7 +181,6 @@ class PapersListScreen extends StatelessWidget {
                       if (grade != null && grade >= 0 && grade <= 100) {
                         // Update the grade of the paper here
                         paper.grade = grade;
-                        print(paper.grade);
                       }
                     },
                   ),

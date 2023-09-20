@@ -10,8 +10,7 @@ class Paper {
   final List<String> prerequisites;
   final List<String> restrictions;
   final String schedule;
-  int grade;
-
+  int? grade;
   bool isSelected = false;
 
   /// Constructs a [Paper].
@@ -42,7 +41,7 @@ class Paper {
     required this.restrictions,
     required this.schedule,
     required this.isSelected,
-    required this.grade,
+    this.grade,
   });
 
   /// Constructs a [Paper] instance with only the name.
@@ -61,31 +60,10 @@ class Paper {
       prerequisites = const [],
       restrictions = const [],
       schedule = "",
+      isSelected = false,
       grade = 0;
 
-
-  /// Constructs a [Paper] from JSON data.
-  ///
-  /// [json]: The JSON data representing the paper.
-  factory Paper.fromJson(Map<String, dynamic> json) {
-    return Paper(
-      papercode: json['papercode'],
-      subjectCode: json['subject_code'],
-      year: json['year'],
-      title: json['title'],
-      points: json['points'],
-      efts: json['efts'],
-      teachingPeriods: List<String>.from(json['teaching_periods']),
-      description: json['description'],
-      prerequisites: List<String>.from(json['prerequisites']),
-      restrictions: List<String>.from(json['restrictions']),
-      schedule: json['schedule'],
-      grade: 0,
-      isSelected: false,
-    );
-  }
-
-    Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson() {
     return {
       'papercode': papercode,
       'subject_code': subjectCode,
@@ -98,8 +76,8 @@ class Paper {
       'prerequisites': prerequisites,
       'restrictions': restrictions,
       'schedule': schedule,
+      'isSelected': false,
       'grade': grade,
-      'isSelected': isSelected,
     };
   }
 }

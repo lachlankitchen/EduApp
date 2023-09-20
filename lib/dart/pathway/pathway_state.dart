@@ -48,6 +48,7 @@ class PathwayState extends ChangeNotifier {
       }
     }
 
+    print('calculateGPA(); $gpa');
     calculateGPA();
 
     notifyListeners();
@@ -62,7 +63,7 @@ class PathwayState extends ChangeNotifier {
     int totalWeight = 0;
     
     for (int i = 0; i < selectedPapers.length; i++) {
-      totalWeightedSum += selectedPapers[i].grade * selectedPapers[i].points;
+      totalWeightedSum += selectedPapers[i].grade !* selectedPapers[i].points;
       totalWeight += selectedPapers[i].points;
     }
 

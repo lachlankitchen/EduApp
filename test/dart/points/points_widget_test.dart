@@ -16,63 +16,89 @@ import 'package:pie_chart/pie_chart.dart';
 
 void main() {
   testWidgets('Test DegreesPointsScreen Widget', (WidgetTester tester) async {
-    final Degree mockDegree = Degree('Bachelor of Science');
-
-    final List<Requirement> mockRequirements = [
-      Requirement(level: 100, papers: ['PAPER1', 'PAPER2'], points: 120),
-      Requirement(level: 200, papers: ['PAPER3'], points: 150),
-    ];
+    final Degree mockDegree = Degree.fromJson({
+      'title': 'Bachelor of Science',
+    });
 
     final List<Major> mockMajors = [
-      Major(name: 'Major 1', requirements: mockRequirements, totalPoints: 360, isSelected: false),
-      Major(name: 'Major 2', requirements: mockRequirements, totalPoints: 360, isSelected: false),
+      Major.fromJson({
+        'name': 'Major 1',
+        'levels': [
+          {
+            'level': 100,
+            'papers': ['PAPER1', 'PAPER2'],
+            'points': 120,
+          },
+          {
+            'level': 200,
+            'papers': ['PAPER3'],
+            'points': 150,
+          },
+        ],
+        'totalPoints': 360,
+        'isSelected': false,
+      }),
+      Major.fromJson({
+        'name': 'Major 2',
+        'requirements': [
+              {
+            'level': 100,
+            'papers': ['PAPER1', 'PAPER2'],
+            'points': 120,
+          },
+          {
+            'level': 200,
+            'papers': ['PAPER3'],
+            'points': 150,
+          }
+        ],
+        'totalPoints': 360,
+        'isSelected': false,
+      }),
     ];
 
-    final List<Paper> mockPapers = [
+    List<Paper> mockPapers = [
       Paper(
-        papercode: 'PAPER1',
-        subjectCode: 'SUBJECT1',
-        year: '2023',
-        title: 'Paper 1',
+        papercode: "COMP161",
+        subjectCode: "Computer and Information Science",
+        year: "2023",
+        title: "Computer Programming",
         points: 18,
-        efts: 0.5,
-        teachingPeriods: ['TP1'],
-        description: 'Description for Paper 1',
+        efts: 0.1500,
+        teachingPeriods: ["S1", "S2"],
+        description: "An introduction to computer programming suitable for beginners with little or no prior experience. Introduces the Java programming language, basic object-oriented concepts, and simple graphical applications. If you have no prior computer programming background, then COMP 161 is the paper for you. It is a beginner's introduction to programming in the object-oriented Java language. We offer COMP 161 on campus in S1, and by distance in S2 and in a 'non-standard' period (N1 / Pre Christmas Summer School). COMP 161 occupies an important part in the computer science curriculum because it is normally required preparation for COMP 162 (which is a prerequisite for all 200-level Computer Science papers). Students with prior programming experience may sit an Advanced Placement Test for direct entry to COMP162.",
         prerequisites: [],
-        restrictions: [],
-        schedule: 'Schedule for Paper 1',
+        restrictions: ["COMP 160"],
+        schedule: "Arts and Music, Commerce, Science",
         isSelected: false,
-        grade: 0,
       ),
       Paper(
-        papercode: 'PAPER2',
-        subjectCode: 'SUBJECT2',
-        year: '2023',
-        title: 'Paper 2',
+        papercode: "COSC201",
+        subjectCode: "Computer Science",
+        year: "2023",
+        title: "Algorithms and Data Structures",
         points: 18,
-        efts: 0.5,
-        teachingPeriods: ['TP1'],
-        description: 'Description for Paper 2',
-        prerequisites: [],
-        restrictions: [],
-        schedule: 'Schedule for Paper 2',
+        efts: 0.1500,
+        teachingPeriods: ["S1"],
+        description: "Development and analysis of fundamental algorithms and data structures and their applications including: sorting and searching, dynamic programming, graph and tree algorithms, and string processing algorithms.",
+        prerequisites: ["COMP 160", "COMP 162"],
+        restrictions: ["COSC 242"],
+        schedule: "Arts and Music, Commerce, Science",
         isSelected: false,
-        grade: 0,
       ),
       Paper(
-        papercode: 'PAPER3',
-        subjectCode: 'SUBJECT3',
-        year: '2023',
-        title: 'Paper 3',
+        papercode: "COSC326",
+        subjectCode: "Computer Science",
+        year: "2023",
+        title: "Computational Problem Solving",
         points: 18,
-        efts: 0.5,
-        teachingPeriods: ['TP1'],
-        description: 'Description for Paper 3',
-        prerequisites: [],
+        efts: 0.15,
+        teachingPeriods: ["S1"],
+        description: "Solving problems in a computational environment. Choosing the right techniques, verifying performance, understanding and satisfying client requirements. Working individually and in teams to provide effective solutions. This paper develops and extends the analytical and creative skills required in programming. A series of \u00e9tudes - some individual, some in pairs and some in groups - require solutions that challenge your abilities as programmers. As well as finding solutions, there is an emphasis on testing and verifying them and communicating the outcome to the \"client\" (who, in this case, is the instructor).",
+        prerequisites: ["COSC 201", "COSC 202", "COSC 242"],
         restrictions: [],
-        schedule: 'Schedule for Paper 3',
+        schedule: "Arts and Music, Science",
         isSelected: false,
-        grade: 0,
       ),
     ];
 
@@ -104,11 +130,10 @@ void main() {
     final pieChartFinder = find.byType(PieChart);
     final pieChartWidget = tester.widget<PieChart>(pieChartFinder);
 
-    // TODO: Validate points are calculated properly based on your mock data
-    // expect(pieChartWidget.dataMap, {
-    //   'Major 1': 216.0, // Updated value based on your mock data
-    //   'Major 2': 216.0, // Updated value based on your mock data
-    //   'Remaining Points': 72.0, // Updated value based on your mock data
-    // });
+    expect(pieChartWidget.dataMap, {
+      'Major 1': 54.0, // Updated value based on your mock data
+      'Major 2': 54.0, // (3 * 18)
+      'Remaining Points': 666.0, // (360 * 2) - (3 * 18)
+    });
   });
 }

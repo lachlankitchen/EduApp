@@ -1,10 +1,10 @@
 import 'package:edu_app/dart/navigation/navigation_provider.dart';
+import 'package:edu_app/dart/paper/paper_list.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:provider/provider.dart';
 import 'package:http/http.dart' as http;
 import 'package:edu_app/dart/paper/paper.dart';
-import 'package:edu_app/dart/paper/paper_list.dart';
 import 'package:edu_app/dart/pathway/pathway_state.dart';
 import 'package:edu_app/dart/navigation/nav_bar.dart';
 import 'package:edu_app/dart/major/major.dart';
@@ -19,16 +19,18 @@ void main() {
     final Major mockMajor = Major.withName(name: 'Computer Science');
     final List<Paper> mockCompulsoryPapers = [
       Paper.withName(
-        papercode: 'CS 101',
-        title: 'Introduction to Computer Science',
+        papercode: 'COMP161',
+        title: 'Computer and Information Science',
         teachingPeriods: ['S1', 'S2'],
+        points: 18
       ),
     ];
     final List<Paper> mockOneOfPapers = [
       Paper.withName(
-        papercode: 'CS 200',
-        title: 'Advanced Computer Science',
+        papercode: 'COSC201',
+        title: 'Algorithms and Data Structures',
         teachingPeriods: ['SS', 'S2'],
+        points: 18
       )
     ];
 
@@ -71,7 +73,7 @@ void main() {
     expect(mockCompulsoryPapers.first.isSelected, true);
 
     // Verify that the ListTile for the selected paper is displayed
-    expect(find.text('CS 101 - Introduction to Computer Science'), findsOneWidget);
+    expect(find.text('COMP161 - Computer and Information Science'), findsOneWidget);
 
     // Tap the save button
     await tester.tap(find.text('Save'));

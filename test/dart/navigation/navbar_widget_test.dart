@@ -1,50 +1,42 @@
-import 'package:edu_app/dart/navigation/nav_bar.dart';
-import 'package:edu_app/dart/navigation/navigation_provider.dart';
+import 'package:edu_app/dart/pathway/pathway_state.dart';
+import 'package:edu_app/dart/points/degree_points_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:provider/provider.dart';
+import 'package:edu_app/dart/navigation/nav_bar.dart';
+import 'package:edu_app/dart/navigation/navigation_provider.dart';
+import 'package:edu_app/dart/grade/grade.dart'; // Import the GradesScreen class
+import 'package:edu_app/dart/home/home.dart'; // Import the MyHomePage class
 
 void main() {
-  testWidgets('NavBar widget test', (WidgetTester tester) async {
-    // Create a mock NavigationProvider
-    final navigationProvider = NavigationProvider();
-
-    // Build the widget tree with the NavBar widget wrapped in the MultiProvider
+  testWidgets('Test NavBar Widget', (WidgetTester tester) async {
+    // Build our app and trigger a frame.
     await tester.pumpWidget(
       MultiProvider(
         providers: [
-          ChangeNotifierProvider.value(value: navigationProvider),
+          ChangeNotifierProvider(create: (context) => NavigationProvider()),
+          ChangeNotifierProvider(create: (context) => PathwayState()),
         ],
         child: const MaterialApp(
-          home: Scaffold(
-            bottomNavigationBar: NavBar(),
-          ),
+          home: NavBar(),
         ),
       ),
     );
 
-    expect(navigationProvider.currentIndex, 0);
+    // Verify the presence of the BottomNavigationBar
+    expect(find.byType(BottomNavigationBar), findsOneWidget);
 
-    // Verify that the initial index of the NavBar is 0
-    expect(find.text('My Pathway'), findsOneWidget);
-    
-    // Tap on the second item (Grades)
-    await tester.tap(find.byIcon(Icons.book));
-    await tester.pump();
-
-    expect(find.text('Grades'), findsOneWidget);
-
-    // Tap on the third item (Points)
-    await tester.tap(find.byIcon(Icons.pie_chart));
-    await tester.pump();
-
-    expect(find.text('Points'), findsOneWidget);
-
-    // Tap on the first item (Points)
+    // Test navigation behavior by tapping each item
     await tester.tap(find.byIcon(Icons.list));
-    await tester.pump();
+    await tester.pumpAndSettle();
+    expect(find.byType(MyHomePage), findsOneWidget);
 
-    expect(navigationProvider.currentIndex, 1);
+    await tester.tap(find.byIcon(Icons.book));
+    await tester.pumpAndSettle();
+    expect(find.byType(GradesScreen), findsOneWidget);
 
+    await tester.tap(find.byIcon(Icons.pie_chart));
+    await tester.pumpAndSettle();
+    expect(find.byType(DegreesPointsScreen), findsOneWidget);
   });
 }
