@@ -115,43 +115,46 @@ class PapersListScreen extends StatelessWidget {
             child: const Text('Save'),
           ),
           const SizedBox(width: 16), // Add spacing between buttons
-          ElevatedButton(
-            onPressed: () async {
-              final state = Provider.of<PathwayState>(context, listen: false);
-
-              // Combine the two lists into a single list
-              List<Paper> allPapers = [...compulsoryPapers, ...oneOfPapers];
-
-              List<Paper> selectedPapers = allPapers.where((paper) => paper.isSelected).toList();
-
-              state.addPapers(selectedPapers);
-              state.calculateGPA();
-
-              String jsonData;
-              try {
-                jsonData = await fetchPaperData(degree, major); // TODO: Make dynamic
-                // Now you have the degrees from the server, use them to navigate to the next screen
-              } catch (error) {
-                // Handle error, perhaps show a dialog to the user
-                print('Error fetching papers: $error');
-                return; // Early return to exit the function if fetching degrees fails
-              }
-
-              int nextlevel = level + 100;
-              List<Paper> nextCompulsoryPapers = getPaperData(jsonData, nextlevel, 'compulsory_papers');
-              List<Paper> nextOneOfPapers = getPaperData(jsonData, nextlevel, 'one_of_papers');
-
-              Navigator.pushReplacement(
-                context,
-                MaterialPageRoute(builder: (context) => PapersListScreen(degree: degree, major: major, compulsoryPapers: nextCompulsoryPapers, oneOfPapers: nextOneOfPapers, level: nextlevel)),
-              );
-            },
-            style: ElevatedButton.styleFrom(
-              primary: const Color(0xFFf9c000), // Button background color
-              padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 24), // Adjust padding as needed
-              textStyle: const TextStyle(fontSize: 16), // Text style
+          Visibility(
+            visible: level < 300, // Check if the level is less than to 300
+            child: ElevatedButton(
+              onPressed: () async {
+                final state = Provider.of<PathwayState>(context, listen: false);
+          
+                // Combine the two lists into a single list
+                List<Paper> allPapers = [...compulsoryPapers, ...oneOfPapers];
+          
+                List<Paper> selectedPapers = allPapers.where((paper) => paper.isSelected).toList();
+          
+                state.addPapers(selectedPapers);
+                state.calculateGPA();
+          
+                String jsonData;
+                try {
+                  jsonData = await fetchPaperData(degree, major); // TODO: Make dynamic
+                  // Now you have the degrees from the server, use them to navigate to the next screen
+                } catch (error) {
+                  // Handle error, perhaps show a dialog to the user
+                  print('Error fetching papers: $error');
+                  return; // Early return to exit the function if fetching degrees fails
+                }
+          
+                int nextlevel = level + 100;
+                List<Paper> nextCompulsoryPapers = getPaperData(jsonData, nextlevel, 'compulsory_papers');
+                List<Paper> nextOneOfPapers = getPaperData(jsonData, nextlevel, 'one_of_papers');
+          
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(builder: (context) => PapersListScreen(degree: degree, major: major, compulsoryPapers: nextCompulsoryPapers, oneOfPapers: nextOneOfPapers, level: nextlevel)),
+                );
+              },
+              style: ElevatedButton.styleFrom(
+                primary: const Color(0xFFf9c000), // Button background color
+                padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 24), // Adjust padding as needed
+                textStyle: const TextStyle(fontSize: 16), // Text style
+              ),
+              child: Text('${level+100}-level Selection'),
             ),
-            child: Text('${level+100}-level Selection'),
           ),
         ],
       )
