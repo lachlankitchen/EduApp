@@ -101,7 +101,7 @@ class PapersListScreen extends StatelessWidget {
               List<Paper> selectedPapers = allPapers.where((paper) => paper.isSelected).toList();
 
               state.addPapers(selectedPapers);
-              state.saveState();
+              state.savePathway();
               Navigator.pushReplacement(
                 context,
                 MaterialPageRoute(builder: (context) => const MyHomePage()),
@@ -307,7 +307,7 @@ class PapersListScreen extends StatelessWidget {
       //     // } else {
       //     //   // No remaining requirements, you can perform other actions here
       //     //   // For example, add papers to state and save state as you mentione
-      //     //   state.saveState();
+      //     //   state.savePathway();
       //     // } 
 
       //     List<Paper> nextCompulsoryPapers = getPaperData(jsonData, level, 'compulsory_papers');

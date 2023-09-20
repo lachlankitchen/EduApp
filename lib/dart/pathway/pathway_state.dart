@@ -78,7 +78,7 @@ class PathwayState extends ChangeNotifier {
   /// This method creates a new [Pathway] object and adds it to the [savedPathways] list.
   /// The current state, including the selected degree, majors, papers, GPA, and selection status,
   /// is captured and reset after saving.
-  void saveState() {
+  void savePathway() {
     Pathway pathway = Pathway(
       degree: selectedDegree,
       majors: selectedMajors,

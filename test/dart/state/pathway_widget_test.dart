@@ -37,6 +37,7 @@ void main() {
       restrictions: ["COMP 160"],
       schedule: "Arts and Music, Commerce, Science", 
       isSelected: false,
+      grade: 75
     ),
     Paper(
       papercode: "COSC201",
@@ -51,6 +52,7 @@ void main() {
       restrictions: ["COSC 242"],
       schedule: "Arts and Music, Commerce, Science",
       isSelected: false,
+      grade: 100
     ),
     Paper(
       papercode: "COSC326",
@@ -65,6 +67,7 @@ void main() {
       restrictions: [],
       schedule: "Arts and Music, Science",
       isSelected: false,
+      grade: 50
     ),
   ];
 
@@ -117,7 +120,7 @@ void main() {
     expect(pathwayState.selectedMajors, List.of([mockMajors[0], mockMajors[1]]));
     expect(pathwayState.selectedPapers, mockPapers);
 
-    pathwayState.saveState();
+    pathwayState.savePathway();
 
     final savedPathways = pathwayState.savedPathways;
 
@@ -131,7 +134,7 @@ void main() {
     expect(pathwayState.savedPathways.length, 0);
   });
 
-  testWidgets('Test DisplayPathway Widget', (WidgetTester tester) async {
+  testWidgets('Test MyHomePage Widget', (WidgetTester tester) async {
 
     // Create a list of mock Pathway objects
     final mockPathways = [
