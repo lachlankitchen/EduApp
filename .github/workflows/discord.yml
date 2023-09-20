@@ -1,0 +1,23 @@
+name: Discord Notification
+on:
+  push:
+    branches:
+      - '*'
+
+jobs:
+  send_discord_message:
+    name: Send Discord Message
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Get pusher's username
+        id: git_author
+        run: echo "::set-output name=username::$(git log -1 --pretty=format:'%an')"
+
+      - name: Send Discord message
+        uses: appleboy/discord-action@v0.7.0
+        with:
+          webhook_url: ${{ secrets.DISCORD_WEBHOOK_URL }}
+          content: "Push event detected on branch ${{ github.ref }} by ${{ steps.git_author.outputs.username }}."
