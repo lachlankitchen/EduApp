@@ -28,11 +28,7 @@ int main(void)
       res.set_header("Access-Control-Allow-Headers", "X-Requested-With, Content-Type");
       res.set_content(json_content, "application/json");
 
-      std::cout << "Successfully served the JSON file.\n"; });// get degrees.
-
-  #include <nlohmann/json.hpp>
-
-  // ...
+       });// get degrees.
 
   svr.Get("/:degree/majors", [&](const Request &req, Response &res)
   {
