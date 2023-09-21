@@ -8,25 +8,32 @@ int main(void) {
 
   Server svr;
 
-  svr.Get("/degrees", [](const Request& req, Response& res) {
-    std::filesystem::path json_file_path = "..\\..\\..\\data\\degrees.json"; // Specify the correct path to your JSON file
-    if (!std::filesystem::exists(json_file_path)) {
-      res.status = 404;
-      res.set_content("File not found", "text/plain");
-      std::cout << "File not found at specified path.\n";
-      return;
-    }
+svr.Get("/degrees", [](const Request& req, Response& res) {
+  // Get the current working directory
+  std::filesystem::path current_dir = std::filesystem::current_path();
+  std::cout << "Current working directory: " << current_dir << std::endl;
 
-    std::ifstream json_file(json_file_path);
-    std::string json_content((std::istreambuf_iterator<char>(json_file)),
-                             std::istreambuf_iterator<char>());
+  // Specify the full path to your JSON file
+  std::filesystem::path json_file_path = "C:\\Users\\AHopgood\\Documents\\Repo\\EduApp\\lib\\data\\degrees.json";
 
-    res.set_header("Access-Control-Allow-Origin", "*");
-    res.set_header("Access-Control-Allow-Headers", "X-Requested-With, Content-Type");
-    res.set_content(json_content, "application/json");
+  if (!std::filesystem::exists(json_file_path)) {
+    res.status = 404;
+    res.set_content("File not found", "text/plain");
+    std::cout << "File not found at specified path.\n";
+    return;
+  }
 
-    std::cout << "Successfully served the JSON file.\n";
-  });
+  std::ifstream json_file(json_file_path);
+  std::string json_content((std::istreambuf_iterator<char>(json_file)),
+                           std::istreambuf_iterator<char>());
+
+  res.set_header("Access-Control-Allow-Origin", "*");
+  res.set_header("Access-Control-Allow-Headers", "X-Requested-With, Content-Type");
+  res.set_content(json_content, "application/json");
+
+  std::cout << "Successfully served the JSON file.\n";
+});
+
 
   svr.Get("/hi", [](const Request& req, Response& res) {
     res.set_content("Hello World!", "text/plain");
