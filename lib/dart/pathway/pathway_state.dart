@@ -28,6 +28,8 @@ class PathwayState extends ChangeNotifier {
   ///
   /// The [majors] parameter represents the list of majors to be added to the state.
   void addMajors(List<Major> majors) {
+    selectedMajors.clear();
+
     for (var major in majors) {
       if (!selectedMajors.contains(major)) {
         selectedMajors.add(major);
@@ -45,14 +47,29 @@ class PathwayState extends ChangeNotifier {
         selectedPapers.add(paper);
       }
     }
+
+    print('calculateGPA(); $gpa');
+    calculateGPA();
+
     notifyListeners();
   }
 
   /// Adds a calculated GPA to the state.
   ///
   /// The [gradePointAverage] parameter represents the calculated GPA to be added to the state.
-  void addGPA(double gradePointAverage) {
-    gpa = gradePointAverage;
+  void calculateGPA() {
+    // Calculate GPA based on selected papers' grades
+    double totalWeightedSum = 0;
+    int totalWeight = 0;
+    
+    for (int i = 0; i < selectedPapers.length; i++) {
+      totalWeightedSum += selectedPapers[i].grade !* selectedPapers[i].points;
+      totalWeight += selectedPapers[i].points;
+    }
+
+    double wam = totalWeightedSum / totalWeight;
+    gpa = (wam * 9) / 100;
+
     notifyListeners();
   }
 

@@ -1,0 +1,163 @@
+{
+  "qualification": "Bachelor of Science",
+  "major": "Computer Science",
+  "levels": [
+    {
+      "level": "100-level",
+      "compulsory_papers": [
+        { 
+          "COMP 101": {
+            "title": "Foundations of Information Systems",
+            "teaching_periods": [
+              "S2",
+              "SS"
+            ],
+            "points": 18
+          }
+        },
+        { 
+          "COMP 161": {
+            "title": "Computer Programming",
+            "teaching_periods": [
+              "S1",
+              "S2"
+            ],
+            "points": 18
+          }
+        },
+        { 
+          "COMP 162": {
+            "title": "Foundations of Computer Science",
+            "teaching_periods": [
+              "S2",
+              "SS"            
+            ],
+            "points": 18
+          }
+        }
+      ],
+      "one_of_papers": [
+        { 
+          "MATH 120": {
+            "title": "Calculas n Shit",
+            "teaching_periods": [
+              "S2",
+              "SS"
+            ],
+            "points": 18
+          }
+        },
+        { 
+          "BSNS 112": {
+            "title": "Business n Shit",
+            "teaching_periods": [
+              "S1",
+              "S2"
+            ],
+            "points": 18
+          }
+        }
+      ]
+    },
+    {
+      "level": "200-level",
+      "compulsory_papers": [
+        { 
+          "COSC 201": {
+            "title": "Algorithms and Data Structures",
+            "teaching_periods": [
+              "S2",
+              "SS"
+            ],
+            "points": 18
+          }
+        },
+        { 
+          "COSC 202": {
+            "title": "Software Development",
+            "teaching_periods": [
+              "S1",
+              "S2"
+            ],
+            "points": 18
+          }
+        },
+        { 
+          "COSC 203": {
+            "title": "Web, Databases, and Networks",
+            "teaching_periods": [
+              "S2",
+              "SS"            
+            ],
+            "points": 18
+          }
+        }
+      ]
+    },
+    {
+      "level": "300-level",
+      "one_of_papers": [
+        { 
+          "COSC 326": {
+            "title": "Complex Problem Solving",
+            "teaching_periods": [
+              "S1",
+              "S2"
+            ],
+            "points": 18
+          }
+        },
+        { 
+          "COSC 345": {
+            "title": "Software Engineering",
+            "teaching_periods": [
+              "S1",
+              "S2"
+            ],
+            "points": 18
+          }
+        }
+      ],
+      "compulsory_papers": [
+        { 
+          "COSC 360": {
+            "title": "Game Development",
+            "teaching_periods": [
+              "SS"
+            ],
+            "points": 18
+          }
+        },
+        { 
+          "COSC 349": {
+            "title": "Cloud Computing Infrastructure",
+            "teaching_periods": [
+              "S1",
+              "S2"
+            ]
+            ,
+            "points": 18
+          }
+        }
+      ]
+    },
+    {
+      "level": "Extra Points",
+      "total_extra_points": [
+        144
+      ],
+      "points_at_or_above_200_level": [
+        36
+      ],
+      "outside_points": [
+        90
+      ],
+      "notes": [
+        "Students are exempt from COMP 161 if they have gained entry to COMP 162 by passing COMP 151 with a grade of at least B or via an Advanced Placement Test.",
+        "Students who have passed at least one of MATH 120, 130, 140, COMO 101, STAT 110, 115, BSNS 112, or FINC 102 as part of another subject’s requirements do not need to pass another one of these papers to fulfil the Computer Science requirements."
+      ]
+    }
+  ],
+  "total": 360
+}
+

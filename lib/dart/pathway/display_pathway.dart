@@ -84,7 +84,7 @@ class DisplayPathway extends StatelessWidget {
                         style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                       ),
                       for (var paper in pathway[index].papers)
-                        Text('  ${paper.subjectCode} - ${paper.title}, '),
+                        Text('  ${paper.papercode} - ${paper.title}, '),
                       // Display GPA if there are papers with grades.
                       if (pathway[index].papers.any((paper) => paper.grade != 0))
                         Column(

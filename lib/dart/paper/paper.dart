@@ -10,8 +10,7 @@ class Paper {
   final List<String> prerequisites;
   final List<String> restrictions;
   final String schedule;
-  int grade;
-
+  int? grade;
   bool isSelected = false;
 
   /// Constructs a [Paper].
@@ -42,27 +41,53 @@ class Paper {
     required this.restrictions,
     required this.schedule,
     required this.isSelected,
-    required this.grade,
+    this.grade,
   });
 
-  /// Constructs a [Paper] from JSON data.
+  /// Constructs a [Paper] instance with only the name.
   ///
-  /// [json]: The JSON data representing the paper.
-  factory Paper.fromJson(Map<String, dynamic> json) {
-    return Paper(
-      papercode: json['papercode'],
-      subjectCode: json['subject_code'],
-      year: json['year'],
-      title: json['title'],
-      points: json['points'],
-      efts: json['efts'],
-      teachingPeriods: List<String>.from(json['teaching_periods']),
-      description: json['description'],
-      prerequisites: List<String>.from(json['prerequisites']),
-      restrictions: List<String>.from(json['restrictions']),
-      schedule: json['schedule'],
-      grade: 0,
-      isSelected: false,
-    );
+  /// [name]: The name of the major.
+  Paper.withName({
+    required this.papercode,
+    required this.title,
+    required this.teachingPeriods,
+    required this.points
+  }) : 
+      subjectCode = "",
+      year = "",
+      efts = 0.0,
+      description = "",
+      prerequisites = const [],
+      restrictions = const [],
+      schedule = "",
+      isSelected = false,
+      grade = 0;
+
+  Map<String, dynamic> toJson() {
+    return {
+      'papercode': papercode,
+      'subject_code': subjectCode,
+      'year': year,
+      'title': title,
+      'points': points,
+      'efts': efts,
+      'teaching_periods': teachingPeriods,
+      'description': description,
+      'prerequisites': prerequisites,
+      'restrictions': restrictions,
+      'schedule': schedule,
+      'isSelected': false,
+      'grade': grade,
+    };
   }
+}
+
+List<Map<String, dynamic>> papersListToJson(List<Paper> papers) {
+  List<Map<String, dynamic>> jsonList = [];
+
+  for (var paper in papers) {
+    jsonList.add(paper.toJson());
+  }
+
+  return jsonList;
 }

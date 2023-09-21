@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 /// Represents a major with its requirements and total points.
 class Major {
   final String name;
@@ -18,6 +20,15 @@ class Major {
     required this.isSelected,
   });
 
+  /// Constructs a [Major] instance with only the name.
+  ///
+  /// [name]: The name of the major.
+  Major.withName({
+    required this.name,
+  })   : requirements = const [],
+        totalPoints = 0;
+
+
   /// Constructs a [Major] instance from a JSON map.
   ///
   /// [json]: A JSON map representing the major.
@@ -34,11 +45,8 @@ class Major {
     );
   }
 
-  @override
-  String toString() {
-    String requirementsString =
-        requirements.map((requirement) => requirement.toString()).join('\n');
-    return "Major Name: $name\nTotal Points: $totalPoints\nRequirements:\n$requirementsString";
+  factory Major.fromJsonName(String name) {
+    return Major.withName(name: name);
   }
 }
 
