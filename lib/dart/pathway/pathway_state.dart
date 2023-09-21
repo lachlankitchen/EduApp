@@ -28,14 +28,8 @@ class PathwayState extends ChangeNotifier {
   /// Adds selected majors to the state.
   ///
   /// The [majors] parameter represents the list of majors to be added to the state.
-  void addMajors(List<Major> majors) {
-    selectedMajors.clear();
-
-    for (var major in majors) {
-      if (!selectedMajors.contains(major)) {
-        selectedMajors.add(major);
-      }
-    }
+  void addMajor(Major major) {
+    selectedMajors.add(major);
     notifyListeners();
   }
 

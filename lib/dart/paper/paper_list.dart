@@ -10,6 +10,21 @@ import '../pathway/pathway_state.dart';
 import '../navigation/nav_bar.dart';
 import 'fetch_paper.dart';
 
+class CheckboxButtonState with ChangeNotifier {
+  Map<String, bool> paperCheckboxStates = {}; // Map to store checkbox states for each paper
+
+  // Update the checkbox state for a specific paper
+  void updateCheckbox(String paperId, bool newValue) {
+    paperCheckboxStates[paperId] = newValue;
+    notifyListeners();
+  }
+
+  // Get the checkbox state for a specific paper
+  bool getCheckboxState(String paperId) {
+    return paperCheckboxStates[paperId] ?? false;
+  }
+}
+
 /// A screen that allows users to select papers and enter grades for each paper.
 class PapersListScreen extends StatelessWidget {
   final Degree degree;
@@ -27,6 +42,7 @@ class PapersListScreen extends StatelessWidget {
     required this.level,
   }) : super(key: key);
 
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,10 +51,11 @@ class PapersListScreen extends StatelessWidget {
         title: Text('Select Your $level-level Papers'),
         backgroundColor: const Color(0XFF10428C),
       ),
-      body: Row(
-        children: [
-          Expanded(
-            child: ListView.builder(
+      body: ChangeNotifierProvider<CheckboxButtonState>(
+        create: (_) => CheckboxButtonState(),
+        child: Consumer<CheckboxButtonState>(
+          builder: (context, state, child) {
+            return ListView.builder(
               itemCount: compulsoryPapers.length + 2, // Add 2 for SizedBoxes and Title
               itemBuilder: (context, index) {
                 if (index == 0) {
@@ -47,7 +64,7 @@ class PapersListScreen extends StatelessWidget {
                   // Add title for Compulsory Papers
                   return const ListTile(
                     title: Text(
-                      'Compulsory Papers',
+                      'Recommended Papers',
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 16,
@@ -56,37 +73,36 @@ class PapersListScreen extends StatelessWidget {
                   );
                 } else {
                   final paperIndex = index - 2;
-                  return buildPaperListItem(compulsoryPapers[paperIndex]);
+                  return buildPaperListItem(compulsoryPapers[paperIndex], state);
                 }
               },
-            ),
-          ),
-          Expanded(
-            child: ListView.builder(
-              itemCount: oneOfPapers.length + 2, // Add 2 for SizedBoxes and Title
-              itemBuilder: (context, index) {
-                if (index == 0) {
-                  return const SizedBox(height: 16.0);
-                } else if (index == 1) {
-                  // Add title for one of Papers
-                  return const ListTile(
-                    title: Text(
-                      'Choose One of:',
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 16,
-                      ),
-                    ),
-                  );
-                } else {
-                  final oneOfPaperIndex = index - 2;
-                  return buildPaperListItem(oneOfPapers[oneOfPaperIndex]);
-                }
-              },
-            ),
-          ),
-          
-        ],
+            );
+          },
+          // Expanded(
+          //   child: ListView.builder(
+          //     itemCount: oneOfPapers.length + 2, // Add 2 for SizedBoxes and Title
+          //     itemBuilder: (context, index) {
+          //       if (index == 0) {
+          //         return const SizedBox(height: 16.0);
+          //       } else if (index == 1) {
+          //         // Add title for one of Papers
+          //         return const ListTile(
+          //           title: Text(
+          //             'Choose One of:',
+          //             style: TextStyle(
+          //               fontWeight: FontWeight.bold,
+          //               fontSize: 16,
+          //             ),
+          //           ),
+          //         );
+          //       } else {
+          //         final oneOfPaperIndex = index - 2;
+          //         return buildPaperListItem(oneOfPapers[oneOfPaperIndex]);
+          //       }
+          //     },
+          //   ),
+          // ),
+        ),
       ),
       floatingActionButton: Row(
         mainAxisSize: MainAxisSize.min,
@@ -154,6 +170,7 @@ class PapersListScreen extends StatelessWidget {
                   ),
                 );
               
+                state.addMajor(major);
                 state.addSelectedPapers(selectedPapers);
                 state.addRemainingPapers(remainingPapers);
                 state.savePathway();
@@ -196,12 +213,14 @@ class PapersListScreen extends StatelessWidget {
                 }
           
                 int nextlevel = level + 100;
-                List<Paper> nextCompulsoryPapers = getPaperData(jsonData, nextlevel, 'compulsory_papers');
-                List<Paper> nextOneOfPapers = getPaperData(jsonData, nextlevel, 'one_of_papers');
-          
+                // List<Paper> nextCompulsoryPapers = getPaperData(jsonData, nextlevel, 'compulsory_papers');
+                // List<Paper> nextOneOfPapers = getPaperData(jsonData, nextlevel, 'one_of_papers');
+                
+                List<Paper> nextCompulsoryPapers = getPaperData(jsonData, nextlevel, 'remaining_papers');
+
                 Navigator.pushReplacement(
                   context,
-                  MaterialPageRoute(builder: (context) => PapersListScreen(degree: degree, major: major, compulsoryPapers: nextCompulsoryPapers, oneOfPapers: nextOneOfPapers, level: nextlevel)),
+                  MaterialPageRoute(builder: (context) => PapersListScreen(degree: degree, major: major, compulsoryPapers: nextCompulsoryPapers, oneOfPapers: nextCompulsoryPapers, level: nextlevel)),
                 );
               },
               style: ElevatedButton.styleFrom(
@@ -218,7 +237,8 @@ class PapersListScreen extends StatelessWidget {
     );
   }     
 
-  Widget buildPaperListItem(Paper paper) {
+  Widget buildPaperListItem(Paper paper, CheckboxButtonState state) {
+    final paperId = 'paper_${compulsoryPapers.indexOf(paper)}'; // Generate a unique identifier for each paper
     return ListTile(
       title: Row(
         children: [
@@ -248,10 +268,11 @@ class PapersListScreen extends StatelessWidget {
             ),
           ),
           Checkbox(
-            value: paper.isSelected,
-            onChanged: (value) {
+            value: state.getCheckboxState(paperId), // Use the state for the checkbox
+            onChanged: (newValue) {
+              state.updateCheckbox(paperId, newValue ?? false);
               // Update the isSelected status of the paper here
-              paper.isSelected = !paper.isSelected;
+              paper.isSelected = newValue ?? false;
             },
             fillColor: MaterialStateProperty.resolveWith<Color>(
               (Set<MaterialState> states) {
@@ -265,7 +286,9 @@ class PapersListScreen extends StatelessWidget {
         ],
       ),
     );
-  }
+  }   
+
+
   
   Future<String> postPaperData(Degree degree, Major major, List<Paper> papersList) async {
     final url = Uri.parse('http://localhost:1234/${degree.title}/${major.name}');

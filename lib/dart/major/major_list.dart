@@ -5,10 +5,21 @@ import 'package:provider/provider.dart';
 import 'package:http/http.dart' as http;
 import '../degree/degree.dart';
 import '../major/major.dart';
+import '../navigation/nav_bar.dart';
 import '../paper/fetch_paper.dart';
 import '../paper/paper.dart';
 import '../paper/paper_list.dart';
 import '../pathway/pathway_state.dart'; // Import the SecondListScreen class
+
+class RadioButtonState extends ChangeNotifier {
+  int? selectedRadioValue; // Example radio button state
+
+  // Update the radio button state
+  void updateRadio(int? newValue) {
+    selectedRadioValue = newValue;
+    notifyListeners();
+  }
+}
 
 /// Represents a screen where users can select their majors.
 class MajorListScreen extends StatelessWidget {
@@ -23,50 +34,48 @@ class MajorListScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      bottomNavigationBar: const NavBar(),
       appBar: AppBar(
         title: const Text('Select Your Majors'),
         backgroundColor: const Color(0xFF10428C),
       ),
-      body: Consumer<PathwayState>(
-        builder: (context, state, child) {
-          return ListView.builder(
-            itemCount: majors.length + 1, // Add 1 for SizedBox
-            itemBuilder: (context, index) {
-              if (index == 0) {
-                return const SizedBox(height: 16.0); // Add padding at the top
-              }
-              final majorIndex = index - 1; // Adjust index for SizedBox
-              return ListTile(
-                title: Row(
-                  children: [
-                    Checkbox(
-                      value: majors[majorIndex].isSelected,
-                      onChanged: (value) {
-                        // Toggle the checkbox and update the state
-                        majors[majorIndex].isSelected = !majors[majorIndex].isSelected;
-                        List<Major> selectedMajors =
-                            majors.where((major) => major.isSelected).toList();
-                        navigateToPapersListScreen(
-                            context, context.read<PathwayState>(), degree, selectedMajors);
-                      },
-                      fillColor: MaterialStateProperty.resolveWith<Color>(
-                        (Set<MaterialState> states) {
-                          if (states.contains(MaterialState.selected)) {
-                            return const Color(0xFFF9C000); // Set checkbox background color here
-                          }
-                          return Colors.grey[600]!; // Default background color
+      body: ChangeNotifierProvider<RadioButtonState>(
+        create: (_) => RadioButtonState(),
+        child: Consumer<RadioButtonState>(
+          builder: (context, state, child) {
+            return ListView.builder(
+              itemCount: majors.length,
+              itemBuilder: (context, index) {
+                return ListTile(
+                  title: Row(
+                    children: [
+                      Radio<int>(
+                        value: index,
+                        groupValue: state.selectedRadioValue,
+                        onChanged: (newValue) {
+                          state.updateRadio(newValue);
+                          Major selectedMajor = majors[index];
+                          navigateToPapersListScreen(context, degree, selectedMajor);
                         },
+                        fillColor: MaterialStateProperty.resolveWith<Color>(
+                          (Set<MaterialState> states) {
+                            if (states.contains(MaterialState.selected)) {
+                              return const Color(0xFFF9C000);
+                            }
+                            return Colors.grey[600]!;
+                          },
+                        ),
                       ),
-                    ),
-                    Expanded(
-                      child: Text(majors[majorIndex].name),
-                    ),
-                  ],
-                ),
-              );
-            },
-          );
-        },
+                      Expanded(
+                        child: Text(majors[index].name),
+                      ),
+                    ],
+                  ),
+                );
+              },
+            );
+          },
+        ),
       ),
     );
   }
@@ -76,8 +85,8 @@ class MajorListScreen extends StatelessWidget {
   /// [context]: The build context for navigation.
   /// [state]: The state containing pathway information.
   /// [selectedMajors]: The list of selected majors.
-  Future<void> navigateToPapersListScreen(BuildContext context, PathwayState state, Degree degree, List<Major> majors) async {
-    state.addMajors(majors);
+  Future<void> navigateToPapersListScreen(BuildContext context, Degree degree, Major major) async {
+    final state = Provider.of<PathwayState>(context, listen: false);
 
     String jsonData;
     try {
@@ -89,13 +98,14 @@ class MajorListScreen extends StatelessWidget {
       return; // Early return to exit the function if fetching degrees fails
     }
 
-    List<Paper> compulsoryPapers = getPaperData(jsonData, 100, 'compulsory_papers');
-    List<Paper> oneOfPapers = getPaperData(jsonData, 100, 'one_of_papers');
+    // List<Paper> compulsoryPapers = getPaperData(jsonData, 100, 'compulsory_papers');
+    // List<Paper> oneOfPapers = getPaperData(jsonData, 100, 'one_of_papers');
+    List<Paper> recommendedPapers = getPaperData(jsonData, 100, 'recommended_papers');
 
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (context) => PapersListScreen(degree: degree, major: majors[0], compulsoryPapers: compulsoryPapers, oneOfPapers: oneOfPapers, level: 100),
+        builder: (context) => PapersListScreen(degree: degree, major: major, compulsoryPapers: recommendedPapers, oneOfPapers: recommendedPapers, level: 100),
       ),
     );
   }

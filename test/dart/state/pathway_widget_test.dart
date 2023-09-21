@@ -113,11 +113,11 @@ void main() {
     final pathwayState = PathwayState();
 
     pathwayState.addDegree(mockDegree1);
-    pathwayState.addMajors(List.of([mockMajors[0], mockMajors[1]]));
+    pathwayState.addMajor(mockMajors[0]);
     pathwayState.addSelectedPapers(mockPapers);
 
     expect(pathwayState.selectedDegree, mockDegree1);
-    expect(pathwayState.selectedMajors, List.of([mockMajors[0], mockMajors[1]]));
+    expect(pathwayState.selectedMajors, mockMajors[0]);
     expect(pathwayState.selectedPapers, mockPapers);
 
     pathwayState.savePathway();
@@ -126,7 +126,7 @@ void main() {
 
     expect(savedPathways.length, 1);
     expect(savedPathways[0].degree, mockDegree1);
-    expect(savedPathways[0].majors, List.of([mockMajors[0], mockMajors[1]]));
+    expect(savedPathways[0].majors, mockMajors[0]);
     expect(savedPathways[0].selectedPapers, mockPapers);
 
     pathwayState.deleteState(savedPathways[0]);
