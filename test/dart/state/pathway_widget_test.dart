@@ -114,7 +114,7 @@ void main() {
 
     pathwayState.addDegree(mockDegree1);
     pathwayState.addMajors(List.of([mockMajors[0], mockMajors[1]]));
-    pathwayState.addPapers(mockPapers);
+    pathwayState.addSelectedPapers(mockPapers);
 
     expect(pathwayState.selectedDegree, mockDegree1);
     expect(pathwayState.selectedMajors, List.of([mockMajors[0], mockMajors[1]]));

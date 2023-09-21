@@ -24,7 +24,7 @@ class DegreesPointsScreen extends StatelessWidget {
       for (var major in pathway.majors) {
         totalPoints = 0;
         majorCount++;
-        for (var paper in pathway.papers) {
+        for (var paper in pathway.selectedPapers) {
           totalPoints += paper.points;
         }
         dataMap[major.name] = totalPoints;

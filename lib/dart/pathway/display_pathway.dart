@@ -75,18 +75,26 @@ class DisplayPathway extends StatelessWidget {
                   ),
                 const SizedBox(height: 10),
                 // Display saved papers, if available.
-                if (pathway[index].papers.isNotEmpty)
+                if (pathway[index].selectedPapers.isNotEmpty)
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       const Text(
-                        'Papers(s):',
+                        'Your Papers(s):',
                         style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                       ),
-                      for (var paper in pathway[index].papers)
+                      for (var paper in pathway[index].selectedPapers)
                         Text('  ${paper.papercode} - ${paper.title}, '),
+                      const SizedBox(height: 10),
+                      const Text(
+                        'Remaining Compulsory Papers(s):',
+                        style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                      ),
+                      for (var paper in pathway[index].remainingPapers)
+                        Text('  ${paper.papercode} - ${paper.title}, '),
+                      const SizedBox(height: 10),
                       // Display GPA if there are papers with grades.
-                      if (pathway[index].papers.any((paper) => paper.grade != 0))
+                      if (pathway[index].selectedPapers.any((paper) => paper.grade != 0))
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [

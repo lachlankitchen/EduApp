@@ -14,6 +14,7 @@ class PathwayState extends ChangeNotifier {
   Degree selectedDegree = Degree('');
   List<Major> selectedMajors = [];
   List<Paper> selectedPapers = [];
+  List<Paper> remainingPapers = [];
   double gpa = -1;
 
   /// Adds a selected degree to the state.
@@ -41,16 +42,22 @@ class PathwayState extends ChangeNotifier {
   /// Adds selected papers to the state.
   ///
   /// The [papers] parameter represents the list of papers to be added to the state.
-  void addPapers(List<Paper> papers) {
+  void addSelectedPapers(List<Paper> papers) {
     for (var paper in papers) {
       if (!selectedPapers.contains(paper)) {
         selectedPapers.add(paper);
       }
     }
-
-    print('calculateGPA(); $gpa');
     calculateGPA();
+    notifyListeners();
+  }
 
+  void addRemainingPapers(List<Paper> papers) {
+    for (var paper in papers) {
+      if (!remainingPapers.contains(paper)) {
+        remainingPapers.add(paper);
+      }
+    }
     notifyListeners();
   }
 
@@ -79,10 +86,12 @@ class PathwayState extends ChangeNotifier {
   /// The current state, including the selected degree, majors, papers, GPA, and selection status,
   /// is captured and reset after saving.
   void savePathway() {
+    print(remainingPapers);
     Pathway pathway = Pathway(
       degree: selectedDegree,
       majors: selectedMajors,
-      papers: selectedPapers,
+      selectedPapers: selectedPapers,
+      remainingPapers: remainingPapers,
       gpa: gpa,
       isSelected: false,
     );
@@ -90,6 +99,7 @@ class PathwayState extends ChangeNotifier {
     selectedDegree = Degree(''); // Reset the state
     selectedMajors = [];
     selectedPapers = [];
+    remainingPapers = [];
     notifyListeners();
   }
 
@@ -99,9 +109,6 @@ class PathwayState extends ChangeNotifier {
   /// The state is reset after deletion.
   void deleteState(Pathway pathway) {
     savedPathways.remove(pathway);
-    selectedDegree = Degree(''); // Reset the state
-    selectedMajors = [];
-    selectedPapers = [];
     notifyListeners();
   }
 }
