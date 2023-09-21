@@ -15,7 +15,7 @@ cd build
 echo "Changed directory to 'build'."
 
 # Run CMake to generate build files based on the project's CMakeLists.txt
-cmake -G "MinGW Makefiles" ..
+cmake -DCMAKE_TOOLCHAIN_FILE=C:/Users/AHopgood/dev/vcpkg/scripts/buildsystems/vcpkg.cmake ..
 echo "Generated build files with CMake."
 
 # Compile the project using the generated build files and Makefile
