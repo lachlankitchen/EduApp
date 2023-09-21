@@ -127,7 +127,7 @@ void main() {
     expect(savedPathways.length, 1);
     expect(savedPathways[0].degree, mockDegree1);
     expect(savedPathways[0].majors, List.of([mockMajors[0], mockMajors[1]]));
-    expect(savedPathways[0].papers, mockPapers);
+    expect(savedPathways[0].selectedPapers, mockPapers);
 
     pathwayState.deleteState(savedPathways[0]);
 
@@ -141,14 +141,16 @@ void main() {
       Pathway(
         degree: mockDegree1,
         majors: List.of([mockMajors[0]]),
-        papers: mockPapers,
+        selectedPapers: mockPapers,
+        remainingPapers: [],        
         gpa: 3.5,
         isSelected: false,
       ),
       Pathway(
         degree: mockDegree2,
         majors: List.of([mockMajors[1], mockMajors[2]]),
-        papers: mockPapers,
+        selectedPapers: mockPapers,
+        remainingPapers: [],
         gpa: 7.8,
         isSelected: false,
       ),
@@ -168,18 +170,17 @@ void main() {
     expect(find.text('Bachelor of Arts'), findsOneWidget);
 
     // Verify that the major names are displayed correctly
-    expect(find.text('  Computer Science, '), findsOneWidget);
-    expect(find.text('  Oceanography, '), findsOneWidget);
-    expect(find.text('  Zoology, '), findsOneWidget);
+    expect(find.text('Computer Science,'), findsOneWidget);
+    expect(find.text('Oceanography,'), findsOneWidget);
+    expect(find.text('Zoology,'), findsOneWidget);
 
     // Verify that the paper names are displayed correctly
-    expect(find.text('  COMP161 - Computer Programming, '), findsNWidgets(2));
-    expect(find.text('  COSC201 - Algorithms and Data Structures, '), findsNWidgets(2));
-    expect(find.text('  COSC326 - Computational Problem Solving, '), findsNWidgets(2));
+    expect(find.text('COMP161 - Computer Programming,'), findsNWidgets(2));
+    expect(find.text('COSC201 - Algorithms and Data Structures,'), findsNWidgets(2));
+    expect(find.text('COSC326 - Computational Problem Solving,'), findsNWidgets(2));
 
-    // TODO: Fix GPA text test
     // Verify that the GPA is displayed correctly 
-    expect(find.text('  3.5'), findsOneWidget);
-    expect(find.text('  7.8'), findsOneWidget);
+    expect(find.text('3.5'), findsOneWidget);
+    expect(find.text('7.8'), findsOneWidget);
   });
 }

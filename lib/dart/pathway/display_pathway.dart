@@ -70,7 +70,10 @@ class DisplayPathway extends StatelessWidget {
                         style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                       ),
                       for (var major in pathway[index].majors)
-                        Text('  ${major.name}, '),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 16.0), // Adjust the left padding as needed
+                          child: Text('${major.name},'),
+                        ),
                     ],
                   ),
                 const SizedBox(height: 10),
@@ -84,14 +87,20 @@ class DisplayPathway extends StatelessWidget {
                         style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                       ),
                       for (var paper in pathway[index].selectedPapers)
-                        Text('  ${paper.papercode} - ${paper.title}, '),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 16.0), // Adjust the left padding as needed
+                          child:Text('${paper.papercode} - ${paper.title},'),
+                        ),   
                       const SizedBox(height: 10),
                       const Text(
                         'Remaining Compulsory Papers(s):',
                         style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                       ),
                       for (var paper in pathway[index].remainingPapers)
-                        Text('  ${paper.papercode} - ${paper.title}, '),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 16.0), // Adjust the left padding as needed
+                          child: Text('${paper.papercode} - ${paper.title},'),
+                        ),
                       const SizedBox(height: 10),
                       // Display GPA if there are papers with grades.
                       if (pathway[index].selectedPapers.any((paper) => paper.grade != 0))
@@ -103,7 +112,10 @@ class DisplayPathway extends StatelessWidget {
                               'Grade Point Average:',
                               style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                             ),
-                            Text('  ${pathway[index].gpa}'),
+                            Padding(
+                              padding: const EdgeInsets.only(left: 16.0), // Adjust the left padding as needed
+                              child: Text('${pathway[index].gpa}'),
+                            ),                          
                           ],
                         ),
                     ],

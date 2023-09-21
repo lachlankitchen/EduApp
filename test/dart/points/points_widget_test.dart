@@ -102,7 +102,7 @@ void main() {
       ),
     ];
 
-    final Pathway mockPathway = Pathway(degree: mockDegree, majors: mockMajors, papers: mockPapers, gpa: 0, isSelected: true);
+    final Pathway mockPathway = Pathway(degree: mockDegree, majors: mockMajors, selectedPapers: mockPapers, remainingPapers: [], gpa: 0, isSelected: true);
 
     await tester.pumpWidget(
       MultiProvider(
