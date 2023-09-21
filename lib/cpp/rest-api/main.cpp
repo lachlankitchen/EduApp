@@ -3,113 +3,103 @@
 #include <filesystem>
 #include <fstream>
 
-int main(void)
-{
-  using namespace httplib;
+int main(void) {
+    using namespace httplib;
 
-  Server svr;
+    Server svr;
 
-  svr.Get("/degrees", [](const Request &req, Response &res)
-          {
-      std::filesystem::path json_file_path = std::filesystem::path("..") / ".." / ".." / "data" / "singleDegreesWithMajors.json";
-      // Use std::filesystem::path to construct the path, which handles separators
-      if (!std::filesystem::exists(json_file_path)) {
-          res.status = 404;
-          res.set_content("File not found", "text/plain");
-          std::cout << "File not found at specified path.\n";
-          return;
-      }
+    // Define hardcoded file paths
+    std::filesystem::path single_degrees_json_path = "C:/Users/AHopgood/Documents/Repo/EduApp/lib/data/singleDegreesWithMajors.json";
+    std::filesystem::path majors_json_path = "C:/Users/AHopgood/Documents/Repo/EduApp/lib/data/majors.json";
+    std::filesystem::path major_requirements_json_path = "C:/Users/AHopgood/Documents/Repo/EduApp/lib/data/major_requirements.json";
+    std::filesystem::path paper_response_json_path = "C:/Users/AHopgood/Documents/Repo/EduApp/lib/data/paper_response.json";
 
-      std::ifstream json_file(json_file_path);
-      std::string json_content((std::istreambuf_iterator<char>(json_file)),
-          std::istreambuf_iterator<char>());
+    svr.Get("/degrees", [single_degrees_json_path](const Request &req, Response &res) {
+        if (!std::filesystem::exists(single_degrees_json_path)) {
+            res.status = 404;
+            res.set_content("File not found", "text/plain");
+            std::cout << "File not found at specified path.\n";
+            return;
+        }
 
-      res.set_header("Access-Control-Allow-Origin", "*");
-      res.set_header("Access-Control-Allow-Headers", "X-Requested-With, Content-Type");
-      res.set_content(json_content, "application/json");
+        std::ifstream json_file(single_degrees_json_path);
+        std::string json_content((std::istreambuf_iterator<char>(json_file)),
+            std::istreambuf_iterator<char>());
 
-       });// get degrees.
+        res.set_header("Access-Control-Allow-Origin", "*");
+        res.set_header("Access-Control-Allow-Headers", "X-Requested-With, Content-Type");
+        res.set_content(json_content, "application/json");
+    });
 
-  svr.Get("/:degree/majors", [&](const Request &req, Response &res)
-  {
-      auto degree = req.path_params.at("degree");
-      std::filesystem::path json_file_path = std::filesystem::path("..") / ".." / ".." / "data" / "majors.json";
+    svr.Get("/:degree/majors", [majors_json_path](const Request &req, Response &res) {
+        auto degree = req.path_params.at("degree");
 
-      if (!std::filesystem::exists(json_file_path)) {
-          res.status = 404;
-          res.set_content("File not found", "text/plain");
-          std::cout << "File not found at specified path.\n";
-          return;
-      }
+        if (!std::filesystem::exists(majors_json_path)) {
+            res.status = 404;
+            res.set_content("File not found", "text/plain");
+            std::cout << "File not found at specified path.\n";
+            return;
+        }
 
-      // Read the JSON file into a nlohmann::json object
-      std::ifstream json_file(json_file_path);
-      nlohmann::json json_obj;
-      json_file >> json_obj;
+        std::ifstream json_file(majors_json_path);
+        nlohmann::json json_obj;
+        json_file >> json_obj;
 
-      // Find the JSON object that matches the degree specified in the URL
-      if (json_obj.contains(degree)) {
-          // Set the response with the array of majors for the specified degree
-          res.set_content(json_obj[degree].dump(), "application/json");
-      } else {
-          // If the degree is not found in the JSON file, return a 404 error
-          res.status = 404;
-          res.set_content("Degree not found", "text/plain");
-      }
+        if (json_obj.contains(degree)) {
+            res.set_content(json_obj[degree].dump(), "application/json");
+        } else {
+            res.status = 404;
+            res.set_content("Degree not found", "text/plain");
+        }
 
-      res.set_header("Access-Control-Allow-Origin", "*");
-      res.set_header("Access-Control-Allow-Headers", "X-Requested-With, Content-Type");
-  });
+        res.set_header("Access-Control-Allow-Origin", "*");
+        res.set_header("Access-Control-Allow-Headers", "X-Requested-With, Content-Type");
+    });
 
+    svr.Get("/:degree/:major", [major_requirements_json_path](const Request &req, Response &res) {
+        auto major = req.path_params.at("major");
 
-  svr.Get("/:degree/:major", [&](const Request &req, Response &res)
-            {
-    auto major = req.path_params.at("major"); // TODO: @CONNOR Utilise when quering by major
+        if (!std::filesystem::exists(major_requirements_json_path)) {
+            res.status = 404;
+            res.set_content("File not found", "text/plain");
+            std::cout << "File not found at specified path.\n";
+            return;
+        }
 
-    std::filesystem::path json_file_path = std::filesystem::path("..") / ".." / ".." / "data" / "major_requirements.json";
+        std::ifstream json_file(major_requirements_json_path);
+        std::string json_content((std::istreambuf_iterator<char>(json_file)),
+            std::istreambuf_iterator<char>());
 
-    if (!std::filesystem::exists(json_file_path)) {
-        res.status = 404;
-        res.set_content("File not found", "text/plain");
-        std::cout << "File not found at specified path.\n";
-        return;
-    }
+        res.set_header("Access-Control-Allow-Origin", "*");
+        res.set_header("Access-Control-Allow-Headers", "X-Requested-With, Content-Type");
+        res.set_content(json_content, "application/json");
 
-    std::ifstream json_file(json_file_path);
-    std::string json_content((std::istreambuf_iterator<char>(json_file)),
-                            std::istreambuf_iterator<char>());
+        std::cout << "Successfully served the JSON file.\n";
+    });
 
-    res.set_header("Access-Control-Allow-Origin", "*");
-    res.set_header("Access-Control-Allow-Headers", "X-Requested-With, Content-Type");
-    res.set_content(json_content, "application/json");
+    svr.Post("/:degree/:major", [paper_response_json_path](const Request &req, Response &res) {
+        std::cout << "POST request received.\n";
 
-    std::cout << "Successfully served the JSON file.\n"; }); //get major requirements by degree and major.
+        auto degree = req.path_params.at("degree");
+        auto major = req.path_params.at("major");
 
-  svr.Post("/:degree/:major", [&](const Request &req, Response &res)
-            {
-    std::cout << "POST request received.\n";
+        if (!std::filesystem::exists(paper_response_json_path)) {
+            res.status = 404;
+            res.set_content("File not found", "text/plain");
+            std::cout << "File not found at specified path.\n";
+            return;
+        }
 
-    auto degree = req.path_params.at("degree"); // TODO: @CONNOR Utilise when quering by major
-    auto major = req.path_params.at("major"); // TODO: @CONNOR Utilise when quering by major
+        std::ifstream json_file(paper_response_json_path);
+        std::string json_content((std::istreambuf_iterator<char>(json_file)),
+            std::istreambuf_iterator<char>());
 
-    std::filesystem::path json_file_path = std::filesystem::path("..") / ".." / ".." / "data" / "paper_response.json";
+        res.set_header("Access-Control-Allow-Origin", "*");
+        res.set_header("Access-Control-Allow-Headers", "X-Requested-With, Content-Type");
+        res.set_content(json_content, "application/json");
 
-    if (!std::filesystem::exists(json_file_path)) {
-        res.status = 404;
-        res.set_content("File not found", "text/plain");
-        std::cout << "File not found at specified path.\n";
-        return;
-    }
-
-    std::ifstream json_file(json_file_path);
-    std::string json_content((std::istreambuf_iterator<char>(json_file)),
-                            std::istreambuf_iterator<char>());
-
-    res.set_header("Access-Control-Allow-Origin", "*");
-    res.set_header("Access-Control-Allow-Headers", "X-Requested-With, Content-Type");
-    res.set_content(json_content, "application/json");
-
-    std::cout << "Successfully served the JSON file.\n"; });
+        std::cout << "Successfully served the JSON file.\n";
+    });
 
   // svr.Get("/paper/{paperCode}", [](const Request &req, Response &res){
   //   // TODO: @CONNOR Implement this
