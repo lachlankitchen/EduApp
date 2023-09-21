@@ -90,8 +90,7 @@ class DegreeListScreen extends StatelessWidget {
       return; // Early return to exit the function if fetching degrees fails
     }
 
-    final jsonMap = json.decode(jsonData);
-    final majorsList = List<String>.from(jsonMap['majors']);
+    final majorsList = List<String>.from(json.decode(jsonData));
     final majors = majorsList.map((major) => Major.fromJsonName(major)).toList();
     
     Navigator.push(

@@ -28,29 +28,39 @@ int main(void)
       res.set_header("Access-Control-Allow-Headers", "X-Requested-With, Content-Type");
       res.set_content(json_content, "application/json");
 
-      std::cout << "Successfully served the JSON file.\n"; });// get degrees.
+       });// get degrees.
 
   svr.Get("/:degree/majors", [&](const Request &req, Response &res)
-          {
-    auto degree = req.path_params.at("degree"); // TODO: @CONNOR Utilise when quering by degree
-    std::filesystem::path json_file_path = std::filesystem::path("..") / ".." / ".." / "data" / "degree_majors.json";
+  {
+      auto degree = req.path_params.at("degree");
+      std::filesystem::path json_file_path = std::filesystem::path("..") / ".." / ".." / "data" / "majors.json";
 
-    if (!std::filesystem::exists(json_file_path)) {
-        res.status = 404;
-        res.set_content("File not found", "text/plain");
-        std::cout << "File not found at specified path.\n";
-        return;
-    }
+      if (!std::filesystem::exists(json_file_path)) {
+          res.status = 404;
+          res.set_content("File not found", "text/plain");
+          std::cout << "File not found at specified path.\n";
+          return;
+      }
 
-    std::ifstream json_file(json_file_path);
-    std::string json_content((std::istreambuf_iterator<char>(json_file)),
-                            std::istreambuf_iterator<char>());
+      // Read the JSON file into a nlohmann::json object
+      std::ifstream json_file(json_file_path);
+      nlohmann::json json_obj;
+      json_file >> json_obj;
 
-    res.set_header("Access-Control-Allow-Origin", "*");
-    res.set_header("Access-Control-Allow-Headers", "X-Requested-With, Content-Type");
-    res.set_content(json_content, "application/json ");
+      // Find the JSON object that matches the degree specified in the URL
+      if (json_obj.contains(degree)) {
+          // Set the response with the array of majors for the specified degree
+          res.set_content(json_obj[degree].dump(), "application/json");
+      } else {
+          // If the degree is not found in the JSON file, return a 404 error
+          res.status = 404;
+          res.set_content("Degree not found", "text/plain");
+      }
 
-    }); //get majors by degree.
+      res.set_header("Access-Control-Allow-Origin", "*");
+      res.set_header("Access-Control-Allow-Headers", "X-Requested-With, Content-Type");
+  });
+
 
   svr.Get("/:degree/:major", [&](const Request &req, Response &res)
             {
