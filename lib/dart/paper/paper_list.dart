@@ -247,23 +247,31 @@ class PapersListScreen extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text('${paper.papercode} - ${paper.title}'),
-                SizedBox(
-                  width: 80,
-                  child: TextField(
-                    keyboardType: TextInputType.number,
-                    maxLength: 3,
-                    decoration: const InputDecoration(
-                      hintText: '0-100',
+                Row(
+                  children: [
+                    const Padding(
+                      padding: EdgeInsets.only(left: 8.0, right: 8.0),
+                      child: Text('Grade:'),
                     ),
-                    onChanged: (value) {
-                      int? grade = int.tryParse(value);
-                      if (grade != null && grade >= 0 && grade <= 100) {
-                        // Update the grade of the paper here
-                        paper.grade = grade;
-                      }
-                    },
-                  ),
-                ),
+                    SizedBox(
+                      width: 80,
+                      child: TextField(
+                        keyboardType: TextInputType.number,
+                        maxLength: 3,
+                        decoration: const InputDecoration(
+                          hintText: '0-100',
+                        ),
+                        onChanged: (value) {
+                          int? grade = int.tryParse(value);
+                          if (grade != null && grade >= 0 && grade <= 100) {
+                            // Update the grade of the paper here
+                            paper.grade = grade;
+                          }
+                        },
+                      ),
+                    ),
+                  ]
+                )
               ],
             ),
           ),
