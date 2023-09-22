@@ -43,36 +43,51 @@ class MajorListScreen extends StatelessWidget {
         create: (_) => RadioButtonState(),
         child: Consumer<RadioButtonState>(
           builder: (context, state, child) {
-            return ListView.builder(
-              itemCount: majors.length,
-              itemBuilder: (context, index) {
-                return ListTile(
-                  title: Row(
-                    children: [
-                      Radio<int>(
-                        value: index,
-                        groupValue: state.selectedRadioValue,
-                        onChanged: (newValue) {
-                          state.updateRadio(newValue);
-                          Major selectedMajor = majors[index];
-                          navigateToPapersListScreen(context, degree, selectedMajor);
-                        },
-                        fillColor: MaterialStateProperty.resolveWith<Color>(
-                          (Set<MaterialState> states) {
-                            if (states.contains(MaterialState.selected)) {
-                              return const Color(0xFFF9C000);
-                            }
-                            return Colors.grey[600]!;
-                          },
-                        ),
-                      ),
-                      Expanded(
-                        child: Text(majors[index].name),
-                      ),
-                    ],
+            return ListView(
+              children: [
+                const SizedBox(height: 16.0),
+                ListTile(
+                  title: Text(
+                    degree.title,
+                    style: const TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 16,
+                    ),
                   ),
-                );
-              },
+                ),
+                ListView.builder(
+                  shrinkWrap: true,
+                  itemCount: majors.length,
+                  itemBuilder: (context, index) {
+                    return ListTile(
+                      title: Row(
+                        children: [
+                          Radio<int>(
+                            value: index,
+                            groupValue: state.selectedRadioValue,
+                            onChanged: (newValue) {
+                              state.updateRadio(newValue);
+                              Major selectedMajor = majors[index];
+                              navigateToPapersListScreen(context, degree, selectedMajor);
+                            },
+                            fillColor: MaterialStateProperty.resolveWith<Color>(
+                              (Set<MaterialState> states) {
+                                if (states.contains(MaterialState.selected)) {
+                                  return const Color(0xFFF9C000);
+                                }
+                                return Colors.grey[600]!;
+                              },
+                            ),
+                          ),
+                          Expanded(
+                            child: Text(majors[index].name),
+                          ),
+                        ],
+                      ),
+                    );
+                  },
+                ),
+              ],
             );
           },
         ),
@@ -88,10 +103,14 @@ class MajorListScreen extends StatelessWidget {
   Future<void> navigateToPapersListScreen(BuildContext context, Degree degree, Major major) async {
     final state = Provider.of<PathwayState>(context, listen: false);
 
-    String jsonData;
+    String jsonRecommendedData;
+    List<String> jsonPaperData;
+
+    int level = 100;
+
     try {
-      jsonData = await fetchPaperData(degree, majors[0]); // TODO: Make dynamic
-      // Now you have the degrees from the server, use them to navigate to the next screen
+      jsonRecommendedData = await fetchRecommendedPapers(degree, majors[0]); // TODO: Make dynamic
+      // jsonPaperData = await fetchAllPapers(degree.title, level); // TODO: Make dynamic
     } catch (error) {
       // Handle error, perhaps show a dialog to the user
       print('Error fetching papers: $error');
@@ -100,12 +119,13 @@ class MajorListScreen extends StatelessWidget {
 
     // List<Paper> compulsoryPapers = getPaperData(jsonData, 100, 'compulsory_papers');
     // List<Paper> oneOfPapers = getPaperData(jsonData, 100, 'one_of_papers');
-    List<Paper> recommendedPapers = getPaperData(jsonData, 100, 'recommended_papers');
+    List<Paper> recommendedPapers = getRecommendedPapers(jsonRecommendedData, level, 'recommended_papers');
+    // List<Paper> electivePapers = getElectivePapers(jsonPaperData, level);
 
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (context) => PapersListScreen(degree: degree, major: major, compulsoryPapers: recommendedPapers, oneOfPapers: recommendedPapers, level: 100),
+        builder: (context) => PapersListScreen(degree: degree, major: major, recommendedPapers: recommendedPapers, electivePapers: recommendedPapers, level: 100),
       ),
     );
   }

@@ -5,7 +5,6 @@ import 'package:provider/provider.dart';
 import 'package:http/http.dart' as http;
 import '../major/major.dart';
 import '../major/major_list.dart';
-import '../navigation/nav_bar.dart';
 import 'degree.dart';
 import '../pathway/pathway_state.dart';
 
@@ -27,7 +26,6 @@ class DegreeListScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: const NavBar(),
       appBar: AppBar(
         title: const Text('Select a Degree'),
         backgroundColor: const Color(0xFF10428C),
@@ -38,7 +36,6 @@ class DegreeListScreen extends StatelessWidget {
           if (index == 0) {
             return const SizedBox(height: 18.0); // Add padding at the top
           }
-
           final degreeIndex = index - 1; // Subtract 1 to adjust for SizedBox
           return Padding(
             padding: const EdgeInsets.symmetric(horizontal: 10.0),

@@ -66,7 +66,7 @@ int main(void)
             {
     auto major = req.path_params.at("major"); // TODO: @CONNOR Utilise when quering by major
 
-    std::filesystem::path json_file_path = std::filesystem::path("..") / ".." / ".." / "data" / "major_requirements.json";
+    std::filesystem::path json_file_path = std::filesystem::path("..") / ".." / ".." / "data" / "paper_recommendations.json";
 
     if (!std::filesystem::exists(json_file_path)) {
         res.status = 404;
@@ -87,8 +87,6 @@ int main(void)
 
   svr.Post("/:degree/:major", [&](const Request &req, Response &res)
             {
-    std::cout << "POST request received.\n";
-
     auto degree = req.path_params.at("degree"); // TODO: @CONNOR Utilise when quering by major
     auto major = req.path_params.at("major"); // TODO: @CONNOR Utilise when quering by major
 
@@ -111,13 +109,32 @@ int main(void)
 
     std::cout << "Successfully served the JSON file.\n"; });
 
-  // svr.Get("/paper/{paperCode}", [](const Request &req, Response &res){
-  //   // TODO: @CONNOR Implement this
-  // });
+  svr.Get("/:degree/papers/:level", [](const Request &req, Response &res){
+    // TODO: @CONNOR Implement this
+    std::cout << "POST request received.\n";
 
-  // svr.Get("/userPaperList", [](const Request &req, Response &res){
-  //   // TODO: @CONNOR Implement this
-  // });
+    auto degree = req.path_params.at("degree"); // TODO: @CONNOR Utilise when quering by major
+    auto level = req.path_params.at("level"); // TODO: @CONNOR Utilise when quering by major
+
+    std::filesystem::path json_file_path = std::filesystem::path("..") / ".." / ".." / "data" / "elective_papers.json";
+
+    if (!std::filesystem::exists(json_file_path)) {
+        res.status = 404;
+        res.set_content("File not found", "text/plain");
+        std::cout << "File not found at specified path.\n";
+        return;
+    }
+
+    std::ifstream json_file(json_file_path);
+    std::string json_content((std::istreambuf_iterator<char>(json_file)),
+                            std::istreambuf_iterator<char>());
+
+    res.set_header("Access-Control-Allow-Origin", "*");
+    res.set_header("Access-Control-Allow-Headers", "X-Requested-With, Content-Type");
+    res.set_content(json_content, "application/json");
+
+    std::cout << "Successfully served the JSON file.\n"; 
+  });
 
   // Extract values from HTTP headers and URL query params
   svr.Get("/body-header-param", [](const Request &req, Response &res)

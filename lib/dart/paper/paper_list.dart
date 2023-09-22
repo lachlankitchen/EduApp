@@ -10,7 +10,23 @@ import '../pathway/pathway_state.dart';
 import '../navigation/nav_bar.dart';
 import 'fetch_paper.dart';
 
-class CheckboxButtonState with ChangeNotifier {
+class PapersListState with ChangeNotifier {
+  TextEditingController searchController = TextEditingController();
+  List<Paper> filteredElectivePapers = [Paper.withName(papercode: "GHJK", title: "HJK", teachingPeriods: ["S1", "S2"], points: 18)];
+
+  void filterItems(String query, List<Paper> electivePapers) {
+    searchController.text = query;
+    filteredElectivePapers = electivePapers;
+        // .where((paper) =>
+        //     paper.subjectCode.toLowerCase().contains(query.toLowerCase()))
+        // .toList();
+    notifyListeners();
+  }
+
+  List<Paper> getFilteredPapers(){
+    return filteredElectivePapers;
+  }
+
   Map<String, bool> paperCheckboxStates = {}; // Map to store checkbox states for each paper
 
   // Update the checkbox state for a specific paper
@@ -22,27 +38,26 @@ class CheckboxButtonState with ChangeNotifier {
   // Get the checkbox state for a specific paper
   bool getCheckboxState(String paperId) {
     return paperCheckboxStates[paperId] ?? false;
-  }
+  } 
 }
 
 /// A screen that allows users to select papers and enter grades for each paper.
 class PapersListScreen extends StatelessWidget {
   final Degree degree;
   final Major major;
-  final List<Paper> compulsoryPapers;
-  final List<Paper> oneOfPapers;
+  final List<Paper> recommendedPapers;
+  final List<Paper> electivePapers;
   final int level;
 
   const PapersListScreen({
     Key? key,
     required this.degree,
     required this.major,
-    required this.compulsoryPapers,
-    required this.oneOfPapers,
+    required this.recommendedPapers,
+    required this.electivePapers,
     required this.level,
   }) : super(key: key);
 
-  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -51,59 +66,92 @@ class PapersListScreen extends StatelessWidget {
         title: Text('Select Your $level-level Papers'),
         backgroundColor: const Color(0XFF10428C),
       ),
-      body: ChangeNotifierProvider<CheckboxButtonState>(
-        create: (_) => CheckboxButtonState(),
-        child: Consumer<CheckboxButtonState>(
+      body: ChangeNotifierProvider<PapersListState>(
+        create: (_) => PapersListState(),
+        child: Consumer<PapersListState>(
           builder: (context, state, child) {
-            return ListView.builder(
-              itemCount: compulsoryPapers.length + 2, // Add 2 for SizedBoxes and Title
-              itemBuilder: (context, index) {
-                if (index == 0) {
-                  return const SizedBox(height: 16.0);
-                } else if (index == 1) {
-                  // Add title for Compulsory Papers
-                  return const ListTile(
-                    title: Text(
-                      'Recommended Papers',
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 16,
-                      ),
+            return ListView(
+              children: [
+                const SizedBox(height: 16.0),
+                const ListTile(
+                  title: Text(
+                    'Recommended Papers',
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 16,
                     ),
-                  );
-                } else {
-                  final paperIndex = index - 2;
-                  return buildPaperListItem(compulsoryPapers[paperIndex], state);
-                }
-              },
+                  ),
+                ),
+                ListView.builder(
+                  shrinkWrap: true,
+                  itemCount: recommendedPapers.length,
+                  itemBuilder: (context, index) {
+                    final paper = recommendedPapers[index];
+                    return buildPaperListItem(paper, state);
+                  },
+                ),
+                const ListTile(
+                  title: Text(
+                    'Elective Papers',
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 16,
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: TextField(
+                    controller: state.searchController,
+                    onChanged: (query) {
+                      state.filterItems(query, electivePapers);
+                    },                    
+                    decoration: const InputDecoration(
+                      labelText: 'Search',
+                      hintText: 'Search for papers...',
+                      prefixIcon: Icon(Icons.search),
+                    ),
+                  ),
+                ),
+                // Expanded(
+                //   child: ListView.builder(
+                //     itemCount: electivePapers.length,
+                //     itemBuilder: (context, index) {
+                //       return ListTile(
+                //         title: Text(electivePapers[index].subjectCode),
+                //       );
+                //     },
+                //   ),
+                // ),  
+              ],
             );
           },
-          // Expanded(
-          //   child: ListView.builder(
-          //     itemCount: oneOfPapers.length + 2, // Add 2 for SizedBoxes and Title
-          //     itemBuilder: (context, index) {
-          //       if (index == 0) {
-          //         return const SizedBox(height: 16.0);
-          //       } else if (index == 1) {
-          //         // Add title for one of Papers
-          //         return const ListTile(
-          //           title: Text(
-          //             'Choose One of:',
-          //             style: TextStyle(
-          //               fontWeight: FontWeight.bold,
-          //               fontSize: 16,
-          //             ),
-          //           ),
-          //         );
-          //       } else {
-          //         final oneOfPaperIndex = index - 2;
-          //         return buildPaperListItem(oneOfPapers[oneOfPaperIndex]);
-          //       }
-          //     },
-          //   ),
-          // ),
         ),
-      ),
+        // Expanded(
+        //   child: ListView.builder(
+        //     itemCount: electivePapers.length + 2, // Add 2 for SizedBoxes and Title
+        //     itemBuilder: (context, index) {
+        //       if (index == 0) {
+        //         return const SizedBox(height: 16.0);
+        //       } else if (index == 1) {
+        //         // Add title for one of Papers
+        //         return const ListTile(
+        //           title: Text(
+        //             'Choose One of:',
+        //             style: TextStyle(
+        //               fontWeight: FontWeight.bold,
+        //               fontSize: 16,
+        //             ),
+        //           ),
+        //         );
+        //       } else {
+        //         final oneOfPaperIndex = index - 2;
+        //         return buildPaperListItem(electivePapers[oneOfPaperIndex]);
+        //       }
+        //     },
+        //   ),
+        // ),
+      ),    
       floatingActionButton: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
@@ -111,7 +159,7 @@ class PapersListScreen extends StatelessWidget {
             onPressed: () async {
               final state = Provider.of<PathwayState>(context, listen: false);
               // Combine the two lists into a single list
-              List<Paper> allPapers = [...compulsoryPapers, ...oneOfPapers];
+              List<Paper> allPapers = [...recommendedPapers, ...electivePapers];
 
               // Filter the selected papers
               List<Paper> selectedPapers = allPapers.where((paper) => paper.isSelected).toList();
@@ -195,7 +243,7 @@ class PapersListScreen extends StatelessWidget {
                 final state = Provider.of<PathwayState>(context, listen: false);
           
                 // Combine the two lists into a single list
-                List<Paper> allPapers = [...compulsoryPapers, ...oneOfPapers];
+                List<Paper> allPapers = [...recommendedPapers, ...electivePapers];
           
                 List<Paper> selectedPapers = allPapers.where((paper) => paper.isSelected).toList();
           
@@ -204,7 +252,7 @@ class PapersListScreen extends StatelessWidget {
           
                 String jsonData;
                 try {
-                  jsonData = await fetchPaperData(degree, major); // TODO: Make dynamic
+                  jsonData = await fetchRecommendedPapers(degree, major); // TODO: Make dynamic
                   // Now you have the degrees from the server, use them to navigate to the next screen
                 } catch (error) {
                   // Handle error, perhaps show a dialog to the user
@@ -213,14 +261,13 @@ class PapersListScreen extends StatelessWidget {
                 }
           
                 int nextlevel = level + 100;
-                // List<Paper> nextCompulsoryPapers = getPaperData(jsonData, nextlevel, 'compulsory_papers');
-                // List<Paper> nextOneOfPapers = getPaperData(jsonData, nextlevel, 'one_of_papers');
-                
-                List<Paper> nextCompulsoryPapers = getPaperData(jsonData, nextlevel, 'remaining_papers');
+
+                List<Paper> nextRecommendedPapers = getRecommendedPapers(jsonData, nextlevel, 'recommended_papers');
+                // List<Paper> nextElectivePapers = getRecommendedPapers(jsonData, nextlevel, 'elective_papers');
 
                 Navigator.pushReplacement(
                   context,
-                  MaterialPageRoute(builder: (context) => PapersListScreen(degree: degree, major: major, compulsoryPapers: nextCompulsoryPapers, oneOfPapers: nextCompulsoryPapers, level: nextlevel)),
+                  MaterialPageRoute(builder: (context) => PapersListScreen(degree: degree, major: major, recommendedPapers: nextRecommendedPapers, electivePapers: nextRecommendedPapers, level: nextlevel)),
                 );
               },
               style: ElevatedButton.styleFrom(
@@ -233,12 +280,11 @@ class PapersListScreen extends StatelessWidget {
           ),
         ],
       )
-
     );
   }     
 
-  Widget buildPaperListItem(Paper paper, CheckboxButtonState state) {
-    final paperId = 'paper_${compulsoryPapers.indexOf(paper)}'; // Generate a unique identifier for each paper
+  Widget buildPaperListItem(Paper paper, PapersListState state) {
+    final paperId = 'paper_${paper.papercode}'; // Generate a unique identifier for each paper
     return ListTile(
       title: Row(
         children: [
@@ -259,7 +305,7 @@ class PapersListScreen extends StatelessWidget {
                         keyboardType: TextInputType.number,
                         maxLength: 3,
                         decoration: const InputDecoration(
-                          hintText: '0-100',
+                          hintText: '0-100 (%)',
                         ),
                         onChanged: (value) {
                           int? grade = int.tryParse(value);
@@ -295,8 +341,6 @@ class PapersListScreen extends StatelessWidget {
       ),
     );
   }   
-
-
   
   Future<String> postPaperData(Degree degree, Major major, List<Paper> papersList) async {
     final url = Uri.parse('http://localhost:1234/${degree.title}/${major.name}');
@@ -320,5 +364,6 @@ class PapersListScreen extends StatelessWidget {
       throw Exception('Failed to validate pathway');
     }
   }
+
 }
       

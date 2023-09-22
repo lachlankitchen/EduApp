@@ -36,9 +36,8 @@ import '../major/major.dart';
   }
 
   // Function to retrieve and display paper data for each level
-  List<Paper> getPaperData(String jsonData, int levelInt, String paperKey) {
+  List<Paper> getRecommendedPapers(String jsonData, int levelInt, String paperKey) {
     Map<String, dynamic> parsedData = json.decode(jsonData);
-
     List<dynamic> levels = parsedData['levels'];
     for (var level in levels) {
       if(level["level"] == "$levelInt-level") {
@@ -48,7 +47,20 @@ import '../major/major.dart';
     return [];
   }
 
-  Future<String> fetchPaperData(Degree degree, Major major) async {
+  Future<List<String>> fetchAllPapers(String degree, int level) async {
+    final response = await http.get(Uri.parse('http://localhost:1234/$degree/papers/$level'));
+
+    if (response.statusCode == 200) {
+      // If the server did return an OK response, parse the JSON
+      Map<String, dynamic> data = jsonDecode(response.body);
+      return List<String>.from(data['papers']);
+    } else {
+      // If the server did not return a 200 OK response, throw an exception.
+      throw Exception('Failed to load $degree papers');
+    }
+  }
+
+  Future<String> fetchRecommendedPapers(Degree degree, Major major) async {
     final response = await http.get(Uri.parse('http://localhost:1234/${degree.title}/${major.name}'));
 
     if (response.statusCode == 200) {
