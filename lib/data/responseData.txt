@@ -1,0 +1,47 @@
+          Query:
+
+          svr.Get("/Bachelor of Arts (BA)/Anthropology/100-level"
+
+
+          "ANTH103": {
+          "subject_code": "Anthropology",
+          "year": "2023",
+          "title": "Introduction to Anthropology",
+          "points": "18",
+          "efts": "0.15",
+          "teaching_periods": [
+            "S1"
+          ],
+          "description": "An introduction to the fundamental concepts and history of general anthropology, including archaeology and social anthropology. This paper introduces the key concepts of anthropology for students with little or no previous knowledge of the subject. It will show how the different branches of contemporary anthropology have emerged and coalesced to become the most broad-based subject taught at tertiary level, which links disciplines as diverse as history, geology, biology and sociology.This course is focused on the two primary fields of anthropology taught at the University of Otago: archaeology as the anthropology of the past and social anthropology with its emphasis on recent historical and contemporary peoples and cultural expressions.The broad sweep and theoretical coverage of ANTH103 provides students with foundation knowledge that will be relevant to many other humanities and science papers while preparing anthropology majors for the more specialised social anthropology and archaeology courses taught at the University of Otago.",
+          "prerequisites": null,
+          "restrictions": "ANTH 101",
+          "schedule": "Arts and Music"
+        },
+        "ANTH105": {
+          "subject_code": "Anthropology",
+          "year": "2023",
+          "title": "Global and Local Cultures",
+          "points": "18",
+          "efts": "0.15",
+          "teaching_periods": [
+            "S2"
+          ],
+          "description": "Being human, and humane, in a world where worlds collide. An introduction to cultural studies of globalisation, multiculturalism, tourism, media. This paper introduces students to the study of human life from the global and local perspectives of socio-cultural anthropology. Using New Zealand and international studies, we explore together the distinctive characteristics of our field with its focus on tolerance, its celebration of human difference, its attention to the necessity for decolonisation and defamilarisation of our taken for granted worlds, and our use of empirical fieldwork to create contemporary theories of power, values, identities, societies and cultures. We explore a human and humane response to the following questions: How do/how should we live with globalisation? What would a fully globalised world look like? How does one account for enduring cultural diversities? What are the relationships between, on the one hand, the mental/spiritual/cultural and, on the other, the physical/material/fiscal components of human realities?",
+          "prerequisites": null,
+          "restrictions": null,
+          "schedule": "Arts and Music"
+        },
+        "ANTH106": {
+          "subject_code": "Anthropology",
+          "year": "2023",
+          "title": "Human Origins and Civilisations",
+          "points": "18",
+          "efts": "0.15",
+          "teaching_periods": [
+            "S2"
+          ],
+          "description": "A review of archaeological evidence for the origins and cultural development of the human species from its earliest appearance up to and including the rise of early civilisations. This paper explores fundamental questions about human biological origins and the evolution of human culture and society. What, where and how did our species emerge? What happened during the Stone Age; what was the Neolithic Revolution? How and why did complex societies or civilisations develop globally? The paper pursues answers to these questions and many more, drawing on the archaeological record of our human past, beginning with our African origins millions of years ago. We investigate the development of agriculture, the emergence of new technologies and sedentary settlements, and the beginnings of the world's earliest civilisations.",
+          "prerequisites": null,
+          "restrictions": "ANTH 104, ARCH 101",
+          "schedule": "Arts and Music"
+        }

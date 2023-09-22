@@ -62,10 +62,10 @@ int main(void)
   });
 
 
-  svr.Get("/:degree/:major", [&](const Request &req, Response &res) {
+  svr.Get("/:degree/:major/:level", [&](const Request &req, Response &res) {
       auto degree = req.path_params.at("degree");
       auto major = req.path_params.at("major");
-
+      auto major = req.path_params.at("level");
       std::filesystem::path json_file_path = std::filesystem::path("..") / ".." / ".." / "data" / "recomendedPapers.json";
 
       if (!std::filesystem::exists(json_file_path)) {
@@ -79,7 +79,7 @@ int main(void)
       nlohmann::json json_data; // Assuming you're using nlohmann's json library
       json_file >> json_data;
 
-      if (json_data.contains(degree) && json_data[degree].contains(major)) {
+      if (json_data.contains(degree) && json_data[degree].contains(major) && ) {
           nlohmann::json major_data = json_data[degree][major];
 
           res.set_header("Access-Control-Allow-Origin", "*");
