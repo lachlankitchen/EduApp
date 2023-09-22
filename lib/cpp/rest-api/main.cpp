@@ -62,28 +62,38 @@ int main(void)
   });
 
 
-  svr.Get("/:degree/:major", [&](const Request &req, Response &res)
-            {
-    auto major = req.path_params.at("major"); // TODO: @CONNOR Utilise when quering by major
+  svr.Get("/:degree/:major", [&](const Request &req, Response &res) {
+      auto degree = req.path_params.at("degree");
+      auto major = req.path_params.at("major");
 
-    std::filesystem::path json_file_path = std::filesystem::path("..") / ".." / ".." / "data" / "paper_recommendations.json";
+      std::filesystem::path json_file_path = std::filesystem::path("..") / ".." / ".." / "data" / "recomendedPapers.json";
 
-    if (!std::filesystem::exists(json_file_path)) {
-        res.status = 404;
-        res.set_content("File not found", "text/plain");
-        std::cout << "File not found at specified path.\n";
-        return;
-    }
+      if (!std::filesystem::exists(json_file_path)) {
+          res.status = 404;
+          res.set_content("File not found", "text/plain");
+          std::cout << "File not found at specified path.\n";
+          return;
+      }
 
-    std::ifstream json_file(json_file_path);
-    std::string json_content((std::istreambuf_iterator<char>(json_file)),
-                            std::istreambuf_iterator<char>());
+      std::ifstream json_file(json_file_path);
+      nlohmann::json json_data; // Assuming you're using nlohmann's json library
+      json_file >> json_data;
 
-    res.set_header("Access-Control-Allow-Origin", "*");
-    res.set_header("Access-Control-Allow-Headers", "X-Requested-With, Content-Type");
-    res.set_content(json_content, "application/json");
+      if (json_data.contains(degree) && json_data[degree].contains(major)) {
+          nlohmann::json major_data = json_data[degree][major];
 
-    std::cout << "Successfully served the JSON file.\n"; }); //get major requirements by degree and major.
+          res.set_header("Access-Control-Allow-Origin", "*");
+          res.set_header("Access-Control-Allow-Headers", "X-Requested-With, Content-Type");
+          res.set_content(major_data.dump(), "application/json"); // Return only the major's data
+
+          std::cout << "Successfully served the JSON data for degree: " << degree << " and major: " << major << ".\n";
+      } else {
+          res.status = 404;
+          res.set_content("Degree or Major not found in the JSON data.", "text/plain");
+          std::cout << "Degree or Major not found in the JSON data.\n";
+      }
+  });
+
 
   svr.Post("/:degree/:major", [&](const Request &req, Response &res)
             {
