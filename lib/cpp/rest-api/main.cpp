@@ -1,3 +1,6 @@
+//  cmake -DCMAKE_TOOLCHAIN_FILE=C:/Users/AHopgood/dev/vcpkg/scripts/buildsystems/vcpkg.cmake ..
+//  msbuild rest_api.vcxproj
+
 #include "httplib.h"
 #include <nlohmann/json.hpp>
 #include <filesystem>
