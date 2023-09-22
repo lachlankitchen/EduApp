@@ -1,0 +1,3981 @@
+{
+  "Bachelor of Arts (BA)": {
+    "Anthropology": {
+      "100-level": [
+        "ANTH103",
+        "ANTH105",
+        "ANTH106"
+      ],
+      "200-level": [
+        "ANTH203",
+        "ANTH204",
+        "ANTH205",
+        "ANTH206",
+        "ANTH208",
+        "ANTH209",
+        "ANTH210",
+        "ANTH211",
+        "ANTH222",
+        "ANTH223",
+        "ANTH225",
+        "ANTH228",
+        "ANTH231",
+        "BIOA201",
+        "GEND201",
+        "GEND205",
+        "GEND206",
+        "GEND207",
+        "GEND208",
+        "GEND209",
+        "GEND210",
+        "GEND234",
+        "GEOG210",
+        "GLBL211",
+        "MUSI268",
+        "SOCI201",
+        "SOCI202",
+        "SOCI203",
+        "SOCI204",
+        "SOCI205",
+        "SOCI207",
+        "SOCI208",
+        "SOCI209",
+        "SOCI211",
+        "SOCI213"
+      ],
+      "300-level": [
+        "ANTH310",
+        "ANTH312",
+        "ANTH317",
+        "ANTH321",
+        "ANTH322",
+        "ANTH323",
+        "ANTH324",
+        "ANTH325",
+        "ANTH326",
+        "ANTH327",
+        "ANTH328",
+        "ANTH329",
+        "ANTH330",
+        "BIOA301",
+        "GEND305",
+        "GEND306",
+        "GEND307",
+        "GEND308",
+        "GEND309",
+        "GEND310",
+        "GEND311",
+        "GEND334",
+        "GEOG381",
+        "GLBL311",
+        "MUSI368",
+        "MUSI386",
+        "SOCI301",
+        "SOCI302",
+        "SOCI304",
+        "SOCI305",
+        "SOCI306",
+        "SOCI309",
+        "SOCI310",
+        "SOCI312",
+        "SOCI313",
+        "SOCI319"
+      ]
+    },
+    "Asian Studies": {
+      "100-level": [
+        "ASIA101",
+        "MUSI140",
+        "RELS102"
+      ],
+      "200-level": [
+        "ANTH203",
+        "ASIA201",
+        "CHIN241",
+        "CHIN242",
+        "CHIN243",
+        "CHIN244",
+        "GLBL211",
+        "JAPA242",
+        "JAPA243",
+        "JAPA244",
+        "MUSI240",
+        "MUSI268",
+        "POLS234",
+        "RELS202",
+        "RELS209",
+        "RELS216",
+        "RELS220",
+        "RELS226",
+        "RELS227",
+        "RELS236"
+      ],
+      "300-level": [
+        "ASIA301",
+        "CHIN342",
+        "CHIN343",
+        "CHIN344",
+        "GLBL311",
+        "JAPA342",
+        "JAPA343",
+        "JAPA344",
+        "MANT348",
+        "MUSI340",
+        "MUSI368",
+        "POLS318",
+        "RELS302",
+        "RELS309",
+        "RELS316",
+        "RELS320",
+        "RELS326",
+        "RELS327",
+        "RELS336"
+      ]
+    },
+    "Biblical Studies": {
+      "100-level": [
+        "BIBS112",
+        "BIBS121"
+      ],
+      "200-level": [
+        "BIBS211",
+        "BIBS213",
+        "BIBS215",
+        "BIBS218",
+        "BIBS221",
+        "BIBS223",
+        "BIBS224",
+        "BIBS225",
+        "BIBS226",
+        "BIBS227",
+        "CHTH206",
+        "CHTH212",
+        "CHTH213",
+        "CHTH217",
+        "CHTH218",
+        "CHTH224",
+        "CHTH231",
+        "CHTH233",
+        "CHTH235",
+        "CHTH236",
+        "CHTH237"
+      ],
+      "300-level": [
+        "BIBS311",
+        "BIBS313",
+        "BIBS315",
+        "BIBS317",
+        "BIBS318",
+        "BIBS321",
+        "BIBS322",
+        "BIBS323",
+        "BIBS324",
+        "BIBS325",
+        "BIBS326",
+        "BIBS327",
+        "CHTH305",
+        "CHTH306",
+        "CHTH312",
+        "CHTH313",
+        "CHTH314",
+        "CHTH317",
+        "CHTH318",
+        "CHTH319",
+        "CHTH320",
+        "CHTH322",
+        "CHTH323",
+        "CHTH324",
+        "CHTH331",
+        "CHTH333",
+        "CHTH335",
+        "CHTH336",
+        "CHTH337"
+      ]
+    },
+    "Chinese": {
+      "100-level": [
+        "ASIA101",
+        "CHIN131",
+        "CHIN132",
+        "GLBL101"
+      ],
+      "200-level": [
+        "ASIA201",
+        "CHIN231",
+        "CHIN232",
+        "CHIN241",
+        "CHIN242",
+        "CHIN243",
+        "CHIN244",
+        "CHIN250",
+        "GLBL201",
+        "GLBL202",
+        "GLBL211"
+      ],
+      "300-level": [
+        "ASIA301",
+        "CHIN334",
+        "CHIN335",
+        "CHIN342",
+        "CHIN343",
+        "CHIN344",
+        "GLBL301",
+        "GLBL302",
+        "GLBL311",
+        "POLS318"
+      ]
+    },
+    "Christian Thought and History": {
+      "100-level": [
+        "CHTH102",
+        "CHTH111",
+        "CHTH131"
+      ],
+      "200-level": [
+        "BIBS211",
+        "BIBS213",
+        "BIBS215",
+        "BIBS218",
+        "BIBS221",
+        "BIBS223",
+        "BIBS224",
+        "BIBS225",
+        "BIBS226",
+        "BIBS227",
+        "CHTH206",
+        "CHTH212",
+        "CHTH213",
+        "CHTH217",
+        "CHTH218",
+        "CHTH224",
+        "CHTH231",
+        "CHTH233",
+        "CHTH235",
+        "CHTH236",
+        "CHTH237"
+      ],
+      "300-level": [
+        "BIBS311",
+        "BIBS313",
+        "BIBS315",
+        "BIBS317",
+        "BIBS318",
+        "BIBS321",
+        "BIBS322",
+        "BIBS323",
+        "BIBS324",
+        "BIBS325",
+        "BIBS326",
+        "BIBS327",
+        "CHTH305",
+        "CHTH306",
+        "CHTH312",
+        "CHTH313",
+        "CHTH314",
+        "CHTH317",
+        "CHTH318",
+        "CHTH319",
+        "CHTH320",
+        "CHTH322",
+        "CHTH323",
+        "CHTH324",
+        "CHTH331",
+        "CHTH333",
+        "CHTH335",
+        "CHTH336",
+        "CHTH337"
+      ]
+    },
+    "Classics (including Classical Studies, Greek and Latin)": {
+      "100-level": [],
+      "200-level": [],
+      "300-level": []
+    },
+    "Communication Studies": {
+      "100-level": [
+        "MFCO102",
+        "MFCO103"
+      ],
+      "200-level": [
+        "GEND205",
+        "MFCO201",
+        "MFCO202",
+        "MFCO203",
+        "MFCO205",
+        "MFCO210",
+        "MFCO212",
+        "MFCO213",
+        "MFCO216",
+        "MFCO217",
+        "MFCO220",
+        "MFCO222",
+        "MFCO223",
+        "MFCO224",
+        "MFCO231",
+        "MFCO242",
+        "MFCO251"
+      ],
+      "300-level": [
+        "GEND305",
+        "MFCO301",
+        "MFCO303",
+        "MFCO312",
+        "MFCO313",
+        "MFCO314",
+        "MFCO315",
+        "MFCO316",
+        "MFCO317",
+        "MFCO318",
+        "MFCO319",
+        "MFCO330",
+        "MFCO333"
+      ]
+    },
+    "Computer Science": {
+      "100-level": [
+        "BSNS112",
+        "COMO101",
+        "COMP101",
+        "COMP161",
+        "COMP162",
+        "FINC102",
+        "MATH120",
+        "MATH130",
+        "MATH140",
+        "STAT110",
+        "STAT115"
+      ],
+      "200-level": [
+        "COSC201",
+        "COSC202",
+        "COSC203",
+        "COSC204"
+      ],
+      "300-level": [
+        "COSC301",
+        "COSC312",
+        "COSC326",
+        "COSC341",
+        "COSC342",
+        "COSC343",
+        "COSC344",
+        "COSC345",
+        "COSC349",
+        "COSC360",
+        "COSC385"
+      ]
+    },
+    "Economics": {
+      "100-level": [
+        "BSNS113",
+        "ECON112"
+      ],
+      "200-level": [
+        "ECON201",
+        "ECON202",
+        "ECON206",
+        "ECON207",
+        "ECON210",
+        "ECON271"
+      ],
+      "300-level": [
+        "ECON301",
+        "ECON302",
+        "ECON303",
+        "ECON306",
+        "ECON308",
+        "ECON316",
+        "ECON317",
+        "ECON318",
+        "ECON319",
+        "ECON350",
+        "ECON351",
+        "ECON371",
+        "ECON375",
+        "ECON376",
+        "ECON377"
+      ]
+    },
+    "Education": {
+      "100-level": [
+        "EDUC101",
+        "EDUC102"
+      ],
+      "200-level": [
+        "EDUC211",
+        "EDUC251",
+        "EDUC252",
+        "EDUC254",
+        "EDUC259"
+      ],
+      "300-level": [
+        "EDUC307",
+        "EDUC308",
+        "EDUC311",
+        "EDUC312",
+        "EDUC313",
+        "EDUC318",
+        "EDUC321",
+        "EDUC331",
+        "EDUC351"
+      ]
+    },
+    "English": {
+      "100-level": [
+        "ENGL120",
+        "ENGL121",
+        "ENGL127",
+        "ENGL128",
+        "ENGL131",
+        "LING111"
+      ],
+      "200-level": [
+        "DHUM201",
+        "ENGL216",
+        "ENGL217",
+        "ENGL218",
+        "ENGL219",
+        "ENGL220",
+        "ENGL222",
+        "ENGL223",
+        "ENGL227",
+        "ENGL228",
+        "ENGL233",
+        "ENGL241",
+        "ENGL242",
+        "ENGL243",
+        "ENGL251",
+        "ENGL254",
+        "EURO202"
+      ],
+      "300-level": [
+        "ENGL311",
+        "ENGL312",
+        "ENGL313",
+        "ENGL319",
+        "ENGL320",
+        "ENGL323",
+        "ENGL327",
+        "ENGL332",
+        "ENGL334",
+        "ENGL335",
+        "ENGL337",
+        "ENGL340",
+        "ENGL341",
+        "ENGL342",
+        "ENGL350",
+        "ENGL351",
+        "ENGL353",
+        "ENGL354",
+        "ENGL368",
+        "EURO302"
+      ]
+    },
+    "English and Linguistics": {
+      "100-level": [
+        "ENGL120",
+        "ENGL121",
+        "ENGL127",
+        "ENGL128",
+        "ENGL131",
+        "LING111"
+      ],
+      "200-level": [
+        "DHUM201",
+        "ENGL216",
+        "ENGL217",
+        "ENGL218",
+        "ENGL219",
+        "ENGL220",
+        "ENGL222",
+        "ENGL223",
+        "ENGL227",
+        "ENGL228",
+        "ENGL233",
+        "ENGL241",
+        "ENGL242",
+        "ENGL243",
+        "ENGL251",
+        "ENGL254",
+        "LING217",
+        "LING230",
+        "LING231"
+      ],
+      "300-level": [
+        "ENGL311",
+        "ENGL312",
+        "ENGL313",
+        "ENGL319",
+        "ENGL320",
+        "ENGL323",
+        "ENGL327",
+        "ENGL332",
+        "ENGL334",
+        "ENGL335",
+        "ENGL337",
+        "ENGL340",
+        "ENGL341",
+        "ENGL342",
+        "ENGL350",
+        "ENGL351",
+        "ENGL353",
+        "ENGL354",
+        "ENGL368",
+        "LING314",
+        "LING317",
+        "LING330",
+        "LING331",
+        "LING332",
+        "LING342",
+        "LING390"
+      ]
+    },
+    "European Studies": {
+      "100-level": [],
+      "200-level": [
+        "CLAS238",
+        "ENGL218",
+        "EURO202",
+        "FREN250",
+        "HIST223",
+        "HIST225",
+        "MUSI223",
+        "MUSI261",
+        "PHIL227",
+        "PHIL228",
+        "PHIL230",
+        "POLS216",
+        "SPAN243"
+      ],
+      "300-level": [
+        "CLAS343",
+        "ENGL311",
+        "ENGL312",
+        "ENGL313",
+        "ENGL319",
+        "ENGL335",
+        "EURO304",
+        "FREN341",
+        "FREN350",
+        "GERM341",
+        "HIST325",
+        "MFCO314",
+        "MFCO316",
+        "MUSI323",
+        "MUSI361",
+        "POLS301",
+        "POLS310",
+        "POLS312",
+        "POLS315",
+        "POLS325",
+        "SPAN342",
+        "SPAN343"
+      ]
+    },
+    "Film and Media Studies": {
+      "100-level": [
+        "MFCO101",
+        "MFCO102"
+      ],
+      "200-level": [
+        "ASIA201",
+        "CHIN242",
+        "GEND205",
+        "MFCO201",
+        "MFCO202",
+        "MFCO203",
+        "MFCO205",
+        "MFCO210",
+        "MFCO212",
+        "MFCO213",
+        "MFCO216",
+        "MFCO217",
+        "MFCO220",
+        "MFCO222",
+        "MFCO223",
+        "MFCO224",
+        "MFCO231",
+        "MFCO242",
+        "MFCO251"
+      ],
+      "300-level": [
+        "CHIN342",
+        "GEND305",
+        "MFCO301",
+        "MFCO303",
+        "MFCO312",
+        "MFCO313",
+        "MFCO314",
+        "MFCO315",
+        "MFCO316",
+        "MFCO317",
+        "MFCO318",
+        "MFCO319",
+        "MFCO330",
+        "MFCO333"
+      ]
+    },
+    "French": {
+      "100-level": [
+        "FREN131",
+        "FREN132",
+        "GLBL101"
+      ],
+      "200-level": [
+        "EURO202",
+        "FREN232",
+        "FREN233",
+        "FREN250",
+        "GLBL201",
+        "GLBL202"
+      ],
+      "300-level": [
+        "EURO302",
+        "FREN333",
+        "FREN334",
+        "FREN335",
+        "FREN336",
+        "FREN341",
+        "FREN350",
+        "GLBL301",
+        "GLBL302"
+      ]
+    },
+    "Gender Studies": {
+      "100-level": [
+        "GEND101",
+        "GEND102"
+      ],
+      "200-level": [
+        "ANTH206",
+        "CHIN241",
+        "GEND201",
+        "GEND205",
+        "GEND206",
+        "GEND207",
+        "GEND208",
+        "GEND209",
+        "GEND210",
+        "GEND234",
+        "GEOG210",
+        "HIST215",
+        "HIST234",
+        "MFCO212",
+        "POLS202",
+        "RELS209",
+        "SOCI201",
+        "SOCI202",
+        "SOCI203",
+        "SOCI204",
+        "SOCI205",
+        "SOCI207",
+        "SOCI208",
+        "SOCI209",
+        "SOCI211",
+        "SOCI213"
+      ],
+      "300-level": [
+        "ANTH322",
+        "ANTH327",
+        "EDUC318",
+        "ENGL331",
+        "GEND305",
+        "GEND306",
+        "GEND307",
+        "GEND308",
+        "GEND309",
+        "GEND310",
+        "GEND311",
+        "GEND334",
+        "MFCO301",
+        "RELS309",
+        "SOCI301",
+        "SOCI302",
+        "SOCI304",
+        "SOCI305",
+        "SOCI306",
+        "SOCI309",
+        "SOCI310",
+        "SOCI312",
+        "SOCI313",
+        "SOCI319"
+      ]
+    },
+    "Geography": {
+      "100-level": [
+        "GEOG101",
+        "GEOG102"
+      ],
+      "200-level": [
+        "GEOG201",
+        "GEOG210",
+        "GEOG212",
+        "GEOG214",
+        "GEOG215",
+        "GEOG216",
+        "GEOG219",
+        "GEOG228",
+        "GEOG276",
+        "GEOG278",
+        "GEOG280",
+        "GEOG281",
+        "GEOG282",
+        "GEOG283",
+        "GEOG284",
+        "GEOG285",
+        "GEOG286",
+        "GEOG287",
+        "GEOG288",
+        "GEOG289",
+        "GEOG298",
+        "GEOG299"
+      ],
+      "300-level": [
+        "GEOG301",
+        "GEOG328",
+        "GEOG374",
+        "GEOG376",
+        "GEOG378",
+        "GEOG379",
+        "GEOG380",
+        "GEOG381",
+        "GEOG382",
+        "GEOG384",
+        "GEOG387",
+        "GEOG388",
+        "GEOG389",
+        "GEOG390",
+        "GEOG392",
+        "GEOG393",
+        "GEOG394",
+        "GEOG395",
+        "GEOG397",
+        "GEOG398",
+        "GEOG399"
+      ]
+    },
+    "German": {
+      "100-level": [
+        "GERM131",
+        "GERM132",
+        "GLBL101"
+      ],
+      "200-level": [
+        "EURO202",
+        "GERM230",
+        "GERM231",
+        "GLBL201",
+        "GLBL202"
+      ],
+      "300-level": [
+        "EURO302",
+        "GERM331",
+        "GERM334",
+        "GERM335",
+        "GLBL301",
+        "GLBL302",
+        "MFCO316"
+      ]
+    },
+    "Global Studies": {
+      "100-level": [
+        "GLBL101"
+      ],
+      "200-level": [
+        "GLBL201",
+        "GLBL202"
+      ],
+      "300-level": [
+        "GLBL303",
+        "HUMS301"
+      ]
+    },
+    "History": {
+      "100-level": [
+        "HIST102",
+        "HIST107",
+        "HIST108",
+        "HIST123"
+      ],
+      "200-level": [
+        "CHIN244",
+        "CHTH206",
+        "ENVI211",
+        "HIST215",
+        "HIST216",
+        "HIST218",
+        "HIST223",
+        "HIST225",
+        "HIST229",
+        "HIST230",
+        "HIST231",
+        "HIST232",
+        "HIST234",
+        "HIST241",
+        "HIST242",
+        "HIST244",
+        "HIST245",
+        "HIST246",
+        "MAOR207"
+      ],
+      "300-level": [
+        "CHIN344",
+        "HIST303",
+        "HIST304",
+        "HIST308",
+        "HIST325",
+        "HIST327",
+        "HIST328",
+        "HIST331",
+        "HIST332",
+        "HIST333",
+        "HIST335",
+        "HIST341",
+        "HIST347",
+        "HIST348",
+        "HIST353",
+        "HIST354",
+        "MAOR307"
+      ]
+    },
+    "Indigenous Studies": {
+      "100-level": [
+        "MAOR102",
+        "MAOR110",
+        "PACI101"
+      ],
+      "200-level": [
+        "ANTH204",
+        "ANTH205",
+        "ANTH206",
+        "ANTH208",
+        "GEOG278",
+        "HIST223",
+        "HIST246",
+        "INDS210",
+        "MAOR202",
+        "MAOR203",
+        "MAOR204",
+        "MAOR207",
+        "MAOR208",
+        "MAOR210",
+        "MAOR211",
+        "MAOR212",
+        "MAOR213",
+        "MFCO212",
+        "PACI201",
+        "PACI202",
+        "PACI210",
+        "POLS202",
+        "POLS207",
+        "PUBH203",
+        "SPAN243",
+        "SPEX206"
+      ],
+      "300-level": [
+        "ANTH324",
+        "ECON303",
+        "ENGL332",
+        "GEOG378",
+        "HIST327",
+        "HIST347",
+        "INDS301",
+        "INDS302",
+        "INDS307",
+        "INDS310",
+        "MANT340",
+        "MAOR303",
+        "MAOR304",
+        "MAOR307",
+        "MAOR308",
+        "MAOR310",
+        "MAOR311",
+        "MAOR312",
+        "MAOR313",
+        "MAOR316",
+        "MART305",
+        "MFCO318",
+        "PACI301",
+        "PACI305",
+        "PACI310",
+        "SPAN343",
+        "SPEX306",
+        "TOUR301",
+        "TOUR306"
+      ]
+    },
+    "Information Science": {
+      "100-level": [
+        "COMP101",
+        "COMP161",
+        "COMP162"
+      ],
+      "200-level": [
+        "INFO201",
+        "INFO202",
+        "INFO203",
+        "INFO204"
+      ],
+      "300-level": [
+        "INFO301",
+        "INFO302",
+        "INFO303",
+        "INFO304",
+        "INFO305",
+        "INFO310",
+        "INFO350",
+        "INFO351",
+        "INFO352",
+        "INFO353",
+        "INFO390"
+      ]
+    },
+    "Japanese": {
+      "100-level": [
+        "ASIA101",
+        "GLBL101",
+        "JAPA131",
+        "JAPA132",
+        "LING111"
+      ],
+      "200-level": [
+        "ASIA201",
+        "GLBL201",
+        "GLBL202",
+        "JAPA231",
+        "JAPA233",
+        "JAPA242",
+        "JAPA243",
+        "JAPA244"
+      ],
+      "300-level": [
+        "ASIA301",
+        "GLBL301",
+        "GLBL302",
+        "JAPA331",
+        "JAPA332",
+        "JAPA342",
+        "JAPA343",
+        "JAPA344",
+        "JAPA351",
+        "JAPA352"
+      ]
+    },
+    "Language and Linguistics": {
+      "100-level": [
+        "LING111"
+      ],
+      "200-level": [
+        "LING217",
+        "LING230",
+        "LING231"
+      ],
+      "300-level": [
+        "LING314",
+        "LING317",
+        "LING330",
+        "LING331",
+        "LING332",
+        "LING342",
+        "LING390"
+      ]
+    },
+    "Linguistics": {
+      "100-level": [
+        "GLBL101",
+        "LING111",
+        "MAOR110",
+        "MAOR111",
+        "MAOR112"
+      ],
+      "200-level": [
+        "DHUM201",
+        "LING117",
+        "LING217",
+        "LING230",
+        "LING231"
+      ],
+      "300-level": [
+        "LING314",
+        "LING317",
+        "LING330",
+        "LING331",
+        "LING332",
+        "LING342",
+        "LING390"
+      ]
+    },
+    "M\u0101ori Studies": {
+      "100-level": [
+        "MAOR102",
+        "MAOR111",
+        "MAOR112"
+      ],
+      "200-level": [
+        "MAOR202",
+        "MAOR203",
+        "MAOR204",
+        "MAOR206",
+        "MAOR207",
+        "MAOR208",
+        "MAOR210",
+        "MAOR211",
+        "MAOR212",
+        "MAOR213",
+        "PACI201"
+      ],
+      "300-level": [
+        "INDS301",
+        "INDS302",
+        "INDS307",
+        "INDS310",
+        "MAOR301",
+        "MAOR303",
+        "MAOR304",
+        "MAOR306",
+        "MAOR307",
+        "MAOR308",
+        "MAOR310",
+        "MAOR311",
+        "MAOR312",
+        "MAOR313",
+        "MAOR316",
+        "MAOR327",
+        "PACI301"
+      ]
+    },
+    "Mathematics": {
+      "100-level": [
+        "COMO101",
+        "COMP161",
+        "COMP162",
+        "ENGL127",
+        "MATH130",
+        "MATH140"
+      ],
+      "200-level": [
+        "COMO204",
+        "COMP242",
+        "MATH201",
+        "MATH202",
+        "MATH203",
+        "PHIL222",
+        "STAT260",
+        "STAT270"
+      ],
+      "300-level": [
+        "COMO303",
+        "MATH301",
+        "MATH302",
+        "MATH304",
+        "MATH306",
+        "MATH342"
+      ]
+    },
+    "Music": {
+      "100-level": [
+        "MUSI101",
+        "MUSI103",
+        "MUSI104",
+        "MUSI105"
+      ],
+      "Above 100-level": [
+        "MUSI",
+        "PERF205",
+        "PERF305"
+      ],
+      "Plus": []
+    },
+    "Pacific Islands Studies": {
+      "100-level": [
+        "ANTH103",
+        "ANTH105",
+        "HIST107",
+        "MAOR102",
+        "MFCO102",
+        "PACI101",
+        "PACI102",
+        "PACI103"
+      ],
+      "200-level": [
+        "ANTH",
+        "ANTH204",
+        "ANTH205",
+        "ANTH206",
+        "CHTH",
+        "GEOG",
+        "GEOG278",
+        "HIST",
+        "HIST208",
+        "MAOR",
+        "MAOR207",
+        "MFCO212",
+        "MUSI268",
+        "PACI201",
+        "PACI210"
+      ],
+      "300-level": [
+        "ANTH",
+        "ANTH327",
+        "CHTH",
+        "GEOG",
+        "GEOG378",
+        "HIST",
+        "HIST337",
+        "INDS307",
+        "MAOR",
+        "MAOR307",
+        "MFCO318",
+        "MUSI368",
+        "PACI301",
+        "PACI305",
+        "PACI310",
+        "SOWK303",
+        "SOWK304",
+        "THEA322"
+      ]
+    },
+    "Philosophy": {
+      "100-level": [
+        "PHIL101",
+        "PHIL103",
+        "PHIL105",
+        "PHIL106"
+      ],
+      "200-level": [
+        "GEND201",
+        "PHIL",
+        "PHIL222",
+        "PHIL223",
+        "PHIL225",
+        "PHIL227",
+        "PHIL228",
+        "PHIL229",
+        "PHIL231",
+        "PHIL232",
+        "PHIL233",
+        "PHIL234",
+        "PHIL235",
+        "PHIL236",
+        "PHIL239",
+        "PHIL240",
+        "POLS202",
+        "PSYC204"
+      ],
+      "300-level": [
+        "BITC301",
+        "CLAS340",
+        "PHIL312",
+        "PHIL314",
+        "PHIL315",
+        "PHIL323",
+        "PHIL329",
+        "PHIL331",
+        "PHIL332",
+        "PHIL333",
+        "PHIL334",
+        "PHIL335",
+        "PHIL336",
+        "PHIL338",
+        "PHIL339",
+        "PHIL340",
+        "PHIL401",
+        "PHIL406",
+        "PHIL409",
+        "PHIL413",
+        "PHIL414",
+        "PHIL415",
+        "PHIL417",
+        "PHIL418",
+        "PHIL451",
+        "PHIL458",
+        "PHIL480",
+        "PHIL490",
+        "POLS301",
+        "POLS307"
+      ]
+    },
+    "Philosophy, Politics and Economics": {
+      "100-level": [
+        "BSNS113",
+        "ECON112",
+        "PHIL101",
+        "PHIL103",
+        "PHIL105",
+        "PHIL106",
+        "POLS101",
+        "POLS102",
+        "POLS104",
+        "POLS105"
+      ],
+      "200-level": [
+        "ECON201",
+        "ECON202",
+        "ECON206",
+        "ECON207",
+        "ECON210",
+        "ECON271",
+        "PHIL222",
+        "PHIL223",
+        "PHIL225",
+        "PHIL227",
+        "PHIL228",
+        "PHIL229",
+        "PHIL231",
+        "PHIL232",
+        "PHIL233",
+        "PHIL234",
+        "PHIL235",
+        "PHIL236",
+        "PHIL239",
+        "PHIL240",
+        "PHPE201",
+        "POLS202",
+        "POLS207",
+        "POLS208",
+        "POLS210",
+        "POLS211",
+        "POLS213",
+        "POLS216",
+        "POLS217",
+        "POLS218",
+        "POLS221",
+        "POLS228",
+        "POLS230",
+        "POLS234",
+        "POLS243",
+        "POLS250"
+      ],
+      "300-level": [
+        "CLAS340",
+        "CLAS346",
+        "ECON301",
+        "ECON302",
+        "ECON303",
+        "ECON306",
+        "ECON308",
+        "ECON316",
+        "ECON317",
+        "ECON318",
+        "ECON319",
+        "ECON350",
+        "ECON351",
+        "ECON371",
+        "ECON375",
+        "ECON376",
+        "ECON377",
+        "PHIL312",
+        "PHIL314",
+        "PHIL315",
+        "PHIL323",
+        "PHIL329",
+        "PHIL331",
+        "PHIL332",
+        "PHIL333",
+        "PHIL334",
+        "PHIL335",
+        "PHIL336",
+        "PHIL338",
+        "PHIL339",
+        "PHIL340",
+        "PHPE301",
+        "POLS301",
+        "POLS303",
+        "POLS306",
+        "POLS307",
+        "POLS308",
+        "POLS310",
+        "POLS312",
+        "POLS315",
+        "POLS318",
+        "POLS319",
+        "POLS321",
+        "POLS323",
+        "POLS325",
+        "POLS326",
+        "POLS330",
+        "POLS375",
+        "POLS390"
+      ]
+    },
+    "Politics": {
+      "100-level": [
+        "POLS101",
+        "POLS102",
+        "POLS104",
+        "POLS105"
+      ],
+      "200-level": [
+        "CHIN241",
+        "CLAS346",
+        "GEND201",
+        "GEND208",
+        "PHIL227",
+        "PHIL228",
+        "POLS",
+        "POLS202",
+        "POLS207",
+        "POLS208",
+        "POLS210",
+        "POLS211",
+        "POLS213",
+        "POLS216",
+        "POLS217",
+        "POLS218",
+        "POLS221",
+        "POLS228",
+        "POLS230",
+        "POLS234",
+        "POLS243",
+        "POLS250",
+        "PSYC204",
+        "PUBH203",
+        "RELS235"
+      ],
+      "300-level": [
+        "POLS301",
+        "POLS303",
+        "POLS306",
+        "POLS307",
+        "POLS308",
+        "POLS310",
+        "POLS312",
+        "POLS315",
+        "POLS318",
+        "POLS319",
+        "POLS321",
+        "POLS323",
+        "POLS325",
+        "POLS326",
+        "POLS330",
+        "POLS375",
+        "POLS390"
+      ]
+    },
+    "Psychology": {
+      "100-level": [
+        "PSYC111",
+        "PSYC112",
+        "STAT110",
+        "STAT115"
+      ],
+      "200-level": [
+        "PSYC210",
+        "PSYC211",
+        "PSYC212"
+      ],
+      "300-level": [
+        "PSYC311",
+        "PSYC313",
+        "PSYC315",
+        "PSYC317",
+        "PSYC318",
+        "PSYC319",
+        "PSYC321",
+        "PSYC323",
+        "PSYC324",
+        "PSYC325",
+        "PSYC326",
+        "PSYC327",
+        "PSYC328",
+        "PSYC329",
+        "PSYC330"
+      ]
+    },
+    "Religious Studies": {
+      "100-level": [
+        "RELS101",
+        "RELS102",
+        "RELS110"
+      ],
+      "200-level": [
+        "ANTH225",
+        "ANTH228",
+        "CHIN241",
+        "DHUM201",
+        "HIST215",
+        "HIST244",
+        "JAPA243",
+        "PHIL229",
+        "POLS210",
+        "RELS202",
+        "RELS203",
+        "RELS209",
+        "RELS214",
+        "RELS216",
+        "RELS217",
+        "RELS220",
+        "RELS225",
+        "RELS226",
+        "RELS227",
+        "RELS230",
+        "RELS231",
+        "RELS235",
+        "RELS236",
+        "RELS237",
+        "RELS238",
+        "RELS239",
+        "RELS240",
+        "RELS241",
+        "RELS244"
+      ],
+      "300-level": [
+        "ANTH325",
+        "ANTH328",
+        "CLAS342",
+        "HIST308",
+        "JAPA343",
+        "PHIL329",
+        "RELS302",
+        "RELS303",
+        "RELS306",
+        "RELS309",
+        "RELS314",
+        "RELS316",
+        "RELS317",
+        "RELS320",
+        "RELS325",
+        "RELS326",
+        "RELS327",
+        "RELS330",
+        "RELS331",
+        "RELS335",
+        "RELS336",
+        "RELS337",
+        "RELS338",
+        "RELS340",
+        "RELS341",
+        "RELS344"
+      ]
+    },
+    "Sociology": {
+      "100-level": [
+        "SOCI101",
+        "SOCI102"
+      ],
+      "200-level": [
+        "CRIM201",
+        "GEND201",
+        "GEND205",
+        "GEND206",
+        "GEND207",
+        "GEND208",
+        "GEND209",
+        "GEND210",
+        "GEND234",
+        "SOCI201",
+        "SOCI202",
+        "SOCI203",
+        "SOCI204",
+        "SOCI205",
+        "SOCI207",
+        "SOCI208",
+        "SOCI209",
+        "SOCI211",
+        "SOCI213",
+        "SPEX208"
+      ],
+      "300-level": [
+        "GEND305",
+        "GEND306",
+        "GEND307",
+        "GEND308",
+        "GEND309",
+        "GEND310",
+        "GEND311",
+        "GEND334",
+        "SOCI301",
+        "SOCI302",
+        "SOCI304",
+        "SOCI305",
+        "SOCI306",
+        "SOCI309",
+        "SOCI310",
+        "SOCI312",
+        "SOCI313",
+        "SOCI319",
+        "SPEX312",
+        "SPEX315"
+      ]
+    },
+    "Spanish": {
+      "100-level": [
+        "GLBL101",
+        "SPAN131",
+        "SPAN132"
+      ],
+      "200-level": [
+        "EURO202",
+        "GLBL201",
+        "GLBL202",
+        "SPAN231",
+        "SPAN232",
+        "SPAN233",
+        "SPAN243",
+        "SPAN250",
+        "SPAN251"
+      ],
+      "300-level": [
+        "EURO302",
+        "GLBL301",
+        "GLBL302",
+        "SPAN331",
+        "SPAN332",
+        "SPAN341",
+        "SPAN343",
+        "SPAN350",
+        "SPAN351"
+      ]
+    },
+    "Sport Development and Management": {
+      "100-level": [
+        "SPEX101",
+        "SPEX102"
+      ],
+      "200-level": [
+        "SPEX204",
+        "SPEX208",
+        "SPEX209"
+      ],
+      "300-level": [
+        "SPEX304",
+        "SPEX312",
+        "SPEX313",
+        "SPEX314",
+        "SPEX315"
+      ]
+    },
+    "Statistics": {
+      "100-level": [
+        "MATH130",
+        "MATH140",
+        "STAT110",
+        "STAT115"
+      ],
+      "200-level": [
+        "MATH202",
+        "MATH203",
+        "STAT210",
+        "STAT260",
+        "STAT270"
+      ],
+      "300-level": [
+        "STAT310",
+        "STAT311",
+        "STAT312",
+        "STAT370",
+        "STAT371",
+        "STAT372",
+        "STAT399"
+      ]
+    },
+    "Theatre Studies": {
+      "100-level": [
+        "THEA122",
+        "THEA151",
+        "THEA152"
+      ],
+      "200-level": [
+        "MUSI265",
+        "PERF205",
+        "THEA221",
+        "THEA241",
+        "THEA251",
+        "THEA252",
+        "THEA253",
+        "THEA256",
+        "THEA257"
+      ],
+      "300-level": [
+        "MUSI365",
+        "PERF305",
+        "THEA322",
+        "THEA323",
+        "THEA324",
+        "THEA325",
+        "THEA341",
+        "THEA351",
+        "THEA352",
+        "THEA353",
+        "THEA354",
+        "THEA356",
+        "THEA357"
+      ]
+    },
+    "Tourism, Languages and Cultures": {
+      "100-level": [
+        "TOUR101",
+        "TOUR102"
+      ],
+      "200-level": [
+        "TOUR217",
+        "TOUR218",
+        "TOUR219"
+      ],
+      "300-level": [
+        "TOUR301",
+        "TOUR303",
+        "TOUR304",
+        "TOUR305",
+        "TOUR306"
+      ]
+    }
+  },
+  "Bachelor of Arts and Commerce (BACom)":{},
+  "Bachelor of Arts and Science (BASc)": {},
+  "Bachelor of Commerce (BCom)": {
+    "Accounting": {
+      "100-level": [
+        "ACCT102",
+        "BSNS111",
+        "BSNS112",
+        "BSNS113",
+        "BSNS114",
+        "BSNS115"
+      ],
+      "200-level": [
+        "ACCT211",
+        "ACCT222",
+        "ACCT233",
+        "ACCT260"
+      ],
+      "300-level": []
+    },
+    "Economics": {
+      "100-level": [
+        "BSNS111",
+        "BSNS112",
+        "BSNS113",
+        "BSNS114",
+        "BSNS115",
+        "ECON112"
+      ],
+      "200-level": [
+        "ECON201",
+        "ECON202",
+        "ECON206",
+        "ECON207",
+        "ECON210",
+        "ECON271"
+      ],
+      "300-level": [
+        "ECON301",
+        "ECON302",
+        "ECON303",
+        "ECON306",
+        "ECON308",
+        "ECON316",
+        "ECON317",
+        "ECON318",
+        "ECON319",
+        "ECON350",
+        "ECON351",
+        "ECON371",
+        "ECON375",
+        "ECON376",
+        "ECON377"
+      ]
+    },
+    "Finance": {
+      "100-level": [
+        "BSNS111",
+        "BSNS112",
+        "BSNS113",
+        "BSNS114",
+        "BSNS115",
+        "FINC102"
+      ],
+      "200-level": [
+        "FINC202",
+        "FINC203",
+        "FINC206"
+      ],
+      "300-level": []
+    },
+    "Human Resource Management": {
+      "100-level": [
+        "BSNS111",
+        "BSNS112",
+        "BSNS113",
+        "BSNS114",
+        "BSNS115",
+        "MANT101"
+      ],
+      "200-level": [
+        "MANT217",
+        "MANT222",
+        "MANT250",
+        "MANT251",
+        "MANT252"
+      ],
+      "300-level": [
+        "MANT330",
+        "MANT339",
+        "MANT345",
+        "MANT346",
+        "MANT347"
+      ]
+    },
+    "Information Science": {
+      "100-level": [
+        "BSNS111",
+        "BSNS112",
+        "BSNS113",
+        "BSNS114",
+        "BSNS115",
+        "COMP101",
+        "COMP161",
+        "COMP162"
+      ],
+      "200-level": [
+        "INFO201",
+        "INFO202",
+        "INFO203",
+        "INFO204"
+      ],
+      "300-level": [
+        "INFO301",
+        "INFO302",
+        "INFO303",
+        "INFO304",
+        "INFO305",
+        "INFO310",
+        "INFO350",
+        "INFO351",
+        "INFO352",
+        "INFO353",
+        "INFO390"
+      ]
+    },
+    "International Business": {
+      "100-level": [
+        "BSNS111",
+        "BSNS112",
+        "BSNS113",
+        "BSNS114",
+        "BSNS115",
+        "MANT101"
+      ],
+      "200-level": [
+        "ECON201",
+        "MANT217",
+        "MANT222"
+      ],
+      "300-level": [
+        "ECON302",
+        "MANT332",
+        "MANT342",
+        "MART310",
+        "MART326"
+      ]
+    },
+    "Management": {
+      "100-level": [
+        "BSNS111",
+        "BSNS112",
+        "BSNS113",
+        "BSNS114",
+        "BSNS115",
+        "MANT101"
+      ],
+      "200-level": [
+        "MANT217",
+        "MANT222",
+        "MANT250",
+        "MANT251",
+        "MANT252"
+      ],
+      "300-level": [
+        "MANT301",
+        "MANT303",
+        "MANT330",
+        "MANT331",
+        "MANT332",
+        "MANT333",
+        "MANT334",
+        "MANT337",
+        "MANT338",
+        "MANT339",
+        "MANT340",
+        "MANT342",
+        "MANT345",
+        "MANT346",
+        "MANT347",
+        "MANT358",
+        "MANT359",
+        "MANT360",
+        "MANT361"
+      ]
+    },
+    "Marketing": {
+      "100-level": [
+        "BSNS111",
+        "BSNS112",
+        "BSNS113",
+        "BSNS114",
+        "BSNS115",
+        "MART112"
+      ],
+      "200-level": [
+        "MART201",
+        "MART210",
+        "MART211",
+        "MART212"
+      ],
+      "300-level": [
+        "MART301",
+        "MART304",
+        "MART305",
+        "MART306",
+        "MART308",
+        "MART325",
+        "MART326",
+        "MART328",
+        "MART329",
+        "MART330",
+        "MART333",
+        "MART355"
+      ]
+    },
+    "Philosophy, Politics and Economics": {
+      "100-level": [
+        "BSNS111",
+        "BSNS112",
+        "BSNS113",
+        "BSNS114",
+        "BSNS115",
+        "ECON112",
+        "PHIL105",
+        "POLS101",
+        "POLS102",
+        "POLS104",
+        "POLS105"
+      ],
+      "200-level": [
+        "ECON201",
+        "ECON202",
+        "ECON206",
+        "ECON207",
+        "ECON210",
+        "ECON271",
+        "PHIL222",
+        "PHIL223",
+        "PHIL225",
+        "PHIL227",
+        "PHIL228",
+        "PHIL229",
+        "PHIL231",
+        "PHIL232",
+        "PHIL233",
+        "PHIL234",
+        "PHIL235",
+        "PHIL236",
+        "PHIL239",
+        "PHIL240",
+        "PHPE201",
+        "POLS202",
+        "POLS207",
+        "POLS208",
+        "POLS210",
+        "POLS211",
+        "POLS213",
+        "POLS216",
+        "POLS217",
+        "POLS218",
+        "POLS221",
+        "POLS228",
+        "POLS230",
+        "POLS234",
+        "POLS243",
+        "POLS250"
+      ],
+      "300-level": [
+        "CLAS340",
+        "ECON301",
+        "ECON302",
+        "ECON303",
+        "ECON306",
+        "ECON308",
+        "ECON316",
+        "ECON317",
+        "ECON318",
+        "ECON319",
+        "ECON350",
+        "ECON351",
+        "ECON371",
+        "ECON375",
+        "ECON376",
+        "ECON377",
+        "MANT331",
+        "PHIL312",
+        "PHIL314",
+        "PHIL315",
+        "PHIL323",
+        "PHIL329",
+        "PHIL331",
+        "PHIL332",
+        "PHIL333",
+        "PHIL334",
+        "PHIL335",
+        "PHIL336",
+        "PHIL338",
+        "PHIL339",
+        "PHIL340",
+        "PHPE301",
+        "POLS301",
+        "POLS303",
+        "POLS306",
+        "POLS307",
+        "POLS308",
+        "POLS310",
+        "POLS312",
+        "POLS315",
+        "POLS318",
+        "POLS319",
+        "POLS321",
+        "POLS323",
+        "POLS325",
+        "POLS326",
+        "POLS330",
+        "POLS375",
+        "POLS390"
+      ]
+    },
+    "Tourism": {
+      "100-level": [
+        "BSNS111",
+        "BSNS112",
+        "BSNS113",
+        "BSNS114",
+        "BSNS115",
+        "TOUR101",
+        "TOUR102",
+        "TOUR103"
+      ],
+      "200-level": [
+        "TOUR217",
+        "TOUR218",
+        "TOUR219"
+      ],
+      "300-level": [
+        "TOUR301",
+        "TOUR303",
+        "TOUR304",
+        "TOUR305",
+        "TOUR306",
+        "TOUR310",
+        "TOUR350",
+        "TOUR351"
+      ]
+    }
+  },
+  "Bachelor of Commerce and Science (BComSc)":{},
+  "Bachelor of Teaching (BTchg)": {
+    "Bachelor of Teaching (BTchg) endorsed\u00a0in Early Childhood Education": {
+      "1st year": [
+        "EDCR101",
+        "EDCR102",
+        "EDPR101",
+        "EDPR102",
+        "EDUC101",
+        "EDUC102",
+        "MAOR110"
+      ],
+      "2nd year": [
+        "EDCR201",
+        "EDCR202",
+        "EDCR203",
+        "EDPR201",
+        "EDPR202",
+        "EDUC211"
+      ],
+      "3rd year": [
+        "EDCR301",
+        "EDCR302",
+        "EDPR301",
+        "EDPR302",
+        "EDPR303",
+        "EDUC311"
+      ]
+    },
+    "Te P\u014dkai M\u0101tauranga o Te Ao Rua (Primary Bicultural Education)": {
+      "1st year": [
+        "EDCR131",
+        "EDCR133",
+        "EDCR152",
+        "EDCR155",
+        "EDPR151",
+        "EDUC101",
+        "EDUC102"
+      ],
+      "2nd year": [
+        "EDCR231",
+        "EDCR232",
+        "EDCR235",
+        "EDCR252",
+        "EDCR254",
+        "EDPR251",
+        "EDUC252"
+      ],
+      "3rd year": [
+        "EDCR331",
+        "EDCR334",
+        "EDCR353",
+        "EDPR333",
+        "EDPR351",
+        "EDUC313"
+      ]
+    },
+    "Primary Education": {
+      "1st year": [
+        "EDCR131",
+        "EDCR133",
+        "EDCR135",
+        "EDPR131",
+        "EDUC101",
+        "EDUC102",
+        "MAOR110"
+      ],
+      "2nd year": [
+        "EDCR231",
+        "EDCR232",
+        "EDCR233",
+        "EDCR235",
+        "EDCR236",
+        "EDPR231",
+        "EDUC252"
+      ],
+      "3rd year": [
+        "EDCR331",
+        "EDCR332",
+        "EDCR334",
+        "EDPR331",
+        "EDPR333",
+        "EDUC313"
+      ]
+    }
+  },
+  "Bachelor of Biomedical Sciences (BBiomedSc)": {
+    "Drugs and Human Health": {
+      "1st year": [
+        "BIOC192",
+        "CELS191",
+        "CHEM191",
+        "HUBS191",
+        "HUBS192",
+        "HUNT141",
+        "MAOR102",
+        "PHSI191",
+        "STAT110",
+        "STAT115"
+      ],
+      "2nd year": [
+        "ANAT241",
+        "BIOC221",
+        "BIOC222",
+        "BIOC223",
+        "CHEM205",
+        "MICR221",
+        "MICR223",
+        "PATH201",
+        "PHAL211",
+        "PHAL221",
+        "PHSL232",
+        "PHSL233"
+      ],
+      "3rd year": [
+        "ANAT332",
+        "BIOC351",
+        "BIOC352",
+        "BIOC353",
+        "CHEM305",
+        "MICR334",
+        "PATH302",
+        "PHAL303",
+        "PHAL304",
+        "PHAL305",
+        "PHAL306",
+        "PHSL343",
+        "PHSL344",
+        "PHSL345"
+      ]
+    },
+    "Functional Human Biology": {
+      "1st year": [
+        "BIOC192",
+        "CELS191",
+        "CHEM191",
+        "HUBS191",
+        "HUBS192",
+        "HUNT141",
+        "MAOR102",
+        "PHSI191",
+        "STAT110",
+        "STAT115"
+      ],
+      "2nd year": [
+        "ANAT241",
+        "ANAT242",
+        "BIOC221",
+        "BIOC223",
+        "HUNT241",
+        "HUNT243",
+        "MICR221",
+        "MICR223",
+        "PATH201",
+        "PHAL211",
+        "PHAL221",
+        "PHSL231",
+        "PHSL232",
+        "PHSL233"
+      ],
+      "3rd year": [
+        "ANAT331",
+        "ANAT332",
+        "ANAT335",
+        "BIOC353",
+        "HUNT342",
+        "MICR332",
+        "MICR334",
+        "PATH301",
+        "PHAL304",
+        "PHAL305",
+        "PHSL341",
+        "PHSL342",
+        "PHSL343",
+        "PHSL344",
+        "PHSL345"
+      ]
+    },
+    "Infection and Immunity": {
+      "1st year": [
+        "BIOC192",
+        "CELS191",
+        "CHEM191",
+        "HUBS191",
+        "HUBS192",
+        "HUNT141",
+        "MAOR102",
+        "PHSI191",
+        "STAT110",
+        "STAT115"
+      ],
+      "2nd year": [
+        "ANAT241",
+        "BIOC221",
+        "BIOC222",
+        "BIOC223",
+        "FOSC202",
+        "GENE221",
+        "GENE223",
+        "MICR221",
+        "MICR222",
+        "MICR223",
+        "PATH201",
+        "PHSL232",
+        "PHSL233"
+      ],
+      "3rd year": [
+        "ANAT332",
+        "BIOC352",
+        "BIOC353",
+        "GENE313",
+        "GENE314",
+        "GENE315",
+        "MICR332",
+        "MICR334",
+        "MICR337",
+        "PATH301",
+        "PATH302",
+        "PHAL305",
+        "PHSL343",
+        "PHSL345"
+      ]
+    },
+    "Molecular Basis of Health and Disease": {
+      "1st year": [
+        "BIOC192",
+        "CELS191",
+        "CHEM191",
+        "HUBS191",
+        "HUBS192",
+        "HUNT141",
+        "MAOR102",
+        "PHSI191",
+        "STAT110",
+        "STAT115"
+      ],
+      "2nd year": [
+        "ANAT241",
+        "ANAT243",
+        "BIOC221",
+        "BIOC222",
+        "BIOC223",
+        "GENE221",
+        "GENE222",
+        "GENE223",
+        "HUNT241",
+        "HUNT243",
+        "MICR221",
+        "MICR223",
+        "PATH201",
+        "PHAL211",
+        "PHAL221",
+        "PHSL232",
+        "PHSL233"
+      ],
+      "3rd year": [
+        "ANAT332",
+        "BIOC351",
+        "BIOC352",
+        "BIOC353",
+        "GENE313",
+        "GENE314",
+        "GENE315",
+        "HUNT342",
+        "MICR332",
+        "MICR334",
+        "MICR337",
+        "PATH301",
+        "PATH302",
+        "PHAL304",
+        "PHAL305",
+        "PHAL306",
+        "PHSL343",
+        "PHSL345"
+      ]
+    },
+    "Human Health": {
+      "1st year": [
+        "BIOC192",
+        "CELS191",
+        "CHEM191",
+        "HUBS191",
+        "HUBS192",
+        "HUNT141",
+        "MAOR102",
+        "PHSI191",
+        "STAT110",
+        "STAT115"
+      ],
+      "2nd year": [
+        "ANAT241",
+        "BIOC221",
+        "BIOC223",
+        "GENE221",
+        "GENE222",
+        "HUNT241",
+        "HUNT242",
+        "HUNT243",
+        "MICR221",
+        "MICR223",
+        "PATH201",
+        "PHSL232",
+        "PHSL233"
+      ],
+      "3rd year": [
+        "ANAT331",
+        "ANAT332",
+        "BIOC352",
+        "BIOC353",
+        "GENE313",
+        "GENE315",
+        "HUNT342",
+        "HUNT343",
+        "HUNT346",
+        "MICR331",
+        "MICR332",
+        "PATH301",
+        "PATH302",
+        "PHSL343",
+        "PHSL344",
+        "PHSL345"
+      ]
+    },
+    "Reproduction, Genetics and Development": {
+      "1st year": [
+        "BIOC192",
+        "CELS191",
+        "CHEM191",
+        "HUBS191",
+        "HUBS192",
+        "HUNT141",
+        "MAOR102",
+        "PHSI191",
+        "STAT110",
+        "STAT115"
+      ],
+      "2nd year": [
+        "ANAT241",
+        "ANAT242",
+        "ANAT243",
+        "BIOC221",
+        "GENE221",
+        "GENE222",
+        "GENE223",
+        "MICR223",
+        "PATH201",
+        "PHSL231"
+      ],
+      "3rd year": [
+        "ANAT332",
+        "ANAT333",
+        "ANAT334",
+        "ANTH322",
+        "BIOC352",
+        "GENE313",
+        "GENE314",
+        "GENE315",
+        "MICR332",
+        "MICR334",
+        "PATH301",
+        "PATH302",
+        "PHSL341",
+        "PHSL342"
+      ]
+    }
+  },
+  "Bachelor of Health Sciences (BHealSc)": {
+    "Community Health Care": {
+      "100-level": [
+        "EDUC105",
+        "HUBS191",
+        "HUBS192",
+        "POPH192",
+        "PUBH192"
+      ],
+      "200-level": [
+        "BITC201",
+        "CMHC201",
+        "CMHC211",
+        "GEOG210",
+        "MAOH201",
+        "PACH201",
+        "PATH201",
+        "PUBH203",
+        "PUBH211",
+        "SOCI205"
+      ],
+      "300-level": [
+        "CMHC301",
+        "CMHC311",
+        "MAOH301",
+        "PACH301"
+      ]
+    },
+    "M\u0101ori Health": {
+      "100-level": [
+        "HUBS191",
+        "HUBS192",
+        "MAOR102",
+        "POPH192",
+        "PUBH192"
+      ],
+      "200-level": [
+        "CMHC201",
+        "CMHC211",
+        "MAOH201",
+        "MAOR202",
+        "MAOR204",
+        "MAOR211",
+        "PUBH202",
+        "PUBH203",
+        "PUBH204",
+        "SOWK236",
+        "SPEX206"
+      ],
+      "300-level": [
+        "CMHC301",
+        "CMHC311",
+        "MAOH301",
+        "PUBH303",
+        "PUBH304",
+        "SOWK304",
+        "SPEX306"
+      ]
+    },
+    "Pacific and Global Health": {
+      "100-level": [
+        "HUBS191",
+        "HUBS192",
+        "POPH192",
+        "PUBH192"
+      ],
+      "200-level": [
+        "BITC201",
+        "CMHC211",
+        "HIST210",
+        "MAOH201",
+        "PACH201",
+        "PACI201",
+        "POLS213",
+        "PUBH202",
+        "PUBH203",
+        "PUBH211"
+      ],
+      "300-level": [
+        "ANTH323",
+        "BITC301",
+        "CMHC211",
+        "MAOH301",
+        "PACH301",
+        "PUBH303",
+        "PUBH311"
+      ]
+    },
+    "Public Health": {
+      "100-level": [
+        "HUBS191",
+        "HUBS192",
+        "POPH192",
+        "PUBH192"
+      ],
+      "200-level": [
+        "ANTH210",
+        "ANTH211",
+        "CMHC201",
+        "GEOG210",
+        "PACH201",
+        "PUBH202",
+        "PUBH203",
+        "PUBH204",
+        "PUBH211",
+        "SOCI205",
+        "SOWK236"
+      ],
+      "300-level": [
+        "ANTH322",
+        "ANTH323",
+        "CMHC301",
+        "GEOG381",
+        "PACH301",
+        "PUBH303",
+        "PUBH304",
+        "PUBH311",
+        "SOCI306",
+        "SOWK304"
+      ]
+    }
+  },
+  "Bachelor of Science (BSc)": {
+    "Agricultural Innovation": {
+      "100-level": [
+        "AGRI101",
+        "BIOC192",
+        "BIOL112",
+        "BIOL123",
+        "BSNS111",
+        "BSNS113",
+        "BSNS115",
+        "CELS191",
+        "CHEM111",
+        "CHEM191",
+        "COMO101",
+        "COMP101",
+        "COMP151",
+        "COMP161",
+        "COMP162",
+        "ECOL111",
+        "ENVI111",
+        "FOSC111",
+        "GEOG101",
+        "GEOG102",
+        "MART112",
+        "MATH130",
+        "PHIL103",
+        "PHSI191",
+        "POPH192",
+        "PTWY132",
+        "STAT110",
+        "STAT115",
+        "SURV102"
+      ],
+      "200-level": [
+        "AGRI221",
+        "BIOC221",
+        "BTNY201",
+        "CHEM206",
+        "ECOL211",
+        "ENVI211",
+        "FOSC202",
+        "GENE221",
+        "GENE222",
+        "GENE223",
+        "GEOG216",
+        "GEOG282",
+        "GEOG283",
+        "GEOG284",
+        "GEOG286",
+        "GEOG287",
+        "GEOG288",
+        "GEOG289",
+        "GEOG290",
+        "GEOG298",
+        "GEOG299",
+        "MART211",
+        "MATS204",
+        "MICR221",
+        "MICR222",
+        "STAT210",
+        "SURV206",
+        "SURV220"
+      ],
+      "300-level": [
+        "AGRI321",
+        "AGRI322",
+        "AGRI323",
+        "BIOC352",
+        "BTNY301",
+        "BTNY302",
+        "BTNY303",
+        "CHEM306",
+        "ENVI311",
+        "ENVI312",
+        "FOSC%20308",
+        "FOSC301",
+        "GENE312",
+        "GENE314",
+        "GENE315",
+        "GEOG388",
+        "GEOG389",
+        "GEOG390",
+        "GEOG392",
+        "GEOG393",
+        "GEOG394",
+        "GEOG395",
+        "GEOG397",
+        "GEOG398",
+        "GEOG399",
+        "MART306",
+        "MICR331",
+        "MICR332",
+        "MICR335",
+        "MICR336",
+        "PLBI301",
+        "PLBI302",
+        "SOCI319",
+        "STAT310",
+        "SURV306",
+        "SURV309"
+      ]
+    },
+    "Anatomy": {
+      "100-level": [
+        "CELS191",
+        "CHEM191",
+        "HUBS191",
+        "HUBS192",
+        "PTWY131",
+        "STAT110",
+        "STAT115"
+      ],
+      "200-level": [
+        "ANAT241",
+        "ANAT242",
+        "ANAT243"
+      ],
+      "300-level": [
+        "ANAT331",
+        "ANAT332",
+        "ANAT333",
+        "ANAT334",
+        "ANAT335",
+        "BIOA201",
+        "BIOA301"
+      ]
+    },
+    "Aquaculture and Fisheries": {
+      "100-level": [
+        "BIOL112",
+        "BIOL123",
+        "CELS191",
+        "CHEM111",
+        "CHEM191",
+        "EAOS111",
+        "ECOL111",
+        "MARI112",
+        "STAT110",
+        "STAT115"
+      ],
+      "200-level": [
+        "AQFI251",
+        "BTNY203",
+        "CHEM201",
+        "CHEM205",
+        "CHEM206",
+        "ECOL211",
+        "ECOL212",
+        "FORS201",
+        "FOSC201",
+        "GENE222",
+        "GENE223",
+        "MARI201",
+        "MARI202",
+        "PHIL235",
+        "STAT210",
+        "SURV220",
+        "ZOOL221"
+      ],
+      "300-level": [
+        "AQFI301",
+        "AQFI352",
+        "CHEM301",
+        "CHEM306",
+        "FORS301",
+        "GENE312",
+        "GENE314",
+        "GENE315",
+        "MARI301",
+        "MARI302",
+        "ZOOL316",
+        "ZOOL319"
+      ]
+    },
+    "Biochemistry": {
+      "100-level": [
+        "BIOC192",
+        "BIOL112",
+        "BIOL123",
+        "CELS191",
+        "CHEM111",
+        "CHEM191",
+        "HUBS191",
+        "HUBS192",
+        "PTWY131",
+        "PTWY132",
+        "STAT110",
+        "STAT115"
+      ],
+      "200-level": [
+        "BIOC221",
+        "BIOC222",
+        "BIOC223"
+      ],
+      "300-level": [
+        "BIOC351",
+        "BIOC352",
+        "BIOC353",
+        "BIOC360"
+      ]
+    },
+    "Botany": {
+      "100-level": [
+        "BIOL112",
+        "BIOL123",
+        "CELS191",
+        "CHEM111",
+        "CHEM191",
+        "ECOL111",
+        "HUBS191",
+        "HUBS192",
+        "PHSI191",
+        "PTWY131",
+        "PTWY132",
+        "STAT110",
+        "STAT115"
+      ],
+      "200-level": [
+        "BTNY201",
+        "BTNY202",
+        "BTNY203"
+      ],
+      "300-level": [
+        "BTNY301",
+        "BTNY302",
+        "BTNY303",
+        "BTNY365",
+        "BTNY370",
+        "PLBI301",
+        "PLBI302"
+      ]
+    },
+    "Chemistry": {
+      "100-level": [],
+      "200-level": [
+        "CHEM111",
+        "CHEM150",
+        "CHEM191",
+        "CHEM201",
+        "CHEM202",
+        "CHEM203",
+        "CHEM205",
+        "CHEM206"
+      ],
+      "300-level": [
+        "CHEM301",
+        "CHEM302",
+        "CHEM303",
+        "CHEM305",
+        "CHEM306",
+        "CHEM371",
+        "CHEM390"
+      ]
+    },
+    "Computer Science": {
+      "100-level": [
+        "BSNS112",
+        "COMO101",
+        "COMP101",
+        "COMP161",
+        "COMP162",
+        "FINC102",
+        "MATH120",
+        "MATH130",
+        "MATH140",
+        "STAT110",
+        "STAT115"
+      ],
+      "200-level": [
+        "COSC201",
+        "COSC202",
+        "COSC203",
+        "COSC204"
+      ],
+      "300-level": [
+        "COSC301",
+        "COSC312",
+        "COSC326",
+        "COSC341",
+        "COSC342",
+        "COSC343",
+        "COSC344",
+        "COSC345",
+        "COSC349",
+        "COSC360",
+        "COSC385"
+      ]
+    },
+    "Data Science": {
+      "100-level": [
+        "COMP101",
+        "COMP120",
+        "COMP161",
+        "COMP162",
+        "STAT110",
+        "STAT115"
+      ],
+      "200-level": [
+        "COSC201",
+        "INFO204",
+        "STAT210",
+        "STAT260"
+      ],
+      "300-level": [
+        "COSC343",
+        "COSC344",
+        "INFO304",
+        "STAT310",
+        "STAT312"
+      ]
+    },
+    "Ecology": {
+      "100-level": [
+        "BIOL112",
+        "BIOL123",
+        "EAOS111",
+        "ECOL111",
+        "GEOG101",
+        "MARI112",
+        "PTWY132",
+        "STAT110",
+        "STAT115"
+      ],
+      "200-level": [
+        "BTNY201",
+        "BTNY202",
+        "BTNY203",
+        "CHEM201",
+        "CHEM205",
+        "CHEM206",
+        "ECOL211",
+        "ECOL212",
+        "GENE222",
+        "GEOG282",
+        "GEOG284",
+        "GEOG285",
+        "GEOG286",
+        "GEOG287",
+        "GEOG288",
+        "GEOG289",
+        "GEOG290",
+        "GEOG298",
+        "GEOG299",
+        "GEOL252",
+        "GEOL263",
+        "GEOL272",
+        "MARI201",
+        "MARI202",
+        "STAT210",
+        "STAT260",
+        "STAT270",
+        "SURV220",
+        "ZOOL221",
+        "ZOOL222",
+        "ZOOL223"
+      ],
+      "300-level": [
+        "AQFI352",
+        "BTNY301",
+        "BTNY302",
+        "BTNY303",
+        "ECOL313",
+        "ECOL314",
+        "ECOL321",
+        "GENE312",
+        "GEOG388",
+        "GEOG389",
+        "GEOG390",
+        "GEOG392",
+        "GEOG393",
+        "GEOG394",
+        "GEOG395",
+        "GEOG397",
+        "GEOG398",
+        "GEOG399",
+        "GEOL372",
+        "MARI301",
+        "MARI302",
+        "STAT311",
+        "SURV309",
+        "ZOOL313",
+        "ZOOL315",
+        "ZOOL316",
+        "ZOOL318",
+        "ZOOL319"
+      ]
+    },
+    "Economics": {
+      "100-level": [
+        "BSNS113",
+        "ECON112",
+        "MATH130",
+        "STAT110"
+      ],
+      "200-level": [
+        "ECON202",
+        "ECON210",
+        "ECON271"
+      ],
+      "300-level": [
+        "ECON301",
+        "ECON302",
+        "ECON303",
+        "ECON306",
+        "ECON308",
+        "ECON316",
+        "ECON317",
+        "ECON318",
+        "ECON319",
+        "ECON350",
+        "ECON351",
+        "ECON371",
+        "ECON375",
+        "ECON376",
+        "ECON377"
+      ]
+    },
+    "Electronics": {
+      "100-level": [
+        "COMP150",
+        "COMP160",
+        "MATH170",
+        "PHSI132"
+      ],
+      "200-level": [
+        "ELEC253",
+        "MATH202",
+        "MATH203",
+        "PHSI232",
+        "PHSI282"
+      ],
+      "300-level": [
+        "ELEC353",
+        "ELEC358",
+        "ELEC361",
+        "PHSI365"
+      ]
+    },
+    "Energy Management": {
+      "100-level": [
+        "BSNS114",
+        "MATH130",
+        "MATH140",
+        "PHSI131",
+        "PHSI132",
+        "PHSI191"
+      ],
+      "200-level": [
+        "EMAN201",
+        "EMAN204",
+        "PHSI243"
+      ],
+      "300-level": [
+        "COMO303",
+        "EMAN301",
+        "EMAN308",
+        "ENVI312",
+        "FINC302",
+        "FINC303",
+        "FINC304",
+        "FINC305",
+        "FINC306",
+        "FINC308",
+        "FINC309",
+        "FINC310",
+        "FINC320",
+        "FINC399",
+        "GEOG388",
+        "GEOG389",
+        "GEOG392",
+        "GEOG397",
+        "INFO304",
+        "MANT303",
+        "PHSI365",
+        "PHSI381",
+        "PMAN401"
+      ]
+    },
+    "Energy Science and Technology": {
+      "100-level": [
+        "MATH130",
+        "MATH140",
+        "PHSI131",
+        "PHSI132",
+        "PHSI191"
+      ],
+      "200-level": [
+        "EMAN201",
+        "EMAN204",
+        "PHSI243"
+      ],
+      "300-level": [
+        "BIOC351",
+        "CHEM301",
+        "CHEM302",
+        "CHEM303",
+        "CHEM304",
+        "CHEM305",
+        "COMO303",
+        "EMAN301",
+        "EMAN308",
+        "GEOG388",
+        "GEOG389",
+        "GEOG392",
+        "GEOL363",
+        "GEOL376",
+        "INFO304",
+        "MATH304",
+        "MATH374",
+        "PHSI331",
+        "PHSI332",
+        "PHSI336",
+        "PHSI365",
+        "PHSI381"
+      ]
+    },
+    "Environmental Management": {
+      "100-level": [
+        "COMO101",
+        "ENVI111",
+        "GEOG101",
+        "GEOG102",
+        "MATH120",
+        "MATH130",
+        "STAT110",
+        "STAT115"
+      ],
+      "200-level": [
+        "GEOG201",
+        "GEOG216",
+        "GEOG281",
+        "GEOG282",
+        "GEOG283",
+        "GEOG284",
+        "GEOG286",
+        "GEOG287",
+        "GEOG288",
+        "GEOG289",
+        "GEOG298",
+        "GEOG299"
+      ],
+      "300-level": [
+        "GEOG301",
+        "GEOG387",
+        "GEOG388",
+        "GEOG389",
+        "GEOG390",
+        "GEOG392",
+        "GEOG393",
+        "GEOG394",
+        "GEOG395",
+        "GEOG397",
+        "GEOG398",
+        "GEOG399"
+      ]
+    },
+    "Exercise and Sport Science": {
+      "100-level": [
+        "ANAT101",
+        "HUBS191",
+        "HUBS192",
+        "PHSL101",
+        "PTWY131",
+        "SPEX101",
+        "SPEX102"
+      ],
+      "200-level": [
+        "SPEX201",
+        "SPEX202",
+        "SPEX203",
+        "SPEX204"
+      ],
+      "300-level": [
+        "SPEX301",
+        "SPEX303",
+        "SPEX304",
+        "SPEX305",
+        "SPEX316",
+        "SPEX317"
+      ]
+    },
+    "Food Science": {
+      "100-level": [
+        "CELS191",
+        "CHEM111",
+        "CHEM191",
+        "FOSC111",
+        "FOSC112",
+        "STAT110",
+        "STAT115"
+      ],
+      "200-level": [
+        "FOSC201",
+        "FOSC202",
+        "FOSC213",
+        "MICR221"
+      ],
+      "300-level": [
+        "FOSC301",
+        "FOSC302",
+        "FOSC311"
+      ]
+    },
+    "Forensic Analytical Science": {
+      "100-level": [
+        "BIOC192",
+        "BIOL123",
+        "CELS191",
+        "CHEM111",
+        "CHEM191",
+        "HUBS191",
+        "HUBS192",
+        "MATH130",
+        "PHSI191",
+        "PTWY131",
+        "PTWY132",
+        "STAT110",
+        "STAT115"
+      ],
+      "200-level": [
+        "BIOA201",
+        "BIOC221",
+        "CHEM201",
+        "CHEM205",
+        "CHEM206",
+        "FORS201",
+        "FOSC201",
+        "GENE221",
+        "GENE222",
+        "MICR221",
+        "MICR222",
+        "PHAL211",
+        "PHAL221",
+        "STAT210",
+        "STAT242",
+        "STAT260",
+        "STAT261",
+        "STAT270"
+      ],
+      "300-level": [
+        "BIOA301",
+        "BIOC352",
+        "CHEM306",
+        "FORS301",
+        "FOSC301",
+        "GENE312",
+        "GENE315",
+        "MICR331",
+        "MICR332",
+        "MICR334",
+        "MICR335",
+        "MICR336",
+        "MICR337",
+        "MICR360",
+        "PHAL306",
+        "PSYC325",
+        "STAT310",
+        "STAT311",
+        "STAT312",
+        "STAT370",
+        "STAT371",
+        "STAT372",
+        "STAT399"
+      ]
+    },
+    "Genetics": {
+      "100-level": [
+        "BIOC192",
+        "BIOL112",
+        "BIOL123",
+        "CELS191",
+        "CHEM191",
+        "ECOL111",
+        "HUBS191",
+        "HUBS192",
+        "MATH120",
+        "PTWY131",
+        "PTWY132",
+        "STAT110",
+        "STAT115"
+      ],
+      "200-level": [
+        "BIOC221",
+        "GENE221",
+        "GENE222",
+        "GENE223",
+        "MICR221",
+        "ZOOL222"
+      ],
+      "300-level": [
+        "AGRI323",
+        "BIOC352",
+        "BIOC353",
+        "BITC301",
+        "BTNY302",
+        "GENE312",
+        "GENE313",
+        "GENE314",
+        "GENE315",
+        "MICR335",
+        "MICR336",
+        "MICR337",
+        "PLBI301",
+        "PLBI302",
+        "ZOOL319"
+      ]
+    },
+    "Geographic Information Systems": {
+      "100-level": [
+        "COMP101",
+        "COMP151",
+        "COMP161",
+        "COMP162",
+        "EAOS111",
+        "ENGL228",
+        "GEOG101",
+        "GEOG102",
+        "GEOL112",
+        "MATH130",
+        "MATH140",
+        "STAT110",
+        "SURV120",
+        "SURV130"
+      ],
+      "200-level": [
+        "GEOG201",
+        "GEOG210",
+        "GEOG212",
+        "GEOG214",
+        "GEOG215",
+        "GEOG216",
+        "GEOG219",
+        "GEOG228",
+        "GEOG276",
+        "GEOG278",
+        "GEOG280",
+        "GEOG281",
+        "GEOG282",
+        "GEOG283",
+        "GEOG284",
+        "GEOG285",
+        "GEOG286",
+        "GEOG287",
+        "GEOG288",
+        "GEOG289",
+        "GEOG298",
+        "GEOG299",
+        "INFO201",
+        "INFO202",
+        "SURV201",
+        "SURV202",
+        "SURV203",
+        "SURV204",
+        "SURV205",
+        "SURV206",
+        "SURV220",
+        "SURV298"
+      ],
+      "Above 200-level": [
+        "GEOG301",
+        "GEOG328",
+        "GEOG374",
+        "GEOG376",
+        "GEOG378",
+        "GEOG379",
+        "GEOG380",
+        "GEOG381",
+        "GEOG382",
+        "GEOG384",
+        "GEOG387",
+        "GEOG388",
+        "GEOG389",
+        "GEOG390",
+        "GEOG392",
+        "GEOG393",
+        "GEOG394",
+        "GEOG395",
+        "GEOG397",
+        "GEOG398",
+        "GEOG399",
+        "SURV301",
+        "SURV302",
+        "SURV303",
+        "SURV304",
+        "SURV306",
+        "SURV307",
+        "SURV309",
+        "SURV319",
+        "SURV322",
+        "SURV329",
+        "SURV399"
+      ]
+    },
+    "Geography": {
+      "100-level": [
+        "COMO101",
+        "GEOG101",
+        "GEOG102",
+        "MATH120",
+        "MATH130",
+        "STAT110",
+        "STAT115"
+      ],
+      "200-level": [
+        "GEOG201",
+        "GEOG210",
+        "GEOG212",
+        "GEOG214",
+        "GEOG215",
+        "GEOG216",
+        "GEOG219",
+        "GEOG228",
+        "GEOG276",
+        "GEOG278",
+        "GEOG280",
+        "GEOG281",
+        "GEOG282",
+        "GEOG283",
+        "GEOG284",
+        "GEOG285",
+        "GEOG286",
+        "GEOG287",
+        "GEOG288",
+        "GEOG289",
+        "GEOG298",
+        "GEOG299"
+      ],
+      "300-level": [
+        "GEOG301",
+        "GEOG328",
+        "GEOG374",
+        "GEOG376",
+        "GEOG378",
+        "GEOG379",
+        "GEOG380",
+        "GEOG381",
+        "GEOG382",
+        "GEOG384",
+        "GEOG387",
+        "GEOG388",
+        "GEOG389",
+        "GEOG390",
+        "GEOG392",
+        "GEOG393",
+        "GEOG394",
+        "GEOG395",
+        "GEOG397",
+        "GEOG398",
+        "GEOG399"
+      ]
+    },
+    "Geology": {
+      "100-level": [
+        "COMO101",
+        "EAOS111",
+        "GEOL112",
+        "MATH120",
+        "MATH130",
+        "MATH140",
+        "STAT110",
+        "STAT115"
+      ],
+      "200-level": [
+        "EMAN204",
+        "GEOG282",
+        "GEOG283",
+        "GEOG284",
+        "GEOG288",
+        "GEOG289",
+        "GEOG298",
+        "GEOL221",
+        "GEOL251",
+        "GEOL252",
+        "GEOL261",
+        "GEOL262",
+        "GEOL263",
+        "GEOL264",
+        "GEOL265",
+        "GEOL272",
+        "GEOL273",
+        "GEOL274",
+        "GEOL275",
+        "GEOL276",
+        "GEOL474",
+        "MARI201",
+        "PHSI243",
+        "SURV220"
+      ],
+      "300-level": [
+        "GEOG388",
+        "GEOG389",
+        "GEOG390",
+        "GEOG394",
+        "GEOG395",
+        "GEOG398",
+        "GEOL302",
+        "GEOL304",
+        "GEOL321",
+        "GEOL341",
+        "GEOL344",
+        "GEOL353",
+        "GEOL361",
+        "GEOL362",
+        "GEOL363",
+        "GEOL364",
+        "GEOL365",
+        "GEOL372",
+        "GEOL373",
+        "GEOL374",
+        "GEOL375",
+        "GEOL376"
+      ]
+    },
+    "Human Nutrition": {
+      "100-level": [
+        "BIOC192",
+        "CHEM191",
+        "HUBS191",
+        "HUBS192",
+        "HUNT141",
+        "PTWY131"
+      ],
+      "200-level": [
+        "HUNT241",
+        "HUNT242",
+        "HUNT243"
+      ],
+      "300-level": [
+        "HUNT341",
+        "HUNT342",
+        "HUNT343",
+        "HUNT345",
+        "HUNT346"
+      ]
+    },
+    "Information Science": {
+      "100-level": [
+        "COMP101",
+        "COMP161",
+        "COMP162"
+      ],
+      "200-level": [
+        "INFO201",
+        "INFO202",
+        "INFO203",
+        "INFO204"
+      ],
+      "300-level": [
+        "INFO301",
+        "INFO302",
+        "INFO303",
+        "INFO304",
+        "INFO305",
+        "INFO310",
+        "INFO350",
+        "INFO351",
+        "INFO352",
+        "INFO353",
+        "INFO390"
+      ]
+    },
+    "Land Planning and Development": {
+      "100-level": [
+        "MATH130",
+        "SURV120",
+        "SURV130"
+      ],
+      "200-level": [
+        "ENGL228",
+        "SURV203",
+        "SURV204",
+        "SURV205",
+        "SURV206"
+      ],
+      "300-level": [
+        "PMAN401",
+        "SURV303",
+        "SURV304",
+        "SURV306",
+        "SURV309",
+        "SURV319",
+        "SURV329",
+        "SURV450",
+        "SURV453",
+        "SURV454",
+        "SURV455"
+      ]
+    },
+    "Marine Science": {
+      "100-level": [
+        "COMO101",
+        "EAOS111",
+        "MARI112",
+        "MATH120",
+        "MATH130",
+        "MATH140",
+        "STAT110",
+        "STAT115"
+      ],
+      "200-level": [
+        "MARI201",
+        "MARI202"
+      ],
+      "300-level": []
+    },
+    "Mathematics": {
+      "100-level": [
+        "COMO101",
+        "COMP161",
+        "COMP162",
+        "ENGL127",
+        "MATH130",
+        "MATH140"
+      ],
+      "200-level": [
+        "COMO204",
+        "COMP242",
+        "MATH201",
+        "MATH202",
+        "MATH203",
+        "PHIL222",
+        "STAT260",
+        "STAT270"
+      ],
+      "300-level": [
+        "COMO303",
+        "MATH301",
+        "MATH302",
+        "MATH304",
+        "MATH306",
+        "MATH342",
+        "PHSI336"
+      ]
+    },
+    "Microbiology": {
+      "100-level": [
+        "CELS191",
+        "CHEM111",
+        "CHEM191",
+        "HUBS191"
+      ],
+      "200-level": [
+        "GENE221",
+        "MICR221",
+        "MICR222",
+        "MICR223"
+      ],
+      "300-level": [
+        "MICR331",
+        "MICR332",
+        "MICR334",
+        "MICR335",
+        "MICR336",
+        "MICR337"
+      ]
+    },
+    "Neuroscience": {
+      "100-level": [
+        "BIOC192",
+        "BIOL112",
+        "CELS191",
+        "CHEM191",
+        "HUBS191",
+        "HUBS192",
+        "PHSI191",
+        "PSYC111",
+        "PTWY131"
+      ],
+      "200-level": [
+        "ANAT242",
+        "PHSL231",
+        "PSYC211"
+      ],
+      "300-level": [
+        "ANAT332",
+        "ANAT335",
+        "ANAT336",
+        "ANAT337",
+        "NEUR302",
+        "NEUR303",
+        "PHAL303",
+        "PHSL341",
+        "PHSL342",
+        "PSYC313",
+        "PSYC317",
+        "PSYC319",
+        "PSYC323",
+        "PSYC330",
+        "ZOOL314"
+      ]
+    },
+    "Pharmacology": {
+      "100-level": [
+        "BIOC192",
+        "CELS191",
+        "CHEM191",
+        "HUBS191",
+        "HUBS192",
+        "PTWY131"
+      ],
+      "200-level": [],
+      "300-level": [
+        "PHAL303",
+        "PHAL304",
+        "PHAL305",
+        "PHAL306"
+      ]
+    },
+    "Physical Education, Activity and Health": {
+      "100-level": [
+        "ANAT101",
+        "HUBS191",
+        "HUBS192",
+        "PHSL101",
+        "PTWY131",
+        "SPEX101",
+        "SPEX102"
+      ],
+      "200-level": [
+        "SPEX203",
+        "SPEX205",
+        "SPEX206",
+        "SPEX207"
+      ],
+      "300-level": [
+        "SPEX306",
+        "SPEX307",
+        "SPEX308",
+        "SPEX309",
+        "SPEX310",
+        "SPEX316"
+      ]
+    },
+    "Physics": {
+      "100-level": [
+        "MATH130",
+        "MATH140",
+        "PHSI131",
+        "PHSI132",
+        "PHSI191"
+      ],
+      "200-level": [
+        "EMAN201",
+        "MATH202",
+        "MATH203",
+        "PHSI221",
+        "PHSI222",
+        "PHSI243",
+        "PHSI282"
+      ],
+      "300-level": [
+        "PHSI331",
+        "PHSI336",
+        "PHSI341",
+        "PHSI343",
+        "PHSI365",
+        "PHSI381"
+      ]
+    },
+    "Physiology": {
+      "100-level": [
+        "BIOC192",
+        "CELS191",
+        "CHEM191",
+        "HUBS191",
+        "HUBS192",
+        "PHSI191",
+        "PTWY131"
+      ],
+      "200-level": [
+        "PHSL231",
+        "PHSL232",
+        "PHSL233"
+      ],
+      "300-level": [
+        "PHSL341",
+        "PHSL342",
+        "PHSL343",
+        "PHSL344",
+        "PHSL345"
+      ]
+    },
+    "Plant Biotechnology": {
+      "100-level": [
+        "BIOC192",
+        "BIOL123",
+        "CELS191",
+        "CHEM191",
+        "ECOL111",
+        "PTWY132"
+      ],
+      "200-level": [],
+      "300-level": []
+    },
+    "Psychology": {
+      "100-level": [
+        "PSYC111",
+        "PSYC112",
+        "STAT110",
+        "STAT115"
+      ],
+      "200-level": [
+        "PSYC210",
+        "PSYC211",
+        "PSYC212"
+      ],
+      "300-level": [
+        "PSYC311",
+        "PSYC313",
+        "PSYC315",
+        "PSYC317",
+        "PSYC318",
+        "PSYC319",
+        "PSYC321",
+        "PSYC323",
+        "PSYC324",
+        "PSYC325",
+        "PSYC326",
+        "PSYC327",
+        "PSYC328",
+        "PSYC329",
+        "PSYC330",
+        "PSYC331"
+      ]
+    },
+    "Software Engineering": {
+      "100-level": [
+        "COMP101",
+        "COMP161",
+        "COMP162",
+        "FINC102",
+        "MATH120",
+        "MATH130",
+        "MATH140"
+      ],
+      "200-level": [
+        "COSC201",
+        "COSC202",
+        "COSC203",
+        "INFO201",
+        "INFO202"
+      ],
+      "300-level": [
+        "COSC345",
+        "COSC349",
+        "INFO301",
+        "INFO303",
+        "INFO310"
+      ]
+    },
+    "Sport and Exercise Nutrition": {
+      "100-level": [
+        "BIOC192",
+        "CHEM191",
+        "HUBS191",
+        "HUBS192",
+        "HUNT141",
+        "PTWY131"
+      ],
+      "200-level": [
+        "HUNT241",
+        "HUNT242",
+        "HUNT243",
+        "HUNT245",
+        "SPEX201",
+        "SPEX203",
+        "SPEX204",
+        "SPEX205"
+      ],
+      "300-level": [
+        "HUNT341",
+        "HUNT342",
+        "HUNT343",
+        "HUNT345",
+        "SPEX303",
+        "SPEX305",
+        "SPEX308",
+        "SPEX309"
+      ]
+    },
+    "Sport Development and Management": {
+      "100-level": [
+        "ANAT101",
+        "PHSL101",
+        "SPEX101",
+        "SPEX102"
+      ],
+      "200-level": [
+        "SPEX204",
+        "SPEX208",
+        "SPEX209"
+      ],
+      "300-level": [
+        "SPEX304",
+        "SPEX312",
+        "SPEX313",
+        "SPEX314",
+        "SPEX315"
+      ]
+    },
+    "Statistics": {
+      "100-level": [
+        "MATH130",
+        "MATH140",
+        "STAT110",
+        "STAT115"
+      ],
+      "200-level": [
+        "MATH202",
+        "MATH203",
+        "STAT210",
+        "STAT260",
+        "STAT270"
+      ],
+      "300-level": [
+        "STAT310",
+        "STAT311",
+        "STAT312",
+        "STAT370",
+        "STAT371",
+        "STAT372",
+        "STAT399"
+      ]
+    },
+    "Surveying Measurement": {
+      "100-level": [
+        "MATH130",
+        "SURV120",
+        "SURV130"
+      ],
+      "200-level": [
+        "ENGL228",
+        "SURV201",
+        "SURV202",
+        "SURV298"
+      ],
+      "300-level": [
+        "PMAN401",
+        "SURV206",
+        "SURV301",
+        "SURV302",
+        "SURV306",
+        "SURV319",
+        "SURV322",
+        "SURV329",
+        "SURV399",
+        "SURV413",
+        "SURV450",
+        "SURV451",
+        "SURV452",
+        "SURV459",
+        "SURV462",
+        "SURV463"
+      ]
+    },
+    "Zoology": {
+      "100-level": [
+        "BIOL112",
+        "CELS191",
+        "STAT110",
+        "STAT115"
+      ],
+      "200-level": [
+        "ZOOL221",
+        "ZOOL222",
+        "ZOOL223"
+      ],
+      "300-level": [
+        "AQFI352",
+        "GENE312",
+        "GENE314",
+        "MARI301",
+        "MARI302",
+        "ZOOL313",
+        "ZOOL314",
+        "ZOOL315",
+        "ZOOL316",
+        "ZOOL318",
+        "ZOOL319"
+      ]
+    }
+  },
+  "Bachelor of Theology (BTheol)":{
+
+    "Biblical Studies": {
+      "100-level": [
+        "BIBS112",
+        "BIBS121",
+        "CHTH102",
+        "CHTH111",
+        "CHTH131"
+      ],
+      "200-level": [
+        "BIBS211",
+        "BIBS218",
+        "BIBS221",
+        "BIBS226",
+        "CHTH206",
+        "CHTH213",
+        "CHTH218",
+        "CHTH233",
+        "PAST216",
+        "PAST219",
+        "PAST225"
+      ],
+      "300-level": [
+        "BIBS311",
+        "BIBS318",
+        "BIBS321",
+        "BIBS326",
+        "CHTH306",
+        "CHTH313",
+        "CHTH318",
+        "CHTH333",
+        "PAST307",
+        "PAST311",
+        "PAST314",
+        "PAST316",
+        "PAST318",
+        "PAST319",
+        "PAST320",
+        "PAST321",
+        "PAST322",
+        "PAST323",
+        "PAST324",
+        "PAST325",
+        "PAST490"
+      ]
+    },
+
+    "Christian Thought and History": {
+      "100-level": [
+        "BIBS112",
+        "BIBS121",
+        "CHTH102",
+        "CHTH111",
+        "CHTH131"
+      ],
+      "200-level": [
+        "BIBS211",
+        "BIBS218",
+        "BIBS221",
+        "BIBS226",
+        "CHTH206",
+        "CHTH213",
+        "CHTH218",
+        "CHTH233",
+        "PAST216",
+        "PAST219",
+        "PAST225"
+      ],
+      "300-level": [
+        "BIBS311",
+        "BIBS318",
+        "BIBS321",
+        "BIBS326",
+        "CHTH306",
+        "CHTH313",
+        "CHTH318",
+        "CHTH333",
+        "PAST307",
+        "PAST311",
+        "PAST314",
+        "PAST316",
+        "PAST318",
+        "PAST319",
+        "PAST320",
+        "PAST321",
+        "PAST322",
+        "PAST323",
+        "PAST324",
+        "PAST325",
+        "PAST490"
+      ]
+    },
+    "Pastoral Studies": {
+      "100-level": [
+        "BIBS112",
+        "BIBS121",
+        "CHTH102",
+        "CHTH111",
+        "CHTH131"
+      ],
+      "200-level": [
+        "BIBS211",
+        "BIBS218",
+        "BIBS221",
+        "BIBS226",
+        "CHTH206",
+        "CHTH213",
+        "CHTH218",
+        "CHTH233",
+        "PAST216",
+        "PAST219",
+        "PAST225"
+      ],
+      "300-level": [
+        "BIBS311",
+        "BIBS318",
+        "BIBS321",
+        "BIBS326",
+        "CHTH306",
+        "CHTH313",
+        "CHTH318",
+        "CHTH333",
+        "PAST307",
+        "PAST311",
+        "PAST314",
+        "PAST316",
+        "PAST318",
+        "PAST319",
+        "PAST320",
+        "PAST321",
+        "PAST322",
+        "PAST323",
+        "PAST324",
+        "PAST325",
+        "PAST490"
+      ]
+    }
+  }
+}
