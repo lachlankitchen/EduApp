@@ -16,7 +16,7 @@ jobs:
       - name: Send Discord message
         uses: appleboy/discord-action@master
         with:
-          webhook_id: 1153890642204819531
-          webhook_token: j0zu3_SX2a3rdDgNRSH00I1TcFVMaTKRgPzpLMYZSC3Z3ZkxkuzosrXGIBVxeTMo8J-6
+          webhook_id: ${{ secrets.WEBHOOK_ID }}
+          webhook_token: ${{ secrets.WEBHOOK_TOKEN }}
           message: "Push event detected on branch ${{ github.ref }} by ${{ github.actor }}."
 
