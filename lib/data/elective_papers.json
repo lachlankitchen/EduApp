@@ -1,56 +1,54 @@
 {
-    "papers": [
-      { 
-        "COMP 101": {
-          "title": "Foundations of Information Systems",
-          "teaching_periods": [
-            "S2",
-            "SS"
-          ],
-          "points": 18
-        }
-      },
-      { 
-        "COMP 161": {
-          "title": "Computer Programming",
-          "teaching_periods": [
-            "S1",
-            "S2"
-          ],
-          "points": 18
-        }
-      },
-      { 
-        "COMP 162": {
-          "title": "Foundations of Computer Science",
-          "teaching_periods": [
-            "S2",
-            "SS"            
-          ],
-          "points": 18
-        }
-      },
-      { 
-        "MATH 120": {
-          "title": "Calculas n Shit",
-          "teaching_periods": [
-            "S2",
-            "SS"
-          ],
-          "points": 18
-        }
-      },
-      { 
-        "BSNS 112": {
-          "title": "Business n Shit",
-          "teaching_periods": [
-            "S1",
-            "S2"
-          ],
-          "points": 18
-        }
-      }
-    ]
+  { 
+    "COMP 101": {
+      "title": "Foundations of Information Systems",
+      "teaching_periods": [
+        "S2",
+        "SS"
+      ],
+      "points": 18
+    }
+  },
+  { 
+    "COMP 161": {
+      "title": "Computer Programming",
+      "teaching_periods": [
+        "S1",
+        "S2"
+      ],
+      "points": 18
+    }
+  },
+  { 
+    "COMP 162": {
+      "title": "Foundations of Computer Science",
+      "teaching_periods": [
+        "S2",
+        "SS"            
+      ],
+      "points": 18
+    }
+  },
+  { 
+    "MATH 120": {
+      "title": "Calculas n Shit",
+      "teaching_periods": [
+        "S2",
+        "SS"
+      ],
+      "points": 18
+    }
+  },
+  { 
+    "BSNS 112": {
+      "title": "Business n Shit",
+      "teaching_periods": [
+        "S1",
+        "S2"
+      ],
+      "points": 18
+    }
   }
+}
   
   
