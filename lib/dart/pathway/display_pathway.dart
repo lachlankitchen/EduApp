@@ -35,25 +35,8 @@ class DisplayPathway extends StatelessWidget {
     return ListView.builder(
       itemCount: pathway.length,
       itemBuilder: (context, index) {
-        List<Paper> remainingPapers = pathway[index].remainingPapers;
-
-        // Categorize papers by level
-        final Map<String, List<Paper>> papersByLevel = {
-          '100-level': [],
-          '200-level': [],
-          '300-level': [],
-        };
-
-        for (var paper in remainingPapers) {
-          final level = int.parse(paper.papercode.substring(paper.papercode.length - 3));
-          if (level >= 100 && level < 200) {
-            papersByLevel['100-level']?.add(paper);
-          } else if (level >= 200 && level < 300) {
-            papersByLevel['200-level']?.add(paper);
-          } else if (level >= 300 && level < 400) {
-            papersByLevel['300-level']?.add(paper);
-          }
-        }
+        Map<String, List<Paper>> selectedPapers = pathway[index].selectedPapers;
+        Map<String, List<Paper>> remainingPapers = pathway[index].remainingPapers;
 
         return Card(
           margin: const EdgeInsets.all(10.0),
@@ -105,19 +88,15 @@ class DisplayPathway extends StatelessWidget {
                         'Your Papers(s):',
                         style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                       ),
-                      for (var paper in pathway[index].selectedPapers)
-                        Padding(
-                          padding: const EdgeInsets.only(left: 16.0),
-                          child: Text('${paper.papercode} - ${paper.title},'),
-                        ),
+                      buildPapersByLevel(selectedPapers), // Use the helper function
                       const SizedBox(height: 10),
                       const Text(
                         'Remaining Compulsory Papers(s):',
                         style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                       ),
-                      buildPapersByLevel(papersByLevel), // Use the helper function
+                      buildPapersByLevel(remainingPapers), // Use the helper function
                       const SizedBox(height: 10),
-                      if (pathway[index].selectedPapers.any((paper) => paper.grade != 0))
+                      if (pathway[index].gpa != -1)
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
@@ -148,19 +127,22 @@ class DisplayPathway extends StatelessWidget {
     for (var level in ['100-level', '200-level', '300-level']) {
       if (papersByLevel[level]!.isNotEmpty) {
         paperWidgets.add(
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                '$level:',
-                style: const TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
-              ),
-              for (var paper in papersByLevel[level]!)
-                Padding(
-                  padding: const EdgeInsets.only(left: 16.0), // Adjust the left padding as needed
-                  child: Text('${paper.papercode} - ${paper.title},'),
+          Padding(
+            padding: const EdgeInsets.only(left:16.0, top: 8.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  '$level:',
+                  style: const TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
                 ),
-            ],
+                for (var paper in papersByLevel[level]!)
+                  Padding(
+                    padding: const EdgeInsets.only(left: 16.0), // Adjust the left padding as needed
+                    child: Text('${paper.papercode} - ${paper.title},'),
+                  ),
+              ],
+            ),
           ),
         );
       }

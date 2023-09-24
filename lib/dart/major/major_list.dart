@@ -122,7 +122,7 @@ class MajorListScreen extends StatelessWidget {
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (context) => PapersListScreen(degree: degree, major: major, recommendedPapers: recommendedPapers, electivePapers: recommendedPapers, level: 100),
+        builder: (context) => PapersListScreen(degree: degree, major: major, recommendedPapers: recommendedPapers, electivePapers: [], level: 100),
       ),
     );
   }

@@ -268,7 +268,7 @@ class PapersListScreen extends StatelessWidget {
 
                 Navigator.pushReplacement(
                   context,
-                  MaterialPageRoute(builder: (context) => PapersListScreen(degree: degree, major: major, recommendedPapers: nextRecommendedPapers, electivePapers: nextRecommendedPapers, level: nextlevel)),
+                  MaterialPageRoute(builder: (context) => PapersListScreen(degree: degree, major: major, recommendedPapers: nextRecommendedPapers, electivePapers: [], level: nextlevel)),
                 );
               },
               style: ElevatedButton.styleFrom(

@@ -6,8 +6,8 @@ import '../paper/paper.dart';
 class Pathway {
   final Degree degree;
   final List<Major> majors;
-  final List<Paper> selectedPapers;
-  final List<Paper> remainingPapers;
+  final Map<String, List<Paper>> selectedPapers;
+  final Map<String, List<Paper>> remainingPapers;
   double gpa = -1;
   bool isSelected = false;
 

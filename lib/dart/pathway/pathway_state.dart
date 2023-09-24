@@ -13,8 +13,16 @@ class PathwayState extends ChangeNotifier {
   List<Pathway> savedPathways = [];
   Degree selectedDegree = Degree('');
   List<Major> selectedMajors = [];
-  List<Paper> selectedPapers = [];
-  List<Paper> remainingPapers = [];
+  Map<String, List<Paper>> selectedPapers = {
+    '100-level': [],
+    '200-level': [],
+    '300-level': [],
+  };  // 
+  Map<String, List<Paper>> remainingPapers = {
+    '100-level': [],
+    '200-level': [],
+    '300-level': [],
+  };  // Categorize papers by level
   double gpa = -1;
 
   /// Adds a selected degree to the state.
@@ -37,9 +45,15 @@ class PathwayState extends ChangeNotifier {
   ///
   /// The [papers] parameter represents the list of papers to be added to the state.
   void addSelectedPapers(List<Paper> papers) {
+    print(papers);
     for (var paper in papers) {
-      if (!selectedPapers.contains(paper)) {
-        selectedPapers.add(paper);
+      final level = int.parse(paper.papercode.substring(paper.papercode.length - 3));
+      if (level >= 100 && level < 200) {
+        selectedPapers['100-level']?.add(paper);
+      } else if (level >= 200 && level < 300) {
+        selectedPapers['200-level']?.add(paper);
+      } else if (level >= 300 && level < 400) {
+        selectedPapers['300-level']?.add(paper);
       }
     }
     calculateGPA();
@@ -48,8 +62,13 @@ class PathwayState extends ChangeNotifier {
 
   void addRemainingPapers(List<Paper> papers) {
     for (var paper in papers) {
-      if (!remainingPapers.contains(paper)) {
-        remainingPapers.add(paper);
+      final level = int.parse(paper.papercode.substring(paper.papercode.length - 3));
+      if (level >= 100 && level < 200 && !remainingPapers['100-level']!.contains(paper)) {
+        remainingPapers['100-level']?.add(paper);
+      } else if (level >= 200 && level < 300 && !remainingPapers['200-level']!.contains(paper)) {
+        remainingPapers['200-level']?.add(paper);
+      } else if (level >= 300 && level < 400 && !remainingPapers['300-level']!.contains(paper)) {
+        remainingPapers['300-level']?.add(paper);
       }
     }
     notifyListeners();
@@ -63,14 +82,18 @@ class PathwayState extends ChangeNotifier {
     double totalWeightedSum = 0;
     int totalWeight = 0;
     
-    for (int i = 0; i < selectedPapers.length; i++) {
-      totalWeightedSum += selectedPapers[i].grade !* selectedPapers[i].points;
-      totalWeight += selectedPapers[i].points;
+    List<Paper> allPapers = [];
+    selectedPapers.forEach((level, papers) {
+      allPapers.addAll(papers);
+    });
+
+    for (int i = 0; i < allPapers.length; i++) {
+      totalWeightedSum += allPapers[i].grade !* allPapers[i].points;
+      totalWeight += allPapers[i].points;
     }
 
     double wam = totalWeightedSum / totalWeight;
     gpa = (wam * 9) / 100;
-
     notifyListeners();
   }
 
@@ -91,8 +114,8 @@ class PathwayState extends ChangeNotifier {
     savedPathways.add(pathway);
     selectedDegree = Degree(''); // Reset the state
     selectedMajors = [];
-    selectedPapers = [];
-    remainingPapers = [];
+    selectedPapers = {};
+    remainingPapers = {};
     notifyListeners();
   }
 

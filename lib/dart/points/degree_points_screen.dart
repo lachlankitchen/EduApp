@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:pie_chart/pie_chart.dart'; // Import the pie chart package
 import 'package:provider/provider.dart';
 import '../navigation/nav_bar.dart';
+import '../paper/paper.dart';
 import '../pathway/pathway.dart';
 import '../pathway/pathway_state.dart';
 
@@ -19,12 +20,18 @@ class DegreesPointsScreen extends StatelessWidget {
   
     double totalPoints = 0;
     int majorCount = 0;
+
+    List<Paper> allPapers = [];
+    state.selectedPapers.forEach((level, papers) {
+      allPapers.addAll(papers);
+    });
+
     if (state.savedPathways.isNotEmpty) {
       Pathway pathway = state.savedPathways[0];
       for (var major in pathway.majors) {
         totalPoints = 0;
         majorCount++;
-        for (var paper in pathway.selectedPapers) {
+        for (var paper in allPapers) {
           totalPoints += paper.points;
         }
         dataMap[major.name] = totalPoints;
