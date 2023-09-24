@@ -7,8 +7,8 @@ class Paper {
   final double efts;
   final List<String> teachingPeriods;
   final String description;
-  final List<String> prerequisites;
-  final List<String> restrictions;
+  final String prerequisites;
+  final String restrictions;
   final String schedule;
   int? grade;
   bool isSelected = false;
@@ -57,11 +57,29 @@ class Paper {
       year = "",
       efts = 0.0,
       description = "",
-      prerequisites = const [],
-      restrictions = const [],
+      prerequisites = "",
+      restrictions = "",
       schedule = "",
       isSelected = false,
       grade = 0;
+
+  factory Paper.fromJson(String key, Map<String, dynamic> json) {
+    return Paper(
+      papercode: key, // Include the mapping for paper_code.
+      subjectCode: json['subject_code'] ?? "",
+      year: json['year'] ?? "",
+      title: json['title'] ?? "",
+      points: int.parse(json['points']), // Parse to int
+      efts: double.parse(json['efts']), // Parse to double
+      teachingPeriods: List<String>.from(json['teaching_periods']),
+      description: json['description'] ?? "",
+      prerequisites: json['prerequisites'] ?? "",
+      restrictions: json['restrictions'] ?? "",
+      schedule: json['schedule'] ?? "", 
+      isSelected: false,
+      grade: 0,
+    );
+  }
 
   Map<String, dynamic> toJson() {
     return {

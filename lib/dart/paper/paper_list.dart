@@ -252,7 +252,7 @@ class PapersListScreen extends StatelessWidget {
           
                 String jsonData;
                 try {
-                  jsonData = await fetchRecommendedPapers(degree, major); // TODO: Make dynamic
+                  jsonData = await fetchRecommendedPapers(degree, major, level); // TODO: Make dynamic
                   // Now you have the degrees from the server, use them to navigate to the next screen
                 } catch (error) {
                   // Handle error, perhaps show a dialog to the user
@@ -262,7 +262,7 @@ class PapersListScreen extends StatelessWidget {
           
                 int nextlevel = level + 100;
 
-                List<Paper> nextRecommendedPapers = getRecommendedPapers(jsonData, nextlevel, 'recommended_papers');
+                List<Paper> nextRecommendedPapers = getRecommendedPapers(jsonData, nextlevel);
                 // List<Paper> nextElectivePapers = getRecommendedPapers(jsonData, nextlevel, 'elective_papers');
 
                 Navigator.pushReplacement(

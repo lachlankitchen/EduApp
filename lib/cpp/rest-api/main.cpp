@@ -62,36 +62,25 @@ int main(void)
   });
 
 
-  svr.Get("/:degree/:major/:level", [&](const Request &req, Response &res) {
-      auto degree = req.path_params.at("degree");
-      auto major = req.path_params.at("major");
-      auto major = req.path_params.at("level");
-      std::filesystem::path json_file_path = std::filesystem::path("..") / ".." / ".." / "data" / "recomendedPapers.json";
+  svr.Get("/:degree/:major/papers/:level", [&](const Request &req, Response &res) {
+    std::filesystem::path json_file_path = std::filesystem::path("..") / ".." / ".." / "data" / "responseData.json";
 
-      if (!std::filesystem::exists(json_file_path)) {
-          res.status = 404;
-          res.set_content("File not found", "text/plain");
-          std::cout << "File not found at specified path.\n";
-          return;
-      }
+    if (!std::filesystem::exists(json_file_path)) {
+        res.status = 404;
+        res.set_content("File not found", "text/plain");
+        std::cout << "File not found at specified path.\n";
+        return;
+    }
 
-      std::ifstream json_file(json_file_path);
-      nlohmann::json json_data; // Assuming you're using nlohmann's json library
-      json_file >> json_data;
+    std::ifstream json_file(json_file_path);
+    std::string json_content((std::istreambuf_iterator<char>(json_file)),
+                            std::istreambuf_iterator<char>());
 
-      if (json_data.contains(degree) && json_data[degree].contains(major) && ) {
-          nlohmann::json major_data = json_data[degree][major];
+    res.set_header("Access-Control-Allow-Origin", "*");
+    res.set_header("Access-Control-Allow-Headers", "X-Requested-With, Content-Type");
+    res.set_content(json_content, "application/json");
 
-          res.set_header("Access-Control-Allow-Origin", "*");
-          res.set_header("Access-Control-Allow-Headers", "X-Requested-With, Content-Type");
-          res.set_content(major_data.dump(), "application/json"); // Return only the major's data
-
-          std::cout << "Successfully served the JSON data for degree: " << degree << " and major: " << major << ".\n";
-      } else {
-          res.status = 404;
-          res.set_content("Degree or Major not found in the JSON data.", "text/plain");
-          std::cout << "Degree or Major not found in the JSON data.\n";
-      }
+    std::cout << "Successfully served the JSON file.\n"; 
   });
 
 

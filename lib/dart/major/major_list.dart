@@ -103,13 +103,13 @@ class MajorListScreen extends StatelessWidget {
   Future<void> navigateToPapersListScreen(BuildContext context, Degree degree, Major major) async {
     final state = Provider.of<PathwayState>(context, listen: false);
 
+    int level = 100;
+
     String jsonRecommendedData;
     List<String> jsonPaperData;
 
-    int level = 100;
-
     try {
-      jsonRecommendedData = await fetchRecommendedPapers(degree, majors[0]); // TODO: Make dynamic
+      jsonRecommendedData = await fetchRecommendedPapers(degree, majors[0], level); // TODO: Make dynamic
       // jsonPaperData = await fetchAllPapers(degree.title, level); // TODO: Make dynamic
     } catch (error) {
       // Handle error, perhaps show a dialog to the user
@@ -117,10 +117,13 @@ class MajorListScreen extends StatelessWidget {
       return; // Early return to exit the function if fetching degrees fails
     }
 
-    // List<Paper> compulsoryPapers = getPaperData(jsonData, 100, 'compulsory_papers');
-    // List<Paper> oneOfPapers = getPaperData(jsonData, 100, 'one_of_papers');
-    List<Paper> recommendedPapers = getRecommendedPapers(jsonRecommendedData, level, 'recommended_papers');
-    // List<Paper> electivePapers = getElectivePapers(jsonPaperData, level);
+    final Map<String, dynamic> jsonData = jsonDecode(jsonRecommendedData);
+
+    final List<Paper> recommendedPapers = jsonData.entries.map((entry) {
+      final papercode = entry.key;
+      final paperData = entry.value;
+      return Paper.fromJson(papercode, paperData);
+    }).toList();
 
     Navigator.push(
       context,
