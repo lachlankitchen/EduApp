@@ -13,6 +13,10 @@ EduApp is a powerful and intuitive mobile app designed to help students plan the
   - [Prerequisites](#prerequisites)
   - [Installation](#installation)
   - [Running the App](#running-the-app)
+- [Dart Documentation README](#dart-documentation-readme)
+  - [Documentation](#documentation)
+  - [Integration](#integration)
+  - [Update and Maintenance](#update-and-maintenance)
   - [Features](#features)
   - [License](#license)
 
@@ -86,6 +90,26 @@ To run the app on your device or emulator, follow these steps:
    ```
 
 This will build and launch the app on your chosen device or emulator.
+
+# Dart Documentation README
+
+This README provides information on how to access the HTML documentation for this Dart project.
+
+## Documentation
+
+**Document Location**:
+   - You can find the HTML documentation in the `doc` folder of this repository.
+
+## Integration
+
+To integrate the Dart documentation into your project, you can copy the `documentation.html` file into your project's `docs` folder and link to it from your project's README.
+
+## Update and Maintenance
+
+We plan to update the documentation regularly. You can check for updates in the repository and on our website.
+
+Thank you for using our Dart documentation!
+
 
 ## Features
 

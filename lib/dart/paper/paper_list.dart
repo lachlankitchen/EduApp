@@ -102,30 +102,34 @@ class PapersListScreen extends StatelessWidget {
                     ),
                   ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.all(16.0),
-                  child: TextField(
-                    controller: state.searchController,
-                    onChanged: (query) {
-                      state.filterItems(degree, query);
-                    },                    
-                    decoration: const InputDecoration(
-                      labelText: 'Search',
-                      hintText: 'Search for papers...',
-                      prefixIcon: Icon(Icons.search),
+                Column(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.all(16.0),
+                      child: TextField(
+                        controller: state.searchController,
+                        onChanged: (query) {
+                          state.filterItems(degree, query);
+                        },
+                        decoration: const InputDecoration(
+                          labelText: 'Search',
+                          hintText: 'Search for papers...',
+                          prefixIcon: Icon(Icons.search),
+                        ),
+                      ),
                     ),
-                  ),
-                ),
-                // Expanded(
-                //   child: ListView.builder(
-                //     itemCount: state.filteredPapers.length,
-                //     itemBuilder: (context, index) {
-                //       return ListTile(
-                //         title: Text('${state.filteredPapers[index].papercode} - ${state.filteredPapers[index].title}'),
-                //       );
-                //     },
-                //   ),
-                // ),  
+                    Expanded(
+                      child: ListView.builder(
+                        itemCount: state.filteredPapers.length,
+                        itemBuilder: (context, index) {
+                          return ListTile(
+                            title: Text('${state.filteredPapers[index].papercode} - ${state.filteredPapers[index].title}'),
+                          );
+                        },
+                      ),
+                    ),
+                  ],
+                )
               ],
             );
           },
@@ -149,7 +153,7 @@ class PapersListScreen extends StatelessWidget {
                 // Now you have the degrees from the server, use them to navigate to the next screen
               } catch (error) {
                 // Handle error, perhaps show a dialog to the user
-                print('Error fetching majors: $error');
+                print('Error fetching remaining major requirements: $error');
                 return; // Early return to exit the function if fetching degrees fails
               }
 

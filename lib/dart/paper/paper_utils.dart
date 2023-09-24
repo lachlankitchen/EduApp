@@ -64,21 +64,17 @@ import '../major/major.dart';
     final url = Uri.parse('http://localhost:1234/${degree.title}/${major.name}');
    
     List<Map<String, dynamic>> jsonPapers = papersListToJson(papersList); 
-    String papersJsonString = jsonEncode(jsonPapers);
     
     final response = await http.post(
       url,
-      // @CONNOR Using the JSON string as the request body doen't work, I'm working on a fix
-      // body: papersJsonString, // Set the JSON string as the request body
-      // headers: {
-      //   'Content-Type': 'application/json', // Set the Content-Type header
-      // }
+      // headers: {'Content-Type': 'application/json'}, // Set appropriate headers.
+      // body: jsonEncode(jsonPapers), // Make sure to import 'dart:convert'.
     );
     
     if (response.statusCode == 200) {
       return response.body;
     } else {
       // If the server did not return a 200 OK response, throw an exception.
-      throw Exception('Failed to validate pathway');
+      throw Exception('Failed to validate major requirements');
     }
   }

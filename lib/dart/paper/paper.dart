@@ -102,10 +102,8 @@ class Paper {
 
 List<Map<String, dynamic>> papersListToJson(List<Paper> papers) {
   List<Map<String, dynamic>> jsonList = [];
-
   for (var paper in papers) {
     jsonList.add(paper.toJson());
   }
-
   return jsonList;
 }
