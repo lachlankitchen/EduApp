@@ -80,7 +80,6 @@ class PathwayState extends ChangeNotifier {
   /// The current state, including the selected degree, majors, papers, GPA, and selection status,
   /// is captured and reset after saving.
   void savePathway() {
-    print(remainingPapers);
     Pathway pathway = Pathway(
       degree: selectedDegree,
       majors: selectedMajors,

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import '../paper/paper.dart';
 import 'pathway.dart';
 import 'pathway_state.dart'; // Import the Pathway class
 
@@ -28,11 +29,32 @@ class DisplayPathway extends StatelessWidget {
         child: Text('No pathway data available.'),
       );
     }
+    
 
     // Build a list of saved pathways using a ListView builder.
     return ListView.builder(
       itemCount: pathway.length,
       itemBuilder: (context, index) {
+        List<Paper> remainingPapers = pathway[index].remainingPapers;
+
+        // Categorize papers by level
+        final Map<String, List<Paper>> papersByLevel = {
+          '100-level': [],
+          '200-level': [],
+          '300-level': [],
+        };
+
+        for (var paper in remainingPapers) {
+          final level = int.parse(paper.papercode.substring(paper.papercode.length - 3));
+          if (level >= 100 && level < 200) {
+            papersByLevel['100-level']?.add(paper);
+          } else if (level >= 200 && level < 300) {
+            papersByLevel['200-level']?.add(paper);
+          } else if (level >= 300 && level < 400) {
+            papersByLevel['300-level']?.add(paper);
+          }
+        }
+
         return Card(
           margin: const EdgeInsets.all(10.0),
           child: Padding(
@@ -44,12 +66,11 @@ class DisplayPathway extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      pathway[index].degree.title, // Display degree title
+                      pathway[index].degree.title,
                       style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                     ),
                     ElevatedButton(
                       onPressed: () {
-                        // Delete the saved pathway when the button is pressed.
                         Provider.of<PathwayState>(context, listen: false).deleteState(pathway[index]);
                       },
                       style: ElevatedButton.styleFrom(
@@ -60,7 +81,6 @@ class DisplayPathway extends StatelessWidget {
                   ],
                 ),
                 const SizedBox(height: 10),
-                // Display saved majors, if available.
                 if (pathway[index].majors.isNotEmpty)
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -71,13 +91,12 @@ class DisplayPathway extends StatelessWidget {
                       ),
                       for (var major in pathway[index].majors)
                         Padding(
-                          padding: const EdgeInsets.only(left: 16.0), // Adjust the left padding as needed
+                          padding: const EdgeInsets.only(left: 16.0),
                           child: Text('${major.name},'),
                         ),
                     ],
                   ),
                 const SizedBox(height: 10),
-                // Display saved papers, if available.
                 if (pathway[index].selectedPapers.isNotEmpty)
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -88,21 +107,16 @@ class DisplayPathway extends StatelessWidget {
                       ),
                       for (var paper in pathway[index].selectedPapers)
                         Padding(
-                          padding: const EdgeInsets.only(left: 16.0), // Adjust the left padding as needed
-                          child:Text('${paper.papercode} - ${paper.title},'),
-                        ),   
+                          padding: const EdgeInsets.only(left: 16.0),
+                          child: Text('${paper.papercode} - ${paper.title},'),
+                        ),
                       const SizedBox(height: 10),
                       const Text(
                         'Remaining Compulsory Papers(s):',
                         style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                       ),
-                      for (var paper in pathway[index].remainingPapers)
-                        Padding(
-                          padding: const EdgeInsets.only(left: 16.0), // Adjust the left padding as needed
-                          child: Text('${paper.papercode} - ${paper.title},'),
-                        ),
+                      buildPapersByLevel(papersByLevel), // Use the helper function
                       const SizedBox(height: 10),
-                      // Display GPA if there are papers with grades.
                       if (pathway[index].selectedPapers.any((paper) => paper.grade != 0))
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -113,9 +127,9 @@ class DisplayPathway extends StatelessWidget {
                               style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                             ),
                             Padding(
-                              padding: const EdgeInsets.only(left: 16.0), // Adjust the left padding as needed
+                              padding: const EdgeInsets.only(left: 16.0),
                               child: Text('${pathway[index].gpa}'),
-                            ),                          
+                            ),
                           ],
                         ),
                     ],
@@ -126,5 +140,31 @@ class DisplayPathway extends StatelessWidget {
         );
       },
     );
+  }
+
+  // Helper function to categorize and display papers by level
+  Widget buildPapersByLevel(Map<String, List<Paper>> papersByLevel) {
+    List<Widget> paperWidgets = [];
+    for (var level in ['100-level', '200-level', '300-level']) {
+      if (papersByLevel[level]!.isNotEmpty) {
+        paperWidgets.add(
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                '$level:',
+                style: const TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
+              ),
+              for (var paper in papersByLevel[level]!)
+                Padding(
+                  padding: const EdgeInsets.only(left: 16.0), // Adjust the left padding as needed
+                  child: Text('${paper.papercode} - ${paper.title},'),
+                ),
+            ],
+          ),
+        );
+      }
+    }
+    return Column(children: paperWidgets);
   }
 }
