@@ -21,16 +21,17 @@ class DegreesPointsScreen extends StatelessWidget {
     double totalPoints = 0;
     int majorCount = 0;
 
-    List<Paper> allPapers = [];
-    state.selectedPapers.forEach((level, papers) {
-      allPapers.addAll(papers);
-    });
-
     if (state.savedPathways.isNotEmpty) {
       Pathway pathway = state.savedPathways[0];
       for (var major in pathway.majors) {
         totalPoints = 0;
         majorCount++;
+        
+        List<Paper> allPapers = [];
+        pathway.selectedPapers.forEach((level, papers) {
+          allPapers.addAll(papers);
+        });
+
         for (var paper in allPapers) {
           totalPoints += paper.points;
         }
