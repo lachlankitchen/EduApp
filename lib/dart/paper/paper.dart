@@ -61,7 +61,7 @@ class Paper {
       restrictions = "",
       schedule = "",
       isSelected = false,
-      grade = 0;
+      grade = -1;
 
   factory Paper.fromJson(String key, Map<String, dynamic> json) {
     return Paper(
@@ -77,7 +77,7 @@ class Paper {
       restrictions: json['restrictions'] ?? "",
       schedule: json['schedule'] ?? "", 
       isSelected: false,
-      grade: 0,
+      grade: -1,
     );
   }
 

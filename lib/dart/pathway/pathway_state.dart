@@ -88,8 +88,10 @@ class PathwayState extends ChangeNotifier {
     });
 
     for (int i = 0; i < allPapers.length; i++) {
-      totalWeightedSum += allPapers[i].grade !* allPapers[i].points;
-      totalWeight += allPapers[i].points;
+      if(allPapers[i].grade != -1) {
+        totalWeightedSum += allPapers[i].grade !* allPapers[i].points;
+        totalWeight += allPapers[i].points;
+      }
     }
 
     double wam = totalWeightedSum / totalWeight;
