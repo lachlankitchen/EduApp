@@ -8,7 +8,7 @@ import '../major/major.dart';
 import '../paper/paper.dart';
 import '../pathway/pathway_state.dart';
 import '../navigation/nav_bar.dart';
-import 'fetch_paper.dart';
+import 'paper_utils.dart';
 
 class PapersListState with ChangeNotifier {
   TextEditingController searchController = TextEditingController();
@@ -250,20 +250,21 @@ class PapersListScreen extends StatelessWidget {
                 state.addSelectedPapers(selectedPapers);
                 state.calculateGPA();
           
-                String jsonData;
+                int nextlevel = level + 100;
+
+                String jsonRecommendedData;
+                List<String> jsonPaperData;
+
                 try {
-                  jsonData = await fetchRecommendedPapers(degree, major, level); // TODO: Make dynamic
-                  // Now you have the degrees from the server, use them to navigate to the next screen
+                  jsonRecommendedData = await fetchRecommendedPapers(degree, major, level); // TODO: Make dynamic
+                  // jsonPaperData = await fetchAllPapers(degree.title, level); // TODO: Make dynamic
                 } catch (error) {
                   // Handle error, perhaps show a dialog to the user
                   print('Error fetching papers: $error');
                   return; // Early return to exit the function if fetching degrees fails
                 }
-          
-                int nextlevel = level + 100;
 
-                List<Paper> nextRecommendedPapers = getRecommendedPapers(jsonData, nextlevel);
-                // List<Paper> nextElectivePapers = getRecommendedPapers(jsonData, nextlevel, 'elective_papers');
+                List<Paper> nextRecommendedPapers = parseJsonPapers(jsonRecommendedData);
 
                 Navigator.pushReplacement(
                   context,

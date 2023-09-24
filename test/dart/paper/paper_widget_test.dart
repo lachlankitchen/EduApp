@@ -9,7 +9,7 @@ import 'package:edu_app/dart/pathway/pathway_state.dart';
 import 'package:edu_app/dart/navigation/nav_bar.dart';
 import 'package:edu_app/dart/major/major.dart';
 import 'package:edu_app/dart/degree/degree.dart';
-import 'package:edu_app/dart/paper/fetch_paper.dart'; // Import fetchPaperData
+import 'package:edu_app/dart/paper/paper_utils.dart'; // Import fetchPaperData
 import '../utils/mock_client.dart'; // Import your mock client
 
 void main() {

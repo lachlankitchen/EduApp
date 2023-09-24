@@ -6,7 +6,7 @@ import 'package:http/http.dart' as http;
 import '../degree/degree.dart';
 import '../major/major.dart';
 import '../navigation/nav_bar.dart';
-import '../paper/fetch_paper.dart';
+import '../paper/paper_utils.dart';
 import '../paper/paper.dart';
 import '../paper/paper_list.dart';
 import '../pathway/pathway_state.dart'; // Import the SecondListScreen class
@@ -117,13 +117,7 @@ class MajorListScreen extends StatelessWidget {
       return; // Early return to exit the function if fetching degrees fails
     }
 
-    final Map<String, dynamic> jsonData = jsonDecode(jsonRecommendedData);
-
-    final List<Paper> recommendedPapers = jsonData.entries.map((entry) {
-      final papercode = entry.key;
-      final paperData = entry.value;
-      return Paper.fromJson(papercode, paperData);
-    }).toList();
+    List<Paper> recommendedPapers = parseJsonPapers(jsonRecommendedData);
 
     Navigator.push(
       context,
