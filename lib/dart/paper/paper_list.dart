@@ -256,7 +256,7 @@ class PapersListScreen extends StatelessWidget {
                 List<String> jsonPaperData;
 
                 try {
-                  jsonRecommendedData = await fetchRecommendedPapers(degree, major, level); // TODO: Make dynamic
+                  jsonRecommendedData = await fetchRecommendedPapers(degree, major, nextlevel); // TODO: Make dynamic
                   // jsonPaperData = await fetchAllPapers(degree.title, level); // TODO: Make dynamic
                 } catch (error) {
                   // Handle error, perhaps show a dialog to the user
