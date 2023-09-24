@@ -16,7 +16,6 @@ class PapersListState with ChangeNotifier {
   List<Paper> filteredPapers = [Paper.withName(papercode: "GHJK", title: "HJK", teachingPeriods: ["S1", "S2"], points: 18)];
 
   Future<void> filterItems(Degree degree, String query) async {
-    searchController.text = query;
 
     String jsonData;
     try {
@@ -28,6 +27,7 @@ class PapersListState with ChangeNotifier {
     }
 
     filteredPapers = parseJsonPapers(jsonData);
+    notifyListeners();
   }
 
   Map<String, bool> paperCheckboxStates = {}; // Map to store checkbox states for each paper
@@ -257,10 +257,8 @@ class PapersListScreen extends StatelessWidget {
 
                 String jsonRecommendedData;
                 List<String> jsonPaperData;
-
                 try {
                   jsonRecommendedData = await fetchRecommendedPapers(degree, major, nextlevel); // TODO: Make dynamic
-                  // jsonPaperData = await fetchAllPapers(degree.title, level); // TODO: Make dynamic
                 } catch (error) {
                   // Handle error, perhaps show a dialog to the user
                   print('Error fetching papers: $error');
@@ -345,29 +343,5 @@ class PapersListScreen extends StatelessWidget {
       ),
     );
   }   
-  
-  Future<String> postPaperData(Degree degree, Major major, List<Paper> papersList) async {
-    final url = Uri.parse('http://localhost:1234/${degree.title}/${major.name}');
-   
-    List<Map<String, dynamic>> jsonPapers = papersListToJson(papersList); 
-    String papersJsonString = jsonEncode(jsonPapers);
-    
-    final response = await http.post(
-      url,
-      // @CONNOR Using the JSON string as the request body doen't work, I'm working on a fix
-      // body: papersJsonString, // Set the JSON string as the request body
-      // headers: {
-      //   'Content-Type': 'application/json', // Set the Content-Type header
-      // }
-    );
-    
-    if (response.statusCode == 200) {
-      return response.body;
-    } else {
-      // If the server did not return a 200 OK response, throw an exception.
-      throw Exception('Failed to validate pathway');
-    }
-  }
-
 }
       

@@ -110,7 +110,6 @@ class MajorListScreen extends StatelessWidget {
 
     try {
       jsonRecommendedData = await fetchRecommendedPapers(degree, majors[0], level); // TODO: Make dynamic
-      // jsonPaperData = await fetchAllPapers(degree.title, level); // TODO: Make dynamic
     } catch (error) {
       // Handle error, perhaps show a dialog to the user
       print('Error fetching papers: $error');
@@ -125,35 +124,5 @@ class MajorListScreen extends StatelessWidget {
         builder: (context) => PapersListScreen(degree: degree, major: major, recommendedPapers: recommendedPapers, electivePapers: [], level: 100),
       ),
     );
-  }
-
-  // Function to retrieve papers
-  List<Paper> getLevelPapers(Map<String, dynamic> parsedData, String levelKey, String paperKey) {
-    List<Paper> papers = [];
-    for (var level in parsedData['levels']) {
-      if (level['level'] == levelKey) {
-        var paperList = level[paperKey] as List<dynamic>?; // Use null-safe List
-        if (paperList != null) {
-          for (var paperData in paperList) {
-            for (var entry in paperData.entries) {
-              final paperCode = entry.key;
-              final attributes = entry.value as Map<String, dynamic>;
-              final teachingPeriods = (attributes['teaching_periods'] as List<dynamic>)
-                ?.map<String>((period) => period.toString())
-                ?.toList() ?? []; // Provide a default value if needed
-              final points = attributes['points'];
-
-              papers.add(Paper.withName(
-                papercode: paperCode,
-                title: attributes['title'] ?? '', // Provide a default value if needed
-                teachingPeriods: teachingPeriods, // Provide a default value if needed
-                points: points
-              ));
-            }
-          }
-        }
-      }
-    }
-    return papers;
   }
 }
