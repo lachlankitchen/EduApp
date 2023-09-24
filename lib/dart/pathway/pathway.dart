@@ -8,6 +8,7 @@ class Pathway {
   final List<Major> majors;
   final Map<String, List<Paper>> selectedPapers;
   final Map<String, List<Paper>> remainingPapers;
+  final int remainingPoints;
   double gpa = -1;
   bool isSelected = false;
 
@@ -20,6 +21,7 @@ class Pathway {
     required this.majors,
     required this.selectedPapers,
     required this.remainingPapers,
+    required this.remainingPoints,
     required this.gpa,
     required this.isSelected,
   });

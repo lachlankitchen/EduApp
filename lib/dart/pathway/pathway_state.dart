@@ -22,6 +22,7 @@ class PathwayState extends ChangeNotifier {
     '200-level': [],
     '300-level': [],
   };  // Categorize papers by level
+  int remainingPoints = 0;
   double gpa = -1;
 
   /// Adds a selected degree to the state.
@@ -44,7 +45,6 @@ class PathwayState extends ChangeNotifier {
   ///
   /// The [papers] parameter represents the list of papers to be added to the state.
   void addSelectedPapers(List<Paper> papers) {
-    print(papers);
     for (var paper in papers) {
       final level = int.parse(paper.papercode.substring(paper.papercode.length - 3));
       if (level >= 100 && level < 200) {
@@ -98,6 +98,10 @@ class PathwayState extends ChangeNotifier {
     notifyListeners();
   }
 
+  void addRemainingPoints(int remainingPoints) {
+    this.remainingPoints = remainingPoints;
+  }
+
   /// Saves the current state as a pathway.
   ///
   /// This method creates a new [Pathway] object and adds it to the [savedPathways] list.
@@ -109,6 +113,7 @@ class PathwayState extends ChangeNotifier {
       majors: selectedMajors,
       selectedPapers: selectedPapers,
       remainingPapers: remainingPapers,
+      remainingPoints: remainingPoints,
       gpa: gpa,
       isSelected: false,
     );

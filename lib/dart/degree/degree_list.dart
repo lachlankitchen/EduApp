@@ -43,8 +43,7 @@ class DegreeListScreen extends StatelessWidget {
                 child: ElevatedButton(
                   onPressed: () {
                     onSelectDegree(degrees[degreeIndex]);
-                    navigateToMajorsListScreen(
-                        context, context.read<PathwayState>(), degrees[degreeIndex]);
+                    navigateToMajorsListScreen(context, context.read<PathwayState>(), degrees[degreeIndex]);
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: const Color(0xFFf9c000),

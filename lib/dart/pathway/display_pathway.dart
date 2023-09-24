@@ -95,6 +95,16 @@ class DisplayPathway extends StatelessWidget {
                         style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                       ),
                       buildPapersByLevel(remainingPapers), // Use the helper function
+                      if (pathway[index].remainingPoints != 0)
+                        const SizedBox(height: 10),
+                        const Text(
+                          'Remaining Points:',
+                            style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 16.0),
+                          child: Text('${pathway[index].remainingPoints}'),
+                        ),
                       const SizedBox(height: 10),
                       if (pathway[index].gpa != -1)
                         Column(
@@ -111,6 +121,7 @@ class DisplayPathway extends StatelessWidget {
                             ),
                           ],
                         ),
+
                     ],
                   ),
               ],
