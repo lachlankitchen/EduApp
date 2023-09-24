@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:edu_app/dart/navigation/nav_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:http/http.dart' as http;
@@ -26,6 +27,7 @@ class DegreeListScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      bottomNavigationBar: const NavBar(),
       appBar: AppBar(
         title: const Text('Select a Degree'),
         backgroundColor: const Color(0xFF10428C),
