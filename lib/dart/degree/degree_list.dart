@@ -6,6 +6,7 @@ import 'package:provider/provider.dart';
 import 'package:http/http.dart' as http;
 import '../major/major.dart';
 import '../major/major_list.dart';
+import '../navigation/nav_utils.dart';
 import 'degree.dart';
 import '../pathway/pathway_state.dart';
 
@@ -68,48 +69,5 @@ class DegreeListScreen extends StatelessWidget {
         },
       ),
     );
-  }
-
-  /// Navigates to the major list screen.
-  ///
-  /// [context]: The build context to perform navigation.
-  /// [state]: The state containing pathway information.
-  /// [selectedDegree]: The selected degree to add to the pathway state.
-  ///
-  /// This function does not return a value.
-  Future<void> navigateToMajorsListScreen(BuildContext context, PathwayState state, Degree degree) async {
-    // Pass the selected degree to the state
-    state.addDegree(degree);
-
-    String jsonData;
-    try {
-      jsonData = await fetchMajorData(degree);
-      // Now you have the degrees from the server, use them to navigate to the next screen
-    } catch (error) {
-      // Handle error, perhaps show a dialog to the user
-      print('Error fetching majors: $error');
-      return; // Early return to exit the function if fetching degrees fails
-    }
-
-    final majorsList = List<String>.from(json.decode(jsonData));
-    final majors = majorsList.map((major) => Major.fromJsonName(major)).toList();
-    
-    Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (context) => MajorListScreen(degree: degree, majors: majors),
-      ),
-    );
-  }
-  
-  Future<String> fetchMajorData(Degree degree) async {
-    final response = await http.get(Uri.parse('http://localhost:1234/${degree.title}/majors'));
-
-    if (response.statusCode == 200) {
-      return response.body;
-    } else {
-      // If the server did not return a 200 OK response, throw an exception.
-      throw Exception('Failed to load majors');
-    }
   }
 }
