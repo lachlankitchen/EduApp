@@ -11,20 +11,23 @@ import '../navigation/nav_bar.dart';
 import 'paper_utils.dart';
 
 class PapersListState with ChangeNotifier {
+    
   TextEditingController searchController = TextEditingController();
-  List<Paper> filteredElectivePapers = [Paper.withName(papercode: "GHJK", title: "HJK", teachingPeriods: ["S1", "S2"], points: 18)];
+  List<Paper> filteredPapers = [Paper.withName(papercode: "GHJK", title: "HJK", teachingPeriods: ["S1", "S2"], points: 18)];
 
-  void filterItems(String query, List<Paper> electivePapers) {
+  Future<void> filterItems(Degree degree, String query) async {
     searchController.text = query;
-    filteredElectivePapers = electivePapers;
-        // .where((paper) =>
-        //     paper.subjectCode.toLowerCase().contains(query.toLowerCase()))
-        // .toList();
-    notifyListeners();
-  }
 
-  List<Paper> getFilteredPapers(){
-    return filteredElectivePapers;
+    String jsonData;
+    try {
+      jsonData = await fetchMatchingPapers(degree, query); // TODO: Make dynamic
+    } catch (error) {
+      // Handle error, perhaps show a dialog to the user
+      print('Error fetching papers: $error');
+      jsonData = '[]'; // Set jsonData to empty list if fetching papers fails
+    }
+
+    filteredPapers = parseJsonPapers(jsonData);
   }
 
   Map<String, bool> paperCheckboxStates = {}; // Map to store checkbox states for each paper
@@ -104,7 +107,7 @@ class PapersListScreen extends StatelessWidget {
                   child: TextField(
                     controller: state.searchController,
                     onChanged: (query) {
-                      state.filterItems(query, electivePapers);
+                      state.filterItems(degree, query);
                     },                    
                     decoration: const InputDecoration(
                       labelText: 'Search',
@@ -115,10 +118,10 @@ class PapersListScreen extends StatelessWidget {
                 ),
                 // Expanded(
                 //   child: ListView.builder(
-                //     itemCount: electivePapers.length,
+                //     itemCount: state.filteredPapers.length,
                 //     itemBuilder: (context, index) {
                 //       return ListTile(
-                //         title: Text(electivePapers[index].subjectCode),
+                //         title: Text(state.filteredPapers[index].subjectCode),
                 //       );
                 //     },
                 //   ),

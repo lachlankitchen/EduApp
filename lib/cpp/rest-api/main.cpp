@@ -110,7 +110,7 @@ int main(void)
 
   svr.Get("/:degree/papers/:level", [](const Request &req, Response &res){
     // TODO: @CONNOR Implement this
-    std::cout << "POST request received.\n";
+    std::cout << "Elective request received.\n";
 
     auto degree = req.path_params.at("degree"); // TODO: @CONNOR Utilise when quering by major
     auto level = req.path_params.at("level"); // TODO: @CONNOR Utilise when quering by major
