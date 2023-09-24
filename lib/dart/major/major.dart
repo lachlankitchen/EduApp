@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 /// Represents a major with its requirements and total points.
 class Major {
   final String name;

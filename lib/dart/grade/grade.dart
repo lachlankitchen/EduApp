@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import '../navigation/nav_bar.dart';
 
 class GradesScreen extends StatefulWidget {

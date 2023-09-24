@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
 import '../grade/grade.dart';
 import '../points/degree_points_screen.dart';
 import '../home/home.dart';
-
 import 'navigation_provider.dart';
 
 /// Represents the bottom navigation bar for the app.

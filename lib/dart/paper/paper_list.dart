@@ -1,10 +1,10 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:http/http.dart' as http;
 import '../degree/degree.dart';
 import '../home/home.dart';
 import '../major/major.dart';
+import '../navigation/nav_utils.dart';
 import '../paper/paper.dart';
 import '../pathway/pathway_state.dart';
 import '../navigation/nav_bar.dart';
@@ -130,31 +130,7 @@ class PapersListScreen extends StatelessWidget {
             );
           },
         ),
-        // Expanded(
-        //   child: ListView.builder(
-        //     itemCount: electivePapers.length + 2, // Add 2 for SizedBoxes and Title
-        //     itemBuilder: (context, index) {
-        //       if (index == 0) {
-        //         return const SizedBox(height: 16.0);
-        //       } else if (index == 1) {
-        //         // Add title for one of Papers
-        //         return const ListTile(
-        //           title: Text(
-        //             'Choose One of:',
-        //             style: TextStyle(
-        //               fontWeight: FontWeight.bold,
-        //               fontSize: 16,
-        //             ),
-        //           ),
-        //         );
-        //       } else {
-        //         final oneOfPaperIndex = index - 2;
-        //         return buildPaperListItem(electivePapers[oneOfPaperIndex]);
-        //       }
-        //     },
-        //   ),
-        // ),
-      ),    
+      ),
       floatingActionButton: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
@@ -278,6 +254,22 @@ class PapersListScreen extends StatelessWidget {
                 textStyle: const TextStyle(fontSize: 16), // Text style
               ),
               child: Text('${level+100}-level Selection'),
+            ),
+          ),
+          const SizedBox(width: 16), // Add spacing between buttons
+          Visibility(
+            visible: level == 300 && Provider.of<PathwayState>(context, listen: false).selectedMajors.length < 2, // Check if the level is less than to 300
+            child: ElevatedButton(
+               onPressed: () {
+                  navigateToMajorsListScreen(
+                    context, context.read<PathwayState>(), degree);
+                  },
+              style: ElevatedButton.styleFrom(
+                primary: const Color(0xFFf9c000), // Button background color
+                padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 24), // Adjust padding as needed
+                textStyle: const TextStyle(fontSize: 16), // Text style
+              ),
+              child: const Text('Select Another Major'),
             ),
           ),
         ],

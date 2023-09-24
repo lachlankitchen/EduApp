@@ -1,10 +1,33 @@
-
-// Function to retrieve papers
 import 'dart:convert';
 import 'package:edu_app/dart/paper/paper.dart';
 import 'package:http/http.dart' as http;
 import '../degree/degree.dart';
 import '../major/major.dart';
+
+  Future<List<String>> fetchDegrees() async {
+    final response = await http.get(Uri.parse('http://localhost:1234/degrees'));
+
+    if (response.statusCode == 200) {
+      // If the server did return an OK response, parse the JSON
+      Map<String, dynamic> data = jsonDecode(response.body);
+      List<String> degrees = List<String>.from(data['degrees']);
+      return degrees;
+    } else {
+      // If the server did not return a 200 OK response, throw an exception.
+      throw Exception('Failed to load degrees');
+    }
+  }
+  
+  Future<String> fetchMajorData(Degree degree) async {
+    final response = await http.get(Uri.parse('http://localhost:1234/${degree.title}/majors'));
+
+    if (response.statusCode == 200) {
+      return response.body;
+    } else {
+      // If the server did not return a 200 OK response, throw an exception.
+      throw Exception('Failed to load majors');
+    }
+  }
 
   Future<String> fetchRecommendedPapers(Degree degree, Major major, int level) async {
     final response = await http.get(Uri.parse('http://localhost:1234/${degree.title}/${major.name}/papers/$level'));

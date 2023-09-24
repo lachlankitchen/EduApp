@@ -1,6 +1,5 @@
 import 'package:edu_app/dart/pathway/pathway.dart';
 import 'package:flutter/foundation.dart';
-
 import '../degree/degree.dart';
 import '../major/major.dart';
 import '../paper/paper.dart';

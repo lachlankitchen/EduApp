@@ -1,11 +1,6 @@
-import 'dart:convert';
-
 import 'package:edu_app/dart/navigation/nav_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:http/http.dart' as http;
-import '../major/major.dart';
-import '../major/major_list.dart';
 import '../navigation/nav_utils.dart';
 import 'degree.dart';
 import '../pathway/pathway_state.dart';

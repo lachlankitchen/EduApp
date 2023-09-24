@@ -1,15 +1,9 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:http/http.dart' as http;
 import '../degree/degree.dart';
 import '../major/major.dart';
 import '../navigation/nav_bar.dart';
-import '../paper/paper_utils.dart';
-import '../paper/paper.dart';
-import '../paper/paper_list.dart';
-import '../pathway/pathway_state.dart'; // Import the SecondListScreen class
+import '../navigation/nav_utils.dart';
 
 class RadioButtonState extends ChangeNotifier {
   int? selectedRadioValue; // Example radio button state
@@ -91,37 +85,6 @@ class MajorListScreen extends StatelessWidget {
             );
           },
         ),
-      ),
-    );
-  }
-
-  /// Navigates to the papers list screen.
-  ///
-  /// [context]: The build context for navigation.
-  /// [state]: The state containing pathway information.
-  /// [selectedMajors]: The list of selected majors.
-  Future<void> navigateToPapersListScreen(BuildContext context, Degree degree, Major major) async {
-    final state = Provider.of<PathwayState>(context, listen: false);
-
-    int level = 100;
-
-    String jsonRecommendedData;
-    List<String> jsonPaperData;
-
-    try {
-      jsonRecommendedData = await fetchRecommendedPapers(degree, majors[0], level); // TODO: Make dynamic
-    } catch (error) {
-      // Handle error, perhaps show a dialog to the user
-      print('Error fetching papers: $error');
-      return; // Early return to exit the function if fetching degrees fails
-    }
-
-    List<Paper> recommendedPapers = parseJsonPapers(jsonRecommendedData);
-
-    Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (context) => PapersListScreen(degree: degree, major: major, recommendedPapers: recommendedPapers, electivePapers: [], level: 100),
       ),
     );
   }
