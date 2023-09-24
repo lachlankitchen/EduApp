@@ -114,9 +114,17 @@ class PathwayState extends ChangeNotifier {
     savedPathways.add(pathway);
     selectedDegree = Degree(''); // Reset the state
     selectedMajors = [];
-    selectedPapers = {};
-    remainingPapers = {};
-    notifyListeners();
+    selectedPapers = {
+    '100-level': [],
+    '200-level': [],
+    '300-level': [],
+  };  // 
+  remainingPapers = {
+    '100-level': [],
+    '200-level': [],
+    '300-level': [],
+  };
+  notifyListeners();
   }
 
   /// Deletes a saved pathway from the state.
