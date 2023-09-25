@@ -118,16 +118,16 @@ class PapersListScreen extends StatelessWidget {
                         ),
                       ),
                     ),
-                    Expanded(
-                      child: ListView.builder(
-                        itemCount: state.filteredPapers.length,
-                        itemBuilder: (context, index) {
-                          return ListTile(
-                            title: Text('${state.filteredPapers[index].papercode} - ${state.filteredPapers[index].title}'),
-                          );
-                        },
-                      ),
-                    ),
+                    // Expanded(
+                    //   child: ListView.builder(
+                    //     itemCount: state.filteredPapers.length,
+                    //     itemBuilder: (context, index) {
+                    //       return ListTile(
+                    //         title: Text('${state.filteredPapers[index].papercode} - ${state.filteredPapers[index].title}'),
+                    //       );
+                    //     },
+                    //   ),
+                    // ),
                   ],
                 )
               ],

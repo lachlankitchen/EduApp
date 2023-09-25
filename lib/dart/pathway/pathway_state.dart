@@ -47,12 +47,11 @@ class PathwayState extends ChangeNotifier {
   void addSelectedPapers(List<Paper> papers) {
     for (var paper in papers) {
       final level = int.parse(paper.papercode.substring(paper.papercode.length - 3));
-      if (level >= 100 && level < 200) {
-        selectedPapers['100-level']?.add(paper);
-      } else if (level >= 200 && level < 300) {
-        selectedPapers['200-level']?.add(paper);
-      } else if (level >= 300 && level < 400) {
-        selectedPapers['300-level']?.add(paper);
+      final key = levelToKey(level);
+      final paperSet = selectedPapers[key];
+
+      if (!paperSet!.any((existingPaper) => existingPaper.papercode == paper.papercode)) {
+        paperSet.add(paper);
       }
     }
     calculateGPA();
@@ -62,12 +61,11 @@ class PathwayState extends ChangeNotifier {
   void addRemainingPapers(List<Paper> papers) {
     for (var paper in papers) {
       final level = int.parse(paper.papercode.substring(paper.papercode.length - 3));
-      if (level >= 100 && level < 200 && !remainingPapers['100-level']!.contains(paper)) {
-        remainingPapers['100-level']?.add(paper);
-      } else if (level >= 200 && level < 300 && !remainingPapers['200-level']!.contains(paper)) {
-        remainingPapers['200-level']?.add(paper);
-      } else if (level >= 300 && level < 400 && !remainingPapers['300-level']!.contains(paper)) {
-        remainingPapers['300-level']?.add(paper);
+      final key = levelToKey(level);
+      final paperSet = remainingPapers[key];
+
+      if (!paperSet!.any((existingPaper) => existingPaper.papercode == paper.papercode)) {
+        paperSet.add(paper);
       }
     }
     notifyListeners();
@@ -140,5 +138,16 @@ class PathwayState extends ChangeNotifier {
   void deleteState(Pathway pathway) {
     savedPathways.remove(pathway);
     notifyListeners();
+  }
+  
+  String levelToKey(int level) {
+    if (level >= 100 && level < 200) {
+      return '100-level';
+    } else if (level >= 200 && level < 300) {
+      return '200-level';
+    } else if (level >= 300 && level < 400) {
+      return '300-level';
+    }
+    throw ArgumentError('Invalid level: $level');
   }
 }
