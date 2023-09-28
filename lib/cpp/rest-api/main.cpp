@@ -109,10 +109,10 @@ int main(void)
     std::cout << "Successfully served the JSON file.\n"; });
 
   svr.Get("/papers/:query/:level", [&](const Request &req, Response &res) {
-    std::cout << "HIT\n";
-
     auto query = req.path_params.at("query");
     auto levelStr = req.path_params.at("level");
+
+    std::transform(query.begin(), query.end(), query.begin(), ::toupper);
 
     std::filesystem::path json_file_path = std::filesystem::path("..") / ".." / ".." / "data" / "papers_data.json";
 
@@ -163,8 +163,6 @@ int main(void)
     res.set_header("Access-Control-Allow-Origin", "*");
     res.set_header("Access-Control-Allow-Headers", "X-Requested-With, Content-Type");
   });
-
-
 
 
   // Extract values from HTTP headers and URL query params
