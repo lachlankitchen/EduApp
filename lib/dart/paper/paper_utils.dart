@@ -50,7 +50,6 @@ import '../major/major.dart';
   }
 
   List<Paper> parseJsonPapers(String json) {
-    print(json);
     final Map<String, dynamic> jsonData = jsonDecode(json);
     
     final List<Paper> recommendedPapers = jsonData.entries.map((entry) {

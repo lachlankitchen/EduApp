@@ -39,8 +39,6 @@ class _GradesScreenState extends State<GradesScreen> {
     
     setState(() {
       gradeEntries.add(GradeEntry(name, score, weight));
-      print(gradeEntries.toString());
-
       nameController.clear();
       scoreController.clear();
       weightController.clear();

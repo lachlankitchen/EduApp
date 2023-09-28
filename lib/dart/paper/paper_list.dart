@@ -13,7 +13,7 @@ import 'paper_utils.dart';
 class SearchPaperState with ChangeNotifier {
     
   TextEditingController searchController = TextEditingController();
-  List<Paper> filteredPapers = [Paper.withName(papercode: "PSYC111", title: "Introduction to Psychology", teachingPeriods: ["S1", "S2"], points: 18)];
+  List<Paper> filteredPapers = [];
 
   Future<void> filterItems(String query, int level) async {
 
@@ -108,7 +108,9 @@ class PapersListScreen extends StatelessWidget {
                   child: TextField(
                     controller: state.searchController,
                     onChanged: (query) {
-                      state.filterItems(query, level);
+                      if(!query.isEmpty) {
+                        state.filterItems(query, level);
+                      }
                     },
                     decoration: const InputDecoration(
                       labelText: 'Search',
@@ -142,8 +144,6 @@ class PapersListScreen extends StatelessWidget {
 
               // Filter the selected papers
               List<Paper> selectedPapers = allPapers.where((paper) => paper.isSelected).toList();
-
-              print(selectedPapers);
 
               String jsonData;
               try {
