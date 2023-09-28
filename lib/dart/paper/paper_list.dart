@@ -104,11 +104,11 @@ class PapersListScreen extends StatelessWidget {
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.all(16.0),
+                  padding: const EdgeInsets.only(left: 16.0),
                   child: TextField(
                     controller: state.searchController,
                     onChanged: (query) {
-                      if(!query.isEmpty) {
+                      if(query.isNotEmpty) {
                         state.filterItems(query, level);
                       }
                     },
