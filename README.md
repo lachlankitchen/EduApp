@@ -1,3 +1,5 @@
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/4f43606be0a34e4684965d659df64604)](https://app.codacy.com/gh/lachlankitchen/EduApp/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_grade)
+
 # EduApp README
 
 ## Description
