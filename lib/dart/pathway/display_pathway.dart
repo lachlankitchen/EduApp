@@ -105,23 +105,20 @@ class DisplayPathway extends StatelessWidget {
                           padding: const EdgeInsets.only(left: 16.0),
                           child: Text('${pathway[index].remainingPoints}'),
                         ),
-                      const SizedBox(height: 10),
-                      if (pathway[index].gpa != -1)
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            const SizedBox(height: 10),
-                            const Text(
-                              'Grade Point Average:',
-                              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.only(left: 16.0),
-                              child: Text('${pathway[index].gpa}'),
-                            ),
-                          ],
-                        ),
-
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const SizedBox(height: 10),
+                          const Text(
+                            'Grade Point Average:',
+                            style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(left: 16.0),
+                            child: Text('${pathway[index].gpa}'),
+                          ),
+                        ],
+                      ),
                     ],
                   ),
               ],

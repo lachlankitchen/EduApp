@@ -10,10 +10,10 @@ import '../pathway/pathway_state.dart';
 import '../navigation/nav_bar.dart';
 import 'paper_utils.dart';
 
-class PapersListState with ChangeNotifier {
+class SearchPaperState with ChangeNotifier {
     
   TextEditingController searchController = TextEditingController();
-  List<Paper> filteredPapers = [Paper.withName(papercode: "GHJK", title: "HJK", teachingPeriods: ["S1", "S2"], points: 18)];
+  List<Paper> filteredPapers = [Paper.withName(papercode: "PSYC111", title: "Introduction to Psychology", teachingPeriods: ["S1", "S2"], points: 18)];
 
   Future<void> filterItems(Degree degree, String query) async {
 
@@ -61,17 +61,18 @@ class PapersListScreen extends StatelessWidget {
     required this.level,
   }) : super(key: key);
 
-  @override
   Widget build(BuildContext context) {
+    final searchPaperState = SearchPaperState(); // Create a single instance
+
     return Scaffold(
       bottomNavigationBar: const NavBar(),
       appBar: AppBar(
         title: Text('Select Your $level-level Papers'),
         backgroundColor: const Color(0XFF10428C),
       ),
-      body: ChangeNotifierProvider<PapersListState>(
-        create: (_) => PapersListState(),
-        child: Consumer<PapersListState>(
+      body: ChangeNotifierProvider<SearchPaperState>.value( // Use .value to provide the existing instance
+        value: searchPaperState,
+        child: Consumer<SearchPaperState>(
           builder: (context, state, child) {
             return ListView(
               children: [
@@ -102,34 +103,28 @@ class PapersListScreen extends StatelessWidget {
                     ),
                   ),
                 ),
-                Column(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.all(16.0),
-                      child: TextField(
-                        controller: state.searchController,
-                        onChanged: (query) {
-                          state.filterItems(degree, query);
-                        },
-                        decoration: const InputDecoration(
-                          labelText: 'Search',
-                          hintText: 'Search for papers...',
-                          prefixIcon: Icon(Icons.search),
-                        ),
-                      ),
+                Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: TextField(
+                    controller: state.searchController,
+                    onChanged: (query) {
+                      state.filterItems(degree, query);
+                    },
+                    decoration: const InputDecoration(
+                      labelText: 'Search',
+                      hintText: 'Search for papers...',
+                      prefixIcon: Icon(Icons.search),
                     ),
-                    // Expanded(
-                    //   child: ListView.builder(
-                    //     itemCount: state.filteredPapers.length,
-                    //     itemBuilder: (context, index) {
-                    //       return ListTile(
-                    //         title: Text('${state.filteredPapers[index].papercode} - ${state.filteredPapers[index].title}'),
-                    //       );
-                    //     },
-                    //   ),
-                    // ),
-                  ],
-                )
+                  ),
+                ),
+                ListView.builder(
+                  shrinkWrap: true,
+                  itemCount: state.filteredPapers.length,
+                  itemBuilder: (context, index) {
+                    final paper = state.filteredPapers[index];
+                    return buildPaperListItem(paper, state);
+                  },
+                ),
               ],
             );
           },
@@ -140,12 +135,15 @@ class PapersListScreen extends StatelessWidget {
         children: [
           ElevatedButton(
             onPressed: () async {
-              final state = Provider.of<PathwayState>(context, listen: false);
-              // Combine the two lists into a single list
-              List<Paper> allPapers = [...recommendedPapers, ...electivePapers];
+              final pathwayState = Provider.of<PathwayState>(context, listen: false);
+
+              // You can now use `searchPaperState` here without creating a new instance.
+              List<Paper> allPapers = [...recommendedPapers, ...searchPaperState.filteredPapers];
 
               // Filter the selected papers
               List<Paper> selectedPapers = allPapers.where((paper) => paper.isSelected).toList();
+
+              print(selectedPapers);
 
               String jsonData;
               try {
@@ -202,11 +200,11 @@ class PapersListScreen extends StatelessWidget {
                 ),
               );
             
-              state.addMajor(major);
-              state.addSelectedPapers(selectedPapers);
-              state.addRemainingPapers(remainingPapers);
-              state.addRemainingPoints(remainingPoints);
-              state.savePathway();
+              pathwayState.addMajor(major);
+              pathwayState.addSelectedPapers(selectedPapers);
+              pathwayState.addRemainingPapers(remainingPapers);
+              pathwayState.addRemainingPoints(remainingPoints);
+              pathwayState.savePathway();
 
               Navigator.pushReplacement(
                 context,
@@ -226,12 +224,13 @@ class PapersListScreen extends StatelessWidget {
             child: ElevatedButton(
               onPressed: () async {
                 final state = Provider.of<PathwayState>(context, listen: false);
-          
-                // Combine the two lists into a single list
-                List<Paper> allPapers = [...recommendedPapers, ...electivePapers];
-          
+
+                // You can now use `searchPaperState` here without creating a new instance.
+                List<Paper> allPapers = [...recommendedPapers, ...searchPaperState.filteredPapers];
+
+                // Filter the selected papers
                 List<Paper> selectedPapers = allPapers.where((paper) => paper.isSelected).toList();
-          
+
                 state.addSelectedPapers(selectedPapers);
                 state.calculateGPA();
           
@@ -269,14 +268,13 @@ class PapersListScreen extends StatelessWidget {
               child: ElevatedButton(
                 onPressed: () async {
                   final state = Provider.of<PathwayState>(context, listen: false);
-                  
-                  print(state.selectedMajors.length);
-                  // Combine the two lists into a single list
-                  List<Paper> allPapers = [...recommendedPapers, ...electivePapers];
-            
+
+                  // You can now use `searchPaperState` here without creating a new instance.
+                  List<Paper> allPapers = [...recommendedPapers, ...searchPaperState.filteredPapers];
+
                   // Filter the selected papers
                   List<Paper> selectedPapers = allPapers.where((paper) => paper.isSelected).toList();
-            
+
                   String jsonData;
                   try {
                     jsonData = await postPaperData(degree, major, selectedPapers);
@@ -353,7 +351,7 @@ class PapersListScreen extends StatelessWidget {
     );
   }     
 
-  Widget buildPaperListItem(Paper paper, PapersListState state) {
+  Widget buildPaperListItem(Paper paper, SearchPaperState state) {
     final paperId = 'paper_${paper.papercode}'; // Generate a unique identifier for each paper
     return ListTile(
       title: Row(

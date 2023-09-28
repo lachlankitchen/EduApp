@@ -98,6 +98,14 @@ class Paper {
       'grade': grade,
     };
   }
+
+  bool getIsSelected() {
+    return isSelected;
+  }
+
+  void setIsSelected(bool bool) {
+    isSelected = bool;
+  }
 }
 
 List<Map<String, dynamic>> papersListToJson(List<Paper> papers) {
