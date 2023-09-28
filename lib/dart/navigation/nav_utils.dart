@@ -86,7 +86,7 @@ import '../pathway/pathway_state.dart';
       jsonRecommendedData = await fetchRecommendedPapers(degree, major, level); // TODO: Make dynamic
     } catch (error) {
       // Handle error, perhaps show a dialog to the user
-      print('Error fetching papers: $error');
+      print('Error fetching recommended papers: $error');
       return; // Early return to exit the function if fetching degrees fails
     }
 

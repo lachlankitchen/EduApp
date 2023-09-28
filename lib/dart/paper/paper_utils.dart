@@ -39,8 +39,8 @@ import '../major/major.dart';
     }
   }
 
-  Future<String> fetchMatchingPapers(Degree degree, String query) async {
-    final response = await http.get(Uri.parse('http://localhost:1234/${degree.title}/papers/$query'));
+  Future<String> fetchMatchingPapers(String query, int level) async {
+    final response = await http.get(Uri.parse('http://localhost:1234/papers/$query/$level'));
 
     if (response.statusCode == 200) {
       return response.body;
@@ -50,6 +50,7 @@ import '../major/major.dart';
   }
 
   List<Paper> parseJsonPapers(String json) {
+    print(json);
     final Map<String, dynamic> jsonData = jsonDecode(json);
     
     final List<Paper> recommendedPapers = jsonData.entries.map((entry) {

@@ -108,14 +108,13 @@ int main(void)
 
     std::cout << "Successfully served the JSON file.\n"; });
 
-  svr.Get("/:degree/papers/:level", [](const Request &req, Response &res){
-    // TODO: @CONNOR Implement this
-    std::cout << "Elective request received.\n";
+  svr.Get("/papers/:query/:level", [&](const Request &req, Response &res) {
+    std::cout << "HIT\n";
 
-    auto degree = req.path_params.at("degree"); // TODO: @CONNOR Utilise when quering by major
-    auto level = req.path_params.at("level"); // TODO: @CONNOR Utilise when quering by major
+    auto query = req.path_params.at("query");
+    auto levelStr = req.path_params.at("level");
 
-    std::filesystem::path json_file_path = std::filesystem::path("..") / ".." / ".." / "data" / "elective_papers.json";
+    std::filesystem::path json_file_path = std::filesystem::path("..") / ".." / ".." / "data" / "papers_data.json";
 
     if (!std::filesystem::exists(json_file_path)) {
         res.status = 404;
@@ -124,16 +123,49 @@ int main(void)
         return;
     }
 
+    // Parse the level from the request as an integer
+    int level = std::stoi(levelStr);
+
+    // Create a JSON object to store matching papers
+    nlohmann::json matching_papers;
+
+    // Read the JSON file into a nlohmann::json object
     std::ifstream json_file(json_file_path);
-    std::string json_content((std::istreambuf_iterator<char>(json_file)),
-                            std::istreambuf_iterator<char>());
+    nlohmann::json json_obj;
+    json_file >> json_obj;
+
+    // Iterate through the papers in the JSON object
+    for (const auto &paper : json_obj.items()) {
+        // Extract the last three characters from the paper key as the paper's level
+        std::string paperKey = paper.key();
+        std::string paperLevelStr = paperKey.substr(paperKey.size() - 3);
+
+        // Parse the paper's level as an integer
+        int paperLevel = std::stoi(paperLevelStr);
+
+        // Check if the paper key contains the query and the paper's level is within the specified range
+        if (paperKey.find(query) != std::string::npos && paperLevel >= level && paperLevel < level + 100) {
+            // Add the matching paper to the result JSON
+            matching_papers[paperKey] = paper.value();
+        }
+    }
+
+    // Check if any matching papers were found
+    if (!matching_papers.empty()) {
+        // Set the response with the array of matching papers
+        res.set_content(matching_papers.dump(), "application/json");
+    } else {
+        // If no matching papers are found, return a 404 error
+        res.status = 404;
+        res.set_content("No matching papers found", "text/plain");
+    }
 
     res.set_header("Access-Control-Allow-Origin", "*");
     res.set_header("Access-Control-Allow-Headers", "X-Requested-With, Content-Type");
-    res.set_content(json_content, "application/json");
-
-    std::cout << "Successfully served the JSON file.\n"; 
   });
+
+
+
 
   // Extract values from HTTP headers and URL query params
   svr.Get("/body-header-param", [](const Request &req, Response &res)

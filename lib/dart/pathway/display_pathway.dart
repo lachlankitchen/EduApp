@@ -136,7 +136,7 @@ class DisplayPathway extends StatelessWidget {
       if (papersByLevel[level]!.isNotEmpty) {
         paperWidgets.add(
           Padding(
-            padding: const EdgeInsets.only(left:16.0, top: 8.0),
+            padding: const EdgeInsets.only(left:  16.0, top: 8.0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [

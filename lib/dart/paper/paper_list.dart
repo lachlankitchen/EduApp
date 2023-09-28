@@ -15,14 +15,14 @@ class SearchPaperState with ChangeNotifier {
   TextEditingController searchController = TextEditingController();
   List<Paper> filteredPapers = [Paper.withName(papercode: "PSYC111", title: "Introduction to Psychology", teachingPeriods: ["S1", "S2"], points: 18)];
 
-  Future<void> filterItems(Degree degree, String query) async {
+  Future<void> filterItems(String query, int level) async {
 
     String jsonData;
     try {
-      jsonData = await fetchMatchingPapers(degree, query); // TODO: Make dynamic
+      jsonData = await fetchMatchingPapers(query, level); // TODO: Make dynamic
     } catch (error) {
       // Handle error, perhaps show a dialog to the user
-      print('Error fetching papers: $error');
+      print('Error fetching matching elective papers: $error');
       jsonData = '[]'; // Set jsonData to empty list if fetching papers fails
     }
 
@@ -108,7 +108,7 @@ class PapersListScreen extends StatelessWidget {
                   child: TextField(
                     controller: state.searchController,
                     onChanged: (query) {
-                      state.filterItems(degree, query);
+                      state.filterItems(query, level);
                     },
                     decoration: const InputDecoration(
                       labelText: 'Search',
