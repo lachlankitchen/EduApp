@@ -1,3 +1,4 @@
+import 'package:path_provider/path_provider.dart';
 /// Represents a degree.
 class Degree {
   String title;
@@ -18,5 +19,12 @@ class Degree {
   /// Returns a list of [Degree] instances.
   static List<Degree> fromJsonList(List<String> jsonList) {
     return jsonList.map((title) => Degree(title)).toList();
+  }
+
+  /// Converts a [Degree] instance to a JSON map.
+  Map<String, dynamic> toJson() {
+    return {
+      'title': title,
+    };
   }
 }

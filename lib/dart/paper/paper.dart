@@ -1,3 +1,5 @@
+import 'package:path_provider/path_provider.dart';
+
 class Paper {
   final String papercode;
   final String subjectCode;
@@ -63,6 +65,27 @@ class Paper {
       isSelected = false,
       grade = 0;
 
+  /// Constructs a [Paper] instance from a JSON map.
+  ///
+  /// [json]: A JSON map representing the paper.
+  factory Paper.fromJson(Map<String, dynamic> json) {
+    return Paper(
+      papercode: json['papercode'],
+      subjectCode: json['subject_code'],
+      year: json['year'],
+      title: json['title'],
+      points: json['points'],
+      efts: json['efts'],
+      teachingPeriods: List<String>.from(json['teaching_periods']),
+      description: json['description'],
+      prerequisites: List<String>.from(json['prerequisites']),
+      restrictions: List<String>.from(json['restrictions']),
+      schedule: json['schedule'],
+      isSelected: json['isSelected'] ?? false,
+      grade: json['grade'],
+    );
+  }
+
   Map<String, dynamic> toJson() {
     return {
       'papercode': papercode,
@@ -76,7 +99,7 @@ class Paper {
       'prerequisites': prerequisites,
       'restrictions': restrictions,
       'schedule': schedule,
-      'isSelected': false,
+      'isSelected': isSelected,
       'grade': grade,
     };
   }

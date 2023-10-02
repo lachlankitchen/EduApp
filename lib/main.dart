@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'dart/pathway/pathway_state.dart'; // Import the state management class
+import 'package:path_provider/path_provider.dart'; // Import path_provider
 import 'dart/home/home.dart';
 import 'dart/navigation/navigation_provider.dart';
+import 'dart/pathway/pathway_state.dart'; // Import the state management class
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized(); // Ensure Flutter is initialized
+  initPathProvider();
+
   runApp(
     MultiProvider(
       providers: [
@@ -25,4 +29,9 @@ class EduApp extends StatelessWidget {
       home: MyHomePage(),
     );
   }
+}
+
+// Initialize path_provider
+void initPathProvider() async {
+  await getApplicationDocumentsDirectory();
 }

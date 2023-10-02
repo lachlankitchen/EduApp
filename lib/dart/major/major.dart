@@ -1,4 +1,6 @@
 import 'dart:convert';
+import 'package:path_provider/path_provider.dart';
+
 
 /// Represents a major with its requirements and total points.
 class Major {
@@ -12,7 +14,6 @@ class Major {
   /// [name]: The name of the major.
   /// [requirements]: The list of requirements for the major.
   /// [totalPoints]: The total points required for the major.
-  /// [isSelected]: Indicates whether the major is selected or not.
   Major({
     required this.name,
     required this.requirements,
@@ -27,7 +28,6 @@ class Major {
     required this.name,
   })   : requirements = const [],
         totalPoints = 0;
-
 
   /// Constructs a [Major] instance from a JSON map.
   ///
@@ -47,6 +47,16 @@ class Major {
 
   factory Major.fromJsonName(String name) {
     return Major.withName(name: name);
+  }
+
+  /// Converts a [Major] instance to a JSON map.
+  Map<String, dynamic> toJson() {
+    return {
+      'name': name,
+      'requirements': requirements.map((req) => req.toJson()).toList(),
+      'totalPoints': totalPoints,
+      'isSelected': isSelected,
+    };
   }
 }
 
@@ -84,5 +94,16 @@ class Requirement {
       points: json['points'] as int?,
       notes: json['notes'] as String?,
     );
+  }
+
+  /// Converts a [Requirement] instance to a JSON map.
+  Map<String, dynamic> toJson() {
+    return {
+      'level': level,
+      'papers': papers,
+      'selectOneFrom': selectOneFrom,
+      'points': points,
+      'notes': notes,
+    };
   }
 }

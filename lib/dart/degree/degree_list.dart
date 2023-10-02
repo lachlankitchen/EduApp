@@ -7,16 +7,13 @@ import '../major/major.dart';
 import '../major/major_list.dart';
 import 'degree.dart';
 import '../pathway/pathway_state.dart';
+import 'package:path_provider/path_provider.dart';
 
-/// A screen that displays a list of degrees to choose from.
+
 class DegreeListScreen extends StatelessWidget {
   final List<Degree> degrees;
   final Function(Degree) onSelectDegree;
 
-  /// Constructs a [DegreeListScreen].
-  ///
-  /// [degrees] is the list of available degrees to display.
-  /// [onSelectDegree] is a callback function when a degree is selected.
   const DegreeListScreen({
     Key? key,
     required this.degrees,
@@ -31,13 +28,13 @@ class DegreeListScreen extends StatelessWidget {
         backgroundColor: const Color(0xFF10428C),
       ),
       body: ListView.builder(
-        itemCount: degrees.length + 1, // Add 1 for SizedBox
+        itemCount: degrees.length + 1,
         itemBuilder: (context, index) {
           if (index == 0) {
-            return const SizedBox(height: 18.0); // Add padding at the top
+            return const SizedBox(height: 18.0);
           }
 
-          final degreeIndex = index - 1; // Subtract 1 to adjust for SizedBox
+          final degreeIndex = index - 1;
           return Padding(
             padding: const EdgeInsets.symmetric(horizontal: 10.0),
             child: ListTile(
@@ -69,30 +66,23 @@ class DegreeListScreen extends StatelessWidget {
     );
   }
 
-  /// Navigates to the major list screen.
-  ///
-  /// [context]: The build context to perform navigation.
-  /// [state]: The state containing pathway information.
-  /// [selectedDegree]: The selected degree to add to the pathway state.
-  ///
-  /// This function does not return a value.
   Future<void> navigateToMajorsListScreen(BuildContext context, PathwayState state, Degree degree) async {
-    // Pass the selected degree to the state
     state.addDegree(degree);
 
     String jsonData;
     try {
       jsonData = await fetchMajorData(degree);
-      // Now you have the degrees from the server, use them to navigate to the next screen
     } catch (error) {
-      // Handle error, perhaps show a dialog to the user
       print('Error fetching majors: $error');
-      return; // Early return to exit the function if fetching degrees fails
+      return;
     }
 
     final majorsList = List<String>.from(json.decode(jsonData));
     final majors = majorsList.map((major) => Major.fromJsonName(major)).toList();
-    
+
+    final degrees = state.degrees.toList()..add(degree);
+    await state.savePathwaysToJson(degrees);
+
     Navigator.push(
       context,
       MaterialPageRoute(
@@ -100,14 +90,13 @@ class DegreeListScreen extends StatelessWidget {
       ),
     );
   }
-  
+
   Future<String> fetchMajorData(Degree degree) async {
     final response = await http.get(Uri.parse('http://localhost:1234/${degree.title}/majors'));
 
     if (response.statusCode == 200) {
       return response.body;
     } else {
-      // If the server did not return a 200 OK response, throw an exception.
       throw Exception('Failed to load majors');
     }
   }

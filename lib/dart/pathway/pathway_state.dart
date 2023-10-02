@@ -1,32 +1,27 @@
 import 'package:edu_app/dart/pathway/pathway.dart';
 import 'package:flutter/foundation.dart';
-
+import 'package:path_provider/path_provider.dart';
+import 'dart:io';
+import 'dart:convert';
+import 'package:path/path.dart' as path;
 import '../degree/degree.dart';
 import '../major/major.dart';
 import '../paper/paper.dart';
 
-/// A class that manages the state of saved pathways and selections.
-///
-/// The [PathwayState] class extends [ChangeNotifier] to provide a way to manage
-/// the state of selected degrees, majors, papers, and grade point averages (GPAs).
+
 class PathwayState extends ChangeNotifier {
   List<Pathway> savedPathways = [];
   Degree selectedDegree = Degree('');
   List<Major> selectedMajors = [];
   List<Paper> selectedPapers = [];
   double gpa = -1;
+  List<Degree> degrees = [];
 
-  /// Adds a selected degree to the state.
-  ///
-  /// The [degree] parameter represents the degree to be added to the state.
   void addDegree(Degree degree) {
     selectedDegree = degree;
     notifyListeners();
   }
 
-  /// Adds selected majors to the state.
-  ///
-  /// The [majors] parameter represents the list of majors to be added to the state.
   void addMajors(List<Major> majors) {
     selectedMajors.clear();
 
@@ -38,9 +33,6 @@ class PathwayState extends ChangeNotifier {
     notifyListeners();
   }
 
-  /// Adds selected papers to the state.
-  ///
-  /// The [papers] parameter represents the list of papers to be added to the state.
   void addPapers(List<Paper> papers) {
     for (var paper in papers) {
       if (!selectedPapers.contains(paper)) {
@@ -54,16 +46,13 @@ class PathwayState extends ChangeNotifier {
     notifyListeners();
   }
 
-  /// Adds a calculated GPA to the state.
-  ///
-  /// The [gradePointAverage] parameter represents the calculated GPA to be added to the state.
   void calculateGPA() {
-    // Calculate GPA based on selected papers' grades
     double totalWeightedSum = 0;
     int totalWeight = 0;
-    
+
     for (int i = 0; i < selectedPapers.length; i++) {
-      totalWeightedSum += selectedPapers[i].grade !* selectedPapers[i].points;
+      totalWeightedSum +=
+          selectedPapers[i].grade! * selectedPapers[i].points;
       totalWeight += selectedPapers[i].points;
     }
 
@@ -73,11 +62,6 @@ class PathwayState extends ChangeNotifier {
     notifyListeners();
   }
 
-  /// Saves the current state as a pathway.
-  ///
-  /// This method creates a new [Pathway] object and adds it to the [savedPathways] list.
-  /// The current state, including the selected degree, majors, papers, GPA, and selection status,
-  /// is captured and reset after saving.
   void saveState() {
     Pathway pathway = Pathway(
       degree: selectedDegree,
@@ -87,21 +71,40 @@ class PathwayState extends ChangeNotifier {
       isSelected: false,
     );
     savedPathways.add(pathway);
-    selectedDegree = Degree(''); // Reset the state
+    selectedDegree = Degree('');
     selectedMajors = [];
     selectedPapers = [];
     notifyListeners();
   }
 
-  /// Deletes a saved pathway from the state.
-  ///
-  /// The [pathway] parameter represents the pathway to be removed from the [savedPathways] list.
-  /// The state is reset after deletion.
   void deleteState(Pathway pathway) {
     savedPathways.remove(pathway);
-    selectedDegree = Degree(''); // Reset the state
+    selectedDegree = Degree('');
     selectedMajors = [];
     selectedPapers = [];
+    notifyListeners();
+  }
+
+  Future<void> savePathwaysToJson(List<Degree> degrees) async {
+    final directory = await getApplicationDocumentsDirectory();
+    final pathToSave = path.join(directory.path, 'pathways.json');
+    final data = degrees.map((degree) => degree.toJson()).toList();
+    final jsonContent = jsonEncode(data);
+    await File(pathToSave).writeAsString(jsonContent);
+  }
+
+  Future<void> loadPathwaysFromJson() async {
+    final directory = await getApplicationDocumentsDirectory();
+    final pathToLoad = path.join(directory.path, 'pathways.json');
+
+    try {
+      final jsonContent = await File(pathToLoad).readAsString();
+      final data = jsonDecode(jsonContent) as List<dynamic>;
+      degrees = data.map((json) => Degree.fromJson(json)).toList();
+    } catch (e) {
+      print('Error loading pathways: $e');
+      degrees = [];
+    }
     notifyListeners();
   }
 }

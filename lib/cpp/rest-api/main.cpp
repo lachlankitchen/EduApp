@@ -12,10 +12,17 @@ int main(void) {
     Server svr;
 
     // Define hardcoded file paths
-    std::filesystem::path single_degrees_json_path = "C:/Users/AHopgood/Documents/Repo/EduApp/lib/data/singleDegreesWithMajors.json";
+ /* std::filesystem::path single_degrees_json_path = "C:/Users/AHopgood/Documents/Repo/EduApp/lib/data/singleDegreesWithMajors.json";
     std::filesystem::path majors_json_path = "C:/Users/AHopgood/Documents/Repo/EduApp/lib/data/majors.json";
     std::filesystem::path major_requirements_json_path = "C:/Users/AHopgood/Documents/Repo/EduApp/lib/data/major_requirements.json";
     std::filesystem::path paper_response_json_path = "C:/Users/AHopgood/Documents/Repo/EduApp/lib/data/paper_response.json";
+    */
+
+    std::filesystem::path single_degrees_json_path = std::filesystem::path("..") / ".." / ".." / "data" / "singleDegreesWithMajors.json";
+    std::filesystem::path majors_json_path = std::filesystem::path("..") / ".." / ".." / "data" / "majors.json";
+    std::filesystem::path major_requirements_json_path = std::filesystem::path("..") / ".." / ".." / "data" / "responseData.json";
+    std::filesystem::path paper_response_json_path = std::filesystem::path("..") / ".." / ".." / "data" / "paper_response.json";
+
 
     svr.Get("/degrees", [single_degrees_json_path](const Request &req, Response &res) {
         if (!std::filesystem::exists(single_degrees_json_path)) {
