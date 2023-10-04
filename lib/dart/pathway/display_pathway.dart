@@ -26,7 +26,7 @@ class DisplayPathway extends StatelessWidget {
     // If no pathways are available, display a message indicating that.
     if (pathway.isEmpty) {
       return const Center(
-        child: Text('No pathway data available.'),
+        child: Text('You have no saved degrees. Press the + button to add your degree.'),
       );
     }
     

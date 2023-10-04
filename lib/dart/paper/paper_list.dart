@@ -19,7 +19,7 @@ class SearchPaperState with ChangeNotifier {
 
     String jsonData;
     try {
-      jsonData = await fetchMatchingPapers(query, level); // TODO: Make dynamic
+      jsonData = await fetchMatchingPapers(query, level);
     } catch (error) {
       // Handle error, perhaps show a dialog to the user
       print('Error fetching matching elective papers: $error');
@@ -61,6 +61,7 @@ class PapersListScreen extends StatelessWidget {
     required this.level,
   }) : super(key: key);
 
+  @override
   Widget build(BuildContext context) {
     final searchPaperState = SearchPaperState(); // Create a single instance
 
@@ -216,7 +217,7 @@ class PapersListScreen extends StatelessWidget {
               padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 24), // Adjust padding as needed
               textStyle: const TextStyle(fontSize: 16), // Text style
             ),
-            child: const Text('Save'),
+            child: const Text('Save Degree'),
           ),
           const SizedBox(width: 16), // Add spacing between buttons
           Visibility(
@@ -338,11 +339,11 @@ class PapersListScreen extends StatelessWidget {
                   navigateToMajorsListScreen(context, context.read<PathwayState>(), degree);
                 },
                 style: ElevatedButton.styleFrom(
-                  primary: const Color(0xFFf9c000), // Button background color
+                  backgroundColor: const Color(0xFFf9c000), // Button background color
                   padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 24), // Adjust padding as needed
                   textStyle: const TextStyle(fontSize: 16), // Text style
                 ),
-                child: const Text('Select Another Major'),
+                child: const Text('Add Major'),
               ),
             ),
           ),
@@ -410,10 +411,6 @@ class PapersListScreen extends StatelessWidget {
                             );
                           }
                         },
-
-
-
-
                       ),
                     ),
                   ]
