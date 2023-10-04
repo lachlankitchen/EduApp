@@ -23,7 +23,7 @@ class SearchPaperState with ChangeNotifier {
     } catch (error) {
       // Handle error, perhaps show a dialog to the user
       print('Error fetching matching elective papers: $error');
-      jsonData = '[]'; // Set jsonData to empty list if fetching papers fails
+      jsonData = '[]'; // Set jsonData to an empty list if fetching papers fails
     }
 
     filteredPapers = parseJsonPapers(jsonData);
@@ -94,10 +94,10 @@ class PapersListScreen extends StatelessWidget {
                     return buildPaperListItem(paper, state);
                   },
                 ),
-                const ListTile(
+                ListTile(
                   title: Text(
-                    'Elective Papers',
-                    style: TextStyle(
+                    'Elective $level-level Papers',
+                    style: const TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 16,
                     ),
@@ -119,13 +119,17 @@ class PapersListScreen extends StatelessWidget {
                     ),
                   ),
                 ),
-                ListView.builder(
-                  shrinkWrap: true,
-                  itemCount: state.filteredPapers.length,
-                  itemBuilder: (context, index) {
-                    final paper = state.filteredPapers[index];
-                    return buildPaperListItem(paper, state);
-                  },
+                Padding(
+                  // Add padding here to separate elective search results from the buttons
+                  padding: const EdgeInsets.only(bottom: 64.0),
+                  child: ListView.builder(
+                    shrinkWrap: true,
+                    itemCount: state.filteredPapers.length,
+                    itemBuilder: (context, index) {
+                      final paper = state.filteredPapers[index];
+                      return buildPaperListItem(paper, state);
+                    },
+                  ),
                 ),
               ],
             );
@@ -216,11 +220,11 @@ class PapersListScreen extends StatelessWidget {
               padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 24), // Adjust padding as needed
               textStyle: const TextStyle(fontSize: 16), // Text style
             ),
-            child: const Text('Save'),
+            child: const Text('Confirm Selection'),
           ),
           const SizedBox(width: 16), // Add spacing between buttons
           Visibility(
-            visible: level < 300, // Check if the level is less than to 300
+            visible: level < 300, // Check if the level is less than 300
             child: ElevatedButton(
               onPressed: () async {
                 final state = Provider.of<PathwayState>(context, listen: false);
@@ -262,7 +266,7 @@ class PapersListScreen extends StatelessWidget {
             ),
           ),
           Visibility(
-            visible: Provider.of<PathwayState>(context, listen: false).selectedMajors.isEmpty, // Check if the level is less than to 300
+            visible: Provider.of<PathwayState>(context, listen: false).selectedMajors.isEmpty, // Check if the level is less than 300
             child: Padding(
               padding: const EdgeInsets.only(left: 16.0),
               child: ElevatedButton(
@@ -410,4 +414,3 @@ class PapersListScreen extends StatelessWidget {
     );
   }   
 }
-      

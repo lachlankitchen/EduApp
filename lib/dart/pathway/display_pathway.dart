@@ -26,7 +26,7 @@ class DisplayPathway extends StatelessWidget {
     // If no pathways are available, display a message indicating that.
     if (pathway.isEmpty) {
       return const Center(
-        child: Text('No pathway data available.'),
+        child: Text('Add a pathway with the + button below.'),
       );
     }
     
@@ -54,7 +54,7 @@ class DisplayPathway extends StatelessWidget {
                     ),
                     ElevatedButton(
                       onPressed: () {
-                        Provider.of<PathwayState>(context, listen: false).deleteState(pathway[index]);
+                        showDeleteConfirmationDialog(context, pathway[index]);
                       },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: const Color(0xFFf9c000),
@@ -156,5 +156,32 @@ class DisplayPathway extends StatelessWidget {
       }
     }
     return Column(children: paperWidgets);
+  }
+
+   void showDeleteConfirmationDialog(BuildContext context, Pathway pathway) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('Delete Pathway'),
+          content: Text('Are you sure you want to delete this pathway?'),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop(); // Close the dialog
+              },
+              child: Text('Cancel'),
+            ),
+            TextButton(
+              onPressed: () {
+                Provider.of<PathwayState>(context, listen: false).deleteState(pathway);
+                Navigator.of(context).pop(); // Close the dialog
+              },
+              child: Text('Delete'),
+            ),
+          ],
+        );
+      },
+    );
   }
 }

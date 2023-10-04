@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'dart/pathway/pathway_state.dart'; // Import the state management class
+import 'dart/pathway/pathway_state.dart';
 import 'dart/home/home.dart';
 import 'dart/navigation/navigation_provider.dart';
+import 'dart/paper/paper_list.dart'; // Import the necessary classes
 
 void main() {
   runApp(
@@ -10,6 +11,7 @@ void main() {
       providers: [
         ChangeNotifierProvider(create: (context) => NavigationProvider()),
         ChangeNotifierProvider(create: (context) => PathwayState()),
+        ChangeNotifierProvider(create: (context) => SearchPaperState()), // Add SearchPaperState provider
       ],
       child: const EduApp(),
     ),
