@@ -90,6 +90,13 @@ class _GradesScreenState extends State<GradesScreen> {
                       child: TextFormField(
                         controller: targetGradeController,
                         decoration: const InputDecoration(labelText: 'Target Grade'),
+                        onChanged: (value) {
+                          int? grade = int.tryParse(value);
+                          if (grade != null && grade >= 0 && grade <= 100) {
+                            // Update the grade of the paper here
+                            double.tryParse(scoreController.text) ?? 0.0;
+                          }
+                        },
                       ),
                     ),
                   ],

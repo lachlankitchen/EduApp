@@ -91,7 +91,7 @@ class PapersListScreen extends StatelessWidget {
                   itemCount: recommendedPapers.length,
                   itemBuilder: (context, index) {
                     final paper = recommendedPapers[index];
-                    return buildPaperListItem(paper, state);
+                    return buildPaperListItem(paper, state, context);
                   },
                 ),
                 const ListTile(
@@ -124,7 +124,7 @@ class PapersListScreen extends StatelessWidget {
                   itemCount: state.filteredPapers.length,
                   itemBuilder: (context, index) {
                     final paper = state.filteredPapers[index];
-                    return buildPaperListItem(paper, state);
+                    return buildPaperListItem(paper, state, context);
                   },
                 ),
               ],
@@ -351,7 +351,7 @@ class PapersListScreen extends StatelessWidget {
     );
   }     
 
-  Widget buildPaperListItem(Paper paper, SearchPaperState state) {
+  Widget buildPaperListItem(Paper paper, SearchPaperState state, BuildContext context) {
     final paperId = 'paper_${paper.papercode}'; // Generate a unique identifier for each paper
     return ListTile(
       title: Row(
@@ -373,15 +373,47 @@ class PapersListScreen extends StatelessWidget {
                         keyboardType: TextInputType.number,
                         maxLength: 3,
                         decoration: const InputDecoration(
-                          hintText: '0-100 (%)',
+                          hintText: '0-100 (%) or A-D (+/-)',
+                          hintStyle: TextStyle(fontSize: 8),
                         ),
                         onChanged: (value) {
-                          int? grade = int.tryParse(value);
-                          if (grade != null && grade >= 0 && grade <= 100) {
-                            // Update the grade of the paper here
-                            paper.grade = grade;
+                          if (value.isEmpty) {
+                            // Handle empty input if needed
+                            return;
+                          }
+
+                          if (RegExp(r'^[0-9]+$').hasMatch(value)) {
+                            // Input is a number, check if it's within the valid range
+                            int grade = int.parse(value);
+                            if (grade >= 0 && grade <= 100) {
+                              // Update the grade of the paper here
+                              paper.grade = grade;
+                            } else {
+                              // Handle invalid range
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                const SnackBar(
+                                  content: Text('Error: Please enter a number between 0 and 100.'),
+                                ),
+                              );
+                            }
+                          } else if (RegExp(r'^[A-D][\+\-]?$').hasMatch(value)) {
+                            // Input is a valid grade
+                            // Convert letter grade to numeric value
+                            paper.grade = convertLetterGradeToNumeric(value);
+                          } else {
+                            // Input is neither a valid number nor a valid grade
+                            // Show an error message
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              const SnackBar(
+                                content: Text('Error: Invalid input. Please enter a number between 0 and 100 or a valid grade (A+, A, A-, B+, B, B-, C+, C, C-, or D).'),
+                              ),
+                            );
                           }
                         },
+
+
+
+
                       ),
                     ),
                   ]
@@ -408,6 +440,34 @@ class PapersListScreen extends StatelessWidget {
         ],
       ),
     );
-  }   
+  }
+  
+  // Function to convert letter grade to numeric value
+  int? convertLetterGradeToNumeric(String letterGrade) {
+    switch (letterGrade) {
+      case 'A+':
+        return 90;
+      case 'A':
+        return 85;
+      case 'A-':
+        return 80;
+      case 'B+':
+        return 75;
+      case 'B':
+        return 70;
+      case 'B-':
+        return 65;
+      case 'C+':
+        return 60;
+      case 'C':
+        return 50;
+      case 'C-':
+        return 45;
+      case 'D':
+        return 40;
+      default:
+        return null; // Handle unknown grade
+    }
+  }
 }
       
