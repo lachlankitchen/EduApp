@@ -392,7 +392,7 @@ class PapersListScreen extends StatelessWidget {
                               // Handle invalid range
                               ScaffoldMessenger.of(context).showSnackBar(
                                 const SnackBar(
-                                  content: Text('Error: Please enter a number between 0 and 100.'),
+                                  content: Text('Invalid input: Please enter a number between 0 and 100.'),
                                 ),
                               );
                             }
@@ -405,7 +405,7 @@ class PapersListScreen extends StatelessWidget {
                             // Show an error message
                             ScaffoldMessenger.of(context).showSnackBar(
                               const SnackBar(
-                                content: Text('Error: Invalid input. Please enter a number between 0 and 100 or a valid grade (A+, A, A-, B+, B, B-, C+, C, C-, or D).'),
+                                content: Text('Invalid input. Please enter a number between 0 and 100 or a valid grade (A+, A, A-, B+, B, B-, C+, C, C-, or D).'),
                               ),
                             );
                           }
