@@ -146,15 +146,12 @@ class _GradesScreenState extends State<GradesScreen> {
       ),
       floatingActionButton: Align(
         alignment: Alignment.bottomRight,
-        child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: FloatingActionButton(
+        child: FloatingActionButton(
             backgroundColor: const Color(0xFFf9c000),
             onPressed: _addGradeEntry,
             child: const Icon(Icons.add),
           ),
-        ),
       ),
-    );
+      );
   }
 }

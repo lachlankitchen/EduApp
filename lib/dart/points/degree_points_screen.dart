@@ -25,6 +25,11 @@ class DegreesPointsScreen extends StatelessWidget {
             child: ListView.builder(
               itemCount: state.savedPathways.length,
               itemBuilder: (context, index) {
+                if(state.savedPathways.isEmpty) {
+                  return const Center(
+                    child: Text("No saved degrees"),
+                  );
+                }
                 final pathway = state.savedPathways[index];
                 final dataMap = <String, double>{};
                 double totalPoints = 0;
