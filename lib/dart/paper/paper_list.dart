@@ -137,55 +137,96 @@ class PapersListScreen extends StatelessWidget {
           ElevatedButton(
             onPressed: () async {
               final pathwayState = Provider.of<PathwayState>(context, listen: false);
+              final searchPaperState = Provider.of<SearchPaperState>(context, listen: false);
+
               List<Paper> allPapers = [...recommendedPapers, ...searchPaperState.filteredPapers];
               List<Paper> selectedPapers = allPapers.where((paper) => paper.isSelected).toList();
-              String jsonData;
-              try {
-                jsonData = await postPaperData(degree, major, selectedPapers);
-              } catch (error) {
-                print('Error fetching remaining major requirements: $error');
+
+              if (selectedPapers.isEmpty) {
+                // Show an error message if no papers are selected
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(
+                    content: Text('Please select at least one paper.'),
+                  ),
+                );
                 return;
               }
-              final jsonMap = json.decode(jsonData);
-              Map<String, dynamic> jsonDataMap = jsonDecode(jsonData.toString());
-              bool hasRemainingPapers = jsonDataMap.containsKey("remaining_compulsory_papers");
-              bool hasRemainingPoints = jsonDataMap.containsKey("remaining_points");
-              List<dynamic> remainingPapersList = [];
-              List<Paper> remainingPapers = [];
-              String message = "Remaining Requirements:\n";
-              if (hasRemainingPapers) {
-                remainingPapersList = jsonDataMap["remaining_compulsory_papers"];
-                for (var paperEntry in remainingPapersList) {
-                  MapEntry<String, dynamic> paper = paperEntry.entries.first;
-                  String paperCode = paper.key;
-                  String paperTitle = paper.value["title"];
-                  final teachingPeriods = (paper.value['teaching_periods'] as List<dynamic>)
-                    ?.map<String>((period) => period.toString())
-                    ?.toList() ?? [];
-                  Paper remainingPaper = Paper.withName(papercode: paperCode, title: paper.value["title"], teachingPeriods: teachingPeriods, points: paper.value["points"]);
-                  remainingPapers.add(remainingPaper);
-                  message += "$paperCode: $paperTitle\n";
+
+              // Show a confirmation dialog
+              bool confirmSelection = await showDialog(
+                context: context,
+                builder: (BuildContext context) {
+                  return AlertDialog(
+                    title: Text('Confirm Selection'),
+                    content: Text('Are you sure you want to confirm your paper selection?'),
+                    actions: [
+                      TextButton(
+                        onPressed: () {
+                          Navigator.of(context).pop(false); // Dismiss the dialog and return false
+                        },
+                        child: Text('Cancel'),
+                      ),
+                      TextButton(
+                        onPressed: () {
+                          Navigator.of(context).pop(true); // Dismiss the dialog and return true
+                        },
+                        child: Text('Confirm'),
+                      ),
+                    ],
+                  );
+                },
+              );
+
+              if (confirmSelection == true) {
+                // User confirmed the selection, proceed with the logic
+                String jsonData;
+                try {
+                  jsonData = await postPaperData(degree, major, selectedPapers);
+                } catch (error) {
+                  print('Error fetching remaining major requirements: $error');
+                  return;
                 }
+                final jsonMap = json.decode(jsonData);
+                Map<String, dynamic> jsonDataMap = jsonDecode(jsonData.toString());
+                bool hasRemainingPapers = jsonDataMap.containsKey("remaining_compulsory_papers");
+                bool hasRemainingPoints = jsonDataMap.containsKey("remaining_points");
+                List<dynamic> remainingPapersList = [];
+                List<Paper> remainingPapers = [];
+                String message = "Remaining Requirements:\n";
+                if (hasRemainingPapers) {
+                  remainingPapersList = jsonDataMap["remaining_compulsory_papers"];
+                  for (var paperEntry in remainingPapersList) {
+                    MapEntry<String, dynamic> paper = paperEntry.entries.first;
+                    String paperCode = paper.key;
+                    String paperTitle = paper.value["title"];
+                    final teachingPeriods = (paper.value['teaching_periods'] as List<dynamic>)
+                        ?.map<String>((period) => period.toString())
+                        ?.toList() ?? [];
+                    Paper remainingPaper = Paper.withName(papercode: paperCode, title: paper.value["title"], teachingPeriods: teachingPeriods, points: paper.value["points"]);
+                    remainingPapers.add(remainingPaper);
+                    message += "$paperCode: $paperTitle\n";
+                  }
+                }
+                int remainingPoints = 0;
+                if (hasRemainingPoints) {
+                  remainingPoints = jsonDataMap["remaining_points"];
+                  message += "Remaining Points: $remainingPoints";
+                }
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(
+                    content: Text(message),
+                  ),
+                );
+                pathwayState.addMajor(major);
+                pathwayState.addSelectedPapers(selectedPapers);
+                pathwayState.addRemainingPapers(remainingPapers);
+                pathwayState.addRemainingPoints(remainingPoints);
+                pathwayState.savePathway();
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(builder: (context) => const MyHomePage()),
+                );
               }
-              int remainingPoints = 0;
-              if (hasRemainingPoints) {
-                remainingPoints = jsonDataMap["remaining_points"];
-                message += "Remaining Points: $remainingPoints";
-              }
-              ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(
-                  content: Text(message),
-                ),
-              );
-              pathwayState.addMajor(major);
-              pathwayState.addSelectedPapers(selectedPapers);
-              pathwayState.addRemainingPapers(remainingPapers);
-              pathwayState.addRemainingPoints(remainingPoints);
-              pathwayState.savePathway();
-              Navigator.pushReplacement(
-                context,
-                MaterialPageRoute(builder: (context) => const MyHomePage()),
-              );
             },
             style: ElevatedButton.styleFrom(
               backgroundColor: const Color(0xFFf9c000),
@@ -200,6 +241,8 @@ class PapersListScreen extends StatelessWidget {
             child: ElevatedButton(
               onPressed: () async {
                 final state = Provider.of<PathwayState>(context, listen: false);
+                final searchPaperState = Provider.of<SearchPaperState>(context, listen: false);
+
                 List<Paper> allPapers = [...recommendedPapers, ...searchPaperState.filteredPapers];
                 List<Paper> selectedPapers = allPapers.where((paper) => paper.isSelected).toList();
                 state.addSelectedPapers(selectedPapers);
@@ -234,6 +277,8 @@ class PapersListScreen extends StatelessWidget {
               child: ElevatedButton(
                 onPressed: () async {
                   final state = Provider.of<PathwayState>(context, listen: false);
+                  final searchPaperState = Provider.of<SearchPaperState>(context, listen: false);
+
                   List<Paper> allPapers = [...recommendedPapers, ...searchPaperState.filteredPapers];
                   List<Paper> selectedPapers = allPapers.where((paper) => paper.isSelected).toList();
                   String jsonData;
@@ -257,8 +302,8 @@ class PapersListScreen extends StatelessWidget {
                       String paperCode = paper.key;
                       String paperTitle = paper.value["title"];
                       final teachingPeriods = (paper.value['teaching_periods'] as List<dynamic>)
-                        ?.map<String>((period) => period.toString())
-                        ?.toList() ?? [];
+                          ?.map<String>((period) => period.toString())
+                          ?.toList() ?? [];
                       Paper remainingPaper = Paper.withName(papercode: paperCode, title: paper.value["title"], teachingPeriods: teachingPeriods, points: paper.value["points"]);
                       remainingPapers.add(remainingPaper);
                       message += "$paperCode: $paperTitle\n";
@@ -346,8 +391,8 @@ class PapersListScreen extends StatelessWidget {
                         },
                       ),
                     ),
-                  ]
-                )
+                  ],
+                ),
               ],
             ),
           ),
