@@ -19,7 +19,7 @@ class SearchPaperState with ChangeNotifier {
 
     String jsonData;
     try {
-      jsonData = await fetchMatchingPapers(query, level);
+      jsonData = await fetchMatchingPapers(query, level); // TODO: Make dynamic
     } catch (error) {
       // Handle error, perhaps show a dialog to the user
       print('Error fetching matching elective papers: $error');
@@ -316,6 +316,7 @@ class PapersListScreen extends StatelessWidget {
                       remainingPapers.add(remainingPaper);
                       message += "$paperCode: $paperTitle\n";
                     }
+                    message += "Check home page for more details.\n";
                   }
             
                   int remainingPoints = 0;

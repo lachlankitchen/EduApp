@@ -76,17 +76,21 @@ int rest_api(void)
         setCorsHeaders(res);
     });
 
-    svr.Post("/:degree/:major/:papers", [&](const Request &req, Response &res) {
+    svr.Get("/:degree/:major/:papers", [&](const Request &req, Response &res) {
         auto degree = req.path_params.at("degree");
         auto major = req.path_params.at("major");
         auto papers_string = req.path_params.at("papers");
 
+        
+        // @CONNOR this is the final change before it will all work
+        std::cout << papers_string << std::endl;
         std::vector<std::string> papers;
         std::stringstream ss(papers_string);
         std::string paper;
         while (std::getline(ss, paper, ',')) {
             papers.push_back(paper);
         }
+        // Code below is all good
 
         std::filesystem::path json_file_path = std::filesystem::path("..") / ".." / ".." / "data" / "majorRequirements.json";
 
