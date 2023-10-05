@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import '../navigation/nav_bar.dart';
 
 class GradesScreen extends StatefulWidget {
-  GradesScreen({Key? key}) : super(key: key);
+  const GradesScreen({Key? key}) : super(key: key);
 
   @override
   _GradesScreenState createState() => _GradesScreenState();
@@ -90,6 +90,13 @@ class _GradesScreenState extends State<GradesScreen> {
                       child: TextFormField(
                         controller: targetGradeController,
                         decoration: const InputDecoration(labelText: 'Target Grade'),
+                        onChanged: (value) {
+                          int? grade = int.tryParse(value);
+                          if (grade != null && grade >= 0 && grade <= 100) {
+                            // Update the grade of the paper here
+                            double.tryParse(scoreController.text) ?? 0.0;
+                          }
+                        },
                       ),
                     ),
                   ],
@@ -139,15 +146,12 @@ class _GradesScreenState extends State<GradesScreen> {
       ),
       floatingActionButton: Align(
         alignment: Alignment.bottomRight,
-        child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: FloatingActionButton(
+        child: FloatingActionButton(
             backgroundColor: const Color(0xFFf9c000),
             onPressed: _addGradeEntry,
             child: const Icon(Icons.add),
           ),
-        ),
       ),
-    );
+      );
   }
 }
