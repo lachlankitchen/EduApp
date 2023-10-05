@@ -1,0 +1,71 @@
+# This workflow uses actions that are not certified by GitHub.
+# They are provided by a third-party and are governed by
+# separate terms of service, privacy policy, and support
+# documentation.
+
+name: Flutter CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Install Google Test
+        run: sudo apt-get install -y libgtest-dev
+
+      - name: Compile Google Test
+        run: |
+          cd /usr/src/gtest
+          sudo cmake .
+          sudo make
+          sudo cp lib/*.a /usr/lib
+
+      - name: Install nlohmann/json library
+        run: sudo apt-get install -y nlohmann-json3-dev
+
+      - name: Compile C++ code with coverage flags
+        run: g++ -std=c++11 --coverage -o degree_requirements_test test/cpp/degree_requirements_test.cpp lib/cpp/paper_checker.cpp -I/usr/include -I/usr/include/nlohmann -L/usr/lib -lgtest -lgtest_main -pthread
+
+      - name: Install lcov
+        run: sudo apt-get install -y lcov
+
+      - name: Run C++ tests
+        run: ./degree_requirements_test
+
+      - name: Generate C++ coverage report
+        run: |
+          lcov --directory . --capture --output-file coverage.info
+          lcov --remove coverage.info '/usr/*' --output-file coverage.info
+          lcov --list coverage.info
+
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
+
+      - name: Get dependencies
+        run: flutter pub get
+
+      - name: Run tests with coverage
+        run: flutter test --coverage
+
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v3
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          fail_ci_if_error: true
+          verbose: true
+          files: ./coverage.info,./coverage/lcov.info
+
+      - name: Upload coverage reports to Codecov
+        uses: codecov/codecov-action@v3
+        env:
+          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}

@@ -1,59 +1,31 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
-import '../degree/degree.dart';
 import '../grade/grade.dart';
-import '../paper/paper.dart';
 import '../points/degree_points_screen.dart';
 import '../home/home.dart';
-
 import 'navigation_provider.dart';
 
+/// Represents the bottom navigation bar for the app.
 class NavBar extends StatelessWidget {
   const NavBar({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final List<Degree> degreeList = [
-      Degree("Bachelor's"),
-      Degree("Bachelor's"),
-      // Add more degrees here
-    ];
-
-        List<Paper> papers = [
-      Paper(
-        papercode: "PAPER123",
-        subjectCode: "SUB123",
-        year: "2023",
-        title: "Introduction to Dart Programming",
-        points: 5,
-        efts: 0.5,
-        teachingPeriods: ["Semester 1", "Semester 2"],
-        description: "An introduction to programming in Dart.",
-        prerequisites: ["None"],
-        restrictions: ["Open to all students"],
-        schedule: "Tuesdays and Thursdays, 10:00 AM - 12:00 PM",
-        isSelected: false,
-        grade: 0,
-      ),
-      // Add more papers here
-    ];
-    
-
     return BottomNavigationBar(
-      selectedItemColor: const Color(0xFF10428C), // Set background color here
-
+      selectedItemColor: const Color(0xFF10428C),
+      // Get the current index from the NavigationProvider using context.watch
       currentIndex: context.watch<NavigationProvider>().currentIndex,
       onTap: (index) {
+        // Navigate to different screens based on the selected index
         switch (index) {
           case 0:
-           Navigator.push(
+            Navigator.push(
               context,
               MaterialPageRoute(
                 builder: (context) => const MyHomePage(),
               ),
-            ); 
-            break; 
+            );
+            break;
           case 1:
             Navigator.push(
               context,
@@ -63,10 +35,11 @@ class NavBar extends StatelessWidget {
           case 2:
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => DegreesPointsScreen(degrees: degreeList)),
+              MaterialPageRoute(builder: (context) => const DegreesPointsScreen()),
             );
             break;
         }
+        // Update the current index in the NavigationProvider using context.read
         context.read<NavigationProvider>().currentIndex = index;
       },
       items: const [

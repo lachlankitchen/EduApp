@@ -1,0 +1,402 @@
+{
+    "Certificate of Proficiency – Undergraduate (COP)": {
+        "minimumTotalPoints": null,
+        "minimumPointsAbove100Level": null,
+        "minimumPointsAbove200Level": null,
+        "requiredPapers": [],
+        "availableMajors": []
+    },
+    "Diploma in Arts (DipArts)": {
+        "minimumTotalPoints": null,
+        "minimumPointsAbove100Level": null,
+        "minimumPointsAbove200Level": null,
+        "requiredPapers": [],
+        "availableMajors": []
+    },
+    "Diploma in Global Cultures (DipGlobalC)": {
+        "minimumTotalPoints": null,
+        "minimumPointsAbove100Level": null,
+        "minimumPointsAbove200Level": null,
+        "requiredPapers": [],
+        "availableMajors": []
+    },
+    "Diploma in Language (DipLang)": {
+        "minimumTotalPoints": null,
+        "minimumPointsAbove100Level": null,
+        "minimumPointsAbove200Level": null,
+        "requiredPapers": [],
+        "availableMajors": []
+    },
+    "Bachelor of Arts (BA)": {
+        "minimumTotalPoints": null,
+        "minimumPointsAbove100Level": 180,
+        "minimumPointsAbove200Level": 72,
+        "requiredPapers": [],
+        "availableMajors": []
+    },
+    "Bachelor of Arts and Commerce (BACom)": {
+        "minimumTotalPoints": 480,
+        "minimumPointsAbove100Level": 216,
+        "minimumPointsAbove200Level": null,
+        "requiredPapers": [
+            "BSNS 111–115",
+            "may include one optional minor subject that satisfies the minor subject requirements listed in Arts and Music Schedule A",
+            "Science Schedule A",
+            "and Applied Science Schedule A",
+            "Commerce Schedule A or BHealSc Schedule Part 2 may not include a paper that counts for both a major and a minor subject requirement unless that paper is at 100- or 200-level and is specified as compulsory for both requirements",
+            "and may include papers that are not listed in Arts and Music Schedule C or Commerce Schedule C  up to 54 points",
+            "or as specified in Arts and Music Schedule A and Commerce Schedule A.  "
+        ],
+        "availableMajors": [
+            "More about the BACom",
+            "Other two-major four-year programmes"
+        ]
+    },
+    "Bachelor of Arts and Science (BASc)": {
+        "minimumTotalPoints": 480,
+        "minimumPointsAbove100Level": 216,
+        "minimumPointsAbove200Level": null,
+        "requiredPapers": [],
+        "availableMajors": []
+    },
+    "Bachelor of Music (MusB)": {
+        "minimumTotalPoints": 360,
+        "minimumPointsAbove100Level": 270,
+        "minimumPointsAbove200Level": 180,
+        "requiredPapers": [],
+        "availableMajors": []
+    },
+    "Bachelor of Performing Arts (BPA)": {
+        "minimumTotalPoints": null,
+        "minimumPointsAbove100Level": null,
+        "minimumPointsAbove200Level": null,
+        "requiredPapers": [],
+        "availableMajors": []
+    },
+    "Bachelor of Social Work (BSW)": {
+        "minimumTotalPoints": null,
+        "minimumPointsAbove100Level": null,
+        "minimumPointsAbove200Level": null,
+        "requiredPapers": [],
+        "availableMajors": []
+    },
+    "Bachelor of Social Work with Honours BSW(Hons)": {
+        "minimumTotalPoints": null,
+        "minimumPointsAbove100Level": null,
+        "minimumPointsAbove200Level": null,
+        "requiredPapers": [],
+        "availableMajors": []
+    },
+    "Certificate in Entrepreneurship (CertEntr)": {
+        "minimumTotalPoints": null,
+        "minimumPointsAbove100Level": null,
+        "minimumPointsAbove200Level": null,
+        "requiredPapers": [],
+        "availableMajors": []
+    },
+    "Diploma in Commerce (DipCom)": {
+        "minimumTotalPoints": null,
+        "minimumPointsAbove100Level": null,
+        "minimumPointsAbove200Level": null,
+        "requiredPapers": [],
+        "availableMajors": []
+    },
+    "Diploma in Entrepreneurship (DipEntr)": {
+        "minimumTotalPoints": null,
+        "minimumPointsAbove100Level": null,
+        "minimumPointsAbove200Level": null,
+        "requiredPapers": [],
+        "availableMajors": []
+    },
+    "Bachelor of Commerce (BCom)": {
+        "minimumTotalPoints": 360,
+        "minimumPointsAbove100Level": 180,
+        "minimumPointsAbove200Level": 72,
+        "requiredPapers": [
+            "BSNS 111",
+            "BSNS 112",
+            "BSNS 113",
+            "BSNS 114",
+            "BSNS 115 may include one or more optional minor subjects which satisfy the Minor Subject Requirements listed in Commerce Schedule A",
+            "or Arts and Music Schedule A",
+            "or Science Schedule A",
+            "or Applied Science Schedule A",
+            " or BHealSc Schedule Part 2. No paper may count for both a Major and a Minor Subject Requirement or for more than one Minor Subject Requirement unless that paper is at 100- or 200-level and is specified as compulsory for both Requirements",
+            "may include papers which are not listed in Commerce Schedule C          up to 90 points; or as specified in the Commerce Major Subject Requirements and/or the Commerce subjects in the Minor Subject Requirements; or as specified in the Minor Subject Requirements.   * At least three of these papers must be passed before enrolling in any 200-level Commerce paper",
+            "and all must normally be passed before enrolling in any 300-level Commerce paper. For single-degree BCom students",
+            "all five must be attempted in the first year of study or equivalent. "
+        ],
+        "availableMajors": []
+    },
+    "Bachelor of Commerce and Science (BComSc)": {
+        "minimumTotalPoints": 480,
+        "minimumPointsAbove100Level": 216,
+        "minimumPointsAbove200Level": null,
+        "requiredPapers": [
+            "BSNS 111–115",
+            "may include one optional minor subject that satisfies the minor subject requirements listed in Arts and Music Schedule A",
+            "Science Schedule A",
+            "and Applied Science Schedule A",
+            "Commerce Schedule A or Bachelor of Health Sciences Schedule Part 2 may not include a paper that counts for both a major and a minor subject requirement unless that paper is at 100- or 200-level and is specified as compulsory for both requirements",
+            "and may include papers that are not listed in Commerce Schedule C or Science Schedule C  up to 54 points",
+            "or as specified in Commerce Schedule A",
+            "Science Schedule A",
+            "and Applied Science Schedule A.  "
+        ],
+        "availableMajors": []
+    },
+    "Bachelor of Entrepreneurship (BEntr)": {
+        "minimumTotalPoints": 360,
+        "minimumPointsAbove100Level": 180,
+        "minimumPointsAbove200Level": 72,
+        "requiredPapers": [],
+        "availableMajors": []
+    },
+    "Bachelor of Dental Surgery (BDS)": {
+        "minimumTotalPoints": null,
+        "minimumPointsAbove100Level": null,
+        "minimumPointsAbove200Level": null,
+        "requiredPapers": [],
+        "availableMajors": []
+    },
+    "Bachelor of Dental Technology (BDentTech)": {
+        "minimumTotalPoints": null,
+        "minimumPointsAbove100Level": null,
+        "minimumPointsAbove200Level": null,
+        "requiredPapers": [],
+        "availableMajors": []
+    },
+    "Bachelor of Oral Health (BOH)": {
+        "minimumTotalPoints": null,
+        "minimumPointsAbove100Level": null,
+        "minimumPointsAbove200Level": null,
+        "requiredPapers": [],
+        "availableMajors": []
+    },
+    "Bachelor of Dental Surgery with Honours (BDS(Hons))": {
+        "minimumTotalPoints": null,
+        "minimumPointsAbove100Level": null,
+        "minimumPointsAbove200Level": null,
+        "requiredPapers": [],
+        "availableMajors": []
+    },
+    "Bachelor of Dental Technology with Honours (BDentTech(Hons))": {
+        "minimumTotalPoints": null,
+        "minimumPointsAbove100Level": null,
+        "minimumPointsAbove200Level": null,
+        "requiredPapers": [],
+        "availableMajors": []
+    },
+    "Graduate Certificate in Teacher Development (GCertTchrDev)": {
+        "minimumTotalPoints": null,
+        "minimumPointsAbove100Level": null,
+        "minimumPointsAbove200Level": null,
+        "requiredPapers": [],
+        "availableMajors": []
+    },
+    "Bachelor of Teaching (BTchg)": {
+        "minimumTotalPoints": null,
+        "minimumPointsAbove100Level": null,
+        "minimumPointsAbove200Level": null,
+        "requiredPapers": [],
+        "availableMajors": [
+            "Early Childhood Education",
+            "Primary Education",
+            "Te Pōkai Mātauranga o te Ao Rua (Primary Bicultural Education) – Invercargill campus only"
+        ]
+    },
+    "Bachelor of Biomedical Sciences (BBiomedSc)": {
+        "minimumTotalPoints": null,
+        "minimumPointsAbove100Level": null,
+        "minimumPointsAbove200Level": null,
+        "requiredPapers": [],
+        "availableMajors": []
+    },
+    "Bachelor of Health Sciences (BHealSc)": {
+        "minimumTotalPoints": 360,
+        "minimumPointsAbove100Level": null,
+        "minimumPointsAbove200Level": 360,
+        "requiredPapers": [],
+        "availableMajors": [
+            "Populations and people living for longer, and often with multiple long-term conditions and disabilities",
+            "Limited health resources and greater demand for services",
+            "Environmental and social change and their effects on health"
+        ]
+    },
+    "Bachelor of Medical Laboratory Science (BMLSc)": {
+        "minimumTotalPoints": null,
+        "minimumPointsAbove100Level": null,
+        "minimumPointsAbove200Level": null,
+        "requiredPapers": [],
+        "availableMajors": []
+    },
+    "Bachelor of Pharmaceutical Science (BPharmSc)": {
+        "minimumTotalPoints": 360,
+        "minimumPointsAbove100Level": 180,
+        "minimumPointsAbove200Level": 72,
+        "requiredPapers": [],
+        "availableMajors": []
+    },
+    "Bachelor of Radiation Therapy (BRT)": {
+        "minimumTotalPoints": null,
+        "minimumPointsAbove100Level": null,
+        "minimumPointsAbove200Level": null,
+        "requiredPapers": [],
+        "availableMajors": []
+    },
+    "Health Sciences First Year": {
+        "minimumTotalPoints": null,
+        "minimumPointsAbove100Level": null,
+        "minimumPointsAbove200Level": null,
+        "requiredPapers": [],
+        "availableMajors": []
+    },
+    "Bachelor of Medical Laboratory Science with Honours (BMLSc(Hons))": {
+        "minimumTotalPoints": null,
+        "minimumPointsAbove100Level": null,
+        "minimumPointsAbove200Level": null,
+        "requiredPapers": [],
+        "availableMajors": []
+    },
+    "Bachelor of Laws (LLB)": {
+        "minimumTotalPoints": null,
+        "minimumPointsAbove100Level": null,
+        "minimumPointsAbove200Level": null,
+        "requiredPapers": [],
+        "availableMajors": []
+    },
+    "Bachelor of Laws with Honours (LLB(Hons))": {
+        "minimumTotalPoints": null,
+        "minimumPointsAbove100Level": null,
+        "minimumPointsAbove200Level": null,
+        "requiredPapers": [],
+        "availableMajors": []
+    },
+    "Bachelor of Medicine and Bachelor of Surgery (MB ChB)": {
+        "minimumTotalPoints": null,
+        "minimumPointsAbove100Level": null,
+        "minimumPointsAbove200Level": null,
+        "requiredPapers": [],
+        "availableMajors": [
+            "Otago Medical School website"
+        ]
+    },
+    "Bachelor of Medical Science with Honours (BMedSc(Hons))": {
+        "minimumTotalPoints": null,
+        "minimumPointsAbove100Level": null,
+        "minimumPointsAbove200Level": null,
+        "requiredPapers": [],
+        "availableMajors": []
+    },
+    "Bachelor of Pharmacy (BPharm)": {
+        "minimumTotalPoints": null,
+        "minimumPointsAbove100Level": null,
+        "minimumPointsAbove200Level": null,
+        "requiredPapers": [],
+        "availableMajors": []
+    },
+    "Bachelor of Pharmacy with Honours (BPharm(Hons))": {
+        "minimumTotalPoints": null,
+        "minimumPointsAbove100Level": null,
+        "minimumPointsAbove200Level": null,
+        "requiredPapers": [],
+        "availableMajors": []
+    },
+    "Bachelor of Physiotherapy (BPhty)": {
+        "minimumTotalPoints": null,
+        "minimumPointsAbove100Level": null,
+        "minimumPointsAbove200Level": null,
+        "requiredPapers": [],
+        "availableMajors": []
+    },
+    "Bachelor of Physiotherapy with Honours (BPhty(Hons))": {
+        "minimumTotalPoints": null,
+        "minimumPointsAbove100Level": null,
+        "minimumPointsAbove200Level": null,
+        "requiredPapers": [],
+        "availableMajors": []
+    },
+    "Bachelor of Science (BSc)": {
+        "minimumTotalPoints": 360,
+        "minimumPointsAbove100Level": 180,
+        "minimumPointsAbove200Level": 72,
+        "requiredPapers": [],
+        "availableMajors": [
+            "Agricultural Innovation (From 2024)",
+            "Anatomy",
+            "Aquaculture and Fisheries (From 2024)",
+            "Biochemistry",
+            "Botany",
+            "Chemistry",
+            "Computer Science",
+            "Data Science (From 2024)",
+            "Ecology",
+            "Economics",
+            "Electronics (no new enrolments)",
+            "Energy Management (From 2024)",
+            "Energy Science and Technology",
+            "Environmental Management (From 2024)",
+            "Exercise and Sport Science",
+            "Food Science",
+            "Forensic Analytical Science (From 2024)",
+            "Genetics",
+            "Geographic Information Systems (From 2024)",
+            "Geography",
+            "Geology",
+            "Human Nutrition",
+            "Information Science",
+            "Land Planning and Development",
+            "Mathematics",
+            "Marine Science",
+            "Microbiology",
+            "Neuroscience",
+            "Pharmacology",
+            "Physical Education, Activity and Health (From 2024)",
+            "Physics",
+            "Physiology",
+            "Plant Biotechnology",
+            "Psychology",
+            "Software Engineering (From 2024)",
+            "Sport and Exercise Management (From 2024)",
+            "Sport Development and Management",
+            "Statistics",
+            "Surveying Measurement",
+            "Zoology"
+        ]
+    },
+    "Bachelor of Surveying (BSurv)": {
+        "minimumTotalPoints": null,
+        "minimumPointsAbove100Level": 126,
+        "minimumPointsAbove200Level": null,
+        "requiredPapers": [],
+        "availableMajors": []
+    },
+    "Bachelor of Surveying with Honours (BSurv(Hons))": {
+        "minimumTotalPoints": null,
+        "minimumPointsAbove100Level": null,
+        "minimumPointsAbove200Level": null,
+        "requiredPapers": [],
+        "availableMajors": []
+    },
+    "Diploma in Theology (DipTheol)": {
+        "minimumTotalPoints": null,
+        "minimumPointsAbove100Level": null,
+        "minimumPointsAbove200Level": null,
+        "requiredPapers": [],
+        "availableMajors": []
+    },
+    "Bachelor of Theology (BTheol)": {
+        "minimumTotalPoints": 360,
+        "minimumPointsAbove100Level": 180,
+        "minimumPointsAbove200Level": 72,
+        "requiredPapers": [],
+        "availableMajors": []
+    },
+    "Bachelor of Theology with Honours (BTheol(Hons))": {
+        "minimumTotalPoints": null,
+        "minimumPointsAbove100Level": null,
+        "minimumPointsAbove200Level": null,
+        "requiredPapers": [],
+        "availableMajors": []
+    }
+}

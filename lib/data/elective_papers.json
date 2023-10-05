@@ -1,0 +1,44 @@
+{
+  "BTNY365": {
+    "subject_code": "Botany",
+    "year": "2023",
+    "title": "Research Skills",
+    "points": "18",
+    "efts": "0.15",
+    "teaching_periods": [
+      "S1"
+    ],
+    "description": "Guided work and assignments in literature research, evaluation and criticism of published papers, essay writing, and data analysis.",
+    "prerequisites": "54 points at 200-level or above from Science Schedule C",
+    "restrictions": null,
+    "schedule": "Science"
+  },
+  "BTNY261": {
+    "subject_code": "Botany",
+    "year": "2023",
+    "title": "Plant Physiology and Biotechnology",
+    "points": "20",
+    "efts": "0.1667",
+    "teaching_periods": [
+      "S1"
+    ],
+    "description": "The biology, physiology and biotechnology of plants. Research topics in Plant Physiology and Biotechnology.",
+    "prerequisites": null,
+    "restrictions": null,
+    "schedule": null
+  },
+  "BTNY269": {
+    "subject_code": "Botany",
+    "year": "2023",
+    "title": "Principles of Nature Conservation",
+    "points": "20",
+    "efts": "0.1667",
+    "teaching_periods": [
+      "S1"
+    ],
+    "description": "The application of ecological principles to nature conservation.",
+    "prerequisites": null,
+    "restrictions": null,
+    "schedule": null
+  }
+}

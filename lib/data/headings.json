@@ -1,0 +1,602 @@
+{
+    "Arts and Music": [
+        {
+            "paperName": "Anatomy",
+            "paperCode": "ANAT 131"
+        },
+        {
+            "paperName": "Agricultural Innovation",
+            "paperCode": "AGRI 101, 221"
+        },
+        {
+            "paperName": "Anthropology",
+            "paperCode": "ANTH"
+        },
+        {
+            "paperName": "Art History and Visual Culture",
+            "paperCode": "ARTV"
+        },
+        {
+            "paperName": "Asian Studies",
+            "paperCode": "ASIA"
+        },
+        {
+            "paperName": "Biblical Studies",
+            "paperCode": "BIBS"
+        },
+        {
+            "paperName": "Bioethics",
+            "paperCode": "BITC 201, 202, 301"
+        },
+        {
+            "paperName": "Biological Anthropology",
+            "paperCode": "BIOA"
+        },
+        {
+            "paperName": "Business Studies",
+            "paperCode": "BSNS 113"
+        },
+        {
+            "paperName": "Chinese",
+            "paperCode": "CHIN"
+        },
+        {
+            "paperName": "Christian Thought and History",
+            "paperCode": "CHTH"
+        },
+        {
+            "paperName": "Classical Studies",
+            "paperCode": "CLAS"
+        },
+        {
+            "paperName": "Community Health Care",
+            "paperCode": "CMHC"
+        },
+        {
+            "paperName": "Computer and Information Science",
+            "paperCode": "COMP (excluding COMP 270, 371-373)"
+        },
+        {
+            "paperName": "Computer Science",
+            "paperCode": "COSC"
+        },
+        {
+            "paperName": "Criminology",
+            "paperCode": "CRIM"
+        },
+        {
+            "paperName": "Dance",
+            "paperCode": "DANC"
+        },
+        {
+            "paperName": "Economics",
+            "paperCode": "ECON"
+        },
+        {
+            "paperName": "Education",
+            "paperCode": "EDUC"
+        },
+        {
+            "paperName": "English",
+            "paperCode": "ENGL"
+        },
+        {
+            "paperName": "Environment and Society",
+            "paperCode": "ENVI"
+        },
+        {
+            "paperName": "European Studies",
+            "paperCode": "EURO"
+        },
+        {
+            "paperName": "French",
+            "paperCode": "FREN"
+        },
+        {
+            "paperName": "Gender Studies",
+            "paperCode": "GEND"
+        },
+        {
+            "paperName": "Geography",
+            "paperCode": "GEOG"
+        },
+        {
+            "paperName": "German",
+            "paperCode": "GERM"
+        },
+        {
+            "paperName": "Global Cultures",
+            "paperCode": "GLBL"
+        },
+        {
+            "paperName": "Greek",
+            "paperCode": "GREK"
+        },
+        {
+            "paperName": "Hebrew",
+            "paperCode": "HEBR"
+        },
+        {
+            "paperName": "History",
+            "paperCode": "HIST"
+        },
+        {
+            "paperName": "Humanities",
+            "paperCode": "HUMS"
+        },
+        {
+            "paperName": "Indigenous Studies",
+            "paperCode": "INDS"
+        },
+        {
+            "paperName": "Information Science",
+            "paperCode": "INFO (excluding INFO 130)"
+        },
+        {
+            "paperName": "Japanese",
+            "paperCode": "JAPA"
+        },
+        {
+            "paperName": "Latin",
+            "paperCode": "LATN"
+        },
+        {
+            "paperName": "Law",
+            "paperCode": "LAWS 101, 102"
+        },
+        {
+            "paperName": "Linguistics",
+            "paperCode": "LING"
+        },
+        {
+            "paperName": "M\u0101ori Health",
+            "paperCode": "MAOH"
+        },
+        {
+            "paperName": "M\u0101ori Studies",
+            "paperCode": "MAOR"
+        },
+        {
+            "paperName": "Mathematics",
+            "paperCode": "MATH"
+        },
+        {
+            "paperName": "Media, Film and Communication",
+            "paperCode": "MFCO"
+        },
+        {
+            "paperName": "Music",
+            "paperCode": "MUSI"
+        },
+        {
+            "paperName": "Pacific Health",
+            "paperCode": "PACH"
+        },
+        {
+            "paperName": "Pacific Islands Studies",
+            "paperCode": "PACI"
+        },
+        {
+            "paperName": "Pacific Realities",
+            "paperCode": "PACR 101"
+        },
+        {
+            "paperName": "Pastoral Studies",
+            "paperCode": "PAST"
+        },
+        {
+            "paperName": "Performing Arts",
+            "paperCode": "PERF 102, 103, 202, 203, 302"
+        },
+        {
+            "paperName": "Philosophy",
+            "paperCode": "PHIL"
+        },
+        {
+            "paperName": "Philosophy, Politics and Economics",
+            "paperCode": "PHPE"
+        },
+        {
+            "paperName": "Politics",
+            "paperCode": "POLS"
+        },
+        {
+            "paperName": "Psychological Medicine",
+            "paperCode": "PSME 201"
+        },
+        {
+            "paperName": "Psychology",
+            "paperCode": "PSYC"
+        },
+        {
+            "paperName": "Public Health",
+            "paperCode": "POPH, PUBH"
+        },
+        {
+            "paperName": "Religious Studies",
+            "paperCode": "RELS"
+        },
+        {
+            "paperName": "Sanskrit",
+            "paperCode": "SANS"
+        },
+        {
+            "paperName": "Science Communication",
+            "paperCode": "SCOM"
+        },
+        {
+            "paperName": "Social Work",
+            "paperCode": "SOWK"
+        },
+        {
+            "paperName": "Sociology",
+            "paperCode": "SOCI"
+        },
+        {
+            "paperName": "Spanish",
+            "paperCode": "SPAN"
+        },
+        {
+            "paperName": "Sport, Physical Education and Exercise",
+            "paperCode": "SPEX 101, 102, 204, 206, 207, 208, 209, 304, 306, 307, 308, 312, 313, 314, 315, 316"
+        },
+        {
+            "paperName": "Statistics",
+            "paperCode": "STAT"
+        },
+        {
+            "paperName": "Theatre Studies",
+            "paperCode": "THEA"
+        }
+    ],
+    "Theology": [
+        {
+            "paperName": "Biblical Studies",
+            "paperCode": "BIBS"
+        },
+        {
+            "paperName": "Christian Thought and History",
+            "paperCode": "CHTH"
+        },
+        {
+            "paperName": "Hebrew",
+            "paperCode": "HEBR"
+        },
+        {
+            "paperName": "Pacific Realities",
+            "paperCode": "PACR 101"
+        },
+        {
+            "paperName": "Pastoral Studies",
+            "paperCode": "PAST"
+        },
+        {
+            "paperName": "Religious Studies",
+            "paperCode": "RELS"
+        },
+        {
+            "paperName": "Sanskrit",
+            "paperCode": "SANS"
+        }
+    ],
+    "Science": [
+        {
+            "paperName": "Agricultural Innovation",
+            "paperCode": "AGRI"
+        },
+        {
+            "paperName": "Anatomy",
+            "paperCode": "ANAT (excluding ANAT 250)"
+        },
+        {
+            "paperName": "Applied Science",
+            "paperCode": "APPS"
+        },
+        {
+            "paperName": "Aquaculture and Fisheries",
+            "paperCode": "AQFI"
+        },
+        {
+            "paperName": "Biochemistry",
+            "paperCode": "BIOC"
+        },
+        {
+            "paperName": "Bioethics",
+            "paperCode": "BITC 201, 202, 210, 211, 301"
+        },
+        {
+            "paperName": "Biological Anthropology",
+            "paperCode": "BIOA"
+        },
+        {
+            "paperName": "Biology",
+            "paperCode": "BIOL"
+        },
+        {
+            "paperName": "Botany",
+            "paperCode": "BTNY"
+        },
+        {
+            "paperName": "Business Studies",
+            "paperCode": "BSNS 113"
+        },
+        {
+            "paperName": "Cell and Molecular Biology",
+            "paperCode": "CELS 191"
+        },
+        {
+            "paperName": "Chemistry",
+            "paperCode": "CHEM"
+        },
+        {
+            "paperName": "Clothing and Textile Sciences",
+            "paperCode": "CLTE"
+        },
+        {
+            "paperName": "Community Health Care",
+            "paperCode": "CMHC"
+        },
+        {
+            "paperName": "Computational Modelling",
+            "paperCode": "COMO"
+        },
+        {
+            "paperName": "Computer and Information Science",
+            "paperCode": "COMP (excluding COMP 270, 371-373)"
+        },
+        {
+            "paperName": "Computer Science",
+            "paperCode": "COSC"
+        },
+        {
+            "paperName": "Digital Humanities",
+            "paperCode": "DHUM 303, 403"
+        },
+        {
+            "paperName": "Earth and Ocean Science",
+            "paperCode": "EAOS"
+        },
+        {
+            "paperName": "Ecology",
+            "paperCode": "ECOL"
+        },
+        {
+            "paperName": "Economics",
+            "paperCode": "ECON"
+        },
+        {
+            "paperName": "Electronics",
+            "paperCode": "ELEC"
+        },
+        {
+            "paperName": "Energy Management",
+            "paperCode": "EMAN"
+        },
+        {
+            "paperName": "English",
+            "paperCode": "ENGL 127, 228"
+        },
+        {
+            "paperName": "Environment and Society",
+            "paperCode": "ENVI"
+        },
+        {
+            "paperName": "Food Science",
+            "paperCode": "FOSC"
+        },
+        {
+            "paperName": "Forensic Analytical Science",
+            "paperCode": "FORS"
+        },
+        {
+            "paperName": "Forensic Biology",
+            "paperCode": "FORB 201"
+        },
+        {
+            "paperName": "Genetics",
+            "paperCode": "GENE"
+        },
+        {
+            "paperName": "Geography",
+            "paperCode": "GEOG"
+        },
+        {
+            "paperName": "Geology",
+            "paperCode": "GEOL"
+        },
+        {
+            "paperName": "Human Body Systems",
+            "paperCode": "HUBS"
+        },
+        {
+            "paperName": "Human Nutrition",
+            "paperCode": "HUNT"
+        },
+        {
+            "paperName": "Information Science",
+            "paperCode": "INFO (excluding INFO 130)"
+        },
+        {
+            "paperName": "Law",
+            "paperCode": "LAWS 102"
+        },
+        {
+            "paperName": "Marine Science",
+            "paperCode": "MARI"
+        },
+        {
+            "paperName": "Materials Science and Technology",
+            "paperCode": "MATS 204"
+        },
+        {
+            "paperName": "Mathematics",
+            "paperCode": "MATH"
+        },
+        {
+            "paperName": "Media, Film and Communication",
+            "paperCode": "MFCO 222, 223"
+        },
+        {
+            "paperName": "Microbiology",
+            "paperCode": "MICR"
+        },
+        {
+            "paperName": "Nautical Studies",
+            "paperCode": "NAUT"
+        },
+        {
+            "paperName": "Neuroscience",
+            "paperCode": "NEUR"
+        },
+        {
+            "paperName": "Oceanography",
+            "paperCode": "OCEN"
+        },
+        {
+            "paperName": "Pacific Realities",
+            "paperCode": "PACR 101"
+        },
+        {
+            "paperName": "Pathology",
+            "paperCode": "PATH"
+        },
+        {
+            "paperName": "Pharmacology",
+            "paperCode": "PHAL"
+        },
+        {
+            "paperName": "Philosophy",
+            "paperCode": "PHIL 105, 225, 226, 235, 334"
+        },
+        {
+            "paperName": "Physics",
+            "paperCode": "PHSI"
+        },
+        {
+            "paperName": "Physiology",
+            "paperCode": "PHSL"
+        },
+        {
+            "paperName": "Plant Biotechnology",
+            "paperCode": "PLBI"
+        },
+        {
+            "paperName": "Project Management",
+            "paperCode": "PMAN 401"
+        },
+        {
+            "paperName": "Psychological Medicine",
+            "paperCode": "PSME 201"
+        },
+        {
+            "paperName": "Psychology",
+            "paperCode": "PSYC"
+        },
+        {
+            "paperName": "Public Health",
+            "paperCode": "POPH 192, PUBH 192, 211, 311"
+        },
+        {
+            "paperName": "Science Communication",
+            "paperCode": "SCOM"
+        },
+        {
+            "paperName": "Sport, Physical Education and Exercise",
+            "paperCode": "SPEX"
+        },
+        {
+            "paperName": "Statistics",
+            "paperCode": "STAT"
+        },
+        {
+            "paperName": "Surveying",
+            "paperCode": "All 200-, 300- and 400-level SURV papers"
+        },
+        {
+            "paperName": "Zoology",
+            "paperCode": "ZOOL"
+        }
+    ],
+    "Commerce": [
+        {
+            "paperName": "Accounting",
+            "paperCode": "ACCT, ACFI, ACTP"
+        },
+        {
+            "paperName": "Agricultural Innovation",
+            "paperCode": "AGRI 101, 221"
+        },
+        {
+            "paperName": "Bioethics",
+            "paperCode": "BITC 202"
+        },
+        {
+            "paperName": "Business Law",
+            "paperCode": "BLAW"
+        },
+        {
+            "paperName": "Business Studies",
+            "paperCode": "BSNS"
+        },
+        {
+            "paperName": "Computer and Information Science",
+            "paperCode": "COMP (excluding COMP 270, 371-373)"
+        },
+        {
+            "paperName": "Computer Science",
+            "paperCode": "COSC 201, 202, 203, 204"
+        },
+        {
+            "paperName": "Digital Humanities",
+            "paperCode": "DHUM 303, 403"
+        },
+        {
+            "paperName": "Economics",
+            "paperCode": "ECON"
+        },
+        {
+            "paperName": "Entrepreneurship",
+            "paperCode": "ENTR"
+        },
+        {
+            "paperName": "Finance",
+            "paperCode": "FINC"
+        },
+        {
+            "paperName": "Information Science",
+            "paperCode": "INFO"
+        },
+        {
+            "paperName": "Management",
+            "paperCode": "MANT"
+        },
+        {
+            "paperName": "Marketing Management",
+            "paperCode": "MART"
+        },
+        {
+            "paperName": "Materials Science and Technology",
+            "paperCode": "MATS 204"
+        },
+        {
+            "paperName": "Pacific Realities",
+            "paperCode": "PACR 101"
+        },
+        {
+            "paperName": "Philosophy",
+            "paperCode": "PHIL 105, 235"
+        },
+        {
+            "paperName": "Sport, Physical Education and Exercise",
+            "paperCode": "SPEX 101, 209, 313, 314, 315"
+        },
+        {
+            "paperName": "Surveying",
+            "paperCode": "SURV 208, 319, 410, 411, 412, 510, 511, 512, 519"
+        },
+        {
+            "paperName": "Tourism",
+            "paperCode": "TOUR"
+        }
+    ]
+}

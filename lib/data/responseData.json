@@ -1,0 +1,46 @@
+{
+  "COMP120": {
+    "subject_code": "Computer and Information Science",
+    "year": "2023",
+    "title": "Practical Data Science",
+    "points": "18",
+    "efts": "0.15",
+    "teaching_periods": [
+      "S1",
+      "S2"
+    ],
+    "description": "An introduction to the techniques used to prepare, integrate, manage and visualise complex data using modern software environments. Essential to students needing to manage data in science, business, or humanities. Data Science skills are in increasing demand in both industry and academia. Being able to effectively and safely manipulate and model data will be a key strategic advantage for future employment. COMP 120 introduces the fundamental concepts of data science to students through practical use of the industry-standard software environment R. You will learn how to program in R, how to effectively manage and manipulate data in R, and be exposed to the \"round trip\" of data science (Import, Tidy, Transform, Visualise, Model, and Communicate).Upon completion of COMP 120, you will be well-equipped to embark on your own data acquisition and management in R, as well as be excellently-prepared for other papers that use R for analysis and modelling.",
+    "prerequisites": null,
+    "restrictions": null,
+    "schedule": "Arts and Music, Commerce, Science"
+  },
+  "COMP151": {
+    "subject_code": "Computer and Information Science",
+    "year": "2023",
+    "title": "Programming for Scientists",
+    "points": "18",
+    "efts": "0.1500",
+    "teaching_periods": [
+      "S1"
+    ],
+    "description": "An introduction to the basics of programming using the Python programming language, with an emphasis on programming of relevance to scientists. COMP 151 introduces programming in a way that is targeted towards the needs of scientists and those working with data. Although the paper is called \"Programming for Scientists\", it is equally useful for anyone interested in programming in general, or in programming with data specifically. COMP 151 uses the Python programming language which is the most popular language for data science applications, and the 3rd most popular language overall and continues to grow in popularity.",
+    "prerequisites": null,
+    "restrictions": "COMP 150",
+    "schedule": "Arts and Music, Commerce, Science"
+  },
+  "COMP161": {
+    "subject_code": "Computer and Information Science",
+    "year": "2023",
+    "title": "Computer Programming",
+    "points": "18",
+    "efts": "0.1500",
+    "teaching_periods": [
+      "S1",
+      "S2"
+    ],
+    "description": "An introduction to computer programming suitable for beginners with little or no prior experience. Introduces the Java programming language, basic object oriented concepts, and simple graphical applications. If you have no prior computer programming background, then COMP 161 is the paper for you. It is a beginner\u2019s introduction to programming in the object-oriented Java language. We offer COMP 161 on campus in S1, and by distance in S2 and in a \u201cnon standard\u201d period (N1 / Pre Christmas Summer School). COMP 161 occupies an important part in the computer science curriculum, because is normally required preparation for COMP 162 (which is a prerequisite for all 200-level Computer Science papers). Students with prior programming experience may sit an Advanced Placement Test for direct entry to COMP162.",
+    "prerequisites": null,
+    "restrictions": "COMP 160",
+    "schedule": "Arts and Music, Commerce, Science"
+  }
+}

@@ -1,38 +1,54 @@
-import 'dart:convert';
-
+/// Represents a major with its requirements and total points.
 class Major {
   final String name;
   final List<Requirement> requirements;
   final int totalPoints;
-
   bool isSelected = false; // Add this property to track selection
 
+  /// Constructs a [Major] instance.
+  ///
+  /// [name]: The name of the major.
+  /// [requirements]: The list of requirements for the major.
+  /// [totalPoints]: The total points required for the major.
+  /// [isSelected]: Indicates whether the major is selected or not.
   Major({
     required this.name,
     required this.requirements,
     required this.totalPoints,
-    required this.isSelected
+    required this.isSelected,
   });
 
+  /// Constructs a [Major] instance with only the name.
+  ///
+  /// [name]: The name of the major.
+  Major.withName({
+    required this.name,
+  })   : requirements = const [],
+        totalPoints = 0;
+
+
+  /// Constructs a [Major] instance from a JSON map.
+  ///
+  /// [json]: A JSON map representing the major.
   factory Major.fromJson(Map<String, dynamic> json) {
     final List<dynamic> requirementsJson = json['requirements'] ?? [];
-    final List<Requirement> requirements = requirementsJson.map((req) => Requirement.fromJson(req)).toList();
+    final List<Requirement> requirements =
+        requirementsJson.map((req) => Requirement.fromJson(req)).toList();
 
     return Major(
       name: json['name'],
       requirements: requirements,
       totalPoints: json['totalPoints'],
-      isSelected: false
+      isSelected: false,
     );
   }
 
-  @override
-  String toString() {
-    String requirementsString = requirements.map((requirement) => requirement.toString()).join('\n');
-    return "Major Name: $name\nTotal Points: $totalPoints\nRequirements:\n$requirementsString";
+  factory Major.fromJsonName(String name) {
+    return Major.withName(name: name);
   }
 }
 
+/// Represents a requirement for a major.
 class Requirement {
   int? level;
   List<String>? papers;
@@ -40,6 +56,13 @@ class Requirement {
   int? points;
   String? notes;
 
+  /// Constructs a [Requirement] instance.
+  ///
+  /// [level]: The level of the requirement.
+  /// [papers]: The list of paper codes for the requirement.
+  /// [selectOneFrom]: The list of options to select from.
+  /// [points]: The number of points for the requirement.
+  /// [notes]: Additional notes for the requirement.
   Requirement({
     this.level,
     this.papers,
@@ -48,6 +71,9 @@ class Requirement {
     this.notes,
   });
 
+  /// Constructs a [Requirement] instance from a JSON map.
+  ///
+  /// [json]: A JSON map representing the requirement.
   factory Requirement.fromJson(Map<String, dynamic> json) {
     return Requirement(
       level: json['level'] as int?,
@@ -57,49 +83,4 @@ class Requirement {
       notes: json['notes'] as String?,
     );
   }
-
-  @override
-  String toString() {
-    String selectOneFromString = selectOneFrom != null ? "Select One From: ${selectOneFrom!.join(', ')}" : "";
-    String pointsString = points != null ? "Points: $points\nNotes: $notes" : "";
-    return "Requirement Level: $level\nPapers: $papers, \n$selectOneFromString\n$pointsString";
-  }
-}
-
-
-
-
-
-void main() {
-  String jsonString = '''
-    {
-      "requirements": [
-        {
-          "level": 100,
-          "papers": ["ENGL 121", "ENGL 131"],
-          "selectOneFrom": ["ENGL 120", "ENGL 121", "ENGL 127", "ENGL 128", "ENGL 131", "LING 111"]
-        },
-        {
-          "level": 200,
-          "papers": ["Three 200-level ENGL papers", "DHUM 201 or EURO 202"]
-        },
-        {
-          "level": 300,
-          "papers": ["Four 300-level ENGL papers", "EURO 302"]
-        },
-        {
-          "points": 198,
-          "notes": "Must include 54 points at 200-level or above. Up to 90 points may be taken from outside Arts."
-        }
-      ]
-    }
-  ''';
-
-  Map<String, dynamic> parsedJson = jsonDecode(jsonString);
-  print(parsedJson['requirements']);
-  List<dynamic> requirementsJson = parsedJson['requirements'];
-  print(requirementsJson);
-  List<Requirement> requirements = requirementsJson.map((req) => Requirement.fromJson(req)).toList();
-
-  print(requirements);
 }
