@@ -7,9 +7,7 @@ set (CMAKE_CXX_STANDARD_REQUIRED ON)
 
 find_package(cpprestsdk REQUIRED)
 
-add_executable(rest_api main.cpp)
-
-add_executable(validator ../paper_checker.cpp)
+add_executable(rest_api main.cpp ../DegreeRequirements.cpp)
 
 include_directories("/opt/homebrew/Cellar/nlohmann-json/3.11.2/include/")
 
