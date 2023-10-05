@@ -1,17 +1,24 @@
-// lib/cpp/paper_checker.h
-#ifndef PAPER_CHECKER_H
-#define PAPER_CHECKER_H
+// DegreeRequirements.h
 
-#include <string>
-#include <vector>
+#ifndef DEGREE_REQUIREMENTS_H
+#define DEGREE_REQUIREMENTS_H
+
 #include <nlohmann/json.hpp>
+#include <string>
+#include <unordered_set>
+#include <vector>
 
-class DegreeRequirements {
-public:
-    DegreeRequirements(const std::string& jsonData);
-    bool checkRequirements(const std::vector<std::string>& completedPapers);
+class DegreeRequirements
+{
 private:
     nlohmann::json degreeData;
+
+public:
+    // Constructor
+    DegreeRequirements(const std::string &jsonData);
+
+    // Public member function
+    bool checkRequirements(const std::vector<std::string> &completedPapers);
 };
 
-#endif // PAPER_CHECKER_H
+#endif // DEGREE_REQUIREMENTS_H
