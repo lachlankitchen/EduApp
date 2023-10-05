@@ -29,7 +29,7 @@ class NavBar extends StatelessWidget {
           case 1:
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => GradesScreen()),
+              MaterialPageRoute(builder: (context) => const GradesScreen()),
             );
             break;
           case 2:

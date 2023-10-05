@@ -63,7 +63,7 @@ import '../major/major.dart';
   Future<String> postPaperData(Degree degree, Major major, List<Paper> papersList) async {
     final url = Uri.parse('http://localhost:1234/${degree.title}/${major.name}');
    
-    List<Map<String, dynamic>> jsonPapers = papersListToJson(papersList); 
+    //List<Map<String, dynamic>> jsonPapers = papersListToJson(papersList); 
     
     final response = await http.post(
       url,

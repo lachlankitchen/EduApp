@@ -76,12 +76,12 @@ import '../pathway/pathway_state.dart';
   /// [state]: The state containing pathway information.
   /// [selectedMajors]: The list of selected majors.
   Future<void> navigateToPapersListScreen(BuildContext context, Degree degree, Major major) async {
-    final state = Provider.of<PathwayState>(context, listen: false);
+    //final state = Provider.of<PathwayState>(context, listen: false);
 
     int level = 100;
 
     String jsonRecommendedData;
-    List<String> jsonPaperData;
+   // List<String> jsonPaperData;
     try {
       jsonRecommendedData = await fetchRecommendedPapers(degree, major, level); // TODO: Make dynamic
     } catch (error) {
@@ -95,7 +95,7 @@ import '../pathway/pathway_state.dart';
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (context) => PapersListScreen(degree: degree, major: major, recommendedPapers: recommendedPapers, electivePapers: [], level: 100),
+        builder: (context) => PapersListScreen(degree: degree, major: major, recommendedPapers: recommendedPapers, electivePapers: const [], level: 100),
       ),
     );
   }

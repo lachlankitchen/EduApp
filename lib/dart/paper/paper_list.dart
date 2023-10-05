@@ -145,7 +145,7 @@ class PapersListScreen extends StatelessWidget {
               if (selectedPapers.isEmpty) {
                 // Show an error message if no papers are selected
                 ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(
+                  const SnackBar(
                     content: Text('Please select at least one paper.'),
                   ),
                 );
@@ -157,20 +157,20 @@ class PapersListScreen extends StatelessWidget {
                 context: context,
                 builder: (BuildContext context) {
                   return AlertDialog(
-                    title: Text('Confirm Selection'),
-                    content: Text('Are you sure you want to confirm your paper selection?'),
+                    title: const Text('Confirm Selection'),
+                    content: const Text('Are you sure you want to confirm your paper selection?'),
                     actions: [
                       TextButton(
                         onPressed: () {
                           Navigator.of(context).pop(false); // Dismiss the dialog and return false
                         },
-                        child: Text('Cancel'),
+                        child: const Text('Cancel'),
                       ),
                       TextButton(
                         onPressed: () {
                           Navigator.of(context).pop(true); // Dismiss the dialog and return true
                         },
-                        child: Text('Confirm'),
+                        child: const Text('Confirm'),
                       ),
                     ],
                   );
@@ -186,7 +186,7 @@ class PapersListScreen extends StatelessWidget {
                   print('Error fetching remaining major requirements: $error');
                   return;
                 }
-                final jsonMap = json.decode(jsonData);
+                //final jsonMap = json.decode(jsonData);
                 Map<String, dynamic> jsonDataMap = jsonDecode(jsonData.toString());
                 bool hasRemainingPapers = jsonDataMap.containsKey("remaining_compulsory_papers");
                 bool hasRemainingPoints = jsonDataMap.containsKey("remaining_points");
@@ -200,8 +200,8 @@ class PapersListScreen extends StatelessWidget {
                     String paperCode = paper.key;
                     String paperTitle = paper.value["title"];
                     final teachingPeriods = (paper.value['teaching_periods'] as List<dynamic>)
-                        ?.map<String>((period) => period.toString())
-                        ?.toList() ?? [];
+                        .map<String>((period) => period.toString())
+                        .toList();
                     Paper remainingPaper = Paper.withName(papercode: paperCode, title: paper.value["title"], teachingPeriods: teachingPeriods, points: paper.value["points"]);
                     remainingPapers.add(remainingPaper);
                     message += "$paperCode: $paperTitle\n";
@@ -249,7 +249,7 @@ class PapersListScreen extends StatelessWidget {
                 state.calculateGPA();
                 int nextlevel = level + 100;
                 String jsonRecommendedData;
-                List<String> jsonPaperData;
+                //List<String> jsonPaperData;
                 try {
                   jsonRecommendedData = await fetchRecommendedPapers(degree, major, nextlevel);
                 } catch (error) {
@@ -259,7 +259,7 @@ class PapersListScreen extends StatelessWidget {
                 List<Paper> nextRecommendedPapers = parseJsonPapers(jsonRecommendedData);
                 Navigator.pushReplacement(
                   context,
-                  MaterialPageRoute(builder: (context) => PapersListScreen(degree: degree, major: major, recommendedPapers: nextRecommendedPapers, electivePapers: [], level: nextlevel)),
+                  MaterialPageRoute(builder: (context) => PapersListScreen(degree: degree, major: major, recommendedPapers: nextRecommendedPapers, electivePapers: const [], level: nextlevel)),
                 );
               },
               style: ElevatedButton.styleFrom(
@@ -288,7 +288,7 @@ class PapersListScreen extends StatelessWidget {
                     print('Error fetching majors: $error');
                     return;
                   }
-                  final jsonMap = json.decode(jsonData);
+                  //final jsonMap = json.decode(jsonData);
                   Map<String, dynamic> jsonDataMap = jsonDecode(jsonData.toString());
                   bool hasRemainingPapers = jsonDataMap.containsKey("remaining_compulsory_papers");
                   bool hasRemainingPoints = jsonDataMap.containsKey("remaining_points");
@@ -302,8 +302,8 @@ class PapersListScreen extends StatelessWidget {
                       String paperCode = paper.key;
                       String paperTitle = paper.value["title"];
                       final teachingPeriods = (paper.value['teaching_periods'] as List<dynamic>)
-                          ?.map<String>((period) => period.toString())
-                          ?.toList() ?? [];
+                          .map<String>((period) => period.toString())
+                          .toList();
                       Paper remainingPaper = Paper.withName(papercode: paperCode, title: paper.value["title"], teachingPeriods: teachingPeriods, points: paper.value["points"]);
                       remainingPapers.add(remainingPaper);
                       message += "$paperCode: $paperTitle\n";

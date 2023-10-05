@@ -3,7 +3,6 @@ import 'package:pie_chart/pie_chart.dart';
 import 'package:provider/provider.dart';
 import '../navigation/nav_bar.dart';
 import '../paper/paper.dart';
-import '../pathway/pathway.dart';
 import '../pathway/pathway_state.dart';
 
 class DegreesPointsScreen extends StatelessWidget {
