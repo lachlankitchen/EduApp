@@ -59,10 +59,11 @@ int rest_api(void)
         setCorsHeaders(res);
     });
 
-    svr.Get("/:degree/:major/papers/:level", [&](const Request &req, Response &res) {
+    svr.Get("/:degree/:major/papers/:levelInt", [&](const Request &req, Response &res) {
         auto degree = req.path_params.at("degree");
         auto major = req.path_params.at("major");
-        auto level = req.path_params.at("level");
+        auto levelInt = req.path_params.at("level");
+        std::string level = levelInt + "-level";
         std::filesystem::path json_file_path = std::filesystem::path("..") / ".." / ".." / "data" / "output_file.json";
 
         if (!std::filesystem::exists(json_file_path)) {

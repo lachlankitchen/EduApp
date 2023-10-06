@@ -76,26 +76,26 @@ import '../pathway/pathway_state.dart';
   /// [state]: The state containing pathway information.
   /// [selectedMajors]: The list of selected majors.
   Future<void> navigateToPapersListScreen(BuildContext context, Degree degree, Major major) async {
-    final state = Provider.of<PathwayState>(context, listen: false);
+      final state = Provider.of<PathwayState>(context, listen: false);
 
-    int level = 100;
+      int level = 100;
 
-    String jsonRecommendedData;
-    List<String> jsonPaperData;
-    try {
-      jsonRecommendedData = await fetchRecommendedPapers(degree, major, level); // TODO: Make dynamic
-    } catch (error) {
-      // Handle error, perhaps show a dialog to the user
-      print('Error fetching recommended papers: $error');
-      return; // Early return to exit the function if fetching degrees fails
-    }
+      String jsonRecommendedData;
+      List<String> jsonPaperData;
+      try {
+        jsonRecommendedData = await fetchRecommendedPapers(degree, major, level); // TODO: Make dynamic
+      } catch (error) {
+        // Handle error, perhaps show a dialog to the user
+        print('Error fetching recommended papers: $error');
+        return; // Early return to exit the function if fetching degrees fails
+      }
 
-    List<Paper> recommendedPapers = parseJsonPapers(jsonRecommendedData);
+      List<Paper> recommendedPapers = parseJsonPapers(jsonRecommendedData);
 
-    Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (context) => PapersListScreen(degree: degree, major: major, recommendedPapers: recommendedPapers, electivePapers: [], level: 100),
-      ),
-    );
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => PapersListScreen(degree: degree, major: major, recommendedPapers: recommendedPapers, electivePapers: [], level: 100),
+        ),
+      );
   }
