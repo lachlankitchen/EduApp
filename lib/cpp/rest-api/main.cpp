@@ -11,15 +11,20 @@ void setCorsHeaders(httplib::Response &res) {
     res.set_header("Access-Control-Allow-Headers", "X-Requested-With, Content-Type");
 }
 
-int rest_api(void)
-{
+int rest_api(void) {
     using namespace httplib;
 
     Server svr;
 
-    svr.Get("/degrees", [](const Request &req, Response &res) {
-        std::filesystem::path json_file_path = std::filesystem::path("..") / ".." / ".." / "data" / "singleDegreesWithMajors.json";
-        
+    // Define hardcoded file paths
+    std::filesystem::path single_degrees_json_path = "C:/Users/AHopgood/Documents/Repo/EduApp/lib/data/singleDegreesWithMajors.json";
+    std::filesystem::path majors_json_path = "C:/Users/AHopgood/Documents/Repo/EduApp/lib/data/majors.json";
+    std::filesystem::path major_requirements_json_path = "C:/Users/AHopgood/Documents/Repo/EduApp/lib/data/major_requirements.json";
+    std::filesystem::path paper_response_json_path = "C:/Users/AHopgood/Documents/Repo/EduApp/lib/data/paper_response.json";
+
+    svr.Get("/degrees", [single_degrees_json_path](const Request &req, Response &res) {
+        std::filesystem::path json_file_path = single_degrees_json_path;
+
         if (!std::filesystem::exists(json_file_path)) {
             res.status = 404;
             res.set_content("File not found", "text/plain");
@@ -29,14 +34,14 @@ int rest_api(void)
 
         std::ifstream json_file(json_file_path);
         std::string json_content((std::istreambuf_iterator<char>(json_file)), std::istreambuf_iterator<char>());
-        
+
         res.set_content(json_content, "application/json");
         setCorsHeaders(res);
     });
 
-    svr.Get("/:degree/majors", [&](const Request &req, Response &res) {
+    svr.Get("/:degree/majors", [majors_json_path](const Request &req, Response &res) {
         auto degree = req.path_params.at("degree");
-        std::filesystem::path json_file_path = std::filesystem::path("..") / ".." / ".." / "data" / "majors.json";
+        std::filesystem::path json_file_path = majors_json_path;
 
         if (!std::filesystem::exists(json_file_path)) {
             res.status = 404;
@@ -55,16 +60,16 @@ int rest_api(void)
             res.status = 404;
             res.set_content("Degree not found", "text/plain");
         }
-           
+
         setCorsHeaders(res);
     });
 
-    svr.Get("/:degree/:major/papers/:levelInt", [&](const Request &req, Response &res) {
+    svr.Get("/:degree/:major/papers/:levelInt", [paper_response_json_path](const Request &req, Response &res) {
         auto degree = req.path_params.at("degree");
         auto major = req.path_params.at("major");
         auto levelInt = req.path_params.at("level");
         std::string level = levelInt + "-level";
-        std::filesystem::path json_file_path = std::filesystem::path("..") / ".." / ".." / "data" / "output_file.json";
+        std::filesystem::path json_file_path = paper_response_json_path;
 
         if (!std::filesystem::exists(json_file_path)) {
             res.status = 404;
@@ -80,13 +85,11 @@ int rest_api(void)
         setCorsHeaders(res);
     });
 
-    svr.Get("/:degree/:major/:papers", [&](const Request &req, Response &res) {
+    svr.Get("/:degree/:major/:papers", [major_requirements_json_path](const Request &req, Response &res) {
         auto degree = req.path_params.at("degree");
         auto major = req.path_params.at("major");
         auto papers_string = req.path_params.at("papers");
 
-        
-        // @CONNOR this is the final change before it will all work
         std::cout << papers_string << std::endl;
         std::vector<std::string> papers;
         std::stringstream ss(papers_string);
@@ -94,9 +97,8 @@ int rest_api(void)
         while (std::getline(ss, paper, ',')) {
             papers.push_back(paper);
         }
-        // Code below is all good
 
-        std::filesystem::path json_file_path = std::filesystem::path("..") / ".." / ".." / "data" / "majorRequirements.json";
+        std::filesystem::path json_file_path = major_requirements_json_path;
 
         if (!std::filesystem::exists(json_file_path)) {
             res.status = 404;
@@ -108,17 +110,17 @@ int rest_api(void)
         std::ifstream json_file(json_file_path);
         nlohmann::json json_obj;
         json_file >> json_obj;
-        // Convert the JSON object to its string representation
-        std::string jsonString = json_obj.dump(); 
+
+        std::string jsonString = json_obj.dump();
 
         if (!jsonString.empty()) {
             std::string aggregateFeedback = "";
             bool allRequirementsMet = true;
 
-            std::string jsonMajor = json_obj[major].dump(); 
+            std::string jsonMajor = json_obj[major].dump();
             if (!jsonMajor.empty()) {
                 DegreeRequirements degreeReqs(jsonMajor);
-            
+
                 std::pair<bool, std::string> result = degreeReqs.checkRequirements(papers);
 
                 if (!result.first) {
@@ -147,14 +149,13 @@ int rest_api(void)
         setCorsHeaders(res);
     });
 
-
-    svr.Get("/papers/:query/:level", [&](const Request &req, Response &res) {
+    svr.Get("/papers/:query/:level", [paper_response_json_path](const Request &req, Response &res) {
         auto query = req.path_params.at("query");
         auto levelStr = req.path_params.at("level");
 
         std::transform(query.begin(), query.end(), query.begin(), ::toupper);
 
-        std::filesystem::path json_file_path = std::filesystem::path("..") / ".." / ".." / "data" / "papers_data.json";
+        std::filesystem::path json_file_path = paper_response_json_path;
 
         if (!std::filesystem::exists(json_file_path)) {
             res.status = 404;
@@ -206,65 +207,7 @@ int rest_api(void)
     return 0;
 }
 
-int main(){
-
-    // // Example usage
-    // string jsonData = R"(
-    //     {
-    //         "Bachelor of Arts": {
-    //             "majors": [
-    //                 {
-    //                     "Anthropology": {
-    //                         "levels": {
-    //                             "100-level": {
-    //                                 "two_of_papers": [
-    //                                     "ANTH103",
-    //                                     "ANTH105",
-    //                                     "ANTH106"
-    //                                 ]
-    //                             },
-    //                             "200-level": {
-    //                                 "one_of_papers": [
-    //                                     "ANTH203",
-    //                                     "ANTH204"                                    
-    //                                 ],
-    //                                 "two_of_papers": [
-    //                                     "ANTH203",
-    //                                     "ANTH204"                                    
-    //                                 ]
-    //                             },
-    //                             "300-level": {
-    //                                 "four_of_papers": [
-    //                                     "ANTH310",
-    //                                     "ANTH312"                                   
-    //                                 ]
-    //                             }
-    //                         },
-    //                         "remaining_points": 198,
-    //                         "points_at_200-level": 54
-    //                     }
-    //                 }
-    //             ]
-    //         }
-    //     }
-    // )";
-
-    // vector<string> completedPapers = {"ANTH103", "ANTH203", "ANTH310"};
-
-    // DegreeRequirements degree(jsonData);
-
-    // std::pair<bool, std::string> result = degree.checkRequirements(completedPapers);
-
-    // bool requirementsMet = result.first;
-    // std::string feedback = result.second;
-
-    // if (requirementsMet) {
-    //     std::cout << "Requirements met!" << std::endl;
-    // } else {
-    //     std::cout << "Requirements not met: " + feedback << std::endl;
-    // }
-
+int main() {
     rest_api();
-
     return 0;
 }
