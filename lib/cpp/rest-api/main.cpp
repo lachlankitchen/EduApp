@@ -59,7 +59,7 @@ int rest_api(void)
         setCorsHeaders(res);
     });
 
-    svr.Get("/:degree/:major/papers/:levelInt", [&](const Request &req, Response &res) {
+    svr.Get("/:degree/:major/papers/:level", [&](const Request &req, Response &res) {
         auto degree = req.path_params.at("degree");
         auto major = req.path_params.at("major");
         auto levelInt = req.path_params.at("level");
