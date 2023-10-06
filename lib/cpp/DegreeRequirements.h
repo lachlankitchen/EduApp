@@ -1,28 +1,34 @@
-// DegreeRequirements.h
+#pragma once
 
-#ifndef DEGREE_REQUIREMENTS_H
-#define DEGREE_REQUIREMENTS_H
-
-#include <nlohmann/json.hpp>
 #include <string>
-#include <unordered_set>
 #include <vector>
+#include <unordered_set>
+#include <nlohmann/json.hpp>
 
-using namespace std;
-
-class DegreeRequirements
+class DegreeRequirements 
 {
-private:
-    nlohmann::json majorData;
-
 public:
     // Constructor
     DegreeRequirements(const std::string &jsonData);
 
-    // Public member function
-    std::pair<bool, std::string> checkRequirements(const std::vector<std::string> &completedPapers);
+    /**
+     * Check the degree requirements for the completed papers.
+     * @param completedPapers A vector containing the names of completed papers.
+     * @return A JSON object detailing unmet requirements for each major.
+     */
+    nlohmann::json checkRequirements(const std::vector<std::string> &completedPapers);
 
-    std::string checkSingleMajor(const nlohmann::json &majorData, const std::unordered_set<std::string> &completedSet);
+private:
+    /**
+     * Check the degree requirements for a single major.
+     * @param majorData A JSON object containing the major's requirements.
+     * @param completedSet A set containing the names of completed papers.
+     * @return A JSON object detailing the unmet requirements for the major.
+     */
+    nlohmann::json checkSingleMajor(const nlohmann::json &majorData, const std::unordered_set<std::string> &completedSet);
+
+    std::string intToWord(int num);
+
+    // Member variables (assuming a member for storing the degree data)
+    nlohmann::json degreeData;
 };
-
-#endif // DEGREE_REQUIREMENTS_H

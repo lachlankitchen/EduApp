@@ -90,11 +90,21 @@ class DisplayPathway extends StatelessWidget {
                       ),
                       buildPapersByLevel(selectedPapers), // Use the helper function
                       const SizedBox(height: 10),
-                      const Text(
-                        'Remaining Compulsory Papers(s):',
-                        style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-                      ),
-                      buildPapersByLevel(remainingPapers), // Use the helper function
+                      // const Text(
+                      //   'Remaining Compulsory Papers(s):',
+                      //   style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                      // ),
+                      // buildPapersByLevel(remainingPapers), // Use the helper function
+                      if (pathway[index].requirements.isNotEmpty)
+                        const SizedBox(height: 10),
+                        const Text(
+                          'Remaining Requirements:',
+                            style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 16.0),
+                          child: Text(pathway[index].requirements),
+                        ),
                       if (pathway[index].remainingPoints != 0)
                         const SizedBox(height: 10),
                         const Text(

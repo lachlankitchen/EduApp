@@ -19,7 +19,7 @@ import '../pathway/pathway_state.dart';
       // Now you have the degrees from the server, use them to navigate to the next screen
     } catch (error) {
       // Handle error, perhaps show a dialog to the user
-      print('Error fetching degrees: $error');
+      // print('Error fetching degrees: $error');
       return; // Early return to exit the function if fetching degrees fails
     }
 
@@ -55,7 +55,7 @@ import '../pathway/pathway_state.dart';
       // Now you have the degrees from the server, use them to navigate to the next screen
     } catch (error) {
       // Handle error, perhaps show a dialog to the user
-      print('Error fetching majors: $error');
+      // print('Error fetching majors: $error');
       return; // Early return to exit the function if fetching degrees fails
     }
 
@@ -86,7 +86,7 @@ import '../pathway/pathway_state.dart';
       jsonRecommendedData = await fetchRecommendedPapers(degree, major, level); // TODO: Make dynamic
     } catch (error) {
       // Handle error, perhaps show a dialog to the user
-      print('Error fetching recommended papers: $error');
+      // print('Error fetching recommended papers: $error');
       return; // Early return to exit the function if fetching degrees fails
     }
 

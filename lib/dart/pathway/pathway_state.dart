@@ -22,6 +22,7 @@ class PathwayState extends ChangeNotifier {
     '200-level': [],
     '300-level': [],
   };  // Categorize papers by level
+  String requirements = "";
   int remainingPoints = 0;
   double gpa = -1;
 
@@ -111,6 +112,7 @@ class PathwayState extends ChangeNotifier {
 
   void addRemainingPoints(int remainingPoints) {
     this.remainingPoints = remainingPoints;
+    notifyListeners();
   }
 
   /// Saves the current state as a pathway.
@@ -125,6 +127,7 @@ class PathwayState extends ChangeNotifier {
       selectedPapers: selectedPapers,
       remainingPapers: remainingPapers,
       remainingPoints: remainingPoints,
+      requirements: requirements,
       gpa: gpa,
       isSelected: false,
     );
@@ -162,5 +165,10 @@ class PathwayState extends ChangeNotifier {
       return '300-level';
     }
     throw ArgumentError('Invalid level: $level');
+  }
+
+  void addRequirements(String message) {
+    requirements = message;
+    notifyListeners();
   }
 }

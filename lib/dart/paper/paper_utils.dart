@@ -63,22 +63,23 @@ import '../major/major.dart';
   Future<String> postPaperData(Degree degree, Major major, List<Paper> papersList) async {
 
     List<Map<String, dynamic>> jsonPapers = papersListToJson(papersList); 
-    String papersString = jsonEncode(jsonPapers);
-
-    print('http://localhost:1234/${degree.title}/${major.name}/$papersString');
     
-    final response = await http.get(Uri.parse('http://localhost:1234/${degree.title}/${major.name}/$papersString'));
+    Uri url = Uri.parse('http://localhost:1234/${degree.title}/${major.name}/$jsonPapers');
+    final response = await http.get(url);
+
+    // Uri url = Uri.parse('http://localhost:1234/${degree.title}/${major.name}/papers');
     // final response = await http.post(
     //   url,
     //   headers: {
     //     'Content-Type': 'application/json',
     //   },
-    //   body: jsonEncode(jsonPapers), // Replace with your request body
+    //   body: jsonPapers,
     // );
-    
+
     if (response.statusCode == 200) {
       return response.body;
     } else {
+      // print('Error: ${response.statusCode}');
       // If the server did not return a 200 OK response, throw an exception.
       throw Exception('Failed to validate major requirements');
     }

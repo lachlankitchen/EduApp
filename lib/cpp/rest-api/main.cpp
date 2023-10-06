@@ -80,17 +80,14 @@ int rest_api(void)
         auto degree = req.path_params.at("degree");
         auto major = req.path_params.at("major");
         auto papers_string = req.path_params.at("papers");
+        // std::string papers_string = req.body;
 
-        
-        // @CONNOR this is the final change before it will all work
-        std::cout << papers_string << std::endl;
         std::vector<std::string> papers;
         std::stringstream ss(papers_string);
         std::string paper;
         while (std::getline(ss, paper, ',')) {
             papers.push_back(paper);
         }
-        // Code below is all good
 
         std::filesystem::path json_file_path = std::filesystem::path("..") / ".." / ".." / "data" / "majorRequirements.json";
 
@@ -108,31 +105,31 @@ int rest_api(void)
         std::string jsonString = json_obj.dump(); 
 
         if (!jsonString.empty()) {
-            std::string aggregateFeedback = "";
+            std::string aggregateFeedback;
             bool allRequirementsMet = true;
 
             std::string jsonMajor = json_obj[major].dump(); 
             if (!jsonMajor.empty()) {
                 DegreeRequirements degreeReqs(jsonMajor);
             
-                std::pair<bool, std::string> result = degreeReqs.checkRequirements(papers);
+                nlohmann::json result = degreeReqs.checkRequirements(papers);
 
-                if (!result.first) {
+                // Check if result is empty
+                if (!result.empty()) {
                     allRequirementsMet = false;
                 }
-                aggregateFeedback += major + ": " + result.second + "\n";
-                std::cout << aggregateFeedback << std::endl;
 
+                aggregateFeedback = result[0].dump();
             } else {
-                aggregateFeedback += major + ": Major data not found in the JSON.\n";
-                allRequirementsMet = false;
+                res.status = 400;
+                res.set_content("Could find find selected major", "text/plain");
             }
 
             if (allRequirementsMet) {
                 res.status = 200;
                 res.set_content("All requirements met for the majors!", "text/plain");
             } else {
-                res.status = 400;
+                res.status = 200;
                 res.set_content(aggregateFeedback, "text/plain");
             }
         } else {

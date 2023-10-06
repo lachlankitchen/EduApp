@@ -125,7 +125,7 @@
                 ]
             }
         },
-        "remaining_points": 198,
+        "further_points": 198,
         "points_at_200-level": 54
     },
     "Asian Studies": {
@@ -283,7 +283,7 @@
                 ]
             }
         },
-        "remaining_points": 198,
+        "further_points": 198,
         "points_at_200-level": 54
     },
     "Chinese": {
@@ -343,7 +343,7 @@
                 ]
             }
         },
-        "remaining_points": 180,
+        "further_points": 180,
         "points_at_200-level": 54
     },
     "Christian Thought and History": {
@@ -413,7 +413,7 @@
                 ]
             }
         },
-        "remaining_points": 198,
+        "further_points": 198,
         "points_at_200-level": 54
     },
     "Classics (including Classical Studies, Greek and Latin)": {
@@ -435,7 +435,7 @@
                 ]
             }
         },
-        "remaining_points": 198,
+        "further_points": 198,
         "points_at_200-level": 54
     },
     "Communication Studies": {
@@ -491,7 +491,7 @@
                 ]
             }
         },
-        "remaining_points": 198,
+        "further_points": 198,
         "points_at_200-level": 54
     },
     "Computer Science": {
@@ -553,7 +553,7 @@
                 ]
             }
         },
-        "remaining_points": 144,
+        "further_points": 144,
         "points_at_200-level": 36
     },
     "Economics": {
@@ -598,7 +598,7 @@
                 ]
             }
         },
-        "remaining_points": 198,
+        "further_points": 198,
         "points_at_200-level": 54
     },
     "Education": {
@@ -632,7 +632,7 @@
                 ]
             }
         },
-        "remaining_points": 198,
+        "further_points": 198,
         "points_at_200-level": 54
     },
     "English": {
@@ -718,7 +718,7 @@
                 ]
             }
         },
-        "remaining_points": 198,
+        "further_points": 198,
         "points_at_200-level": 54
     },
     "English and Linguistics": {
@@ -815,7 +815,7 @@
                 ]
             }
         },
-        "remaining_points": 180,
+        "further_points": 180,
         "points_at_200-level": 36
     },
     "European Studies": {
@@ -934,7 +934,7 @@
                 ]
             }
         },
-        "remaining_points": 198,
+        "further_points": 198,
         "points_at_200-level": 54
     },
     "French": {
@@ -978,7 +978,7 @@
                 ]
             }
         },
-        "remaining_points": 180,
+        "further_points": 180,
         "points_at_200-level": 54
     },
     "Gender Studies": {
@@ -1051,7 +1051,7 @@
                 ]
             }
         },
-        "remaining_points": 198,
+        "further_points": 198,
         "points_at_200-level": 54
     },
     "Geography": {
@@ -1120,7 +1120,7 @@
                 ]
             }
         },
-        "remaining_points": 198,
+        "further_points": 198,
         "points_at_200-level": 54
     },
     "German": {
@@ -1161,7 +1161,7 @@
                 ]
             }
         },
-        "remaining_points": 162,
+        "further_points": 162,
         "points_at_200-level": 36
     },
     "Global Studies": {
@@ -1202,7 +1202,7 @@
                 ]
             }
         },
-        "remaining_points": 90
+        "further_points": 90
     },
     "History": {
         "levels": {
@@ -1255,7 +1255,7 @@
                 ]
             }
         },
-        "remaining_points": 198,
+        "further_points": 198,
         "points_at_200-level": 54
     },
     "Indigenous Studies": {
@@ -1338,7 +1338,7 @@
                 ]
             }
         },
-        "remaining_points": 162,
+        "further_points": 162,
         "points_at_200-level": 54
     },
     "Information Science": {
@@ -1377,7 +1377,7 @@
                 ]
             }
         },
-        "remaining_points": 180
+        "further_points": 180
     },
     "Japanese": {
         "levels": {
@@ -1429,7 +1429,7 @@
                 ]
             }
         },
-        "remaining_points": 198,
+        "further_points": 198,
         "points_at_200-level": 54
     },
     "Language and Linguistics": {
@@ -1469,7 +1469,7 @@
                 ]
             }
         },
-        "remaining_points": 162,
+        "further_points": 162,
         "points_at_200-level": 36
     },
     "Linguistics": {
@@ -1504,7 +1504,7 @@
                 ]
             }
         },
-        "remaining_points": 198,
+        "further_points": 198,
         "points_at_200-level": 54
     },
     "M\u0101ori Studies": {
@@ -1561,7 +1561,7 @@
                 ]
             }
         },
-        "remaining_points": 180,
+        "further_points": 180,
         "points_at_200-level": 54
     },
     "Mathematics": {
@@ -1594,7 +1594,7 @@
                 ]
             }
         },
-        "remaining_points": 18
+        "further_points": 18
     },
     "Music": {
         "levels": {
@@ -1616,7 +1616,7 @@
             },
             "Plus": {}
         },
-        "remaining_points": 198,
+        "further_points": 198,
         "points_at_200-level": 54
     },
     "Pacific Islands Studies": {
@@ -1775,7 +1775,7 @@
                 ]
             }
         },
-        "remaining_points": 198,
+        "further_points": 198,
         "points_at_200-level": 54
     },
     "Philosophy, Politics and Economics": {
@@ -1985,7 +1985,7 @@
                 ]
             }
         },
-        "remaining_points": 198,
+        "further_points": 198,
         "points_at_200-level": 54
     },
     "Psychology": {
@@ -2024,7 +2024,7 @@
                 ]
             }
         },
-        "remaining_points": 198
+        "further_points": 198
     },
     "Religious Studies": {
         "levels": {
@@ -2216,7 +2216,7 @@
                 ]
             }
         },
-        "remaining_points": 198,
+        "further_points": 198,
         "points_at_200-level": 54
     },
     "Spanish": {
@@ -2263,7 +2263,7 @@
                 ]
             }
         },
-        "remaining_points": 180,
+        "further_points": 180,
         "points_at_200-level": 54
     },
     "Sport Development and Management": {
@@ -2291,7 +2291,7 @@
                 ]
             }
         },
-        "remaining_points": 198
+        "further_points": 198
     },
     "Statistics": {
         "levels": {
@@ -2325,7 +2325,7 @@
                 ]
             }
         },
-        "remaining_points": 162,
+        "further_points": 162,
         "points_at_200-level": 36
     },
     "Theatre Studies": {
@@ -2371,7 +2371,7 @@
                 ]
             }
         },
-        "remaining_points": 180,
+        "further_points": 180,
         "points_at_200-level": 54
     },
     "Tourism, Languages and Cultures": {
@@ -2399,6 +2399,6 @@
                 ]
             }
         },
-        "remaining_points": 234
+        "further_points": 234
     }
 }

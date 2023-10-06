@@ -22,7 +22,7 @@ class SearchPaperState with ChangeNotifier {
       jsonData = await fetchMatchingPapers(query, level); // TODO: Make dynamic
     } catch (error) {
       // Handle error, perhaps show a dialog to the user
-      print('Error fetching matching elective papers: $error');
+      // print('Error fetching matching elective papers: $error');
       jsonData = '[]'; // Set jsonData to empty list if fetching papers fails
     }
 
@@ -152,47 +152,72 @@ class PapersListScreen extends StatelessWidget {
                 // Now you have the degrees from the server, use them to navigate to the next screen
               } catch (error) {
                 // Handle error, perhaps show a dialog to the user
-                print('Error fetching remaining major requirements: $error');
+                // print('Error fetching remaining major requirements: $error');
                 return; // Early return to exit the function if fetching degrees fails
               }
 
-              final jsonMap = json.decode(jsonData);
+              // Decode the JSON data
+              final Map<String, dynamic> jsonResponse = jsonDecode(jsonData.toString());
 
-              Map<String, dynamic> jsonDataMap = jsonDecode(jsonData.toString());
-
-              // Check if there are remaining compulsory papers
-              bool hasRemainingPapers = jsonDataMap.containsKey("remaining_compulsory_papers");
-
-              // Check if there are remaining points
-              bool hasRemainingPoints = jsonDataMap.containsKey("remaining_points");
-
-              List<dynamic> remainingPapersList = [];
-              List<Paper> remainingPapers = [];
-
-              // Display the remaining requirements
+              // Initialize the message to display the remaining requirements
               String message = "Remaining Requirements:\n";
 
-              if (hasRemainingPapers) {
-                remainingPapersList = jsonDataMap["remaining_compulsory_papers"];
-                for (var paperEntry in remainingPapersList) {
-                  MapEntry<String, dynamic> paper = paperEntry.entries.first;
-                  String paperCode = paper.key;
-                  String paperTitle = paper.value["title"];
-                  final teachingPeriods = (paper.value['teaching_periods'] as List<dynamic>)
-                    ?.map<String>((period) => period.toString())
-                    ?.toList() ?? []; // Provide a default value if needed
+              // Check if jsonResponse contains the key "remaining_compulsory_papers"
+              if (jsonResponse.containsKey("remaining_compulsory_papers")) {
+                List<dynamic> remainingPapersList = jsonResponse["remaining_compulsory_papers"];
 
-                  Paper remainingPaper = Paper.withName(papercode: paperCode, title: paper.value["title"], teachingPeriods: teachingPeriods, points: paper.value["points"]);
-                  remainingPapers.add(remainingPaper);
-                  message += "$paperCode: $paperTitle\n";
+                for (var paperCode in remainingPapersList) {
+                    // For simplicity, we only display the paper codes in the message.
+                    // If more information about each paper was provided in the JSON, 
+                    // you could expand this to show titles, teaching periods, etc.
+                    message += "$paperCode\n";
                 }
+
               }
 
-              int remainingPoints = 0;
-              if (hasRemainingPoints) {
-                remainingPoints = jsonDataMap["remaining_points"];
-                message += "Remaining Points: $remainingPoints";
+              // Check if jsonResponse contains the key "remaining_points"
+              if (jsonResponse.containsKey("remaining_points")) {
+                int remainingPoints = jsonResponse["remaining_points"];
+                message += "Remaining Points: $remainingPoints\n";
               }
+                
+              // final jsonMap = json.decode(jsonData);
+
+              // Map<String, dynamic> jsonDataMap = jsonDecode(jsonData.toString());
+
+              // // Check if there are remaining compulsory papers
+              // bool hasRemainingPapers = jsonDataMap.containsKey("remaining_compulsory_papers");
+
+              // // Check if there are remaining points
+              // bool hasRemainingPoints = jsonDataMap.containsKey("remaining_points");
+
+              // List<dynamic> remainingPapersList = [];
+              // List<Paper> remainingPapers = [];
+
+              // // Display the remaining requirements
+              // String message = "Remaining Requirements:\n";
+
+              // if (hasRemainingPapers) {
+              //   remainingPapersList = jsonDataMap["remaining_compulsory_papers"];
+              //   for (var paperEntry in remainingPapersList) {
+              //     MapEntry<String, dynamic> paper = paperEntry.entries.first;
+              //     String paperCode = paper.key;
+              //     String paperTitle = paper.value["title"];
+              //     final teachingPeriods = (paper.value['teaching_periods'] as List<dynamic>)
+              //       ?.map<String>((period) => period.toString())
+              //       ?.toList() ?? []; // Provide a default value if needed
+
+              //     Paper remainingPaper = Paper.withName(papercode: paperCode, title: paper.value["title"], teachingPeriods: teachingPeriods, points: paper.value["points"]);
+              //     remainingPapers.add(remainingPaper);
+              //     message += "$paperCode: $paperTitle\n";
+              //   }
+              // }
+
+              // int remainingPoints = 0;
+              // if (hasRemainingPoints) {
+              //   remainingPoints = jsonDataMap["remaining_points"];
+              //   message += "Remaining Points: $remainingPoints";
+              // }
 
               // Display the message to the user
               ScaffoldMessenger.of(context).showSnackBar(
@@ -203,8 +228,11 @@ class PapersListScreen extends StatelessWidget {
             
               pathwayState.addMajor(major);
               pathwayState.addSelectedPapers(selectedPapers);
-              pathwayState.addRemainingPapers(remainingPapers);
-              pathwayState.addRemainingPoints(remainingPoints);
+              pathwayState.addSelectedPapers(selectedPapers);
+              pathwayState.addRequirements(message);
+
+              // pathwayState.addRemainingPapers(remainingPapers);
+              // pathwayState.addRemainingPoints(remainingPoints);
               pathwayState.savePathway();
 
               Navigator.pushReplacement(
@@ -243,7 +271,7 @@ class PapersListScreen extends StatelessWidget {
                   jsonRecommendedData = await fetchRecommendedPapers(degree, major, nextlevel); // TODO: Make dynamic
                 } catch (error) {
                   // Handle error, perhaps show a dialog to the user
-                  print('Error fetching papers: $error');
+                  // print('Error fetching papers: $error');
                   return; // Early return to exit the function if fetching degrees fails
                 }
 
@@ -282,7 +310,7 @@ class PapersListScreen extends StatelessWidget {
                     // Now you have the degrees from the server, use them to navigate to the next screen
                   } catch (error) {
                     // Handle error, perhaps show a dialog to the user
-                    print('Error fetching majors: $error');
+                    // print('Error fetching majors: $error');
                     return; // Early return to exit the function if fetching degrees fails
                   }
             
