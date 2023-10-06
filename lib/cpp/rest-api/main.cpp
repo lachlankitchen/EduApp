@@ -3,6 +3,11 @@
 #include <filesystem>
 #include <fstream>
 
+void setCorsHeaders(httplib::Response &res) {
+    res.set_header("Access-Control-Allow-Origin", "*");
+    res.set_header("Access-Control-Allow-Headers", "X-Requested-With, Content-Type");
+}
+
 int main(void)
 {
   using namespace httplib;
@@ -63,25 +68,26 @@ int main(void)
 
 
   svr.Get("/:degree/:major/papers/:level", [&](const Request &req, Response &res) {
-    std::filesystem::path json_file_path = std::filesystem::path("..") / ".." / ".." / "data" / "responseData.json";
+        auto degree = req.path_params.at("degree");
+        auto major = req.path_params.at("major");
+        auto levelInt = req.path_params.at("level");
+        std::string level = levelInt + "-level";
+        std::filesystem::path json_file_path = std::filesystem::path("..") / ".." / ".." / "data" / "output_file.json";
 
-    if (!std::filesystem::exists(json_file_path)) {
-        res.status = 404;
-        res.set_content("File not found", "text/plain");
-        std::cout << "File not found at specified path.\n";
-        return;
-    }
+        if (!std::filesystem::exists(json_file_path)) {
+            res.status = 404;
+            res.set_content("File not found", "text/plain");
+            std::cout << "File not found at specified path.\n";
+            return;
+        }
 
-    std::ifstream json_file(json_file_path);
-    std::string json_content((std::istreambuf_iterator<char>(json_file)),
-                            std::istreambuf_iterator<char>());
-
-    res.set_header("Access-Control-Allow-Origin", "*");
-    res.set_header("Access-Control-Allow-Headers", "X-Requested-With, Content-Type");
-    res.set_content(json_content, "application/json");
-
-    std::cout << "Successfully served the JSON file.\n"; 
-  });
+        std::ifstream json_file(json_file_path);
+        nlohmann::json json_obj;
+        json_file >> json_obj;
+        res.set_content(json_obj[degree][major][level].dump(), "application/json");
+        
+        setCorsHeaders(res);
+    });
 
 
   svr.Post("/:degree/:major", [&](const Request &req, Response &res)
