@@ -31,6 +31,7 @@ import '../major/major.dart';
 
   Future<String> fetchRecommendedPapers(Degree degree, Major major, int level) async {
     final response = await http.get(Uri.parse('http://localhost:1234/${degree.title}/${major.name}/papers/$level'));
+    print(response.body);
 
     if (response.statusCode == 200) {
       return response.body;
