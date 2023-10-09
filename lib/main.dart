@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'dart/pathway/pathway_state.dart'; // Import the state management class
 import 'dart/home/home.dart';
 import 'dart/navigation/navigation_provider.dart';
+import 'dart/paper/paper_list.dart';
 
 void main() {
   runApp(
@@ -10,6 +11,8 @@ void main() {
       providers: [
         ChangeNotifierProvider(create: (context) => NavigationProvider()),
         ChangeNotifierProvider(create: (context) => PathwayState()),
+        ChangeNotifierProvider(create: (context) => SearchPaperState()),
+
       ],
       child: const EduApp(),
     ),
