@@ -12,10 +12,10 @@ import '../pathway/pathway_state.dart';
 
    /// Opens the degrees list screen.
   void navigateToDegreesListScreen(BuildContext context) async {
-    List<String> degreesList;
+    List<String> jsonData;
 
     try {
-      degreesList = await fetchDegrees();
+      jsonData = await fetchDegrees();
       // Now you have the degrees from the server, use them to navigate to the next screen
     } catch (error) {
       // Handle error, perhaps show a dialog to the user
@@ -23,7 +23,7 @@ import '../pathway/pathway_state.dart';
       return; // Early return to exit the function if fetching degrees fails
     }
 
-    List<Degree> degrees = Degree.fromJsonList(degreesList);
+    List<Degree> degrees = Degree.fromJsonList(jsonData);
 
     Navigator.push(
       context,
@@ -75,27 +75,24 @@ import '../pathway/pathway_state.dart';
   /// [context]: The build context for navigation.
   /// [state]: The state containing pathway information.
   /// [selectedMajors]: The list of selected majors.
-  Future<void> navigateToPapersListScreen(BuildContext context, Degree degree, Major major) async {
+  Future<void> navigateToPapersListScreen(BuildContext context, Degree degree, Major major, int level) async {
       final state = Provider.of<PathwayState>(context, listen: false);
 
-      int level = 100;
+      String jsonData;
+      try {
+        jsonData = await fetchRecommendedPapers(degree, major, level);
+      } catch (error) {
+        // Handle error, perhaps show a dialog to the user
+        print('Error fetching recommended papers: $error');
+        return; // Early return to exit the function if fetching degrees fails
+      }
 
-    String jsonRecommendedData;
-    List<String> jsonPaperData;
-    try {
-      jsonRecommendedData = await fetchRecommendedPapers(degree, major, level); // TODO: Make dynamic
-    } catch (error) {
-      // Handle error, perhaps show a dialog to the user
-      print('Error fetching recommended papers: $error');
-      return; // Early return to exit the function if fetching degrees fails
-    }
-
-      List<Paper> recommendedPapers = parseJsonPapers(jsonRecommendedData);
+      List<Paper> recommendedPapers = parseJsonPapers(jsonData);
 
       Navigator.push(
         context,
         MaterialPageRoute(
-          builder: (context) => PapersListScreen(degree: degree, major: major, recommendedPapers: recommendedPapers, electivePapers: [], level: 100),
+          builder: (context) => PapersListScreen(degree: degree, major: major, recommendedPapers: recommendedPapers, electivePapers: [], level: level),
         ),
       );
   }

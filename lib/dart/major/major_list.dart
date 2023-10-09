@@ -62,7 +62,7 @@ class MajorListScreen extends StatelessWidget {
                             onChanged: (newValue) {
                               state.updateRadio(newValue);
                               Major selectedMajor = majors[index];
-                              navigateToPapersListScreen(context, degree, selectedMajor);
+                              navigateToPapersListScreen(context, degree, selectedMajor, 100);
                             },
                             fillColor: MaterialStateProperty.resolveWith<Color>(
                               (Set<MaterialState> states) {
