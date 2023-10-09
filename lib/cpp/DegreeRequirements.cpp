@@ -31,21 +31,21 @@ nlohmann::json DegreeRequirements::checkRequirements(const std::vector<std::stri
     return feedback;
 }
 
-nlohmann::json DegreeRequirements::checkSingleMajor(const nlohmann::json &majorData, const std::unordered_set<std::string> &completedSet) 
+nlohmann::json DegreeRequirements::checkSingleMajor(const nlohmann::json &majorRequirements, const std::unordered_set<std::string> &completedSet) 
 {
     nlohmann::json feedback;
 
     // std::cout << majorData << std::endl;
 
-    std::cout << majorData["levels"] << std::endl;
+    std::cout << majorRequirements["levels"] << std::endl;
 
     int completedElectivePoints = completedSet.size() * 18; // Start with all points being elective
     int completedCompulsoryPoints = 0; // Start with all points being elective
     int completedNOfPoints = 0; // Start with all points being elective
 
-    if (majorData.contains("levels")) 
+    if (majorRequirements.contains("levels")) 
     {
-        for (const auto &levelEntry : majorData["levels"].items()) 
+        for (const auto &levelEntry : majorRequirements["levels"].items()) 
         {
             const nlohmann::json &levelData = levelEntry.value();
 
@@ -95,25 +95,20 @@ nlohmann::json DegreeRequirements::checkSingleMajor(const nlohmann::json &majorD
     int completedPoints = completedSet.size() * 18;
     std::cout << "completedPoints: " << completedPoints << std::endl;
 
-    if (completedPoints < 360) 
+    bool hasFurtherPoints = majorRequirements.contains("further_points");
+    if (hasFurtherPoints) 
     {
-        feedback["remaining_points"] = 360 - completedPoints;
-    }
-
-    std::cout << "9" << std::endl;
-
-    if (majorData.contains("further_points")) 
-    {
-        int furtherPoints = majorData["further_points"];
+        int furtherPoints = majorRequirements["further_points"];
         int electivePoints = furtherPoints - completedElectivePoints;
-        feedback["remaining_points_at_200-level"] = furtherPoints;  // This needs to be adapted if 360 isn't the total points for the degree
+        feedback["further_points"] = furtherPoints;  // This needs to be adapted if 360 isn't the total points for the degree
     }
 
-    // if (majorData.contains("remaining_points")) 
-    // {
-    //     int remainingPoints = majorData["remaining_points_at_200-level"];
-    //     feedback["remaining_points_at_200-level"] = 360 - further_points;  // This needs to be adapted if 360 isn't the total points for the degree
-    // }
+    bool has200LvlPoints = majorRequirements.contains("points_at_200-level");
+    if (has200LvlPoints)     
+    {
+        int furtherPoints = majorRequirements["points_at_200-level"];
+        feedback["points_at_200-level"] = furtherPoints - completedElectivePoints;  // This needs to be adapted if 360 isn't the total points for the degree
+    }
 
     return feedback;
 }
