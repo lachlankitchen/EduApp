@@ -24,7 +24,6 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       bottomNavigationBar: const NavBar(),
       appBar: AppBar(
-        automaticallyImplyLeading: false,
         backgroundColor: const Color(0xFF10428C), // Set background color here
         title: const Text("Plan Your Degree"),
       ),

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import '../navigation/nav_bar.dart';
 
 class GradesScreen extends StatefulWidget {
-  const GradesScreen({Key? key}) : super(key: key);
+  GradesScreen({Key? key}) : super(key: key);
 
   @override
   _GradesScreenState createState() => _GradesScreenState();

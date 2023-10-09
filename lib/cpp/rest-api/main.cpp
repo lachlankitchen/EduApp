@@ -2,72 +2,64 @@
 #include <nlohmann/json.hpp>
 #include <filesystem>
 #include <fstream>
+#include "../DegreeRequirements.h"
+
+using namespace std;
 
 void setCorsHeaders(httplib::Response &res) {
     res.set_header("Access-Control-Allow-Origin", "*");
     res.set_header("Access-Control-Allow-Headers", "X-Requested-With, Content-Type");
 }
 
-int main(void)
+int rest_api(void)
 {
-  using namespace httplib;
+    using namespace httplib;
 
-  Server svr;
+    Server svr;
 
-  svr.Get("/degrees", [](const Request &req, Response &res)
-          {
-      std::filesystem::path json_file_path = std::filesystem::path("..") / ".." / ".." / "data" / "singleDegreesWithMajors.json";
-      // Use std::filesystem::path to construct the path, which handles separators
-      if (!std::filesystem::exists(json_file_path)) {
-          res.status = 404;
-          res.set_content("File not found", "text/plain");
-          std::cout << "File not found at specified path.\n";
-          return;
-      }
+    svr.Get("/degrees", [](const Request &req, Response &res) {
+        std::filesystem::path json_file_path = std::filesystem::path("..") / ".." / ".." / "data" / "singleDegreesWithMajors.json";
+        
+        if (!std::filesystem::exists(json_file_path)) {
+            res.status = 404;
+            res.set_content("File not found", "text/plain");
+            std::cout << "File not found at specified path.\n";
+            return;
+        }
 
-      std::ifstream json_file(json_file_path);
-      std::string json_content((std::istreambuf_iterator<char>(json_file)),
-          std::istreambuf_iterator<char>());
+        std::ifstream json_file(json_file_path);
+        std::string json_content((std::istreambuf_iterator<char>(json_file)), std::istreambuf_iterator<char>());
+        
+        res.set_content(json_content, "application/json");
+        setCorsHeaders(res);
+    });
 
-      res.set_header("Access-Control-Allow-Origin", "*");
-      res.set_header("Access-Control-Allow-Headers", "X-Requested-With, Content-Type");
-      res.set_content(json_content, "application/json");
+    svr.Get("/:degree/majors", [&](const Request &req, Response &res) {
+        auto degree = req.path_params.at("degree");
+        std::filesystem::path json_file_path = std::filesystem::path("..") / ".." / ".." / "data" / "majors.json";
 
-       });// get degrees.
+        if (!std::filesystem::exists(json_file_path)) {
+            res.status = 404;
+            res.set_content("File not found", "text/plain");
+            std::cout << "File not found at specified path.\n";
+            return;
+        }
 
-  svr.Get("/:degree/majors", [&](const Request &req, Response &res)
-  {
-      auto degree = req.path_params.at("degree");
-      std::filesystem::path json_file_path = std::filesystem::path("..") / ".." / ".." / "data" / "majors.json";
+        std::ifstream json_file(json_file_path);
+        nlohmann::json json_obj;
+        json_file >> json_obj;
 
-      if (!std::filesystem::exists(json_file_path)) {
-          res.status = 404;
-          res.set_content("File not found", "text/plain");
-          std::cout << "File not found at specified path.\n";
-          return;
-      }
+        if (json_obj.contains(degree)) {
+            res.set_content(json_obj[degree].dump(), "application/json");
+        } else {
+            res.status = 404;
+            res.set_content("Degree not found", "text/plain");
+        }
+           
+        setCorsHeaders(res);
+    });
 
-      // Read the JSON file into a nlohmann::json object
-      std::ifstream json_file(json_file_path);
-      nlohmann::json json_obj;
-      json_file >> json_obj;
-
-      // Find the JSON object that matches the degree specified in the URL
-      if (json_obj.contains(degree)) {
-          // Set the response with the array of majors for the specified degree
-          res.set_content(json_obj[degree].dump(), "application/json");
-      } else {
-          // If the degree is not found in the JSON file, return a 404 error
-          res.status = 404;
-          res.set_content("Degree not found", "text/plain");
-      }
-
-      res.set_header("Access-Control-Allow-Origin", "*");
-      res.set_header("Access-Control-Allow-Headers", "X-Requested-With, Content-Type");
-  });
-
-
-  svr.Get("/:degree/:major/papers/:level", [&](const Request &req, Response &res) {
+    svr.Get("/:degree/:major/papers/:level", [&](const Request &req, Response &res) {
         auto degree = req.path_params.at("degree");
         auto major = req.path_params.at("major");
         auto levelInt = req.path_params.at("level");
@@ -85,105 +77,134 @@ int main(void)
         nlohmann::json json_obj;
         json_file >> json_obj;
         res.set_content(json_obj[degree][major][level].dump(), "application/json");
-        
+        setCorsHeaders(res);
+    });
+
+    svr.Get("/:degree/:major/:papers", [&](const Request &req, Response &res) {
+        auto degree = req.path_params.at("degree");
+        auto major = req.path_params.at("major");
+        auto papers_string = req.path_params.at("papers");
+        // std::string papers_string = req.body;
+
+        std::vector<std::string> papers;
+        std::stringstream ss(papers_string);
+        std::string paper;
+        while (std::getline(ss, paper, ',')) {
+            papers.push_back(paper);
+        }
+
+        std::filesystem::path json_file_path = std::filesystem::path("..") / ".." / ".." / "data" / "majorRequirements.json";
+
+        if (!std::filesystem::exists(json_file_path)) {
+            res.status = 404;
+            res.set_content("File not found", "text/plain");
+            std::cout << "File not found at specified path.\n";
+            return;
+        }
+
+        std::ifstream json_file(json_file_path);
+        nlohmann::json json_obj;
+        json_file >> json_obj;
+        // Convert the JSON object to its string representation
+        std::string jsonString = json_obj.dump(); 
+
+        if (!jsonString.empty()) {
+            std::string aggregateFeedback;
+            bool allRequirementsMet = true;
+
+            std::string jsonMajor = json_obj[major].dump(); 
+            if (!jsonMajor.empty()) {
+                DegreeRequirements degreeReqs(jsonMajor);
+            
+                nlohmann::json result = degreeReqs.checkRequirements(papers);
+
+                // Check if result is empty
+                if (!result.empty()) {
+                    allRequirementsMet = false;
+                }
+
+                aggregateFeedback = result[0].dump();
+            } else {
+                res.status = 400;
+                res.set_content("Could find find selected major", "text/plain");
+            }
+
+            if (allRequirementsMet) {
+                res.status = 200;
+                res.set_content("All requirements met for the majors!", "text/plain");
+            } else {
+                res.status = 200;
+                res.set_content(aggregateFeedback, "text/plain");
+            }
+        } else {
+            res.status = 404;
+            res.set_content("Major requirements data not found", "text/plain");
+        }
+
         setCorsHeaders(res);
     });
 
 
-  svr.Post("/:degree/:major", [&](const Request &req, Response &res)
-            {
-    auto degree = req.path_params.at("degree"); // TODO: @CONNOR Utilise when quering by major
-    auto major = req.path_params.at("major"); // TODO: @CONNOR Utilise when quering by major
+    svr.Get("/papers/:query/:level", [&](const Request &req, Response &res) {
+        auto query = req.path_params.at("query");
+        auto levelStr = req.path_params.at("level");
 
-    std::filesystem::path json_file_path = std::filesystem::path("..") / ".." / ".." / "data" / "paper_response.json";
+        std::transform(query.begin(), query.end(), query.begin(), ::toupper);
 
-    if (!std::filesystem::exists(json_file_path)) {
-        res.status = 404;
-        res.set_content("File not found", "text/plain");
-        std::cout << "File not found at specified path.\n";
-        return;
-    }
+        std::filesystem::path json_file_path = std::filesystem::path("..") / ".." / ".." / "data" / "papers_data.json";
 
-    std::ifstream json_file(json_file_path);
-    std::string json_content((std::istreambuf_iterator<char>(json_file)),
-                            std::istreambuf_iterator<char>());
-
-    res.set_header("Access-Control-Allow-Origin", "*");
-    res.set_header("Access-Control-Allow-Headers", "X-Requested-With, Content-Type");
-    res.set_content(json_content, "application/json");
-
-    std::cout << "Successfully served the JSON file.\n"; });
-
-  svr.Get("/papers/:query/:level", [&](const Request &req, Response &res) {
-    auto query = req.path_params.at("query");
-    auto levelStr = req.path_params.at("level");
-
-    std::transform(query.begin(), query.end(), query.begin(), ::toupper);
-
-    std::filesystem::path json_file_path = std::filesystem::path("..") / ".." / ".." / "data" / "papers_data.json";
-
-    if (!std::filesystem::exists(json_file_path)) {
-        res.status = 404;
-        res.set_content("File not found", "text/plain");
-        std::cout << "File not found at specified path.\n";
-        return;
-    }
-
-    // Parse the level from the request as an integer
-    int level = std::stoi(levelStr);
-
-    // Create a JSON object to store matching papers
-    nlohmann::json matching_papers;
-
-    // Read the JSON file into a nlohmann::json object
-    std::ifstream json_file(json_file_path);
-    nlohmann::json json_obj;
-    json_file >> json_obj;
-
-    // Iterate through the papers in the JSON object
-    for (const auto &paper : json_obj.items()) {
-        // Extract the last three characters from the paper key as the paper's level
-        std::string paperKey = paper.key();
-        std::string paperLevelStr = paperKey.substr(paperKey.size() - 3);
-
-        // Parse the paper's level as an integer
-        int paperLevel = std::stoi(paperLevelStr);
-
-        // Check if the paper key contains the query and the paper's level is within the specified range
-        if (paperKey.find(query) != std::string::npos && paperLevel >= level && paperLevel < level + 100) {
-            // Add the matching paper to the result JSON
-            matching_papers[paperKey] = paper.value();
+        if (!std::filesystem::exists(json_file_path)) {
+            res.status = 404;
+            res.set_content("File not found", "text/plain");
+            std::cout << "File not found at specified path.\n";
+            return;
         }
-    }
 
-    // Check if any matching papers were found
-    if (!matching_papers.empty()) {
-        // Set the response with the array of matching papers
-        res.set_content(matching_papers.dump(), "application/json");
-    } else {
-        // If no matching papers are found, return a 404 error
-        res.status = 404;
-        res.set_content("No matching papers found", "text/plain");
-    }
+        int level = std::stoi(levelStr);
+        nlohmann::json matching_papers;
 
-    res.set_header("Access-Control-Allow-Origin", "*");
-    res.set_header("Access-Control-Allow-Headers", "X-Requested-With, Content-Type");
-  });
+        std::ifstream json_file(json_file_path);
+        nlohmann::json json_obj;
+        json_file >> json_obj;
 
+        for (const auto &paper : json_obj.items()) {
+            std::string paperKey = paper.key();
+            std::string paperLevelStr = paperKey.substr(paperKey.size() - 3);
+            int paperLevel = std::stoi(paperLevelStr);
 
-  // Extract values from HTTP headers and URL query params
-  svr.Get("/body-header-param", [](const Request &req, Response &res)
-          {
-    if (req.has_header("Content-Length")) {
-      auto val = req.get_header_value("Content-Length");
-    }
-    if (req.has_param("key")) {
-      auto val = req.get_param_value("key");
-    }
-    res.set_content(req.body, "text/plain"); });
+            if (paperKey.find(query) != std::string::npos && paperLevel >= level && paperLevel < level + 100) {
+                matching_papers[paperKey] = paper.value();
+            }
+        }
 
-  svr.Get("/stop", [&](const Request &req, Response &res)
-          { svr.stop(); });
+        if (!matching_papers.empty()) {
+            res.set_content(matching_papers.dump(), "application/json");
+        } else {
+            res.status = 404;
+            res.set_content("No matching papers found", "text/plain");
+        }
 
-  svr.listen("localhost", 1234);
+        setCorsHeaders(res);
+    });
+
+    svr.Post("/body-header-param", [](const Request &req, Response &res) {
+        std::cout << req.body;
+
+        res.set_content(req.body, "text/plain");
+        setCorsHeaders(res);
+    });
+
+    svr.Get("/stop", [&](const Request &req, Response &res) {
+        svr.stop();
+    });
+
+    svr.listen("localhost", 1234);
+
+    return 0;
+}
+
+int main(){
+    rest_api();
+  
+    return 0;
 }

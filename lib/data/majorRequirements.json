@@ -1,0 +1,2404 @@
+{
+    "Anthropology": {
+        "levels": {
+            "100-level": {
+                "two_of_papers": [
+                    "ANTH103",
+                    "ANTH105",
+                    "ANTH106"
+                ]
+            },
+            "200-level": {
+                "one_of_papers": [
+                    "ANTH203",
+                    "ANTH204",
+                    "ANTH205",
+                    "ANTH206",
+                    "ANTH208",
+                    "ANTH209",
+                    "ANTH210",
+                    "ANTH211",
+                    "ANTH222",
+                    "ANTH223",
+                    "ANTH225",
+                    "ANTH228",
+                    "ANTH231",
+                    "BIOA201",
+                    "GEND201",
+                    "GEND205",
+                    "GEND206",
+                    "GEND207",
+                    "GEND208",
+                    "GEND209",
+                    "GEND210",
+                    "GEND234",
+                    "GEOG210",
+                    "GLBL211",
+                    "MUSI268",
+                    "SOCI201",
+                    "SOCI202",
+                    "SOCI203",
+                    "SOCI204",
+                    "SOCI205",
+                    "SOCI207",
+                    "SOCI208",
+                    "SOCI209",
+                    "SOCI211",
+                    "SOCI213"
+                ],
+                "two_of_papers": [
+                    "ANTH203",
+                    "ANTH204",
+                    "ANTH205",
+                    "ANTH206",
+                    "ANTH208",
+                    "ANTH209",
+                    "ANTH210",
+                    "ANTH211",
+                    "ANTH222",
+                    "ANTH223",
+                    "ANTH225",
+                    "ANTH228",
+                    "ANTH231",
+                    "BIOA201",
+                    "GEND201",
+                    "GEND205",
+                    "GEND206",
+                    "GEND207",
+                    "GEND208",
+                    "GEND209",
+                    "GEND210",
+                    "GEND234",
+                    "GEOG210",
+                    "GLBL211",
+                    "MUSI268",
+                    "SOCI201",
+                    "SOCI202",
+                    "SOCI203",
+                    "SOCI204",
+                    "SOCI205",
+                    "SOCI207",
+                    "SOCI208",
+                    "SOCI209",
+                    "SOCI211",
+                    "SOCI213"
+                ]
+            },
+            "300-level": {
+                "four_of_papers": [
+                    "ANTH310",
+                    "ANTH312",
+                    "ANTH317",
+                    "ANTH321",
+                    "ANTH322",
+                    "ANTH323",
+                    "ANTH324",
+                    "ANTH325",
+                    "ANTH326",
+                    "ANTH327",
+                    "ANTH328",
+                    "ANTH329",
+                    "ANTH330",
+                    "BIOA301",
+                    "GEND305",
+                    "GEND306",
+                    "GEND307",
+                    "GEND308",
+                    "GEND309",
+                    "GEND310",
+                    "GEND311",
+                    "GEND334",
+                    "GEOG381",
+                    "GLBL311",
+                    "MUSI368",
+                    "MUSI386",
+                    "SOCI301",
+                    "SOCI302",
+                    "SOCI304",
+                    "SOCI305",
+                    "SOCI306",
+                    "SOCI309",
+                    "SOCI310",
+                    "SOCI312",
+                    "SOCI313",
+                    "SOCI319"
+                ]
+            }
+        },
+        "further_points": 198,
+        "points_at_200-level": 54
+    },
+    "Asian Studies": {
+        "levels": {
+            "100-level": {
+                "compulsory_papers": [
+                    "ASIA 101"
+                ],
+                "one_of_papers": [
+                    "ASIA101",
+                    "MUSI140",
+                    "RELS102"
+                ]
+            },
+            "200-level": {
+                "compulsory_papers": [
+                    "ASIA 201"
+                ],
+                "one_of_papers": [
+                    "ANTH203",
+                    "ASIA201",
+                    "CHIN241",
+                    "CHIN242",
+                    "CHIN243",
+                    "CHIN244",
+                    "GLBL211",
+                    "JAPA242",
+                    "JAPA243",
+                    "JAPA244",
+                    "MUSI240",
+                    "MUSI268",
+                    "POLS234",
+                    "RELS202",
+                    "RELS209",
+                    "RELS216",
+                    "RELS220",
+                    "RELS226",
+                    "RELS227",
+                    "RELS236"
+                ]
+            },
+            "300-level": {
+                "compulsory_papers": [
+                    "ASIA 301"
+                ],
+                "one_of_papers": [
+                    "ASIA301",
+                    "CHIN342",
+                    "CHIN343",
+                    "CHIN344",
+                    "GLBL311",
+                    "JAPA342",
+                    "JAPA343",
+                    "JAPA344",
+                    "MANT348",
+                    "MUSI340",
+                    "MUSI368",
+                    "POLS318",
+                    "RELS302",
+                    "RELS309",
+                    "RELS316",
+                    "RELS320",
+                    "RELS326",
+                    "RELS327",
+                    "RELS336"
+                ],
+                "two_of_papers": [
+                    "ASIA301",
+                    "CHIN342",
+                    "CHIN343",
+                    "CHIN344",
+                    "GLBL311",
+                    "JAPA342",
+                    "JAPA343",
+                    "JAPA344",
+                    "MANT348",
+                    "MUSI340",
+                    "MUSI368",
+                    "POLS318",
+                    "RELS302",
+                    "RELS309",
+                    "RELS316",
+                    "RELS320",
+                    "RELS326",
+                    "RELS327",
+                    "RELS336"
+                ]
+            }
+        }
+    },
+    "Biblical Studies": {
+        "levels": {
+            "100-level": {
+                "compulsory_papers": [
+                    "BIBS 112",
+                    "BIBS 121"
+                ]
+            },
+            "200-level": {
+                "three_of_papers": [
+                    "BIBS211",
+                    "BIBS213",
+                    "BIBS215",
+                    "BIBS218",
+                    "BIBS221",
+                    "BIBS223",
+                    "BIBS224",
+                    "BIBS225",
+                    "BIBS226",
+                    "BIBS227",
+                    "CHTH206",
+                    "CHTH212",
+                    "CHTH213",
+                    "CHTH217",
+                    "CHTH218",
+                    "CHTH224",
+                    "CHTH231",
+                    "CHTH233",
+                    "CHTH235",
+                    "CHTH236",
+                    "CHTH237"
+                ]
+            },
+            "300-level": {
+                "four_of_papers": [
+                    "BIBS311",
+                    "BIBS313",
+                    "BIBS315",
+                    "BIBS317",
+                    "BIBS318",
+                    "BIBS321",
+                    "BIBS322",
+                    "BIBS323",
+                    "BIBS324",
+                    "BIBS325",
+                    "BIBS326",
+                    "BIBS327",
+                    "CHTH305",
+                    "CHTH306",
+                    "CHTH312",
+                    "CHTH313",
+                    "CHTH314",
+                    "CHTH317",
+                    "CHTH318",
+                    "CHTH319",
+                    "CHTH320",
+                    "CHTH322",
+                    "CHTH323",
+                    "CHTH324",
+                    "CHTH331",
+                    "CHTH333",
+                    "CHTH335",
+                    "CHTH336",
+                    "CHTH337"
+                ]
+            }
+        },
+        "further_points": 198,
+        "points_at_200-level": 54
+    },
+    "Chinese": {
+        "levels": {
+            "100-level": {
+                "two_of_papers": [
+                    "ASIA101",
+                    "CHIN131",
+                    "CHIN132",
+                    "GLBL101"
+                ],
+                "compulsory_papers": [
+                    "CHIN 132"
+                ],
+                "one_of_papers": [
+                    "ASIA101",
+                    "CHIN131",
+                    "CHIN132",
+                    "GLBL101"
+                ]
+            },
+            "200-level": {
+                "compulsory_papers": [
+                    "CHIN 231",
+                    "CHIN 232"
+                ],
+                "one_of_papers": [
+                    "ASIA201",
+                    "CHIN231",
+                    "CHIN232",
+                    "CHIN241",
+                    "CHIN242",
+                    "CHIN243",
+                    "CHIN244",
+                    "CHIN250",
+                    "GLBL201",
+                    "GLBL202",
+                    "GLBL211"
+                ]
+            },
+            "300-level": {
+                "compulsory_papers": [
+                    "CHIN 334",
+                    "CHIN 335"
+                ],
+                "two_of_papers": [
+                    "ASIA301",
+                    "CHIN334",
+                    "CHIN335",
+                    "CHIN342",
+                    "CHIN343",
+                    "CHIN344",
+                    "GLBL301",
+                    "GLBL302",
+                    "GLBL311",
+                    "POLS318"
+                ]
+            }
+        },
+        "further_points": 180,
+        "points_at_200-level": 54
+    },
+    "Christian Thought and History": {
+        "levels": {
+            "100-level": {
+                "compulsory_papers": [
+                    "CHTH 102",
+                    "CHTH 111"
+                ]
+            },
+            "200-level": {
+                "three_of_papers": [
+                    "BIBS211",
+                    "BIBS213",
+                    "BIBS215",
+                    "BIBS218",
+                    "BIBS221",
+                    "BIBS223",
+                    "BIBS224",
+                    "BIBS225",
+                    "BIBS226",
+                    "BIBS227",
+                    "CHTH206",
+                    "CHTH212",
+                    "CHTH213",
+                    "CHTH217",
+                    "CHTH218",
+                    "CHTH224",
+                    "CHTH231",
+                    "CHTH233",
+                    "CHTH235",
+                    "CHTH236",
+                    "CHTH237"
+                ]
+            },
+            "300-level": {
+                "four_of_papers": [
+                    "BIBS311",
+                    "BIBS313",
+                    "BIBS315",
+                    "BIBS317",
+                    "BIBS318",
+                    "BIBS321",
+                    "BIBS322",
+                    "BIBS323",
+                    "BIBS324",
+                    "BIBS325",
+                    "BIBS326",
+                    "BIBS327",
+                    "CHTH305",
+                    "CHTH306",
+                    "CHTH312",
+                    "CHTH313",
+                    "CHTH314",
+                    "CHTH317",
+                    "CHTH318",
+                    "CHTH319",
+                    "CHTH320",
+                    "CHTH322",
+                    "CHTH323",
+                    "CHTH324",
+                    "CHTH331",
+                    "CHTH333",
+                    "CHTH335",
+                    "CHTH336",
+                    "CHTH337"
+                ]
+            }
+        },
+        "further_points": 198,
+        "points_at_200-level": 54
+    },
+    "Classics (including Classical Studies, Greek and Latin)": {
+        "levels": {
+            "100-level": {
+                "compulsory_papers": [
+                    "CLAS, GREK or LATN",
+                    "ANAT 131"
+                ]
+            },
+            "200-level": {
+                "compulsory_papers": [
+                    "CLAS, GREK or LATN"
+                ]
+            },
+            "300-level": {
+                "compulsory_papers": [
+                    "CLAS, GREK or LATN"
+                ]
+            }
+        },
+        "further_points": 198,
+        "points_at_200-level": 54
+    },
+    "Communication Studies": {
+        "levels": {
+            "100-level": {
+                "compulsory_papers": [
+                    "MFCO 102",
+                    "MFCO 103"
+                ]
+            },
+            "200-level": {
+                "compulsory_papers": [
+                    "MFCO 202"
+                ],
+                "two_of_papers": [
+                    "GEND205",
+                    "MFCO201",
+                    "MFCO202",
+                    "MFCO203",
+                    "MFCO205",
+                    "MFCO210",
+                    "MFCO212",
+                    "MFCO213",
+                    "MFCO216",
+                    "MFCO217",
+                    "MFCO220",
+                    "MFCO222",
+                    "MFCO223",
+                    "MFCO224",
+                    "MFCO231",
+                    "MFCO242",
+                    "MFCO251"
+                ]
+            },
+            "300-level": {
+                "compulsory_papers": [
+                    "MFCO 303"
+                ],
+                "three_of_papers": [
+                    "GEND305",
+                    "MFCO301",
+                    "MFCO303",
+                    "MFCO312",
+                    "MFCO313",
+                    "MFCO314",
+                    "MFCO315",
+                    "MFCO316",
+                    "MFCO317",
+                    "MFCO318",
+                    "MFCO319",
+                    "MFCO330",
+                    "MFCO333"
+                ]
+            }
+        },
+        "further_points": 198,
+        "points_at_200-level": 54
+    },
+    "Computer Science": {
+        "levels": {
+            "100-level": {
+                "compulsory_papers": [
+                    "COMP 101",
+                    "COMP 161",
+                    "COMP 162"
+                ],
+                "one_of_papers": [
+                    "BSNS112",
+                    "COMO101",
+                    "COMP101",
+                    "COMP161",
+                    "COMP162",
+                    "FINC102",
+                    "MATH120",
+                    "MATH130",
+                    "MATH140",
+                    "STAT110",
+                    "STAT115"
+                ]
+            },
+            "200-level": {
+                "compulsory_papers": [
+                    "COSC 201",
+                    "COSC 202",
+                    "COSC 203",
+                    "COSC 204"
+                ]
+            },
+            "300-level": {
+                "one_of_papers": [
+                    "COSC301",
+                    "COSC312",
+                    "COSC326",
+                    "COSC341",
+                    "COSC342",
+                    "COSC343",
+                    "COSC344",
+                    "COSC345",
+                    "COSC349",
+                    "COSC360",
+                    "COSC385"
+                ],
+                "three_of_papers": [
+                    "COSC301",
+                    "COSC312",
+                    "COSC326",
+                    "COSC341",
+                    "COSC342",
+                    "COSC343",
+                    "COSC344",
+                    "COSC345",
+                    "COSC349",
+                    "COSC360",
+                    "COSC385"
+                ]
+            }
+        },
+        "further_points": 144,
+        "points_at_200-level": 36
+    },
+    "Economics": {
+        "levels": {
+            "100-level": {
+                "compulsory_papers": [
+                    "BSNS 113",
+                    "ECON 112"
+                ]
+            },
+            "200-level": {
+                "compulsory_papers": [
+                    "ECON 201",
+                    "ECON 202"
+                ],
+                "one_of_papers": [
+                    "ECON201",
+                    "ECON202",
+                    "ECON206",
+                    "ECON207",
+                    "ECON210",
+                    "ECON271"
+                ]
+            },
+            "300-level": {
+                "four_of_papers": [
+                    "ECON301",
+                    "ECON302",
+                    "ECON303",
+                    "ECON306",
+                    "ECON308",
+                    "ECON316",
+                    "ECON317",
+                    "ECON318",
+                    "ECON319",
+                    "ECON350",
+                    "ECON351",
+                    "ECON371",
+                    "ECON375",
+                    "ECON376",
+                    "ECON377"
+                ]
+            }
+        },
+        "further_points": 198,
+        "points_at_200-level": 54
+    },
+    "Education": {
+        "levels": {
+            "100-level": {
+                "compulsory_papers": [
+                    "EDUC 101",
+                    "EDUC 102"
+                ]
+            },
+            "200-level": {
+                "three_of_papers": [
+                    "EDUC211",
+                    "EDUC251",
+                    "EDUC252",
+                    "EDUC254",
+                    "EDUC259"
+                ]
+            },
+            "300-level": {
+                "four_of_papers": [
+                    "EDUC307",
+                    "EDUC308",
+                    "EDUC311",
+                    "EDUC312",
+                    "EDUC313",
+                    "EDUC318",
+                    "EDUC321",
+                    "EDUC331",
+                    "EDUC351"
+                ]
+            }
+        },
+        "further_points": 198,
+        "points_at_200-level": 54
+    },
+    "English": {
+        "levels": {
+            "100-level": {
+                "compulsory_papers": [
+                    "ENGL 121"
+                ],
+                "one_of_papers": [
+                    "ENGL120",
+                    "ENGL121",
+                    "ENGL127",
+                    "ENGL128",
+                    "ENGL131",
+                    "LING111"
+                ]
+            },
+            "200-level": {
+                "three_of_papers": [
+                    "DHUM201",
+                    "ENGL216",
+                    "ENGL217",
+                    "ENGL218",
+                    "ENGL219",
+                    "ENGL220",
+                    "ENGL222",
+                    "ENGL223",
+                    "ENGL227",
+                    "ENGL228",
+                    "ENGL233",
+                    "ENGL241",
+                    "ENGL242",
+                    "ENGL243",
+                    "ENGL251",
+                    "ENGL254",
+                    "EURO202"
+                ],
+                "one_of_papers": [
+                    "DHUM201",
+                    "ENGL216",
+                    "ENGL217",
+                    "ENGL218",
+                    "ENGL219",
+                    "ENGL220",
+                    "ENGL222",
+                    "ENGL223",
+                    "ENGL227",
+                    "ENGL228",
+                    "ENGL233",
+                    "ENGL241",
+                    "ENGL242",
+                    "ENGL243",
+                    "ENGL251",
+                    "ENGL254",
+                    "EURO202"
+                ]
+            },
+            "300-level": {
+                "four_of_papers": [
+                    "ENGL311",
+                    "ENGL312",
+                    "ENGL313",
+                    "ENGL319",
+                    "ENGL320",
+                    "ENGL323",
+                    "ENGL327",
+                    "ENGL332",
+                    "ENGL334",
+                    "ENGL335",
+                    "ENGL337",
+                    "ENGL340",
+                    "ENGL341",
+                    "ENGL342",
+                    "ENGL350",
+                    "ENGL351",
+                    "ENGL353",
+                    "ENGL354",
+                    "ENGL368",
+                    "EURO302"
+                ],
+                "compulsory_papers": [
+                    "EURO 302"
+                ]
+            }
+        },
+        "further_points": 198,
+        "points_at_200-level": 54
+    },
+    "English and Linguistics": {
+        "levels": {
+            "100-level": {
+                "compulsory_papers": [
+                    "LING 111"
+                ],
+                "one_of_papers": [
+                    "ENGL120",
+                    "ENGL121",
+                    "ENGL127",
+                    "ENGL128",
+                    "ENGL131",
+                    "LING111"
+                ]
+            },
+            "200-level": {
+                "compulsory_papers": [
+                    "LING 217",
+                    "DHUM 201"
+                ],
+                "two_of_papers": [
+                    "DHUM201",
+                    "ENGL216",
+                    "ENGL217",
+                    "ENGL218",
+                    "ENGL219",
+                    "ENGL220",
+                    "ENGL222",
+                    "ENGL223",
+                    "ENGL227",
+                    "ENGL228",
+                    "ENGL233",
+                    "ENGL241",
+                    "ENGL242",
+                    "ENGL243",
+                    "ENGL251",
+                    "ENGL254",
+                    "LING217",
+                    "LING230",
+                    "LING231"
+                ],
+                "one_of_papers": [
+                    "DHUM201",
+                    "ENGL216",
+                    "ENGL217",
+                    "ENGL218",
+                    "ENGL219",
+                    "ENGL220",
+                    "ENGL222",
+                    "ENGL223",
+                    "ENGL227",
+                    "ENGL228",
+                    "ENGL233",
+                    "ENGL241",
+                    "ENGL242",
+                    "ENGL243",
+                    "ENGL251",
+                    "ENGL254",
+                    "LING217",
+                    "LING230",
+                    "LING231"
+                ]
+            },
+            "300-level": {
+                "two_of_papers": [
+                    "ENGL311",
+                    "ENGL312",
+                    "ENGL313",
+                    "ENGL319",
+                    "ENGL320",
+                    "ENGL323",
+                    "ENGL327",
+                    "ENGL332",
+                    "ENGL334",
+                    "ENGL335",
+                    "ENGL337",
+                    "ENGL340",
+                    "ENGL341",
+                    "ENGL342",
+                    "ENGL350",
+                    "ENGL351",
+                    "ENGL353",
+                    "ENGL354",
+                    "ENGL368",
+                    "LING314",
+                    "LING317",
+                    "LING330",
+                    "LING331",
+                    "LING332",
+                    "LING342",
+                    "LING390"
+                ]
+            }
+        },
+        "further_points": 180,
+        "points_at_200-level": 36
+    },
+    "European Studies": {
+        "levels": {
+            "100-level": {
+                "compulsory_papers": [
+                    "EURO 101",
+                    "HIST 108"
+                ],
+                "one_of_papers": []
+            },
+            "200-level": {
+                "compulsory_papers": [
+                    "EURO 202"
+                ],
+                "one_of_papers": [
+                    "CLAS238",
+                    "ENGL218",
+                    "EURO202",
+                    "FREN250",
+                    "HIST223",
+                    "HIST225",
+                    "MUSI223",
+                    "MUSI261",
+                    "PHIL227",
+                    "PHIL228",
+                    "PHIL230",
+                    "POLS216",
+                    "SPAN243"
+                ]
+            },
+            "300-level": {
+                "compulsory_papers": [
+                    "EURO 304"
+                ],
+                "one_of_papers": [
+                    "CLAS343",
+                    "ENGL311",
+                    "ENGL312",
+                    "ENGL313",
+                    "ENGL319",
+                    "ENGL335",
+                    "EURO304",
+                    "FREN341",
+                    "FREN350",
+                    "GERM341",
+                    "HIST325",
+                    "MFCO314",
+                    "MFCO316",
+                    "MUSI323",
+                    "MUSI361",
+                    "POLS301",
+                    "POLS310",
+                    "POLS312",
+                    "POLS315",
+                    "POLS325",
+                    "SPAN342",
+                    "SPAN343"
+                ]
+            }
+        }
+    },
+    "Film and Media Studies": {
+        "levels": {
+            "100-level": {
+                "compulsory_papers": [
+                    "MFCO 101",
+                    "MFCO 102"
+                ]
+            },
+            "200-level": {
+                "compulsory_papers": [
+                    "MFCO 210"
+                ],
+                "two_of_papers": [
+                    "ASIA201",
+                    "CHIN242",
+                    "GEND205",
+                    "MFCO201",
+                    "MFCO202",
+                    "MFCO203",
+                    "MFCO205",
+                    "MFCO210",
+                    "MFCO212",
+                    "MFCO213",
+                    "MFCO216",
+                    "MFCO217",
+                    "MFCO220",
+                    "MFCO222",
+                    "MFCO223",
+                    "MFCO224",
+                    "MFCO231",
+                    "MFCO242",
+                    "MFCO251"
+                ]
+            },
+            "300-level": {
+                "compulsory_papers": [
+                    "MFCO 301"
+                ],
+                "three_of_papers": [
+                    "CHIN342",
+                    "GEND305",
+                    "MFCO301",
+                    "MFCO303",
+                    "MFCO312",
+                    "MFCO313",
+                    "MFCO314",
+                    "MFCO315",
+                    "MFCO316",
+                    "MFCO317",
+                    "MFCO318",
+                    "MFCO319",
+                    "MFCO330",
+                    "MFCO333"
+                ]
+            }
+        },
+        "further_points": 198,
+        "points_at_200-level": 54
+    },
+    "French": {
+        "levels": {
+            "100-level": {
+                "compulsory_papers": [
+                    "FREN 131",
+                    "FREN 132",
+                    "GLBL 101"
+                ]
+            },
+            "200-level": {
+                "compulsory_papers": [
+                    "FREN 232",
+                    "FREN 233"
+                ],
+                "one_of_papers": [
+                    "EURO202",
+                    "FREN232",
+                    "FREN233",
+                    "FREN250",
+                    "GLBL201",
+                    "GLBL202"
+                ]
+            },
+            "300-level": {
+                "compulsory_papers": [
+                    "FREN 333",
+                    "FREN 334"
+                ],
+                "two_of_papers": [
+                    "EURO302",
+                    "FREN333",
+                    "FREN334",
+                    "FREN335",
+                    "FREN336",
+                    "FREN341",
+                    "FREN350",
+                    "GLBL301",
+                    "GLBL302"
+                ]
+            }
+        },
+        "further_points": 180,
+        "points_at_200-level": 54
+    },
+    "Gender Studies": {
+        "levels": {
+            "100-level": {
+                "compulsory_papers": [
+                    "GEND 101",
+                    "GEND 102"
+                ]
+            },
+            "200-level": {
+                "compulsory_papers": [
+                    "GEND 201"
+                ],
+                "two_of_papers": [
+                    "ANTH206",
+                    "CHIN241",
+                    "GEND201",
+                    "GEND205",
+                    "GEND206",
+                    "GEND207",
+                    "GEND208",
+                    "GEND209",
+                    "GEND210",
+                    "GEND234",
+                    "GEOG210",
+                    "HIST215",
+                    "HIST234",
+                    "MFCO212",
+                    "POLS202",
+                    "RELS209",
+                    "SOCI201",
+                    "SOCI202",
+                    "SOCI203",
+                    "SOCI204",
+                    "SOCI205",
+                    "SOCI207",
+                    "SOCI208",
+                    "SOCI209",
+                    "SOCI211",
+                    "SOCI213"
+                ]
+            },
+            "300-level": {
+                "four_of_papers": [
+                    "ANTH322",
+                    "ANTH327",
+                    "EDUC318",
+                    "ENGL331",
+                    "GEND305",
+                    "GEND306",
+                    "GEND307",
+                    "GEND308",
+                    "GEND309",
+                    "GEND310",
+                    "GEND311",
+                    "GEND334",
+                    "MFCO301",
+                    "RELS309",
+                    "SOCI301",
+                    "SOCI302",
+                    "SOCI304",
+                    "SOCI305",
+                    "SOCI306",
+                    "SOCI309",
+                    "SOCI310",
+                    "SOCI312",
+                    "SOCI313",
+                    "SOCI319"
+                ]
+            }
+        },
+        "further_points": 198,
+        "points_at_200-level": 54
+    },
+    "Geography": {
+        "levels": {
+            "100-level": {
+                "compulsory_papers": [
+                    "GEOG 101",
+                    "GEOG 102"
+                ]
+            },
+            "200-level": {
+                "compulsory_papers": [
+                    "GEOG 280"
+                ],
+                "two_of_papers": [
+                    "GEOG201",
+                    "GEOG210",
+                    "GEOG212",
+                    "GEOG214",
+                    "GEOG215",
+                    "GEOG216",
+                    "GEOG219",
+                    "GEOG228",
+                    "GEOG276",
+                    "GEOG278",
+                    "GEOG280",
+                    "GEOG281",
+                    "GEOG282",
+                    "GEOG283",
+                    "GEOG284",
+                    "GEOG285",
+                    "GEOG286",
+                    "GEOG287",
+                    "GEOG288",
+                    "GEOG289",
+                    "GEOG298",
+                    "GEOG299"
+                ]
+            },
+            "300-level": {
+                "compulsory_papers": [
+                    "GEOG 380"
+                ],
+                "three_of_papers": [
+                    "GEOG301",
+                    "GEOG328",
+                    "GEOG374",
+                    "GEOG376",
+                    "GEOG378",
+                    "GEOG379",
+                    "GEOG380",
+                    "GEOG381",
+                    "GEOG382",
+                    "GEOG384",
+                    "GEOG387",
+                    "GEOG388",
+                    "GEOG389",
+                    "GEOG390",
+                    "GEOG392",
+                    "GEOG393",
+                    "GEOG394",
+                    "GEOG395",
+                    "GEOG397",
+                    "GEOG398",
+                    "GEOG399"
+                ]
+            }
+        },
+        "further_points": 198,
+        "points_at_200-level": 54
+    },
+    "German": {
+        "levels": {
+            "100-level": {
+                "compulsory_papers": [
+                    "GERM 131",
+                    "GERM 132",
+                    "GLBL 101"
+                ]
+            },
+            "200-level": {
+                "compulsory_papers": [
+                    "GERM 230",
+                    "GERM 231"
+                ],
+                "one_of_papers": [
+                    "EURO202",
+                    "GERM230",
+                    "GERM231",
+                    "GLBL201",
+                    "GLBL202"
+                ]
+            },
+            "300-level": {
+                "compulsory_papers": [
+                    "GERM 331",
+                    "GERM 334"
+                ],
+                "two_of_papers": [
+                    "EURO302",
+                    "GERM331",
+                    "GERM334",
+                    "GERM335",
+                    "GLBL301",
+                    "GLBL302",
+                    "MFCO316"
+                ]
+            }
+        },
+        "further_points": 162,
+        "points_at_200-level": 36
+    },
+    "Global Studies": {
+        "levels": {
+            "100-level": {
+                "compulsory_papers": [
+                    "GLBL 101"
+                ],
+                "three_of_papers": [
+                    "GLBL101"
+                ],
+                "two_of_papers": [
+                    "GLBL101"
+                ]
+            },
+            "200-level": {
+                "compulsory_papers": [
+                    "GLBL 201",
+                    "GLBL 202"
+                ],
+                "two_of_papers": [
+                    "GLBL201",
+                    "GLBL202"
+                ],
+                "one_of_papers": [
+                    "GLBL201",
+                    "GLBL202"
+                ]
+            },
+            "300-level": {
+                "one_of_papers": [
+                    "GLBL303",
+                    "HUMS301"
+                ],
+                "two_of_papers": [
+                    "GLBL303",
+                    "HUMS301"
+                ]
+            }
+        },
+        "further_points": 90
+    },
+    "History": {
+        "levels": {
+            "100-level": {
+                "two_of_papers": [
+                    "HIST102",
+                    "HIST107",
+                    "HIST108",
+                    "HIST123"
+                ]
+            },
+            "200-level": {
+                "three_of_papers": [
+                    "CHIN244",
+                    "CHTH206",
+                    "ENVI211",
+                    "HIST215",
+                    "HIST216",
+                    "HIST218",
+                    "HIST223",
+                    "HIST225",
+                    "HIST229",
+                    "HIST230",
+                    "HIST231",
+                    "HIST232",
+                    "HIST234",
+                    "HIST241",
+                    "HIST242",
+                    "HIST244",
+                    "HIST245",
+                    "HIST246",
+                    "MAOR207"
+                ]
+            },
+            "300-level": {
+                "four_of_papers": [
+                    "CHIN344",
+                    "HIST303",
+                    "HIST308",
+                    "HIST325",
+                    "HIST327",
+                    "HIST328",
+                    "HIST331",
+                    "HIST333",
+                    "HIST341",
+                    "HIST347",
+                    "HIST348",
+                    "HIST353",
+                    "MAOR307"
+                ]
+            }
+        },
+        "further_points": 198,
+        "points_at_200-level": 54
+    },
+    "Indigenous Studies": {
+        "levels": {
+            "100-level": {
+                "compulsory_papers": [
+                    "MAOR 102",
+                    "MAOR 110",
+                    "PACI 101"
+                ]
+            },
+            "200-level": {
+                "compulsory_papers": [
+                    "MAOR 202",
+                    "PACI 201"
+                ],
+                "two_of_papers": [
+                    "ANTH204",
+                    "ANTH205",
+                    "ANTH206",
+                    "ANTH208",
+                    "GEOG278",
+                    "HIST223",
+                    "HIST246",
+                    "INDS210",
+                    "MAOR202",
+                    "MAOR203",
+                    "MAOR204",
+                    "MAOR207",
+                    "MAOR208",
+                    "MAOR210",
+                    "MAOR211",
+                    "MAOR212",
+                    "MAOR213",
+                    "MFCO212",
+                    "PACI201",
+                    "PACI202",
+                    "PACI210",
+                    "POLS202",
+                    "POLS207",
+                    "PUBH203",
+                    "SPAN243",
+                    "SPEX206"
+                ]
+            },
+            "300-level": {
+                "compulsory_papers": [
+                    "INDS 301"
+                ],
+                "three_of_papers": [
+                    "ANTH324",
+                    "ECON303",
+                    "ENGL332",
+                    "GEOG378",
+                    "HIST327",
+                    "HIST347",
+                    "INDS301",
+                    "INDS302",
+                    "INDS307",
+                    "INDS310",
+                    "MANT340",
+                    "MAOR303",
+                    "MAOR304",
+                    "MAOR307",
+                    "MAOR308",
+                    "MAOR310",
+                    "MAOR311",
+                    "MAOR312",
+                    "MAOR313",
+                    "MAOR316",
+                    "MART305",
+                    "MFCO318",
+                    "PACI301",
+                    "PACI305",
+                    "PACI310",
+                    "SPAN343",
+                    "SPEX306",
+                    "TOUR301",
+                    "TOUR306"
+                ]
+            }
+        },
+        "further_points": 162,
+        "points_at_200-level": 54
+    },
+    "Information Science": {
+        "levels": {
+            "100-level": {
+                "compulsory_papers": [
+                    "COMP 101",
+                    "COMP 161"
+                ]
+            },
+            "200-level": {
+                "compulsory_papers": [
+                    "INFO 201",
+                    "INFO 202",
+                    "INFO 203",
+                    "INFO 204"
+                ]
+            },
+            "300-level": {
+                "compulsory_papers": [
+                    "INFO 301",
+                    "INFO 302"
+                ],
+                "two_of_papers": [
+                    "INFO301",
+                    "INFO302",
+                    "INFO303",
+                    "INFO304",
+                    "INFO305",
+                    "INFO310",
+                    "INFO350",
+                    "INFO351",
+                    "INFO352",
+                    "INFO353",
+                    "INFO390"
+                ]
+            }
+        },
+        "further_points": 180
+    },
+    "Japanese": {
+        "levels": {
+            "100-level": {
+                "compulsory_papers": [
+                    "JAPA 131",
+                    "JAPA 132"
+                ],
+                "one_of_papers": [
+                    "ASIA101",
+                    "GLBL101",
+                    "JAPA131",
+                    "JAPA132",
+                    "LING111"
+                ]
+            },
+            "200-level": {
+                "compulsory_papers": [
+                    "JAPA 231",
+                    "JAPA 233"
+                ],
+                "one_of_papers": [
+                    "ASIA201",
+                    "GLBL201",
+                    "GLBL202",
+                    "JAPA231",
+                    "JAPA233",
+                    "JAPA242",
+                    "JAPA243",
+                    "JAPA244"
+                ]
+            },
+            "300-level": {
+                "compulsory_papers": [
+                    "JAPA 331",
+                    "JAPA 332"
+                ],
+                "two_of_papers": [
+                    "ASIA301",
+                    "GLBL301",
+                    "GLBL302",
+                    "JAPA331",
+                    "JAPA332",
+                    "JAPA342",
+                    "JAPA343",
+                    "JAPA344",
+                    "JAPA351",
+                    "JAPA352"
+                ]
+            }
+        },
+        "further_points": 198,
+        "points_at_200-level": 54
+    },
+    "Language and Linguistics": {
+        "levels": {
+            "100-level": {
+                "compulsory_papers": [
+                    "LING 111"
+                ],
+                "two_of_papers": [
+                    "LING111"
+                ]
+            },
+            "200-level": {
+                "compulsory_papers": [
+                    "LING 217"
+                ],
+                "one_of_papers": [
+                    "LING217",
+                    "LING230",
+                    "LING231"
+                ],
+                "two_of_papers": [
+                    "LING217",
+                    "LING230",
+                    "LING231"
+                ]
+            },
+            "300-level": {
+                "two_of_papers": [
+                    "LING314",
+                    "LING317",
+                    "LING330",
+                    "LING331",
+                    "LING332",
+                    "LING342",
+                    "LING390"
+                ]
+            }
+        },
+        "further_points": 162,
+        "points_at_200-level": 36
+    },
+    "Linguistics": {
+        "levels": {
+            "100-level": {
+                "compulsory_papers": [
+                    "LING 111"
+                ],
+                "one_of_papers": [
+                    "GLBL101",
+                    "LING111",
+                    "MAOR110",
+                    "MAOR111",
+                    "MAOR112"
+                ]
+            },
+            "200-level": {
+                "compulsory_papers": [
+                    "LING 217",
+                    "200-level LING"
+                ]
+            },
+            "300-level": {
+                "four_of_papers": [
+                    "LING314",
+                    "LING317",
+                    "LING330",
+                    "LING331",
+                    "LING332",
+                    "LING342",
+                    "LING390"
+                ]
+            }
+        },
+        "further_points": 198,
+        "points_at_200-level": 54
+    },
+    "M\u0101ori Studies": {
+        "levels": {
+            "100-level": {
+                "compulsory_papers": [
+                    "MAOR 102",
+                    "MAOR 111",
+                    "MAOR 112"
+                ]
+            },
+            "200-level": {
+                "compulsory_papers": [
+                    "MAOR 211",
+                    "MAOR 212"
+                ],
+                "one_of_papers": [
+                    "MAOR202",
+                    "MAOR203",
+                    "MAOR204",
+                    "MAOR206",
+                    "MAOR207",
+                    "MAOR208",
+                    "MAOR210",
+                    "MAOR211",
+                    "MAOR212",
+                    "MAOR213",
+                    "PACI201"
+                ]
+            },
+            "300-level": {
+                "compulsory_papers": [
+                    "MAOR 311",
+                    "MAOR 312"
+                ],
+                "one_of_papers": [
+                    "INDS301",
+                    "INDS302",
+                    "INDS307",
+                    "INDS310",
+                    "MAOR301",
+                    "MAOR303",
+                    "MAOR304",
+                    "MAOR306",
+                    "MAOR307",
+                    "MAOR308",
+                    "MAOR310",
+                    "MAOR311",
+                    "MAOR312",
+                    "MAOR313",
+                    "MAOR316",
+                    "MAOR327",
+                    "PACI301"
+                ]
+            }
+        },
+        "further_points": 180,
+        "points_at_200-level": 54
+    },
+    "Mathematics": {
+        "levels": {
+            "100-level": {
+                "compulsory_papers": [
+                    "MATH 130",
+                    "MATH 140",
+                    "COMO 101",
+                    "COMP 161"
+                ]
+            },
+            "200-level": {
+                "compulsory_papers": [
+                    "COMO 204",
+                    "MATH 201",
+                    "MATH 202",
+                    "MATH 203",
+                    "STAT 260"
+                ]
+            },
+            "300-level": {
+                "four_of_papers": [
+                    "COMO303",
+                    "MATH301",
+                    "MATH302",
+                    "MATH304",
+                    "MATH306",
+                    "MATH342"
+                ]
+            }
+        },
+        "further_points": 18
+    },
+    "Music": {
+        "levels": {
+            "100-level": {
+                "compulsory_papers": [
+                    "MUSI 101"
+                ],
+                "one_of_papers": [
+                    "MUSI101",
+                    "MUSI103",
+                    "MUSI104",
+                    "MUSI105"
+                ]
+            },
+            "Above 100-level": {
+                "compulsory_papers": [
+                    "MUSI"
+                ]
+            },
+            "Plus": {}
+        },
+        "further_points": 198,
+        "points_at_200-level": 54
+    },
+    "Pacific Islands Studies": {
+        "levels": {
+            "100-level": {
+                "compulsory_papers": [
+                    "PACI 101"
+                ],
+                "one_of_papers": [
+                    "ANTH103",
+                    "ANTH105",
+                    "HIST107",
+                    "MAOR102",
+                    "MFCO102",
+                    "PACI101",
+                    "PACI102",
+                    "PACI103"
+                ]
+            },
+            "200-level": {
+                "compulsory_papers": [
+                    "PACI 201",
+                    "ANTH 204",
+                    "ANTH"
+                ],
+                "one_of_papers": [
+                    "ANTH",
+                    "ANTH204",
+                    "ANTH205",
+                    "ANTH206",
+                    "CHTH",
+                    "GEOG",
+                    "GEOG278",
+                    "HIST",
+                    "HIST208",
+                    "MAOR",
+                    "MAOR207",
+                    "MFCO212",
+                    "MUSI268",
+                    "PACI201",
+                    "PACI210"
+                ]
+            },
+            "300-level": {
+                "compulsory_papers": [
+                    "PACI 301",
+                    "ANTH"
+                ],
+                "three_of_papers": [
+                    "ANTH",
+                    "ANTH327",
+                    "CHTH",
+                    "GEOG",
+                    "GEOG378",
+                    "HIST",
+                    "HIST337",
+                    "INDS307",
+                    "MAOR",
+                    "MAOR307",
+                    "MFCO318",
+                    "MUSI368",
+                    "PACI301",
+                    "PACI305",
+                    "PACI310",
+                    "SOWK303",
+                    "SOWK304",
+                    "THEA322"
+                ]
+            }
+        }
+    },
+    "Philosophy": {
+        "levels": {
+            "100-level": {
+                "two_of_papers": [
+                    "PHIL101",
+                    "PHIL103",
+                    "PHIL105",
+                    "PHIL106"
+                ]
+            },
+            "200-level": {
+                "two_of_papers": [
+                    "GEND201",
+                    "PHIL",
+                    "PHIL222",
+                    "PHIL223",
+                    "PHIL225",
+                    "PHIL227",
+                    "PHIL228",
+                    "PHIL229",
+                    "PHIL231",
+                    "PHIL232",
+                    "PHIL233",
+                    "PHIL234",
+                    "PHIL235",
+                    "PHIL236",
+                    "PHIL239",
+                    "PHIL240",
+                    "POLS202",
+                    "PSYC204"
+                ],
+                "one_of_papers": [
+                    "GEND201",
+                    "PHIL",
+                    "PHIL222",
+                    "PHIL223",
+                    "PHIL225",
+                    "PHIL227",
+                    "PHIL228",
+                    "PHIL229",
+                    "PHIL231",
+                    "PHIL232",
+                    "PHIL233",
+                    "PHIL234",
+                    "PHIL235",
+                    "PHIL236",
+                    "PHIL239",
+                    "PHIL240",
+                    "POLS202",
+                    "PSYC204"
+                ]
+            },
+            "300-level": {
+                "four_of_papers": [
+                    "BITC301",
+                    "CLAS340",
+                    "PHIL312",
+                    "PHIL314",
+                    "PHIL315",
+                    "PHIL323",
+                    "PHIL329",
+                    "PHIL331",
+                    "PHIL332",
+                    "PHIL333",
+                    "PHIL334",
+                    "PHIL335",
+                    "PHIL336",
+                    "PHIL338",
+                    "PHIL339",
+                    "PHIL340",
+                    "PHIL401",
+                    "PHIL406",
+                    "PHIL409",
+                    "PHIL413",
+                    "PHIL414",
+                    "PHIL415",
+                    "PHIL417",
+                    "PHIL418",
+                    "PHIL451",
+                    "PHIL458",
+                    "PHIL480",
+                    "PHIL490",
+                    "POLS301",
+                    "POLS307"
+                ]
+            }
+        },
+        "further_points": 198,
+        "points_at_200-level": 54
+    },
+    "Philosophy, Politics and Economics": {
+        "levels": {
+            "100-level": {
+                "compulsory_papers": [
+                    "BSNS 113",
+                    "ECON 112"
+                ],
+                "one_of_papers": [
+                    "BSNS113",
+                    "ECON112",
+                    "PHIL101",
+                    "PHIL103",
+                    "PHIL105",
+                    "PHIL106",
+                    "POLS101",
+                    "POLS102",
+                    "POLS104",
+                    "POLS105"
+                ]
+            },
+            "200-level": {
+                "compulsory_papers": [
+                    "PHPE 201",
+                    "ECON 201"
+                ],
+                "one_of_papers": [
+                    "ECON201",
+                    "ECON202",
+                    "ECON206",
+                    "ECON207",
+                    "ECON210",
+                    "ECON271",
+                    "PHIL222",
+                    "PHIL223",
+                    "PHIL225",
+                    "PHIL227",
+                    "PHIL228",
+                    "PHIL229",
+                    "PHIL231",
+                    "PHIL232",
+                    "PHIL233",
+                    "PHIL234",
+                    "PHIL235",
+                    "PHIL236",
+                    "PHIL239",
+                    "PHIL240",
+                    "PHPE201",
+                    "POLS202",
+                    "POLS207",
+                    "POLS208",
+                    "POLS210",
+                    "POLS211",
+                    "POLS213",
+                    "POLS216",
+                    "POLS217",
+                    "POLS218",
+                    "POLS221",
+                    "POLS228",
+                    "POLS230",
+                    "POLS234",
+                    "POLS243",
+                    "POLS250"
+                ]
+            },
+            "300-level": {
+                "six_of_papers": [
+                    "CLAS340",
+                    "CLAS346",
+                    "ECON301",
+                    "ECON302",
+                    "ECON303",
+                    "ECON306",
+                    "ECON308",
+                    "ECON316",
+                    "ECON317",
+                    "ECON318",
+                    "ECON319",
+                    "ECON350",
+                    "ECON351",
+                    "ECON371",
+                    "ECON375",
+                    "ECON376",
+                    "ECON377",
+                    "PHIL312",
+                    "PHIL314",
+                    "PHIL315",
+                    "PHIL323",
+                    "PHIL329",
+                    "PHIL331",
+                    "PHIL332",
+                    "PHIL333",
+                    "PHIL334",
+                    "PHIL335",
+                    "PHIL336",
+                    "PHIL338",
+                    "PHIL339",
+                    "PHIL340",
+                    "PHPE301",
+                    "POLS301",
+                    "POLS303",
+                    "POLS306",
+                    "POLS307",
+                    "POLS308",
+                    "POLS310",
+                    "POLS312",
+                    "POLS315",
+                    "POLS318",
+                    "POLS319",
+                    "POLS321",
+                    "POLS323",
+                    "POLS325",
+                    "POLS326",
+                    "POLS330",
+                    "POLS375",
+                    "POLS390"
+                ]
+            }
+        }
+    },
+    "Politics": {
+        "levels": {
+            "100-level": {
+                "two_of_papers": [
+                    "POLS101",
+                    "POLS102",
+                    "POLS104",
+                    "POLS105"
+                ]
+            },
+            "200-level": {
+                "two_of_papers": [
+                    "CHIN241",
+                    "CLAS346",
+                    "GEND201",
+                    "GEND208",
+                    "PHIL227",
+                    "PHIL228",
+                    "POLS",
+                    "POLS202",
+                    "POLS207",
+                    "POLS208",
+                    "POLS210",
+                    "POLS211",
+                    "POLS213",
+                    "POLS216",
+                    "POLS217",
+                    "POLS218",
+                    "POLS221",
+                    "POLS228",
+                    "POLS230",
+                    "POLS234",
+                    "POLS243",
+                    "POLS250",
+                    "PSYC204",
+                    "PUBH203",
+                    "RELS235"
+                ],
+                "one_of_papers": [
+                    "CHIN241",
+                    "CLAS346",
+                    "GEND201",
+                    "GEND208",
+                    "PHIL227",
+                    "PHIL228",
+                    "POLS",
+                    "POLS202",
+                    "POLS207",
+                    "POLS208",
+                    "POLS210",
+                    "POLS211",
+                    "POLS213",
+                    "POLS216",
+                    "POLS217",
+                    "POLS218",
+                    "POLS221",
+                    "POLS228",
+                    "POLS230",
+                    "POLS234",
+                    "POLS243",
+                    "POLS250",
+                    "PSYC204",
+                    "PUBH203",
+                    "RELS235"
+                ]
+            },
+            "300-level": {
+                "four_of_papers": [
+                    "POLS301",
+                    "POLS303",
+                    "POLS306",
+                    "POLS307",
+                    "POLS308",
+                    "POLS310",
+                    "POLS312",
+                    "POLS315",
+                    "POLS318",
+                    "POLS319",
+                    "POLS321",
+                    "POLS323",
+                    "POLS325",
+                    "POLS326",
+                    "POLS330",
+                    "POLS375",
+                    "POLS390"
+                ]
+            }
+        },
+        "further_points": 198,
+        "points_at_200-level": 54
+    },
+    "Psychology": {
+        "levels": {
+            "100-level": {
+                "compulsory_papers": [
+                    "PSYC 111",
+                    "PSYC 112",
+                    "STAT 110"
+                ]
+            },
+            "200-level": {
+                "compulsory_papers": [
+                    "PSYC 210",
+                    "PSYC 211",
+                    "PSYC 212"
+                ]
+            },
+            "300-level": {
+                "four_of_papers": [
+                    "PSYC311",
+                    "PSYC313",
+                    "PSYC315",
+                    "PSYC317",
+                    "PSYC318",
+                    "PSYC319",
+                    "PSYC321",
+                    "PSYC323",
+                    "PSYC324",
+                    "PSYC325",
+                    "PSYC326",
+                    "PSYC327",
+                    "PSYC328",
+                    "PSYC329",
+                    "PSYC330"
+                ]
+            }
+        },
+        "further_points": 198
+    },
+    "Religious Studies": {
+        "levels": {
+            "100-level": {
+                "two_of_papers": [
+                    "RELS101",
+                    "RELS102",
+                    "RELS110"
+                ]
+            },
+            "200-level": {
+                "three_of_papers": [
+                    "ANTH225",
+                    "ANTH228",
+                    "CHIN241",
+                    "DHUM201",
+                    "HIST215",
+                    "HIST244",
+                    "JAPA243",
+                    "PHIL229",
+                    "POLS210",
+                    "RELS202",
+                    "RELS203",
+                    "RELS209",
+                    "RELS214",
+                    "RELS216",
+                    "RELS217",
+                    "RELS220",
+                    "RELS225",
+                    "RELS226",
+                    "RELS227",
+                    "RELS230",
+                    "RELS231",
+                    "RELS235",
+                    "RELS236",
+                    "RELS237",
+                    "RELS238",
+                    "RELS239",
+                    "RELS240",
+                    "RELS241",
+                    "RELS244"
+                ],
+                "one_of_papers": [
+                    "ANTH225",
+                    "ANTH228",
+                    "CHIN241",
+                    "DHUM201",
+                    "HIST215",
+                    "HIST244",
+                    "JAPA243",
+                    "PHIL229",
+                    "POLS210",
+                    "RELS202",
+                    "RELS203",
+                    "RELS209",
+                    "RELS214",
+                    "RELS216",
+                    "RELS217",
+                    "RELS220",
+                    "RELS225",
+                    "RELS226",
+                    "RELS227",
+                    "RELS230",
+                    "RELS231",
+                    "RELS235",
+                    "RELS236",
+                    "RELS237",
+                    "RELS238",
+                    "RELS239",
+                    "RELS240",
+                    "RELS241",
+                    "RELS244"
+                ]
+            },
+            "300-level": {
+                "four_of_papers": [
+                    "ANTH325",
+                    "ANTH328",
+                    "CLAS342",
+                    "HIST308",
+                    "JAPA343",
+                    "PHIL329",
+                    "RELS302",
+                    "RELS303",
+                    "RELS306",
+                    "RELS309",
+                    "RELS314",
+                    "RELS316",
+                    "RELS317",
+                    "RELS320",
+                    "RELS325",
+                    "RELS326",
+                    "RELS327",
+                    "RELS330",
+                    "RELS331",
+                    "RELS335",
+                    "RELS336",
+                    "RELS337",
+                    "RELS338",
+                    "RELS340",
+                    "RELS341",
+                    "RELS344"
+                ],
+                "one_of_papers": [
+                    "ANTH325",
+                    "ANTH328",
+                    "CLAS342",
+                    "HIST308",
+                    "JAPA343",
+                    "PHIL329",
+                    "RELS302",
+                    "RELS303",
+                    "RELS306",
+                    "RELS309",
+                    "RELS314",
+                    "RELS316",
+                    "RELS317",
+                    "RELS320",
+                    "RELS325",
+                    "RELS326",
+                    "RELS327",
+                    "RELS330",
+                    "RELS331",
+                    "RELS335",
+                    "RELS336",
+                    "RELS337",
+                    "RELS338",
+                    "RELS340",
+                    "RELS341",
+                    "RELS344"
+                ]
+            }
+        }
+    },
+    "Sociology": {
+        "levels": {
+            "100-level": {
+                "compulsory_papers": [
+                    "SOCI 101",
+                    "SOCI 102"
+                ]
+            },
+            "200-level": {
+                "three_of_papers": [
+                    "CRIM201",
+                    "GEND201",
+                    "GEND205",
+                    "GEND206",
+                    "GEND207",
+                    "GEND208",
+                    "GEND209",
+                    "GEND210",
+                    "GEND234",
+                    "SOCI201",
+                    "SOCI202",
+                    "SOCI203",
+                    "SOCI204",
+                    "SOCI205",
+                    "SOCI207",
+                    "SOCI208",
+                    "SOCI209",
+                    "SOCI211",
+                    "SOCI213",
+                    "SPEX208"
+                ]
+            },
+            "300-level": {
+                "four_of_papers": [
+                    "GEND305",
+                    "GEND306",
+                    "GEND307",
+                    "GEND308",
+                    "GEND309",
+                    "GEND310",
+                    "GEND311",
+                    "GEND334",
+                    "SOCI301",
+                    "SOCI302",
+                    "SOCI304",
+                    "SOCI305",
+                    "SOCI306",
+                    "SOCI309",
+                    "SOCI310",
+                    "SOCI312",
+                    "SOCI313",
+                    "SOCI319",
+                    "SPEX312",
+                    "SPEX315"
+                ]
+            }
+        },
+        "further_points": 198,
+        "points_at_200-level": 54
+    },
+    "Spanish": {
+        "levels": {
+            "100-level": {
+                "compulsory_papers": [
+                    "SPAN 131",
+                    "SPAN 132",
+                    "GLBL 101"
+                ]
+            },
+            "200-level": {
+                "compulsory_papers": [
+                    "SPAN 231",
+                    "SPAN 232"
+                ],
+                "one_of_papers": [
+                    "EURO202",
+                    "GLBL201",
+                    "GLBL202",
+                    "SPAN231",
+                    "SPAN232",
+                    "SPAN233",
+                    "SPAN243",
+                    "SPAN250",
+                    "SPAN251"
+                ]
+            },
+            "300-level": {
+                "compulsory_papers": [
+                    "SPAN 331",
+                    "SPAN 332"
+                ],
+                "two_of_papers": [
+                    "EURO302",
+                    "GLBL301",
+                    "GLBL302",
+                    "SPAN331",
+                    "SPAN332",
+                    "SPAN341",
+                    "SPAN343",
+                    "SPAN350",
+                    "SPAN351"
+                ]
+            }
+        },
+        "further_points": 180,
+        "points_at_200-level": 54
+    },
+    "Sport Development and Management": {
+        "levels": {
+            "100-level": {
+                "compulsory_papers": [
+                    "SPEX 101",
+                    "SPEX 102"
+                ]
+            },
+            "200-level": {
+                "compulsory_papers": [
+                    "SPEX 204",
+                    "SPEX 208",
+                    "SPEX 209"
+                ]
+            },
+            "300-level": {
+                "four_of_papers": [
+                    "SPEX304",
+                    "SPEX312",
+                    "SPEX313",
+                    "SPEX314",
+                    "SPEX315"
+                ]
+            }
+        },
+        "further_points": 198
+    },
+    "Statistics": {
+        "levels": {
+            "100-level": {
+                "compulsory_papers": [
+                    "STAT 110",
+                    "MATH 130",
+                    "MATH 140"
+                ]
+            },
+            "200-level": {
+                "compulsory_papers": [
+                    "STAT 210",
+                    "STAT 260",
+                    "STAT 270",
+                    "MATH 202"
+                ]
+            },
+            "300-level": {
+                "compulsory_papers": [
+                    "STAT 310"
+                ],
+                "three_of_papers": [
+                    "STAT310",
+                    "STAT311",
+                    "STAT312",
+                    "STAT370",
+                    "STAT371",
+                    "STAT372",
+                    "STAT399"
+                ]
+            }
+        },
+        "further_points": 162,
+        "points_at_200-level": 36
+    },
+    "Theatre Studies": {
+        "levels": {
+            "100-level": {
+                "compulsory_papers": [
+                    "THEA 122",
+                    "THEA 151",
+                    "THEA 152"
+                ]
+            },
+            "200-level": {
+                "compulsory_papers": [
+                    "THEA 221"
+                ],
+                "two_of_papers": [
+                    "MUSI265",
+                    "PERF205",
+                    "THEA221",
+                    "THEA241",
+                    "THEA251",
+                    "THEA252",
+                    "THEA253",
+                    "THEA256",
+                    "THEA257"
+                ]
+            },
+            "300-level": {
+                "four_of_papers": [
+                    "MUSI365",
+                    "PERF305",
+                    "THEA322",
+                    "THEA323",
+                    "THEA324",
+                    "THEA325",
+                    "THEA341",
+                    "THEA351",
+                    "THEA352",
+                    "THEA353",
+                    "THEA354",
+                    "THEA356",
+                    "THEA357"
+                ]
+            }
+        },
+        "further_points": 180,
+        "points_at_200-level": 54
+    },
+    "Tourism, Languages and Cultures": {
+        "levels": {
+            "100-level": {
+                "compulsory_papers": [
+                    "TOUR 101",
+                    "TOUR 102"
+                ]
+            },
+            "200-level": {
+                "compulsory_papers": [
+                    "TOUR 217",
+                    "TOUR 218",
+                    "TOUR 219"
+                ]
+            },
+            "300-level": {
+                "two_of_papers": [
+                    "TOUR301",
+                    "TOUR303",
+                    "TOUR304",
+                    "TOUR305",
+                    "TOUR306"
+                ]
+            }
+        },
+        "further_points": 234
+    }
+}

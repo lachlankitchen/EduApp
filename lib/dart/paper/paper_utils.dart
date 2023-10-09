@@ -31,6 +31,7 @@ import '../major/major.dart';
 
   Future<String> fetchRecommendedPapers(Degree degree, Major major, int level) async {
     final response = await http.get(Uri.parse('http://localhost:1234/${degree.title}/${major.name}/papers/$level'));
+    print(response.body);
 
     if (response.statusCode == 200) {
       return response.body;
@@ -61,19 +62,25 @@ import '../major/major.dart';
   }
 
   Future<String> postPaperData(Degree degree, Major major, List<Paper> papersList) async {
-    final url = Uri.parse('http://localhost:1234/${degree.title}/${major.name}');
-   
-    //List<Map<String, dynamic>> jsonPapers = papersListToJson(papersList); 
+
+    List<Map<String, dynamic>> jsonPapers = papersListToJson(papersList); 
     
-    final response = await http.post(
-      url,
-      // headers: {'Content-Type': 'application/json'}, // Set appropriate headers.
-      // body: jsonEncode(jsonPapers), // Make sure to import 'dart:convert'.
-    );
-    
+    Uri url = Uri.parse('http://localhost:1234/${degree.title}/${major.name}/$jsonPapers');
+    final response = await http.get(url);
+
+    // Uri url = Uri.parse('http://localhost:1234/${degree.title}/${major.name}/papers');
+    // final response = await http.post(
+    //   url,
+    //   headers: {
+    //     'Content-Type': 'application/json',
+    //   },
+    //   body: jsonPapers,
+    // );
+
     if (response.statusCode == 200) {
       return response.body;
     } else {
+      // print('Error: ${response.statusCode}');
       // If the server did not return a 200 OK response, throw an exception.
       throw Exception('Failed to validate major requirements');
     }
