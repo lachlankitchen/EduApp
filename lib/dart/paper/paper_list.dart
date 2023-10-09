@@ -130,6 +130,7 @@ class PapersListScreen extends StatelessWidget {
                       return buildPaperListItem(paper, state, context);
                     },
                   ),
+                ),
                 ListView.builder(
                   shrinkWrap: true,
                   itemCount: state.filteredPapers.length,
@@ -164,7 +165,8 @@ class PapersListScreen extends StatelessWidget {
                   ),
                 );
                 return;
-
+              }
+              
               String jsonData;
               try {
                 jsonData = await postPaperData(degree, major, selectedPapers);
