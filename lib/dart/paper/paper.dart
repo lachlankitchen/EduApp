@@ -47,7 +47,23 @@ class Paper {
   /// Constructs a [Paper] instance with only the name.
   ///
   /// [name]: The name of the major.
-  Paper.withName({
+  Paper.name(
+    this.papercode,
+  ) : 
+      subjectCode = "",
+      year = "",
+      efts = 0.0,
+      title = "",
+      points = 0,
+      teachingPeriods = [],
+      description = "",
+      prerequisites = "",
+      restrictions = "",
+      schedule = "",
+      isSelected = false,
+      grade = -1;
+
+  Paper.create({
     required this.papercode,
     required this.title,
     required this.teachingPeriods,

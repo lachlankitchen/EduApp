@@ -95,15 +95,26 @@ class DisplayPathway extends StatelessWidget {
                         style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                       ),
                       buildPapersByLevel(remainingPapers), // Use the helper function
-                      if (pathway[index].remainingPoints != 0)
+                      if (pathway[index].furtherPoints != 0)
                         const SizedBox(height: 10),
                         const Text(
-                          'Remaining Points:',
+                          'Further Points:',
                             style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                         ),
                         Padding(
                           padding: const EdgeInsets.only(left: 16.0),
-                          child: Text('${pathway[index].remainingPoints}'),
+                          child: Text('${pathway[index].furtherPoints}'),
+                        ),
+                      const SizedBox(height: 10),
+                      if (pathway[index].pointsAt200Level != 0)
+                        const SizedBox(height: 10),
+                        const Text(
+                          'Further Points at 200-level or above:',
+                            style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 16.0),
+                          child: Text('${pathway[index].pointsAt200Level}'),
                         ),
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,

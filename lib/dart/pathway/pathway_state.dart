@@ -23,7 +23,8 @@ class PathwayState extends ChangeNotifier {
     '300-level': [],
   };  // Categorize papers by level
   String requirements = "";
-  int remainingPoints = 0;
+  int furtherPoints = 0;
+  int pointsAt200Level = 0;
   double gpa = -1;
 
   /// Adds a selected degree to the state.
@@ -110,8 +111,13 @@ class PathwayState extends ChangeNotifier {
     notifyListeners();
   }
 
-  void addRemainingPoints(int remainingPoints) {
-    this.remainingPoints = remainingPoints;
+  void addFurtherPoints(int furtherPoints){
+    this.furtherPoints = furtherPoints;
+    notifyListeners();
+  }
+
+  void addPointsAt200Level(int pointsAt200Level){
+    this.pointsAt200Level = pointsAt200Level;
     notifyListeners();
   }
 
@@ -126,7 +132,8 @@ class PathwayState extends ChangeNotifier {
       majors: selectedMajors,
       selectedPapers: selectedPapers,
       remainingPapers: remainingPapers,
-      remainingPoints: remainingPoints,
+      furtherPoints: furtherPoints,
+      pointsAt200Level: pointsAt200Level,
       requirements: requirements,
       gpa: gpa,
       isSelected: false,

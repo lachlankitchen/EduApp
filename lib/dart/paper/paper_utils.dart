@@ -31,7 +31,6 @@ import '../major/major.dart';
 
   Future<String> fetchRecommendedPapers(Degree degree, Major major, int level) async {
     final response = await http.get(Uri.parse('http://localhost:1234/${degree.title}/${major.name}/papers/$level'));
-    print(response.body);
 
     if (response.statusCode == 200) {
       return response.body;
@@ -61,6 +60,7 @@ import '../major/major.dart';
     return recommendedPapers;
   }
 
+
   Future<String> postPaperData(Degree degree, Major major, List<Paper> papersList) async {
 
     List<Map<String, dynamic>> jsonPapers = papersListToJson(papersList); 
@@ -80,7 +80,7 @@ import '../major/major.dart';
     if (response.statusCode == 200) {
       return response.body;
     } else {
-      // print('Error: ${response.statusCode}');
+      print('Error validating degree requirements: ${response.statusCode}');
       // If the server did not return a 200 OK response, throw an exception.
       throw Exception('Failed to validate major requirements');
     }
