@@ -26,7 +26,7 @@ class DisplayPathway extends StatelessWidget {
     // If no pathways are available, display a message indicating that.
     if (pathway.isEmpty) {
       return const Center(
-        child: Text('You have no saved degrees. Press the + button to add your degree.'),
+        child: Text('Add a degree with the + button below.'),
       );
     }
     
@@ -54,7 +54,7 @@ class DisplayPathway extends StatelessWidget {
                     ),
                     ElevatedButton(
                       onPressed: () {
-                        Provider.of<PathwayState>(context, listen: false).deleteState(pathway[index]);
+                        showDeleteConfirmationDialog(context, pathway[index]);
                       },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: const Color(0xFFf9c000),
@@ -90,21 +90,11 @@ class DisplayPathway extends StatelessWidget {
                       ),
                       buildPapersByLevel(selectedPapers), // Use the helper function
                       const SizedBox(height: 10),
-                      // const Text(
-                      //   'Remaining Compulsory Papers(s):',
-                      //   style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-                      // ),
-                      // buildPapersByLevel(remainingPapers), // Use the helper function
-                      if (pathway[index].requirements.isNotEmpty)
-                        const SizedBox(height: 10),
-                        const Text(
-                          'Remaining Requirements:',
-                            style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(left: 16.0),
-                          child: Text(pathway[index].requirements),
-                        ),
+                      const Text(
+                        'Remaining Compulsory Papers(s):',
+                        style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                      ),
+                      buildPapersByLevel(remainingPapers), // Use the helper function
                       if (pathway[index].remainingPoints != 0)
                         const SizedBox(height: 10),
                         const Text(
@@ -166,5 +156,32 @@ class DisplayPathway extends StatelessWidget {
       }
     }
     return Column(children: paperWidgets);
+  }
+
+   void showDeleteConfirmationDialog(BuildContext context, Pathway pathway) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text('Delete Pathway'),
+          content: const Text('Are you sure you want to delete this pathway?'),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop(); // Close the dialog
+              },
+              child: const Text('Cancel'),
+            ),
+            TextButton(
+              onPressed: () {
+                Provider.of<PathwayState>(context, listen: false).deleteState(pathway);
+                Navigator.of(context).pop(); // Close the dialog
+              },
+              child: const Text('Delete'),
+            ),
+          ],
+        );
+      },
+    );
   }
 }
