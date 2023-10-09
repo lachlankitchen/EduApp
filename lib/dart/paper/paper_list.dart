@@ -116,7 +116,7 @@ class PapersListScreen extends StatelessWidget {
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(bottom: 64.0),
+                  padding: const EdgeInsets.only(top: 16.0, bottom: 64.0),
                   child: ListView.builder(
                     shrinkWrap: true,
                     itemCount: state.filteredPapers.length,
@@ -142,7 +142,7 @@ class PapersListScreen extends StatelessWidget {
               List<Paper> allPapers = [...recommendedPapers, ...searchPaperState.filteredPapers];
               List<Paper> selectedPapers = allPapers.where((paper) => paper.isSelected).toList();
 
-              if (selectedPapers.isEmpty) {
+              if (selectedPapers.isEmpty && recommendedPapers.isNotEmpty) {
                 // Show an error message if no papers are selected
                 ScaffoldMessenger.of(context).showSnackBar(
                   const SnackBar(
