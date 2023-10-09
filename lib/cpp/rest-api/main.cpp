@@ -204,64 +204,7 @@ int rest_api(void)
 }
 
 int main(){
-
-    // // Example usage
-    // string jsonData = R"(
-    //     {
-    //         "Bachelor of Arts": {
-    //             "majors": [
-    //                 {
-    //                     "Anthropology": {
-    //                         "levels": {
-    //                             "100-level": {
-    //                                 "two_of_papers": [
-    //                                     "ANTH103",
-    //                                     "ANTH105",
-    //                                     "ANTH106"
-    //                                 ]
-    //                             },
-    //                             "200-level": {
-    //                                 "one_of_papers": [
-    //                                     "ANTH203",
-    //                                     "ANTH204"                                    
-    //                                 ],
-    //                                 "two_of_papers": [
-    //                                     "ANTH203",
-    //                                     "ANTH204"                                    
-    //                                 ]
-    //                             },
-    //                             "300-level": {
-    //                                 "four_of_papers": [
-    //                                     "ANTH310",
-    //                                     "ANTH312"                                   
-    //                                 ]
-    //                             }
-    //                         },
-    //                         "remaining_points": 198,
-    //                         "points_at_200-level": 54
-    //                     }
-    //                 }
-    //             ]
-    //         }
-    //     }
-    // )";
-
-    // vector<string> completedPapers = {"ANTH103", "ANTH203", "ANTH310"};
-
-    // DegreeRequirements degree(jsonData);
-
-    // std::pair<bool, std::string> result = degree.checkRequirements(completedPapers);
-
-    // bool requirementsMet = result.first;
-    // std::string feedback = result.second;
-
-    // if (requirementsMet) {
-    //     std::cout << "Requirements met!" << std::endl;
-    // } else {
-    //     std::cout << "Requirements not met: " + feedback << std::endl;
-    // }
-
     rest_api();
-
+  
     return 0;
 }

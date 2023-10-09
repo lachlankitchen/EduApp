@@ -120,6 +120,16 @@ class PapersListScreen extends StatelessWidget {
                     ),
                   ),
                 ),
+                Padding(
+                  padding: const EdgeInsets.only(top: 16.0, bottom: 64.0),
+                  child: ListView.builder(
+                    shrinkWrap: true,
+                    itemCount: state.filteredPapers.length,
+                    itemBuilder: (context, index) {
+                      final paper = state.filteredPapers[index];
+                      return buildPaperListItem(paper, state, context);
+                    },
+                  ),
                 ListView.builder(
                   shrinkWrap: true,
                   itemCount: state.filteredPapers.length,
@@ -145,6 +155,15 @@ class PapersListScreen extends StatelessWidget {
 
               // Filter the selected papers
               List<Paper> selectedPapers = allPapers.where((paper) => paper.isSelected).toList();
+
+              if (selectedPapers.isEmpty && recommendedPapers.isNotEmpty) {
+                // Show an error message if no papers are selected
+                ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(
+                    content: Text('Please select at least one paper.'),
+                  ),
+                );
+                return;
 
               String jsonData;
               try {
