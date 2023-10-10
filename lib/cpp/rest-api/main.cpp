@@ -80,17 +80,48 @@ int rest_api(void)
         setCorsHeaders(res);
     });
 
-    svr.Get("/:degree/:major/:papers", [&](const Request &req, Response &res) {
+    svr.Post("/:degree/:major", [&](const Request &req, Response &res) {
+        std::cout << "POST request w/ body received" << std::endl;
+
+        auto degree = req.path_params.at("degree");
+        auto major = req.path_params.at("major");
+        std::string papers_string = req.body;
+
+        try {
+            auto json_papers = nlohmann::json::parse(papers_string);
+            std::cout << json_papers << std::endl;
+        } catch (const nlohmann::json::exception& e) {
+            std::cerr << "JSON parsing error: " << e.what() << std::endl;
+            std::cerr << "Failed string: " << papers_string << std::endl;
+        }
+    });
+
+    svr.Post("/:degree/:major/:papers", [&](const Request &req, Response &res) {
+        std::cout << "POST request received" << std::endl;
+
         auto degree = req.path_params.at("degree");
         auto major = req.path_params.at("major");
         auto papers_string = req.path_params.at("papers");
-        // std::string papers_string = req.body;
+        
+        // Parse the JSON string directly
+        nlohmann::json json_papers;
+        try {
+            json_papers = nlohmann::json::parse(papers_string);
+            std::cout << json_papers << std::endl;
+        } catch (const nlohmann::json::exception& e) {
+            std::cerr << "JSON parsing error: " << e.what() << std::endl;
+            std::cerr << "Failed string: " << papers_string << std::endl;
+        }
 
+
+
+        std::cout << json_papers << std::endl;
+
+        // Convert the parsed JSON array to a vector of strings
         std::vector<std::string> papers;
-        std::stringstream ss(papers_string);
-        std::string paper;
-        while (std::getline(ss, paper, ',')) {
-            papers.push_back(paper);
+        for (const auto& paper : json_papers) {
+            std::cout << paper << std::endl;
+            papers.push_back(paper.dump());
         }
 
         std::filesystem::path json_file_path = std::filesystem::path("..") / ".." / ".." / "data" / "majorRequirements.json";
