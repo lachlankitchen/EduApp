@@ -166,10 +166,12 @@ class PapersListScreen extends StatelessWidget {
                 );
                 return;
               }
+
+              pathwayState.addSelectedPapers(selectedPapers);
               
               String jsonData;
               try {
-                jsonData = await postPaperData(degree, major, selectedPapers);
+                jsonData = await postPaperData(degree, major, pathwayState);
                 // Now you have the degrees from the server, use them to navigate to the next screen
               } catch (error) {
                 // Handle error, perhaps show a dialog to the user
@@ -178,20 +180,20 @@ class PapersListScreen extends StatelessWidget {
               }
 
               // Decode the JSON data
-              final Map<String, dynamic> jsonResponse = jsonDecode(jsonData.toString());
+              final Map<String, dynamic> jsonResponse = jsonDecode(jsonData);
 
               // Initialize the message to display the remaining requirements
               String message = "Remaining Requirements:\n";
 
               List<Paper> remainingPapers = [];
+              bool hasRemainingPapers = jsonResponse.containsKey("remaining_compulsory_papers");
               // Check if jsonResponse contains the key "remaining_compulsory_papers"
-              if (jsonResponse.containsKey("remaining_compulsory_papers")) {
+              if (hasRemainingPapers) {
                 List<dynamic> remainingPapersList = jsonResponse["remaining_compulsory_papers"];
                 for (var paperCode in remainingPapersList) {
                     remainingPapers.add(Paper.name(paperCode));
                     message += "$paperCode\n";
                 }
-                message += "Check home page for more details.\n";
               }
 
               int furtherPoints = 0;
@@ -199,6 +201,7 @@ class PapersListScreen extends StatelessWidget {
               // Check if jsonResponse contains the key "remaining_points"
               if (hasFurtherPoints) {
                 furtherPoints = jsonResponse["further_points"];
+                message += "Further $furtherPoints points at 200-level or above.\n";
               }
 
               int pointsAt200Level = 0;
@@ -206,6 +209,7 @@ class PapersListScreen extends StatelessWidget {
               // Check if jsonResponse contains the key "points_at_200_level"
               if (hasPointsAt200Level) {
                 pointsAt200Level = jsonResponse["points_at_200_level"];
+                message += "At least $pointsAt200Level points at 200-level or above.\n";
               }
 
               // Display the message to the user
@@ -235,32 +239,44 @@ class PapersListScreen extends StatelessWidget {
             ),
             child: const Text('Save Degree'),
           ),
-          const SizedBox(width: 16), // Add spacing between buttons
           Visibility(
             visible: level < 300, // Check if the level is less than to 300
-            child: ElevatedButton(
-              onPressed: () async {
-                final state = Provider.of<PathwayState>(context, listen: false);
-
-                // You can now use `searchPaperState` here without creating a new instance.
-                List<Paper> allPapers = [...recommendedPapers, ...searchPaperState.filteredPapers];
-
-                // Filter the selected papers
-                List<Paper> selectedPapers = allPapers.where((paper) => paper.isSelected).toList();
-
-                state.addSelectedPapers(selectedPapers);
-                state.calculateGPA();
-          
-                int nextlevel = level + 100;
-
-                navigateToPapersListScreen(context, degree, major, nextlevel);
-              },
-              style: ElevatedButton.styleFrom(
-                primary: const Color(0xFFf9c000), // Button background color
-                padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 24), // Adjust padding as needed
-                textStyle: const TextStyle(fontSize: 16), // Text style
+            child: Padding(
+              padding: const EdgeInsets.only(left: 16.0),              
+              child: ElevatedButton(
+                onPressed: () async {
+                  final state = Provider.of<PathwayState>(context, listen: false);
+            
+                  // You can now use `searchPaperState` here without creating a new instance.
+                  List<Paper> allPapers = [...recommendedPapers, ...searchPaperState.filteredPapers];
+            
+                  // Filter the selected papers
+                  List<Paper> selectedPapers = allPapers.where((paper) => paper.isSelected).toList();
+            
+                  if (selectedPapers.isEmpty && recommendedPapers.isNotEmpty) {
+                    // Show an error message if no papers are selected
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(
+                        content: Text('Please select at least one paper.'),
+                      ),
+                    );
+                  return;
+                }
+            
+                  state.addSelectedPapers(selectedPapers);
+                  state.calculateGPA();
+                      
+                  int nextlevel = level + 100;
+            
+                  navigateToPapersListScreen(context, degree, major, nextlevel);
+                },
+                style: ElevatedButton.styleFrom(
+                  primary: const Color(0xFFf9c000), // Button background color
+                  padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 24), // Adjust padding as needed
+                  textStyle: const TextStyle(fontSize: 16), // Text style
+                ),
+                child: Text('${level+100}-level Selection'),
               ),
-              child: Text('${level+100}-level Selection'),
             ),
           ),
           Visibility(
@@ -269,7 +285,7 @@ class PapersListScreen extends StatelessWidget {
               padding: const EdgeInsets.only(left: 16.0),
               child: ElevatedButton(
                 onPressed: () async {
-                  final state = Provider.of<PathwayState>(context, listen: false);
+                  final pathwayState = Provider.of<PathwayState>(context, listen: false);
 
                   // You can now use `searchPaperState` here without creating a new instance.
                   List<Paper> allPapers = [...recommendedPapers, ...searchPaperState.filteredPapers];
@@ -279,7 +295,7 @@ class PapersListScreen extends StatelessWidget {
 
                   String jsonData;
                   try {
-                    jsonData = await postPaperData(degree, major, selectedPapers);
+                    jsonData = await postPaperData(degree, major, pathwayState);
                     // Now you have the degrees from the server, use them to navigate to the next screen
                   } catch (error) {
                     // Handle error, perhaps show a dialog to the user
@@ -330,11 +346,11 @@ class PapersListScreen extends StatelessWidget {
                     ),
                   );
                 
-                  state.addMajor(major);
-                  state.addSelectedPapers(selectedPapers);
-                  state.addRemainingPapers(remainingPapers);
-                  state.addFurtherPoints(furtherPoints);
-                  state.addPointsAt200Level(pointsAt200Level);
+                  pathwayState.addMajor(major);
+                  pathwayState.addSelectedPapers(selectedPapers);
+                  pathwayState.addRemainingPapers(remainingPapers);
+                  pathwayState.addFurtherPoints(furtherPoints);
+                  pathwayState.addPointsAt200Level(pointsAt200Level);
                   
 
                   navigateToMajorsListScreen(context, context.read<PathwayState>(), degree);

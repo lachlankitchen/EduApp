@@ -73,6 +73,12 @@ class PathwayState extends ChangeNotifier {
     notifyListeners();
   }
 
+  List<Paper> getAllPapers() {
+    List<Paper> allPapers = [];
+    selectedPapers.values.forEach((papers) => allPapers.addAll(papers));
+    return allPapers;
+  }
+
   void addRemainingPapers(List<Paper> papers) {
     for (var paper in papers) {
       final level = int.parse(paper.papercode.substring(paper.papercode.length - 3));

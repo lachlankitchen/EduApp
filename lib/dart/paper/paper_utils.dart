@@ -3,6 +3,7 @@ import 'package:edu_app/dart/paper/paper.dart';
 import 'package:http/http.dart' as http;
 import '../degree/degree.dart';
 import '../major/major.dart';
+import '../pathway/pathway_state.dart';
 
   Future<List<String>> fetchDegrees() async {
     final response = await http.get(Uri.parse('http://localhost:1234/degrees'));
@@ -61,27 +62,55 @@ import '../major/major.dart';
   }
 
 
-  Future<String> postPaperData(Degree degree, Major major, List<Paper> papersList) async {
+  // Future<String> postPaperData(Degree degree, Major major, PathwayState state) async {
 
-    List<Map<String, dynamic>> jsonPapers = papersListToJson(papersList); 
+  //   List<Paper> papers = state.getAllPapers();
+
+  //   List<Map<String, dynamic>> jsonMap = papersListToJson(papers); 
     
-    Uri url = Uri.parse('http://localhost:1234/${degree.title}/${major.name}/$jsonPapers');
-    final response = await http.get(url);
+  //   // String jsonPapers = jsonEncode(jsonMap);
 
-    // Uri url = Uri.parse('http://localhost:1234/${degree.title}/${major.name}/papers');
-    // final response = await http.post(
-    //   url,
-    //   headers: {
-    //     'Content-Type': 'application/json',
-    //   },
-    //   body: jsonPapers,
-    // );
+  //   // print("jsonPapers: $jsonPapers");
+
+  //   // Uri url = Uri.parse('http://localhost:1234/${degree.title}/${major.name}/$jsonPapers');
+  //   // final response = await http.post(url);
+
+  //   List<Map<String, dynamic>> jsonPapers = papersListToJson(papers); 
+
+  //   String jsonBody = jsonEncode(jsonPapers);
+
+  //   Uri url = Uri.parse('http://localhost:1234/${degree.title}/${major.name}');
+  //   final response = await http.post(url, body: jsonBody, headers: {"Content-Type": "application/json"});
+
+  //   if (response.statusCode == 200) {
+  //     return response.body;
+  //   } else {
+  //     print('Error validating degree requirements: ${response.statusCode}');
+  //     // If the server did not return a 200 OK response, throw an exception.
+  //     throw Exception('Failed to validate major requirements');
+  //   }
+  // }
+
+  Future<String> postPaperData(Degree degree, Major major, PathwayState state) async {
+    Uri url = Uri.parse('http://localhost:1234/Bachelor of Science (BSc)/Computer Science');
+    final response = await http.post(
+      url, 
+      body: jsonEncode({"key":"value"}), 
+      headers: {
+        "Content-Type": "application/json",
+        "Accept": "*/*",
+        "Connection": "keep-alive",
+        "Accept-Encoding": "gzip, deflate, br",
+        // Add any other headers if needed
+      }
+    );
 
     if (response.statusCode == 200) {
       return response.body;
     } else {
       print('Error validating degree requirements: ${response.statusCode}');
-      // If the server did not return a 200 OK response, throw an exception.
       throw Exception('Failed to validate major requirements');
     }
   }
+
+  
