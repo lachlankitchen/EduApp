@@ -87,7 +87,6 @@ import '../pathway/pathway_state.dart';
   // }
 
   Future<String> postPaperData(Degree degree, Major major, PathwayState state) async {
-    // String bodyContent = '[{"key":"value"}]';
 
     List<Paper> papers = state.getAllPapers();
 
@@ -95,7 +94,7 @@ import '../pathway/pathway_state.dart';
       
     String jsonPapers = jsonEncode(jsonMap);
 
-    Uri url = Uri.parse('http://localhost:1234/Bachelor of Science (BSc)/Computer Science');
+    Uri url = Uri.parse('http://localhost:1234/${degree.title}/${major.name}');
     final response = await http.post(
       url, 
       body: jsonPapers,  // Use the stringified JSON here
