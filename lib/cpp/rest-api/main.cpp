@@ -90,9 +90,13 @@ int rest_api(void)
         try {
             auto json_papers = nlohmann::json::parse(papers_string);
             std::cout << json_papers << std::endl;
+            res.status = 200;
+            res.set_content(json_papers, "application/json");
         } catch (const nlohmann::json::exception& e) {
             std::cerr << "JSON parsing error: " << e.what() << std::endl;
             std::cerr << "Failed string: " << papers_string << std::endl;
+            res.status = 400;
+            res.set_content(e.what(), "text/plain");
         }
     });
 
@@ -112,8 +116,6 @@ int rest_api(void)
             std::cerr << "JSON parsing error: " << e.what() << std::endl;
             std::cerr << "Failed string: " << papers_string << std::endl;
         }
-
-
 
         std::cout << json_papers << std::endl;
 

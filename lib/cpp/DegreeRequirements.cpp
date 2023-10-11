@@ -18,7 +18,6 @@ nlohmann::json DegreeRequirements::checkRequirements(const std::vector<std::stri
     std::unordered_set<std::string> completedSet(completedPapers.begin(), completedPapers.end());
     nlohmann::json feedback;
 
-    std::cout << degreeData.dump() << std::endl;
     feedback += checkSingleMajor(degreeData, completedSet);
 
     // for (const auto &majorEntry : degreeData["majors"].items()) 
@@ -34,8 +33,6 @@ nlohmann::json DegreeRequirements::checkRequirements(const std::vector<std::stri
 nlohmann::json DegreeRequirements::checkSingleMajor(const nlohmann::json &majorRequirements, const std::unordered_set<std::string> &completedSet) 
 {
     nlohmann::json feedback;
-
-    // std::cout << majorData << std::endl;
 
     std::cout << majorRequirements["levels"] << std::endl;
 

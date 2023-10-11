@@ -68,19 +68,14 @@ import '../pathway/pathway_state.dart';
 
   //   List<Map<String, dynamic>> jsonMap = papersListToJson(papers); 
     
+  //   print("jsonMap: $jsonMap");
+
   //   // String jsonPapers = jsonEncode(jsonMap);
 
   //   // print("jsonPapers: $jsonPapers");
 
-  //   // Uri url = Uri.parse('http://localhost:1234/${degree.title}/${major.name}/$jsonPapers');
-  //   // final response = await http.post(url);
-
-  //   List<Map<String, dynamic>> jsonPapers = papersListToJson(papers); 
-
-  //   String jsonBody = jsonEncode(jsonPapers);
-
-  //   Uri url = Uri.parse('http://localhost:1234/${degree.title}/${major.name}');
-  //   final response = await http.post(url, body: jsonBody, headers: {"Content-Type": "application/json"});
+  //   Uri url = Uri.parse('http://localhost:1234/${degree.title}/${major.name}/$jsonMap');
+  //   final response = await http.post(url);
 
   //   if (response.statusCode == 200) {
   //     return response.body;
@@ -92,12 +87,15 @@ import '../pathway/pathway_state.dart';
   // }
 
   Future<String> postPaperData(Degree degree, Major major, PathwayState state) async {
+    String bodyContent = '{"key":"value"}';
+
     Uri url = Uri.parse('http://localhost:1234/Bachelor of Science (BSc)/Computer Science');
     final response = await http.post(
       url, 
-      body: jsonEncode({"key":"value"}), 
+      body: bodyContent,  // Use the stringified JSON here
       headers: {
-        "Content-Type": "application/json",
+        // "Content-Type": "application/json",
+        "Content-Length": "1000",
         "Accept": "*/*",
         "Connection": "keep-alive",
         "Accept-Encoding": "gzip, deflate, br",
