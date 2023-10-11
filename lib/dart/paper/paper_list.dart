@@ -224,7 +224,6 @@ class PapersListScreen extends StatelessWidget {
               pathwayState.addRemainingPapers(remainingPapers);
               pathwayState.addFurtherPoints(furtherPoints);
               pathwayState.addPointsAt200Level(pointsAt200Level);
-              pathwayState.addRequirements(message);
               pathwayState.savePathway();
 
               Navigator.pushReplacement(
@@ -293,28 +292,36 @@ class PapersListScreen extends StatelessWidget {
                   // Filter the selected papers
                   List<Paper> selectedPapers = allPapers.where((paper) => paper.isSelected).toList();
 
+                  if (selectedPapers.isEmpty && recommendedPapers.isNotEmpty) {
+                    // Show an error message if no papers are selected
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(
+                        content: Text('Please select at least one paper.'),
+                      ),
+                    );
+                    return;
+                  }
+
+                  pathwayState.addSelectedPapers(selectedPapers);
+                  
                   String jsonData;
                   try {
                     jsonData = await postPaperData(degree, major, pathwayState);
                     // Now you have the degrees from the server, use them to navigate to the next screen
                   } catch (error) {
                     // Handle error, perhaps show a dialog to the user
-                    // print('Error fetching majors: $error');
+                    // print('Error fetching remaining major requirements: $error');
                     return; // Early return to exit the function if fetching degrees fails
                   }
-            
-                  final jsonMap = json.decode(jsonData);
-            
-                  Map<String, dynamic> jsonDataMap = jsonDecode(jsonData.toString());
-            
+
                   // Decode the JSON data
-                  final Map<String, dynamic> jsonResponse = jsonDecode(jsonData.toString());
+                  final Map<String, dynamic> jsonResponse = jsonDecode(jsonData);
 
                   // Initialize the message to display the remaining requirements
                   String message = "Remaining Requirements:\n";
-            
+
                   List<Paper> remainingPapers = [];
-                  bool hasRemainingPapers = jsonDataMap.containsKey("remaining_compulsory_papers");
+                  bool hasRemainingPapers = jsonResponse.containsKey("remaining_compulsory_papers");
                   // Check if jsonResponse contains the key "remaining_compulsory_papers"
                   if (hasRemainingPapers) {
                     List<dynamic> remainingPapersList = jsonResponse["remaining_compulsory_papers"];
@@ -322,7 +329,6 @@ class PapersListScreen extends StatelessWidget {
                         remainingPapers.add(Paper.name(paperCode));
                         message += "$paperCode\n";
                     }
-                    message += "Check home page for more details.\n";
                   }
 
                   int furtherPoints = 0;
@@ -330,6 +336,7 @@ class PapersListScreen extends StatelessWidget {
                   // Check if jsonResponse contains the key "remaining_points"
                   if (hasFurtherPoints) {
                     furtherPoints = jsonResponse["further_points"];
+                    message += "Further $furtherPoints points at 200-level or above.\n";
                   }
 
                   int pointsAt200Level = 0;
@@ -337,8 +344,9 @@ class PapersListScreen extends StatelessWidget {
                   // Check if jsonResponse contains the key "points_at_200_level"
                   if (hasPointsAt200Level) {
                     pointsAt200Level = jsonResponse["points_at_200_level"];
+                    message += "At least $pointsAt200Level points at 200-level or above.\n";
                   }
-            
+
                   // Display the message to the user
                   ScaffoldMessenger.of(context).showSnackBar(
                     SnackBar(
@@ -351,7 +359,6 @@ class PapersListScreen extends StatelessWidget {
                   pathwayState.addRemainingPapers(remainingPapers);
                   pathwayState.addFurtherPoints(furtherPoints);
                   pathwayState.addPointsAt200Level(pointsAt200Level);
-                  
 
                   navigateToMajorsListScreen(context, context.read<PathwayState>(), degree);
                 },
