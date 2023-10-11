@@ -95,14 +95,18 @@ int rest_api(void)
                 throw std::runtime_error("Expected a JSON array but got a different type");
             }
 
-            for (const auto& paper : json_array) {
-                std::cout << paper << std::endl;
-                papers.push_back(paper.dump());
+            for (const auto& paperObj : json_array) {
+                // Check if the paper object has the "papercode" field
+                if (paperObj.contains("papercode")) {
+                    std::string paperCode = paperObj["papercode"].get<std::string>();
+                    std::cout << paperCode << std::endl;
+
+                    papers.push_back(paperCode);
+                } else {
+                    // Handle or log cases where the paper object doesn't have a "papercode"
+                    std::cerr << "Warning: A paper object does not have a 'papercode' field." << std::endl;
+                }
             }
-
-            res.status = 200;
-            res.set_content(json_array.dump(), "application/json");
-
         } catch (const std::exception& e) {
             std::cerr << "Error: " << e.what() << std::endl;
             std::cerr << "Failed string: " << req.body << std::endl;
@@ -201,13 +205,6 @@ int rest_api(void)
             res.set_content("No matching papers found", "text/plain");
         }
 
-        setCorsHeaders(res);
-    });
-
-    svr.Post("/body-header-param", [](const Request &req, Response &res) {
-        std::cout << req.body;
-
-        res.set_content(req.body, "text/plain");
         setCorsHeaders(res);
     });
 

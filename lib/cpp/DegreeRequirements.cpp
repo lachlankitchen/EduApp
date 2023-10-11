@@ -34,8 +34,6 @@ nlohmann::json DegreeRequirements::checkSingleMajor(const nlohmann::json &majorR
 {
     nlohmann::json feedback;
 
-    std::cout << majorRequirements["levels"] << std::endl;
-
     int completedElectivePoints = completedSet.size() * 18; // Start with all points being elective
     int completedCompulsoryPoints = 0; // Start with all points being elective
     int completedNOfPoints = 0; // Start with all points being elective
@@ -46,21 +44,30 @@ nlohmann::json DegreeRequirements::checkSingleMajor(const nlohmann::json &majorR
         {
             const nlohmann::json &levelData = levelEntry.value();
 
-            // Deduct points for compulsory papers that are completed
+            // If the current level has compulsory papers
             if (levelData.contains("compulsory_papers")) 
             {
-                for (const auto &paper : levelData["compulsory_papers"]) 
+                // Check each paper object
+                for (const auto &paperCodeJson : levelData["compulsory_papers"]) 
                 {
-                    if (completedSet.find(paper) != completedSet.end()) 
+                    // Convert the JSON value to a string and remove spaces
+                    std::string paperCode = paperCodeJson.get<std::string>();
+                    paperCode.erase(remove(paperCode.begin(), paperCode.end(), ' '), paperCode.end());
+
+                    // If the papercode is in the set of completed papers
+                    if (completedSet.find(paperCode) != completedSet.end()) 
                     {
                         completedCompulsoryPoints += 18;
                     }
-                    else
+                    else 
                     {
-                        feedback["remaining_compulsory_papers"].push_back(paper);
+                        // Debug: Failed comparison
+                        std::cout << "No match found for: '" << paperCode << "'" << std::endl;
+                        feedback["remaining_compulsory_papers"].push_back(paperCode);
                     }
                 }
             }
+
 
             // Deduct points for 'one_of_papers' through 'six_of_papers' that are completed
             for (int i = 1; i <= 6; i++) 
@@ -96,8 +103,8 @@ nlohmann::json DegreeRequirements::checkSingleMajor(const nlohmann::json &majorR
     if (hasFurtherPoints) 
     {
         int furtherPoints = majorRequirements["further_points"];
-        int electivePoints = furtherPoints - completedElectivePoints;
-        feedback["further_points"] = furtherPoints;  // This needs to be adapted if 360 isn't the total points for the degree
+        int electivePoints = furtherPoints - completedCompulsoryPoints;
+        feedback["further_points"] = electivePoints;  // This needs to be adapted if 360 isn't the total points for the degree
     }
 
     bool has200LvlPoints = majorRequirements.contains("points_at_200-level");
