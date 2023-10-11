@@ -85,45 +85,29 @@ int rest_api(void)
 
         auto degree = req.path_params.at("degree");
         auto major = req.path_params.at("major");
-        std::string papers_string = req.body;
 
+        std::vector<std::string> papers;
         try {
-            auto json_papers = nlohmann::json::parse(papers_string);
-            std::cout << json_papers << std::endl;
+            auto json_array = nlohmann::json::parse(req.body);
+
+            // Check if parsed JSON is an array
+            if (!json_array.is_array()) {
+                throw std::runtime_error("Expected a JSON array but got a different type");
+            }
+
+            for (const auto& paper : json_array) {
+                std::cout << paper << std::endl;
+                papers.push_back(paper.dump());
+            }
+
             res.status = 200;
-            res.set_content(json_papers, "application/json");
-        } catch (const nlohmann::json::exception& e) {
-            std::cerr << "JSON parsing error: " << e.what() << std::endl;
-            std::cerr << "Failed string: " << papers_string << std::endl;
+            res.set_content(json_array.dump(), "application/json");
+
+        } catch (const std::exception& e) {
+            std::cerr << "Error: " << e.what() << std::endl;
+            std::cerr << "Failed string: " << req.body << std::endl;
             res.status = 400;
             res.set_content(e.what(), "text/plain");
-        }
-    });
-
-    svr.Post("/:degree/:major/:papers", [&](const Request &req, Response &res) {
-        std::cout << "POST request received" << std::endl;
-
-        auto degree = req.path_params.at("degree");
-        auto major = req.path_params.at("major");
-        auto papers_string = req.path_params.at("papers");
-        
-        // Parse the JSON string directly
-        nlohmann::json json_papers;
-        try {
-            json_papers = nlohmann::json::parse(papers_string);
-            std::cout << json_papers << std::endl;
-        } catch (const nlohmann::json::exception& e) {
-            std::cerr << "JSON parsing error: " << e.what() << std::endl;
-            std::cerr << "Failed string: " << papers_string << std::endl;
-        }
-
-        std::cout << json_papers << std::endl;
-
-        // Convert the parsed JSON array to a vector of strings
-        std::vector<std::string> papers;
-        for (const auto& paper : json_papers) {
-            std::cout << paper << std::endl;
-            papers.push_back(paper.dump());
         }
 
         std::filesystem::path json_file_path = std::filesystem::path("..") / ".." / ".." / "data" / "majorRequirements.json";

@@ -87,19 +87,20 @@ import '../pathway/pathway_state.dart';
   // }
 
   Future<String> postPaperData(Degree degree, Major major, PathwayState state) async {
-    String bodyContent = '{"key":"value"}';
+    // String bodyContent = '[{"key":"value"}]';
+
+    List<Paper> papers = state.getAllPapers();
+
+    List<Map<String, dynamic>> jsonMap = papersListToJson(papers); 
+      
+    String jsonPapers = jsonEncode(jsonMap);
 
     Uri url = Uri.parse('http://localhost:1234/Bachelor of Science (BSc)/Computer Science');
     final response = await http.post(
       url, 
-      body: bodyContent,  // Use the stringified JSON here
+      body: jsonPapers,  // Use the stringified JSON here
       headers: {
-        // "Content-Type": "application/json",
-        "Content-Length": "1000",
-        "Accept": "*/*",
-        "Connection": "keep-alive",
-        "Accept-Encoding": "gzip, deflate, br",
-        // Add any other headers if needed
+        "Content-Length": jsonPapers.length.toString(),
       }
     );
 
