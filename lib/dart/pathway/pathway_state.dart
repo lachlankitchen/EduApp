@@ -195,4 +195,20 @@ class PathwayState extends ChangeNotifier {
     requirements = message;
     notifyListeners();
   }
+
+  void clearPathway() {
+    selectedDegree = Degree(''); // Reset the state
+    selectedMajors = [];
+    selectedPapers = {
+      '100-level': [],
+      '200-level': [],
+      '300-level': [],
+    };  // 
+    remainingPapers = {
+      '100-level': [],
+      '200-level': [],
+      '300-level': [],
+    };
+    notifyListeners();
+    }
 }
