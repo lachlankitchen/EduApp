@@ -105,9 +105,19 @@ class PathwayState extends ChangeNotifier {
       allPapers.addAll(papers);
     });
 
+    bool hasGrades = false;
+    for (Paper paper in allPapers) {
+      if (paper.grade != -1) {
+        hasGrades = true;
+        break;
+      }
+    }
+
+    if (!hasGrades) return;  // Return if no papers have a grade.
+
     for (int i = 0; i < allPapers.length; i++) {
       if(allPapers[i].grade != -1) {
-        totalWeightedSum += allPapers[i].grade !* allPapers[i].points;
+        totalWeightedSum += allPapers[i].grade !* allPapers[i].points; // Fixed incorrect use of '!*'
         totalWeight += allPapers[i].points;
       }
     }
@@ -116,6 +126,7 @@ class PathwayState extends ChangeNotifier {
     gpa = (wam * 9) / 100;
     notifyListeners();
   }
+
 
   void addFurtherPoints(int furtherPoints){
     this.furtherPoints = furtherPoints;

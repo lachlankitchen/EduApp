@@ -63,74 +63,80 @@ class DisplayPathway extends StatelessWidget {
                     ),
                   ],
                 ),
-                const SizedBox(height: 10),
                 if (pathway[index].majors.isNotEmpty)
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      const Text(
-                        'Major(s):',
-                        style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-                      ),
-                      for (var major in pathway[index].majors)
-                        Padding(
-                          padding: const EdgeInsets.only(left: 16.0),
-                          child: Text('${major.name},'),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 10.0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const Text(
+                          'Major(s):',
+                          style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                         ),
-                    ],
+                        for (var major in pathway[index].majors)
+                          Padding(
+                            padding: const EdgeInsets.only(left: 16.0),
+                            child: Text('${major.name},'),
+                          ),
+                      ],
+                    ),
                   ),
-                const SizedBox(height: 10),
                 if (pathway[index].selectedPapers.isNotEmpty)
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      const Text(
-                        'Your Papers(s):',
-                        style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-                      ),
-                      buildPapersByLevel(selectedPapers), // Use the helper function
-                      const SizedBox(height: 10),
-                      const Text(
-                        'Remaining Compulsory Papers(s):',
-                        style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-                      ),
-                      buildPapersByLevel(remainingPapers), // Use the helper function
-                      if (pathway[index].furtherPoints != 0)
+                  Padding(
+                    padding: const EdgeInsets.only(top: 10.0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const Text(
+                          'Your Papers(s):',
+                          style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                        ),
+                        buildPapersByLevel(selectedPapers), // Use the helper function
                         const SizedBox(height: 10),
                         const Text(
-                          'Further Points:',
-                            style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                          'Remaining Compulsory Papers(s):',
+                          style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                         ),
-                        Padding(
-                          padding: const EdgeInsets.only(left: 16.0),
-                          child: Text('${pathway[index].furtherPoints}'),
-                        ),
-                      const SizedBox(height: 10),
-                      if (pathway[index].pointsAt200Level != 0)
+                        buildPapersByLevel(remainingPapers), // Use the helper function
                         const SizedBox(height: 10),
-                        const Text(
-                          'Further Points at 200-level or above:',
-                            style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(left: 16.0),
-                          child: Text('${pathway[index].pointsAt200Level}'),
-                        ),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          const SizedBox(height: 10),
+                        if (pathway[index].furtherPoints != 0)
                           const Text(
-                            'Grade Point Average:',
-                            style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                            'Further Points:',
+                              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                           ),
                           Padding(
                             padding: const EdgeInsets.only(left: 16.0),
-                            child: Text('${pathway[index].gpa}'),
+                            child: Text('${pathway[index].furtherPoints}'),
                           ),
+                        const SizedBox(height: 10),
+                        if (pathway[index].pointsAt200Level != 0)
+                          const SizedBox(height: 10),
+                          const Text(
+                            'Further Points at 200-level or above:',
+                              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(left: 16.0),
+                            child: Text('${pathway[index].pointsAt200Level}'),
+                          ),
+                        pathway[index].gpa != -1 
+                          ? Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                const SizedBox(height: 10),
+                                const Text(
+                                  'Grade Point Average:',
+                                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.only(left: 16.0),
+                                  child: Text('${pathway[index].gpa}'),
+                                ),
+                              ],
+                            )
+                          : Container(), // Empty container when GPA is -1
                         ],
-                      ),
-                    ],
+                    ),
                   ),
               ],
             ),
